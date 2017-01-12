@@ -22,28 +22,30 @@ if(!$find_r[0]){
 				<div class="tit"><span>비밀번호 찾기</span><div class="lfind"><span>01. 아이디입력 ></span><strong>02. 본인 확인 ></strong><span>03. 비밀번호 재설정</span></div></div>
 				<div class="graybox find">
 					<div class="ftit">비밀번호를 찾을 방법을 선택하세요.</div>
-					<div class="topbox">	
-					 <form action="" method="POST" name="findform">
+					<div class="topbox">
+					
 						<ul class="lflist">
 							<li>
 								<div class="lchkbox">
-									<label class="ichk"><input id="first" name="first" type="radio"><i></i><span>회원정보에 등록한 휴대전화로 인증<em>(+82 01-7***-***6 )</em></span></label>
+									<label class="ichk"><input id="first" name="first" type="checkbox"><i></i><span>회원정보에 등록한 휴대전화로 인증<em>(+82 01-7***-***6 )</em></span></label>
 								</div>
 							</li>
 							<li>
 								<div class="lchkbox">
-									<label class="ichk"><input name="second" type="radio"><i></i><span>본인확인 이메일로 인증<em>
+									<label class="ichk"><input id="second" name="second" type="checkbox"><i></i><span>본인확인 이메일로 인증<em>
 									<?
 									echo ($find_r['email']);
 									?></em></span></label>
 								</div>
 							</li>
 						</ul>
+
 					</div> 
 				</div>
 				<div class="nextarea">
-					<button type="submit" onclick="find()" class="btn_next">다음</button>
+					<a onclick="find()" class="btn_next">다음</a>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -57,14 +59,18 @@ include("./include_footer.php");
 
 <script>
 function find(){
-
     var f = document.findform;
-
-	if(!document.getElementById('first').checked || !document.getElementById('second').checked){
-	alert('개인정보 수집 이용 동의해주세요');
+	if(!document.getElementById('first').checked && !document.getElementById('second').checked){
+	alert('한가지 방식을 선택해 주세요');
 	return false;
 	}
-  
-	
+	if(document.getElementById('first').checked && document.getElementById('second').checked){
+	alert('한가지 방식만 선택해 주세요');
+	return false;
+	}
+	if(document.getElementById('first').checked)
+		location.href="login_find4.php";
+	if(document.getElementById('second').checked)
+		location.href="login_find_mailsend.php?email=<?echo $find_r['email']?>";
 }
 </script>
