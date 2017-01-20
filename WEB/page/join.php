@@ -1,7 +1,55 @@
 <?
 include("./include_head.php");
 ?>
-	
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#menu1").load("./sms/sms_form.html");
+});
+</script>
+<style>
+.modal{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-top: 60px;
+	-webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+#pad{
+	position:absolute;
+	bottom:15%;
+	right:15%;
+	width:70%;
+	height:70%;
+	border:none;
+	background-color:#EBEBEB;
+	color:#595757;
+	font-weight: bold;
+}
+#pad a div{
+	color:#595757;
+}
+#cancel{
+	border:none;
+	background-color:#fff;
+	color:#9fa0a0;
+	border-radius:8px;
+	height:33px;
+	line-height:100%;
+	box-shadow: 3px 1px 8px 1px lightgray;
+	font-size:120%;
+}
+
+</style>
+</head>
 	<div id="main_container">
 		<div class="path"><div class="container_inner pd44"><span>홈 > </span><span>로그인 > </span><strong>이메일 회원가입</strong></div></div>
 		<div class="container_inner">
@@ -13,7 +61,21 @@ include("./include_head.php");
 					<div class="topbox">
 						<div class="inputbox">
 							<input id="e" name="useremail" type="text" class="txt st04" placeholder="이메일을 입력해주세요." />
-							<a href="#" class="btn_gray">중복확인</a>
+
+							<script>
+							function email(){
+								var test=document.getElementById('e').value;
+								var echeck=test.indexOf("@");
+								if(echeck==-1){
+									alert("틀린 이메일 형식입니다.");
+									return false;
+								}
+								var email=document.getElementById('e').value;
+								location.href="./email_check.php?email="+email;
+								}
+							</script>
+							
+							<a onClick="email()" class="btn_gray">중복확인</a>
 						</div>
 						<div class="inputbox">
 							<input id="p1" name="userpassword" type="password" class="txt st04" placeholder="비밀번호를 입력해주세요. ( 영문,숫자 포함 6~20자 )" />
@@ -22,9 +84,33 @@ include("./include_head.php");
 							<input id="p2" name="userpassword_check" type="password" class="txt st04" placeholder="비밀번호를 한번 더 입력하세요." />
 						</div>
 						<div class="inputbox">
-							<input name="nickname" type="text" class="txt st04" placeholder="닉네임을 입력하세요. ( 한글,영문,숫자 포함 2~10자 )" />
-							<a href="#" class="btn_gray">중복확인</a>
+							<input id="n" name="nickname" type="text" class="txt st04" placeholder="닉네임을 입력하세요. ( 한글,영문,숫자 포함 2~10자 )" />
+							
+							<script>
+							function nick(){
+								var nick=document.getElementById('n').value;
+								location.href="./nickname_check.php?nick="+nick;
+								}
+							</script>
+							
+							<a onClick="nick()" class="btn_gray">중복확인</a>
 						</div>
+						<!---->
+						<div class="inputbox">
+							<input id="t" name="nickname" type="text" class="txt st04" placeholder="핸드폰 번호를 입력하세요." />							
+							<a onclick="document.getElementById('id01').style.display='block'" class="btn_gray">번호인증</a>
+						
+						<span id="id01" class="modal">
+						<div id="pad">
+						  <div class="tab-content">
+							<div id="menu1" class="tab-pane fade in active">
+							</div>
+						  </div>
+						</div>						
+						</span>
+
+						</div>
+
 						<div class="lchkbox">
 							<label class="ichk"><input id="check1" type="checkbox"><i></i><span>서비스 이용약관 동의</span></label>
 						</div>
@@ -63,7 +149,7 @@ include("./include_footer.php");
 <script>
 function join(){
     var f = document.joinform;
-
+/*
 	if(!document.getElementById('check1').checked){
 		alert('서비스 약관에 동의해주세요');
 		return false;
@@ -103,7 +189,24 @@ function join(){
 	if(echeck==-1){
 		alert("없는 이메일 주소입니다.");
 		return false;
-	}
+	}*/
 	 f.submit();
 }
+
+// Get the modal
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+function blackout(){
+	var cancel = document.getElementById('cancel');
+	var modal = document.getElementById('id01');
+	window.onclick = function(event) {
+    if (event.target == cancel) {
+        modal.style.display = "none";
+		}
+	}
+
 </script>
