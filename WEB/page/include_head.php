@@ -1,3 +1,13 @@
+<?
+@session_start();
+
+include("./include.php");
+
+$sql="select * from user where email='".$_SESSION['user_email']."';";
+$query=mysql_query($sql);
+$data=mysql_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html xml:lang="ko" lang="ko">
 <head>
@@ -53,19 +63,44 @@ if(!$_SESSION['user_email']){
 				<li><a href="sch_lank.html">랭킹검색</a></li>
 				<li><a href="notice.php">고객센터</a></li>
 				<li class="login">
-					<a href="#"><img src="../images/contents/img_login.png" alt="" /><em class="num">2</em></a>
+					<a href="#"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>" style="width:50px" alt="" /><em class="num">2</em></a>
 					<div class="info">
 						<div class="in_1">
-							<div class="imgbox"><img src="../images/contents/img_login_b.png" alt="" /></div>
+							<div class="imgbox"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>" style="width:80px"  alt="" /></div>
 							<div class="namebox">
-								<strong>노력파 신탐정</strong>
-								<strong>12위<em>in 대한민국</em></strong>
-								<span>85탈15패 (85%)</span>
-								<span>평균속도  18:31</span>
+								<strong>
+								<?
+								if($data['title']=="")
+									echo("타이틀 없음");
+								else	
+									echo $data['title']
+								?></strong>
+								<strong>
+								<?
+								echo($data['rank']." 위");
+								?><em>in 대한민국</em></strong>
+							
+								<span><?
+									echo($data['win']."탈 ");
+									echo($data['lose']."패 ");
+									
+									if($data['win']==0 && $data['lose']==0)
+										echo("0 %");
+									else if($data['win']!=0 && $data['lose']==0)
+										echo("100 %");
+									else{
+										$plus=$data['win']+$data['lose'];
+										$division=$data['win']/$plus;
+										$cal=$division*100;
+										echo(substr($cal,0,2)." %");
+									}
+									?></span>
+								<span>평균속도 0<?
+								?></span>
 							</div>
 						</div>
 						<div class="in_2">
-							<div class="tit">예약 2건 <a href="mypage1.html" class="btn_in_more">더보기</a></div>
+							<div class="tit">예약 2건 <a href="mypage1.php" class="btn_in_more">더보기</a></div>
 							<table class="reserlist">
 								<colgroup>
 									<col style="width:14%" />
@@ -93,7 +128,7 @@ if(!$_SESSION['user_email']){
 							</table>
 						</div>
 						<div class="in_3">
-							<a href="mypage1.html" class="btn_mypage">마이페이지로 이동</a>
+							<a href="mypage1.php" class="btn_mypage">마이페이지로 이동</a>
 							<a href="./logout.php" class="btn_logout">로그아웃</a>
 						</div>
 					</div>
@@ -129,16 +164,41 @@ if(!$_SESSION['user_email']){
 ?>
 				<!-- s : 로그인 후 mobile -->
 				<div class="info">
-					<div class="imgbox"><img src="../images/contents/img_login_b.png" alt="" /></div>
+					<div class="imgbox"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>"  alt="" /></div>
 					<div class="namebox st02">
-						<strong>노력파 신탐정<img src="../images/icon/icon_name.png" alt="" /></strong>
-						<strong>12위<em>in 대한민국</em></strong>
-						<span>85탈15패 (85%)</span>
-						<span>평균속도  18:31</span>
-					</div>
+								<strong>
+								<?
+								if($data['title']=="")
+									echo("타이틀 없음");
+								else	
+									echo $data['title']
+								?></strong>
+								<strong>
+								<?
+								echo($data['rank']." 위");
+								?><em>in 대한민국</em></strong>
+							
+								<span><?
+									echo($data['win']."탈 ");
+									echo($data['lose']."패 ");
+									
+									if($data['win']==0 && $data['lose']==0)
+										echo("0 %");
+									else if($data['win']!=0 && $data['lose']==0)
+										echo("100 %");
+									else{
+										$plus=$data['win']+$data['lose'];
+										$division=$data['win']/$plus;
+										$cal=$division*100;
+										echo(substr($cal,0,2)." %");
+									}
+									?></span>
+								<span>평균속도 0<?
+								?></span>
+							</div>
 				</div>
 				<div class="rebox">
-					<a href="mypage1.html"><em>예약 3건</em></a>
+					<a href="mypage1.php"><em>예약 3건</em></a>
 					<ul>
 						<li>11/15  데드 넘버</li>
 						<li>11/17  게이샤의 편지</li>
@@ -146,7 +206,7 @@ if(!$_SESSION['user_email']){
 					</ul>
 				</div>
 				<ul class="gnb_m">
-					<li class="gnb4"><a href="mypage1.html">마이페이지</a></li>
+					<li class="gnb4"><a href="mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>

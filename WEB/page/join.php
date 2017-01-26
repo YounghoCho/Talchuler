@@ -2,15 +2,10 @@
 include("./include_head.php");
 ?>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#menu1").load("./sms/sms_form.html");
-});
-</script>
 <style>
 .modal{
-    position: fixed; /* Stay in place */
+	display:none;
+	position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -25,10 +20,10 @@ $(document).ready(function(){
 }
 #pad{
 	position:absolute;
-	bottom:15%;
-	right:15%;
-	width:70%;
-	height:70%;
+	bottom:50%;
+	right:40%;
+	width:20%;
+	height:10%;
 	border:none;
 	background-color:#EBEBEB;
 	color:#595757;
@@ -78,12 +73,6 @@ $(document).ready(function(){
 							<a onClick="email()" class="btn_gray">중복확인</a>
 						</div>
 						<div class="inputbox">
-							<input id="p1" name="userpassword" type="password" class="txt st04" placeholder="비밀번호를 입력해주세요. ( 영문,숫자 포함 6~20자 )" />
-						</div>
-						<div class="inputbox">
-							<input id="p2" name="userpassword_check" type="password" class="txt st04" placeholder="비밀번호를 한번 더 입력하세요." />
-						</div>
-						<div class="inputbox">
 							<input id="n" name="nickname" type="text" class="txt st04" placeholder="닉네임을 입력하세요. ( 한글,영문,숫자 포함 2~10자 )" />
 							
 							<script>
@@ -95,22 +84,14 @@ $(document).ready(function(){
 							
 							<a onClick="nick()" class="btn_gray">중복확인</a>
 						</div>
-						<!---->
 						<div class="inputbox">
-							<input id="t" name="nickname" type="text" class="txt st04" placeholder="핸드폰 번호를 입력하세요." />							
-							<a onclick="document.getElementById('id01').style.display='block'" class="btn_gray">번호인증</a>
-						
-						<span id="id01" class="modal">
-						<div id="pad">
-						  <div class="tab-content">
-							<div id="menu1" class="tab-pane fade in active">
-							</div>
-						  </div>
-						</div>						
-						</span>
-
+							<input id="p1" name="userpassword" type="password" class="txt st04" placeholder="비밀번호를 입력해주세요. ( 영문,숫자 포함 6~20자 )" />
 						</div>
-
+						<div class="inputbox">
+							<input id="p2" name="userpassword_check" type="password" class="txt st04" placeholder="비밀번호를 한번 더 입력하세요." />
+						</div>
+						
+					
 						<div class="lchkbox">
 							<label class="ichk"><input id="check1" type="checkbox"><i></i><span>서비스 이용약관 동의</span></label>
 						</div>
@@ -143,13 +124,14 @@ include("./include_footer.php");
 ?>
 </div><!-- end : id : wrap -->
 <script type="text/javascript" src="../js/common.js"></script>
+
 </body>
 </html>
 
 <script>
 function join(){
     var f = document.joinform;
-/*
+
 	if(!document.getElementById('check1').checked){
 		alert('서비스 약관에 동의해주세요');
 		return false;
@@ -189,24 +171,8 @@ function join(){
 	if(echeck==-1){
 		alert("없는 이메일 주소입니다.");
 		return false;
-	}*/
+	}
 	 f.submit();
 }
-
-// Get the modal
-var modal = document.getElementById('id01');
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-function blackout(){
-	var cancel = document.getElementById('cancel');
-	var modal = document.getElementById('id01');
-	window.onclick = function(event) {
-    if (event.target == cancel) {
-        modal.style.display = "none";
-		}
-	}
 
 </script>
