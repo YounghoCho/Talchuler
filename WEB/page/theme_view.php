@@ -108,46 +108,57 @@
 		<div class="container_inner">
 			<div class="themeview">
 				<dl class="themeinfo">
-					<dt><img src="../images/contents/img_themeview.jpg" alt="" /></dt>
+<? 
+include("./include.php");
+$sql="select * from game";
+$query=mysql_query($sql);
+$data=mysql_fetch_array($query);
+?>
+
+					<dt><img src="../game/<?echo ($data['g_name'])?>.jpg"/></dt>
 					<dd>
-						<strong>더 라스트 갬블 2</strong>
-						<span>설계된 게임</span>
+						<strong><?echo ($data['g_name'])?></strong>
+						<span><?echo ($data['g_title'])?></span>
 						<ul style="padding-bottom:1%;">
-						<li style="padding-left:0%;font-size:95%;">가격: 20000</li>
-						<li style="padding-left:0%;font-size:95%;">지점: 신촌ESC</li>
+						<li class="txt">가격: <?echo ($data['g_price'])?></li>
+						<li class="txt">지점: <?echo ($data['g_location'])?></li>
 						</ul>
-						<ul style=";">
-						<li class="icon_new1"><em>난이도</em> 2</li>
-						<li class="icon_new3"><em>인원수</em> 2-6</li>
-						<li class="icon_new2"><em>공포감</em> 3</li>
-						<li class="txt">필요능력 <span>직관,관찰,수리</span></li>
+						<ul>
+						<li class="icon_new1"><em>난이도</em> <?echo ($data['g_level'])?></li>
+						<li class="icon_new3"><em>인원수</em> <?echo ($data['g_people'])?></li>
+						<li class="icon_new2"><em>공포감</em> <?echo ($data['g_horror'])?></li>
+						<li class="txt">필요능력<span> <?echo ($data['g_need'])?></span></li>
 						</ul>
 						<div>
-							최고의 겜블러 팀의 일원인 당신은 세계 최대의 
-							포커게임에 초대되어 포커게임에 참가하게 된다. <br />
-							 <br />
-							모든 칩을 올인하고 패를 공개하려는 순간,당신은
-							어지러움을 느끼며 갑자기 잠에 빠지게 된다.  <br />
-							 <br />
-							잠에서 깨어나 보니 상대 선수는 쓰러져 있고, 
-							당신의 패가 진 것을 발견하게 된다. <br />
-							 <br />
-							그 때, 무전기를 통해 누군가가 경찰에 신고하는 
-							소리가 들리고, 경찰이 도착하기 전까지 남은 시간은
-							단 1시간 뿐.  <br />
-							 <br />
-							이대로 경찰이 왔다간 범인으로 몰리게 되는 상황! <br />
-							 <br />
-							제한 시간 내에 단서를 찾아 탈출해 누명을 벗어라.
+						<?echo ($data['g_content'])?>	
 						</div>
 					</dd>
 				</dl>
 				<ul class="orderlist">
-					<li><img src="../images/icon/icon_master.png" alt="마스터" />18:51 (최탐정)</li>
-					<li><span>2위</span>  22:35 (박탐정)</li>
-					<li><span>3위</span>  25:04 (신탐정)</li>
-					<li><span>4위</span>  27:22 (훈탐정)</li>
-					<li><span>5위</span>  28:01 (조탐정)</li>
+<?
+$sql="select * from game_rank";
+$query=mysql_query($sql);
+//sorting알고리즘 없이 그냥 순서대로 출력할게 지금은
+
+$i=1;//전역변수
+while($data=mysql_fetch_array($query)){
+
+	if($i==1){
+	?>
+		<li><img src="../images/icon/icon_master.png" alt="마스터" />
+		<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+		</li>
+	<?
+	}else{
+	?>
+	<li><span><?echo ($i)?>위</span>
+	<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+	</li>
+<?
+	}
+	$i += 1;
+}
+?>
 				</ul>
 			</div>
 		</div>
@@ -161,20 +172,28 @@
 				<div class="hiddenarea on">
 					<div class="timeres">
 						<ul class="timelist">
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">10:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">11:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">12:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">13:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">14:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">15:00</a></li>
-							<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">16:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">17:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">18:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">19:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">20:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">21:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">22:00</a></li>
-							<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">23:00</a></li>
+<?
+//[예약정보]
+$sql="select * from game_rooms";//나중에 게임이름으로 where조건문 쓴다음 아래 while문 돌리면됨.
+$query=mysql_query($sql);
+//이 반복문 안에는 데이터를 조금만 넣어놓을게
+while($data=mysql_fetch_array($query)){
+
+	if($data['gr_reserve']==0){
+	?>
+	<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">
+	<?echo ($data['gr_time'])?>
+	</a></li>	
+	<?
+	}else{
+	?>
+	<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">
+	<?echo ($data['gr_time'])?>
+	</a></li>
+	<?
+	}
+}
+?>
 						</ul>
 						<a href="#self" class="btn_res" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">예약하기</a>
 					</div>

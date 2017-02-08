@@ -18,7 +18,7 @@
 			</div>
 			<div class="f_bottom">
 				<ul class="policylink">
-					<li><a href="#">회사소개</a></li>
+					<li><a href="./policy0.php">회사소개</a></li>
 					<li><a href="./policy1.php">이용약관</a></li>
 					<li><a href="./policy2.php">개인정보처리방침</a></li>
 					<li><a href="./policy3.php">위치정보이용약관</a></li>

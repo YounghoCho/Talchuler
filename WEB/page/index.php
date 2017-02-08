@@ -6,7 +6,7 @@ include("./include_head.php");
 		<div class="choicearea">
 			<div class="inner">
 				<dl class="cho1">
-					<dt>언제</dt>
+					<dt><font style="font-weight:bold">언제</font></dt>
 					<dd>
 						<div class="datebox">
 							<input type="text" id="testDatepicker" class="txt" value="2016-11-24" />
@@ -71,7 +71,7 @@ include("./include_head.php");
 					</dd>
 				</dl>
 				<dl class="cho2">
-					<dt>난이도</dt>
+					<dt><font style="font-weight:bold">난이도</font></dt>
 					<dd>
 						<div class="selbox">
 							<select class="select_st1 w50">
@@ -103,7 +103,7 @@ include("./include_head.php");
 					</dd>
 				</dl>
 				<dl class="cho3">
-					<dt>지역</dt>
+					<dt><font style="font-weight:bold">지역</font></dt>
 					<dd>
 						<ul class="loca_1dep">
 							<li><a href="search.html">전체</a></li>
@@ -1239,6 +1239,7 @@ include("./include_head.php");
 					</div>
 				</div>
 			</div>
+<!--영업 이후에 살릴곳
 			<div class="cafearea">
 				<div class="maintit">추천카페<em>광고</em></div>
 				<ul>
@@ -1249,8 +1250,9 @@ include("./include_head.php");
 					<li><a href="#"><img src="../images/contents/img_cafe5.jpg" alt="카페5" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe6.jpg" alt="카페6" /></a></li>
 				</ul>
+				</div>
 			</div>
-		</div>
+-->
 	</div>
 <?
 include("./include_footer.php");

@@ -35,11 +35,13 @@ $data=mysql_fetch_array($query);
 			<h1><a href="./index.php"><img src="../images/common/img_logo.png" alt="logo" /></a></h1>
 			<div class="h_banner">
 				<div class="slidearea">
+					<!-- 컨텐츠 정해지기 전까지 빼놓기로함
 					<ul class="bxslider04">
 						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
 						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
 						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
 					</ul>
+					-->
 				</div>
 			</div>
 			<a href="#" class="btn_gnb" onclick="gnbView();"><img src="../images/btn/btn_gnb.png" alt="" /></a>
@@ -63,10 +65,40 @@ if(!$_SESSION['user_email']){
 				<li><a href="sch_lank.html">랭킹검색</a></li>
 				<li><a href="notice.php">고객센터</a></li>
 				<li class="login">
-					<a href="#"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>" style="width:50px" alt="" /><em class="num">2</em></a>
+					<a href="#">
+<?
+$filepath = "../upload/profiles/".$_SESSION['user_email'];	
+
+if(!file_exists($filepath)){
+	?>
+		<img src="../images/contents/img_login_d.png" width="50px;height:65px;"/>
+		<em class="num">예약수 0</em></a>
+	<?
+}else{
+	?>
+		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:50px;height:65px;" alt="" />
+		<em class="num">예약수 0</em></a>
+	<?
+}
+?>
+					
 					<div class="info">
 						<div class="in_1">
-							<div class="imgbox"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>" style="width:80px"  alt="" /></div>
+							<div class="imgbox">
+<?
+if(!file_exists($filepath)){
+	?>
+		<img src="../images/contents/img_login_d.png" width="80px;height:100px;"/></div>
+	<?
+}else{
+	?>
+		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:80px;height:100px;"  alt="" /></div>	
+<?
+}
+?>
+
+
+
 							<div class="namebox">
 								<strong>
 								<?
@@ -164,7 +196,19 @@ if(!$_SESSION['user_email']){
 ?>
 				<!-- s : 로그인 후 mobile -->
 				<div class="info">
-					<div class="imgbox"><img src="../upload/profiles/<?echo $_SESSION['user_nickname']?>"  alt="" /></div>
+					<div class="imgbox">
+<?
+if(!file_exists($filepath)){
+	?>
+		<img src="../images/contents/img_login_d.png" width="80px;height:100px;"/></div>
+	<?
+}else{
+	?>
+		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:80px;height:100px;"  alt="" /></div>	
+<?
+}
+?>					
+				
 					<div class="namebox st02">
 								<strong>
 								<?
@@ -219,6 +263,7 @@ if(!$_SESSION['user_email']){
 			<div class="gnbbg" onclick="gnbHide();"></div>
 		</div>
 	</header>
+<!-- 연산 대책이 세워질때까지 보류
 	<div class="rankbox">
 		<div class="container_inner">
 			<div class="tit">실시간 전국 순위</div>
@@ -248,3 +293,4 @@ if(!$_SESSION['user_email']){
 			</div>
 		</div>
 	</div>
+-->

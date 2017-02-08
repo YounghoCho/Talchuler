@@ -1,4 +1,4 @@
-<?
+﻿<?
 include("./include_head.php");
 ?>
 	<div id="main_container">

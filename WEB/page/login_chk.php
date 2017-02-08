@@ -1,5 +1,5 @@
-<?
-session_start();
+﻿<?
+@session_start();
 include ("./include.php");
 include("./password_hide.php");
 
@@ -11,9 +11,6 @@ $chk_result = mysql_query($chk_sql);
 $chk_data = mysql_fetch_array($chk_result);
 
 $hash_password=$chk_data['password'];
-
-
-
 if($chk_data["idx"]){
 	if (password_verify($password, $hash_password)) { //일치확인
 		if($_POST["check"]){
@@ -31,27 +28,26 @@ if($chk_data["idx"]){
 	    <script>
        location.replace("./index.php");
         </script>
-<?php
-        exit;
-} else { 
-?>
-    <script>
-        alert("패스워드가 일치하지 않습니다");
-        history.back();
-    </script>
-<?php
-    exit;
+	<?
+			exit;
+	} else { 
+	?>
+		<script>
+			alert("패스워드가 일치하지 않습니다");
+			history.back();
+		</script>
+	<?
+		exit;
+	}
 }
-}
-
 else
 {
 ?>
     <script>
-        alert("가입되지 않은 이메일입니다.);
+        alert("가입되지 않은 이메일입니다.");
         history.back();
     </script>
-<?php
+<?
     exit;
 }
 
