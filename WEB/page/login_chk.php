@@ -26,7 +26,7 @@ if($chk_data["idx"]){
 		}
 ?>
 	    <script>
-       location.replace("./index.php");
+       location.replace("../index.php");
         </script>
 	<?
 			exit;

@@ -11,5 +11,5 @@ $_SESSION["user_nickname"] = "";
 ?>
 
 <script>
-location.replace("./index.php");
+location.replace("../index.php");
 </script>

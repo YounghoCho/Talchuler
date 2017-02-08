@@ -1,4 +1,5 @@
 ﻿<?
+@session_start();
 include("./include.php");
 include ("./password_hide.php");
 

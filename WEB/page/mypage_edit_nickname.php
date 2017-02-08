@@ -14,7 +14,7 @@ if(mysql_fetch_array($query)>0){
 	<?
 }else{
 	//닉네임 변경
-	$sql="update user set nickname='".$_POST['nickname']."'";
+	$sql="update user set nickname='".$_POST['nickname']."' where email='".$_SESSION['user_email']."'";
 	mysql_query($sql);
 	?>
 	

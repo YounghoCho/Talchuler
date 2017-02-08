@@ -32,7 +32,7 @@ $data=mysql_fetch_array($query);
 <div id="wrap">
 	<header id="header">
 		<div class="header_inner">
-			<h1><a href="./index.php"><img src="../images/common/img_logo.png" alt="logo" /></a></h1>
+			<h1><a href="../index.php"><img src="../images/common/img_logo.png" alt="logo" /></a></h1>
 			<div class="h_banner">
 				<div class="slidearea">
 					<!-- 컨텐츠 정해지기 전까지 빼놓기로함
