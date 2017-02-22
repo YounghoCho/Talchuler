@@ -54,6 +54,7 @@ if(!$_SESSION['user_email']){
 				<li><a href="./join.php">회원가입</a></li>
 				<li><a href="#">예약확인</a></li>
 				<li><a href="#">랭킹검색</a></li>
+				<li><a href="../search_user.php">탈출러검색</a></li>
 				<li><a href="./notice.php">고객센터</a></li>
 			</ul>
 			<!-- e : 로그인 전 pc -->
@@ -63,6 +64,7 @@ if(!$_SESSION['user_email']){
 			<!-- s : 로그인 후 pc -->
 			<ul class="gnb clfix">
 				<li><a href="sch_lank.html">랭킹검색</a></li>
+				<li><a href="../search_user.php">탈출러검색</a></li>
 				<li><a href="notice.php">고객센터</a></li>
 				<li class="login">
 					<a href="#">
@@ -188,6 +190,7 @@ if(!$_SESSION['user_email']){
 				<ul class="gnb_m">
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
+					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>
 				<!-- e : 로그인 전 mobile -->
@@ -252,6 +255,7 @@ if(!file_exists($filepath)){
 				<ul class="gnb_m">
 					<li class="gnb4"><a href="mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>
+					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>
 				<div class="logoutbox"><a href="./logout.php" class="btn_logout">로그아웃</a></div>

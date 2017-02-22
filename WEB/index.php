@@ -15,6 +15,7 @@ $data=mysql_fetch_array($query);
 <meta charset="utf-8" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
 <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
@@ -27,8 +28,135 @@ $data=mysql_fetch_array($query);
 	<script type="text/javascript" src="./js/respond.min.js"></script>
 	<script type="text/javascript" src="./js/html5shiv.js"></script>
 <![endif]-->
+<style>
+#id01{
+	display:none;
+	position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-top: 60px;
+	-webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+#pad{
+	width:300px;
+	height:404px;
+	border:none;
+	background-color:#EBEBEB;
+	color:#595757;
+	font-weight: bold;
+}
+.eval_chk{
+	background-color:#66ccff;
+	margin:5px;
+	width:96%;
+	color:#666;
+	font-size:83%;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.eval{
+	background-color:#ccc;
+	margin:5px;
+	width:96%;
+	color:#666;
+	font-size:83%;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+#goeval{
+	background-color:#56dcfc;
+	margin:5px;
+	margin-top:12px;
+	margin-bottom:8px;
+	width:96%;
+	color:black;
+	font-size:2;
+	padding-top:6px;
+	padding-bottom:6px;
+}
+.eval_img{
+	display:none;
+	width:14px;
+	height:14px;
+	margin-left:4px;
+}
+</style>
+
 </head>
 <body class="main">
+
+<span id="id01">
+	<center>
+	<div id="pad">
+		<div style="padding:8px;">
+			<font color="#0066ff" size="3" style="font-weight:bold;">업소명 - '게임이름'</font><br>
+			<font size="2">
+			경험자의 공감을 남겨주세요!
+			</font>	
+			</div>
+		<div style="width:100%;padding-top:3px;padding-bottom:3px;background-color:#aaa;margin-bottom:10px;">
+			<font color="black" size="2">
+			공감 체크
+			</font>
+		</div>
+		<div class="eval" id="eval1" onclick="eval_change1()">
+			게임스토리와 게임문제가 잘 연결되서 집중돼요<br>
+			<font size="3" style="font-weight:bold;">
+			몰입돼요
+			<img class="eval_img" id="eval_img1" src="./images/btn/eval_check.png"/>
+			</font>
+		</div>
+		<div class="eval" id="eval2" onclick="eval_change2()">
+			첨단장치가 많거나 장비들이 신박했어요<br>
+			<font size="3" style="font-weight:bold;">
+			신기방기해요
+			<img class="eval_img" id="eval_img2" src="./images/btn/eval_check.png"/>
+			</font>
+		</div>
+		<div class="eval" id="eval3" onclick="eval_change3()">
+			방의 인테리어나 소품들이 잘 꾸며져있어요<br>
+			<font size="3" style="font-weight:bold;">
+			눈이 즐거워요
+			<img class="eval_img" id="eval_img3" src="./images/btn/eval_check.png"/>
+			</font>
+		</div>
+		<div class="eval" id="eval4" onclick="eval_change4()">
+			치마 입기엔 아쉬울 정도로 많이 움직일 수 있어요<br>
+			<font size="3" style="font-weight:bold;">
+			활동적이예요
+			<img class="eval_img" id="eval_img4" src="./images/btn/eval_check.png"/>
+			</font>
+		</div>
+		<div class="eval" id="eval5" onclick="eval_change5()">
+			직원분들의 안내나 힌트주시는 모습이 보기좋아요<br>
+			<font size="3" style="font-weight:bold;">
+			친절해요
+			<img class="eval_img" id="eval_img5" src="./images/btn/eval_check.png"/>
+			</font>
+		</div>
+		
+		<div id="goeval">
+			<b>확인</b>
+		</div>
+	</div>
+	</center>
+</span>
+<script>
+	//게임종료 신호 받으면(if문수정)
+	if(0){
+		var t=document.getElementById('id01');
+		t.style.display='block';
+	}
+</script>
+
+
 <div id="wrap">
 	<header id="header">
 		<div class="header_inner">
@@ -54,6 +182,7 @@ if(!$_SESSION['user_email']){
 				<li><a href="./page/join.php">회원가입</a></li>
 				<li><a href="#">예약확인</a></li>
 				<li><a href="#">랭킹검색</a></li>
+				<li><a href="./search_user.php">탈출러검색</a></li>
 				<li><a href="./page/notice.php">고객센터</a></li>
 			</ul>
 			<!-- e : 로그인 전 pc -->
@@ -62,7 +191,7 @@ if(!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 후 pc -->
 			<ul class="gnb clfix">
-				<li><a href="./page/sch_lank.html">랭킹검색</a></li>
+				<li><a href="./page/sch_lank.html">랭킹검색</a></li>								<li><a href="./search_user.php">탈출러검색</a></li>
 				<li><a href="./page/notice.php">고객센터</a></li>
 				<li class="login">
 					<a href="#">
@@ -188,7 +317,8 @@ if(!$_SESSION['user_email']){
 				<ul class="gnb_m">
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
-					<li class="gnb3"><a href="#">고객센터</a></li>
+					<li><a href="./search_user.php">탈출러검색</a></li>
+					<li class="gnb3"><a href="./page/notice.php">고객센터</a></li>
 				</ul>
 				<!-- e : 로그인 전 mobile -->
 <?
@@ -252,6 +382,7 @@ if(!file_exists($filepath)){
 				<ul class="gnb_m">
 					<li class="gnb4"><a href="./page/mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="./page/sch_lank.html">랭킹검색</a></li>
+					<li class="gnb2"><a href="./search_user.php">탈출러검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>
 				<div class="logoutbox"><a href="./page/logout.php" class="btn_logout">로그아웃</a></div>
@@ -1555,3 +1686,99 @@ include("./page/include_footer.php");
 <script type="text/javascript" src="./js/common.js"></script>
 </body>
 </html>
+<script>
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script>
+eval_i1=1;
+eval_i2=1;
+eval_i3=1;
+eval_i4=1;
+eval_i5=1;
+
+function eval_change1(){
+	var eval1=document.getElementById('eval1');
+	var eval_img1=document.getElementById('eval_img1');
+	
+	if(eval_i1>0){
+	eval1.style.backgroundColor="#66ccff";
+	eval1.style.color="black";
+	eval_img1.style.display="inline";
+	eval_i1=-1;
+	}else{
+	eval1.style.backgroundColor="#ccc";
+	eval1.style.color="#666";
+	eval_img1.style.display="none";
+	eval_i1*=-1;
+	}
+}
+function eval_change2(){
+	var eval2=document.getElementById('eval2');
+	var eval_img2=document.getElementById('eval_img2');
+	
+	if(eval_i2>0){
+	eval2.style.backgroundColor="#66ccff";
+	eval2.style.color="black";
+	eval_img2.style.display="inline";
+	eval_i2=-1;
+	}else{
+	eval2.style.backgroundColor="#ccc";
+	eval2.style.color="#666";
+	eval_img2.style.display="none";
+	eval_i2*=-1;
+	}
+}
+function eval_change3(){
+	var eval3=document.getElementById('eval3');
+	var eval_img3=document.getElementById('eval_img3');
+	
+	if(eval_i3>0){
+	eval3.style.backgroundColor="#66ccff";
+	eval3.style.color="black";
+	eval_img3.style.display="inline";
+	eval_i3=-1;
+	}else{
+	eval3.style.backgroundColor="#ccc";
+	eval3.style.color="#666";
+	eval_img3.style.display="none";
+	eval_i3*=-1;
+	}
+}
+function eval_change4(){
+	var eval4=document.getElementById('eval4');
+	var eval_img4=document.getElementById('eval_img4');
+	
+	if(eval_i4>0){
+	eval4.style.backgroundColor="#66ccff";
+	eval4.style.color="black";
+	eval_img4.style.display="inline";
+	eval_i4=-1;
+	}else{
+	eval4.style.backgroundColor="#ccc";
+	eval4.style.color="#666";
+	eval_img4.style.display="none";
+	eval_i4*=-1;
+	}
+}
+function eval_change5(){
+	var eval5=document.getElementById('eval5');
+	var eval_img5=document.getElementById('eval_img5');
+	
+	if(eval_i5>0){
+	eval5.style.backgroundColor="#66ccff";
+	eval5.style.color="black";
+	eval_img5.style.display="inline";
+	eval_i5=-1;
+	}else{
+	eval5.style.backgroundColor="#ccc";
+	eval5.style.color="#666";
+	eval_img5.style.display="none";
+	eval_i5*=-1;
+	}
+}
+</script>

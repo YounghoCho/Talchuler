@@ -9,6 +9,7 @@ include("./include.php");
 <?
 include('./include_mypage.php');
 ?>	
+
 				<div class="c_info">
 					<div class="my_tab">
 						<a href="mypage1.php">예약 내역</a>
@@ -23,11 +24,11 @@ include('./include_mypage.php');
 						<a href="#">나를 등록한 친구</a>
 					</div>
 					<div class="sch_friend">
-						<a href="#" class="btn_f_add">친구추가</a>
-						<div class="schbox">
-							<input type="text" class="txt st02" placeholder="친구의 닉네임을 입력하세요.">
+						<a href="../search_user.php" class="btn_f_add">탈출러검색</a>
+					<!--	<div class="schbox">
+							<input name="friend" type="text" class="txt st02" placeholder="친구의 닉네임을 입력하세요.">
 							<a href="#" class="btn_sch">검색</a>
-						</div>
+						</div> -->
 					</div>
 					<div class="hiddenarea on">
 						<table class="friendlist">
@@ -42,17 +43,16 @@ include('./include_mypage.php');
 
 							<tbody>
 <?
-//친구의 user정보를 얻는다.
-$join="select f_nickname from friends where user='".$_SESSION['user_email']."';";
-$joinq=mysql_query($join);
 $i=1;
-while($data=mysql_fetch_array($joinq)){
-	$find_user=$data['f_nickname'];
-	//join문을 쓰지 않는다. 이게 정확함. join문 쓰면 레코드 행 순서대로 비교하기때문에 원하는 결과가아님	
-	$find_sql="select * from user where nickname='".$find_user."'";
+
+//친구를 조회한다
+$sql="select f_email from friends where user='".$_SESSION['user_email']."';";
+$q=mysql_query($sql);
+while($data=mysql_fetch_array($q)){
+	//친구의 정보를 찾는다.
+	$find_sql="select * from user where email='".$data['f_email']."'";
 	$findq=mysql_query($find_sql);
 	$findr=mysql_fetch_array($findq);
-
 	//친구들의 rank로 순위를 매겨야함, 근데 여기서 array를 만들어서 솔팅해봐야
 	//아랫줄에서 이미 tr~/tr이 다 출력되고 난 후라서 비순차적 출력이 불가능함.
 	//친구 순위에서 -> 번호로 바꿔놓음 일단.
@@ -66,20 +66,27 @@ while($data=mysql_fetch_array($joinq)){
 									</td>
 									<td class="rank2"><?echo ($findr['rank'])?></td>
 									<td class="f_info">
-<?
-if(!file_exists($filepath)){
-	?>
-		<img src="../images/contents/img_login_d.png" width="30px;height:35px;"/><?echo ($data['f_nickname'])?></td>
-	<?
-}else{
-	?>
-		<img src="../upload/profiles/<?echo $findr['nickname']?>" style="width:30px;height:35px;" alt="" /><?echo ($data['f_nickname'])?></td>
-	<?
-}
-?>									
+									<?
+									$filepath = "../upload/profiles/".$findr['email'];	
+												
+									if(!file_exists($filepath)){
+										?>
+											<img src="../images/contents/img_login_d.png" width="30px;height:35px;"/><?echo ($findr['nickname'])?></td>
+										<?
+									}else{
+										?>
+											<img src="../upload/profiles/<?echo $findr['email']?>" style="width:30px;height:35px;" alt="" /><?echo ($findr['nickname'])?></td>
+										<?
+									}
+									?>									
 
 									
-									<td class="rank3"><a href="#">친구삭제</a></td>
+									<td class="rank3">
+										<form action='delete_friend.php' method='POST'>
+										<input type="hidden" name="email" value="<?echo $findr['email']?>">
+										<button type='submit'>친구삭제</button>
+										</form>
+									</td>
 								</tr>
 <?
 }
@@ -101,16 +108,37 @@ if(!file_exists($filepath)){
 					</div>
 					<div class="hiddenarea">
 						<ul class="reg_friend">
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
-							<li><img src="../images/contents/img_friend2.png" alt="" /><span>친구1</span><div class="btnbox"><a href="#" class="btn_gray">등록</a><a href="#" class="btn_gray">삭제</a></div></li>
+							<?
+							$sql="select * from whoAddMe where user='".$_SESSION['user_email']."' ";
+							$q=mysql_query($sql);
+							while($d=mysql_fetch_array($q)){
+							?>
+							<li>
+								<?
+								$filepath = "../upload/profiles/".$d['f_email'];	
+									
+								if(!file_exists($filepath)){
+									?>
+										<img src="../images/contents/img_login_d.png" width="60px;"/>
+									<?
+								}else{
+									?>
+										<img src="../upload/profiles/<?echo $d['f_email']?>" style="width:60px" alt="" />
+									<?
+								}
+								?>	
+								<span><?echo $d['f_nickname']?></span>
+							<!--디비가 꼬인다 나중에 처리
+							<div class="btnbox">
+									<a href="#" class="btn_gray" onclick="regist()">등록</a>
+									<a href="#" class="btn_gray">삭제</a>
+							</div>
+							-->
+							</li>
+
+							<?
+							}
+							?>
 						</ul>
 						<div class="pagination">
 							<a href="#" class="btn_page_first">&lt; &nbsp; &nbsp;이전</a>
@@ -128,6 +156,7 @@ if(!file_exists($filepath)){
 			</div>
 		</div>
 	</div>
+
 <?
 include("./include_footer.php");
 ?>
@@ -135,3 +164,9 @@ include("./include_footer.php");
 <script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
+<script>
+function regist(){
+	var f1= document.getElementById('f1');
+	f1.submit();
+}
+</script>

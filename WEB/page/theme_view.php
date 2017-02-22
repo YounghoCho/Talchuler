@@ -1,6 +1,7 @@
 <?
 	include("include_head.php");
 ?>
+
 	<div id="main_container">
 		<div class="path"><div class="container_inner pd44"><span>홈 > </span><span>검색 > </span><strong>테마 상세페이지</strong></div></div>
 		<div class="choicearea d_none">
@@ -202,78 +203,107 @@ while($data=mysql_fetch_array($query)){
 						<li class="able">예약가능</li>
 					</ul>
 				</div>
+<style>
+.container_eval{
+	background-color:white;
+	width:100%;
+	height:155px;
+}
+.space{
+	height:10px;
+}
+.eval{
+	width:190px;
+	float:left;
+	padding:10px;
+	font-weight:bold;
+	font-size:120%;
+}
+.eval div{
+	font-size:150%;
+	color:#66ccff;
+}
+.eval2{
+	width:190px;
+	float:left;
+	padding:10px;
+	font-weight:bold;
+	font-size:120%;
+}
+.eval2 div{
+	font-size:150%;
+	color:#66ccff;
+}
+@media all and (max-width:1041px){
+	.container_eval{
+		background-color:white;
+		width:100%;
+		height:210px;
+		margin-bottom:30px;
+	}
+	.space{
+		height:5px;
+	}
+	.eval{
+		width:50%;
+		float:left;
+		padding:3px;
+		font-weight:bold;
+		font-size:100%;
+	}
+	.eval div{
+		font-size:120%;
+		color:#66ccff;
+	}
+	.eval2{
+		width:33%;
+		float:left;
+		padding:3px;
+		font-weight:bold;
+		font-size:100%;
+		margin-top:20px;
+	}
+	.eval2 div{
+		font-size:120%;
+		color:#66ccff;
+	}
+}
+</style>
 				<div class="hiddenarea">
 					<div class="reviewbox">
-						<div class="f_l">
-							<ul class="numbox">
-								<li>
-									<dl>
-										<dt>개연성</dt>
-										<dd><strong></strong><strong></strong><strong></strong><strong></strong><em></em></dd>
-										<dd class="r_num">8점</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt>장치</dt>
-										<dd><strong></strong><strong></strong><strong></strong><em></em><em></em></dd>
-										<dd class="r_num">6점</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt>인테리어</dt>
-										<dd><strong></strong><strong></strong><strong></strong><strong></strong><em></em></dd>
-										<dd class="r_num">8점</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt>힌트</dt>
-										<dd><strong></strong><strong></strong><strong></strong><strong></strong><strong></strong></dd>
-										<dd class="r_num">10점</dd>
-									</dl>
-								</li>
-								<li>
-									<dl>
-										<dt>서비스</dt>
-										<dd><strong></strong><strong></strong><strong></strong><strong></strong><em></em></dd>
-										<dd class="r_num">8점</dd>
-									</dl>
-								</li>
-							</ul>
+						<center>
+						<div class="container_eval">
+							<div style="width:97%;border-bottom:1px solid #666;padding:5px;padding-top:10px;"><font style="font-size:120%;font-weight:bold;">공감 지수</font></div><br>
+
+							<div class="eval" style="inline">
+								<div>0명</div><div class="space"> </div>
+								몰입되요
+							</div>
+							<div class="eval" style="inline">
+								<div>0명</div><div class="space"> </div>
+								신기방기해요
+							</div>
+							<div class="eval2" style="inline">	
+								<div>0명</div><div class="space"> </div>
+								눈이즐거워요
+							</div>
+							<div class="eval2" style="inline">
+								<div>0명</div><div class="space"> </div>
+								활동적이예요
+							</div>
+							<div class="eval2" style="inline">
+								<div>0명</div><div class="space"> </div>
+								친절해요
+							</div>
+
+
+
+
+
+
+							
 						</div>
-						<div class="f_r">
-							<div class="tit">플레이어 리뷰 <a href="#" class="btn_more">더보기</a></div>
-							<table class="reviewlist"> 
-								<tbody>
-									<tr>
-										<td class="name">sinyo****</td>
-										<td class="sbj">개연성이 좀 떨어졌지만 좋았어요~</td>
-										<td class="date">16.12.08</td>
-										<td class="que">미답변</td>
-									</tr>
-									<tr>
-										<td class="name">sinyo****</td>
-										<td class="sbj">신선하고 재미있었어요 !   ~~~~~~ </td>
-										<td class="date">16.12.08</td>
-										<td class="que">답변</td>
-									</tr>
-									<tr>
-										<td class="name">sinyo****</td>
-										<td class="sbj">abcdefghrjklmnop~~~~~~</td>
-										<td class="date">16.12.08</td>
-										<td class="que">답변</td>
-									</tr>
-									<tr>
-										<td class="name">blala****</td>
-										<td class="sbj">신선하고 재미있었어요 !   ~~~~~~ </td>
-										<td class="date">16.12.08</td>
-										<td class="que">미답변</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						</center>
 					</div>
 				</div>
 				<div class="hiddenarea">

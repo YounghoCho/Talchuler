@@ -15,6 +15,7 @@ if(!$find_r[0]){
 	<?
 }
 ?>
+
 	<div id="main_container">
 		<div class="path"><div class="container_inner pd44"><span>홈 > </span><span>로그인 > </span><strong>비밀번호 찾기</strong></div></div>
 		<div class="container_inner">

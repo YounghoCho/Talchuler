@@ -14,7 +14,7 @@ include("./include_head.php");
 					<div class="tit">1:1 문의</div>
 					<div class="inqtab tab">
 						<a href="#" class="on">문의하기</a>
-						<a href="#">이용문의</a>
+						<a href="#">나의 문의 내역</a>
 					</div>
 					<div class="hiddenarea on">
 						<div class="inq_w_wrap">
