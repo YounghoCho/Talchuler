@@ -434,7 +434,7 @@ if(!file_exists($filepath)){
 					<dt><font style="font-weight:bold">언제</font></dt>
 					<dd>
 						<div class="datebox">
-							<input type="text" id="testDatepicker" class="txt" value="2016-11-24" />
+							<input type="text" id="testDatepicker" class="txt" value="요일 선택" />
 						</div>
 						<div class="selbox">
 							<select class="select_st1 w80">
@@ -556,9 +556,52 @@ if(!file_exists($filepath)){
 				</div>
 			</div>
 		</div>
+<style>
+.lowest{
+	 float:right;
+	 margin-right:20px;
+	 vertical-align:middle; 
+	 display:inline-block; 
+	 font-size:17px; 
+	 padding-top:5px;
+}
+.lowest:hover{
+	 float:right;
+	 margin-right:20px;
+	 vertical-align:middle; 
+	 display:inline-block; 
+	 font-size:19px; 
+	 padding-top:5px;
+}
+@media all and (max-width:1041px){
+.lowest{
+	 float:right;
+	 margin-right:20px;
+	 vertical-align:middle; 
+	 display:inline-block; 
+	 font-size:14px; 
+	 padding-top:5px;
+	 margin-top:-57px;
+	 margin-right:-10px;
+}
+.lowest:hover{
+	 float:right;
+	 margin-right:20px;
+	 vertical-align:middle; 
+	 display:inline-block; 
+	 font-size:16px; 
+	 padding-top:5px;
+	 margin-top:-57px;
+	 margin-right:-10px;
+}
+
+}
+</style>
 		<div class="timenow">
 			<div class="inner">
-				<div class="tit"><strong>TIME NOW</strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em></div>
+				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
+					<div class='lowest' onclick="location.href='./page/timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
+				</div>
 				<!-- s : timenow pc -->
 				<div class="slidearea">
 					<ul class="bxslider01">
@@ -696,772 +739,13 @@ if(!file_exists($filepath)){
 								</li>
 							</ul>
 						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="./images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="./images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="./images/contents/img_timenow3.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>전역하는날</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow4.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>살인자의방</strong><em>강남</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow3.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>전역하는날</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow4.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>살인자의방</strong><em>강남</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow3.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>전역하는날</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow4.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>살인자의방</strong><em>강남</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow3.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>전역하는날</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow4.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>살인자의방</strong><em>강남</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 <br/>
-											통해 용의자에 대한 정보를 입수한 <br/>
-											당신은 용의자의 집에 잠입하여 <br/>
-											단서를 찾기로 한다. <br/>
-											용의자가 집에 돌아오기까지<br/> 
-											남은 시간은 1시간. <br/>
-											<br/>
-											당신은 서서히 방문을 <br/>
-											들어서게 되는데...<br/>
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
-								</li>
-							</ul>
-						</li>
+					<!--li~/li반복하면 dot표시가 생기면서 화면넘어감-->
 					</ul>
 				</div>
 				<!-- e : timenow pc -->
 				<!-- s : timenow mobile -->
 				<div class="slidearea_m">
 					<ul class="bxslider01_m">
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>더라스트갬블2</strong><em>신림</em></div>
-								</li>
-								<li onclick="">
-									<div class="timebox">
-									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
-											<div class="con">
-											기자 생활 중 알게 된 형사 M씨를 
-											통해 용의자에 대한 정보를 입수한 
-											당신은 용의자의 집에 잠입하여 
-											단서를 찾기로 한다. 
-											용의자가 집에 돌아오기까지
-											남은 시간은 1시간. 
-											
-											당신은 서서히 방문을 
-											들어서게 되는데...
-											</div>
-											<div class="revbox">
-												<strong>바로<br/>예약</strong>
-												<div>
-													<em>2:30</em> <em>4-6인</em>
-													<span>13000<em>원</em></span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="infobox"><strong>찜질방알바</strong><em>홍대</em></div>
-								</li>
-							</ul>
-						</li>
 						<li>
 							<ul>
 								<li onclick="">
@@ -1526,7 +810,7 @@ if(!file_exists($filepath)){
 		<div class="container_inner pd44">
 			<div class="newarea">
 				<div class="new_f_l">
-					<div class="maintit">추천 NEW<em>따끈따끈 새로나온 테마!</em></div>
+					<div class="maintit"><b>탈출러 추천</b><em>따끈따끈 새로나온 테마!</em></div>
 					<div class="slidearea">
 						<ul class="bxslider02">
 							<li>
@@ -1595,7 +879,7 @@ if(!file_exists($filepath)){
 					</div>
 				</div>
 				<div class="new_f_r">
-					<div class="maintit">추천 BEST<em>요즘 가장 인기있는 테마!</em></div>
+					<div class="maintit">명예의 게임<em>요즘 가장 인기있는 테마!</em></div>
 					<div class="slidearea">
 						<ul class="bxslider02">
 							<li>
@@ -1664,9 +948,12 @@ if(!file_exists($filepath)){
 					</div>
 				</div>
 			</div>
-<!--영업 이후에 살릴곳
+
 			<div class="cafearea">
-				<div class="maintit">추천카페<em>광고</em></div>
+			
+				<div class="maintit">
+				<!--영업 이후에 살릴곳
+				추천카페<em>광고</em></div>
 				<ul>
 					<li><a href="#"><img src="../images/contents/img_cafe1.jpg" alt="카페1" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe2.jpg" alt="카페2" /></a></li>
@@ -1674,10 +961,11 @@ if(!file_exists($filepath)){
 					<li><a href="#"><img src="../images/contents/img_cafe4.jpg" alt="카페4" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe5.jpg" alt="카페5" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe6.jpg" alt="카페6" /></a></li>
-				</ul>
+				</ul>-->
 				</div>
+				
 			</div>
--->
+
 	</div>
 <?
 include("./page/include_footer.php");
