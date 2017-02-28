@@ -111,18 +111,17 @@
 				<dl class="themeinfo">
 <? 
 include("./include.php");
-$sql="select * from game";
+$sql="select * from game where g_idx='".$_GET['g_idx']."'";
 $query=mysql_query($sql);
 $data=mysql_fetch_array($query);
 ?>
 
-					<dt><img src="../game/<?echo ($data['g_name'])?>.jpg"/></dt>
+					<dt><img src="../game/<?echo ($data['g_name'])?>.jpg" style="width:100%"/></dt>
 					<dd>
+						<li class="txt">&nbsp;<font color="#aaa"><?echo ($data['g_location'])?></font></li>
 						<strong><?echo ($data['g_name'])?></strong>
 						<span><?echo ($data['g_title'])?></span>
 						<ul style="padding-bottom:1%;">
-						<li class="txt">가격: <?echo ($data['g_price'])?></li>
-						<li class="txt">지점: <?echo ($data['g_location'])?></li>
 						</ul>
 						<ul>
 						<li class="icon_new1"><em>난이도</em> <?echo ($data['g_level'])?></li>
@@ -131,35 +130,148 @@ $data=mysql_fetch_array($query);
 						<li class="txt">필요능력<span> <?echo ($data['g_need'])?></span></li>
 						</ul>
 						<div>
-						<?echo ($data['g_content'])?>	
+						<?echo nl2br($data['g_content'])?>	
 						</div>
 					</dd>
 				</dl>
-				<ul class="orderlist">
-<?
-$sql="select * from game_rank";
-$query=mysql_query($sql);
-//sorting알고리즘 없이 그냥 순서대로 출력할게 지금은
-
-$i=1;//전역변수
-while($data=mysql_fetch_array($query)){
-
-	if($i==1){
-	?>
-		<li><img src="../images/icon/icon_master.png" alt="마스터" />
-		<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
-		</li>
-	<?
-	}else{
-	?>
-	<li><span><?echo ($i)?>위</span>
-	<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
-	</li>
-<?
-	}
-	$i += 1;
+<style>
+.rank_con{
+	width:500px;
+	height:170px;
+	text-align:center;
+	float:left;
+	display:inline;
+	font-size:130%;
+	line-height:28px;
 }
-?>
+.rank_title{
+	width:100%;
+	height:30px;
+	background-color:#ccc;
+	font-weight:bold
+}
+.price_con{
+	width:500px;
+	height:170px;
+	text-align:center;
+	float:left;
+	display:inline;
+	font-size:130%;
+	line-height:28px;
+	margin-left:22px;
+}
+.price_title{
+	width:100%;
+	height:30px;
+	background-color:#ccc;
+	font-weight:bold
+}
+.g_price{
+	padding:5px;
+	font-size:100%;
+	text-align:center;
+
+	margin-top:20px;
+}
+.enter{
+	display:none;
+}
+@media all and (max-width:1041px){
+.rank_con{
+	width:100%;
+	height:auto;
+	text-align:center;
+	font-size:100%;
+	float:left;
+	display:block;
+	margin-bottom:10px;
+}
+.rank_title{
+	display:none;
+}
+.ranking{
+	width:50%;
+	float:left;
+	display:inline-block;
+	line-height:20px;
+	text-align:center;
+	padding:3px;
+}
+.price_con{
+	width:100%;
+	margin-left:-2px;
+	height:auto;
+	text-align:center;
+	font-size:100%;
+	float:left;
+	display:block;
+}
+.price_title{
+	width:100%;
+	height:25px;
+	background-color:#ccc;
+	font-weight:bold
+}
+.g_price{	
+	padding:5px;
+	font-size:100%;
+	text-align:center;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+}
+</style>
+				<ul class="orderlist">
+					<div class="rank_con">
+						<div class="rank_title">순위</div>
+						<?
+						$sql="select * from game_rank";
+						$query=mysql_query($sql);
+						//sorting알고리즘 없이 그냥 순서대로 출력할게 지금은
+
+						$i=1;//전역변수
+						while($data=mysql_fetch_array($query)){
+							?>
+							<div class="ranking">
+							<?
+							
+							if($i==1){
+							?>
+								<img src="../images/icon/icon_master.png" alt="마스터" width="20px"/>
+								<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+							<?
+							}else{
+							?>
+							<?echo ($i)?>위
+							<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+						<?
+							}
+							$i += 1;
+							?>
+							</div>
+							<?
+						}
+						?>							
+					</div>
+
+					<div class="price_con">
+						<div class="price_title">게임가격</div>
+							<div class="g_price">
+								<?
+								$sql="select * from game where g_idx='".$_GET['g_idx']."'";
+								$query=mysql_query($sql);
+								$data=mysql_fetch_array($query);
+								?>
+								1인:&nbsp;<?echo ($data['g_price1'])?>원&nbsp;&nbsp;
+								2인:&nbsp;<?echo ($data['g_price2'])?>원&nbsp;&nbsp;
+								3인:&nbsp;<?echo ($data['g_price3'])?>원&nbsp;&nbsp;<br>
+								4인:&nbsp;<?echo ($data['g_price4'])?>원&nbsp;&nbsp;
+								5인:&nbsp;<?echo ($data['g_price5'])?>원&nbsp;&nbsp;
+								6인:&nbsp;<?echo ($data['g_price6'])?>원&nbsp;&nbsp;<br>
+								7인:&nbsp;<?echo ($data['g_price7'])?>원&nbsp;&nbsp;
+								8인:&nbsp;<?echo ($data['g_price8'])?>원&nbsp;&nbsp;
+							</div>
+					</div>
 				</ul>
 			</div>
 		</div>
