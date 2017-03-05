@@ -1,9 +1,9 @@
 <?
-session_start();
+@session_start();
 
 include("./page/include.php");
 
-$sql="select * from user where email='".$_SESSION['user_email']."';";
+@$sql="select * from user where email='".$_SESSION['user_email']."';";
 $query=mysql_query($sql);
 $data=mysql_fetch_array($query);
 ?>
@@ -174,7 +174,7 @@ $data=mysql_fetch_array($query);
 			</div>
 			<a href="#" class="btn_gnb" onclick="gnbView();"><img src="./images/btn/btn_gnb.png" alt="" /></a>
 <?
-if(!$_SESSION['user_email']){
+if(@!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 전 pc -->
 			<ul class="gnb clfix">
@@ -303,7 +303,7 @@ if(!file_exists($filepath)){
 			<div class="gnbwrap">
 				<div class="gnbtop"><img src="./images/common/bg_gnbtop.png" alt="" /></div>
 <?
-if(!$_SESSION['user_email']){
+if(@!$_SESSION['user_email']){
 ?>
 				<!-- s : 로그인 전 mobile -->
 				<div class="info">
@@ -429,16 +429,17 @@ if(!file_exists($filepath)){
 
 	<div id="main_container">
 		<div class="choicearea">
+		<form action='./page/search_game.php' method='get' id='search_game_form'>
 			<div class="inner">
 				<dl class="cho1">
 					<dt><font style="font-weight:bold">언제</font></dt>
 					<dd>
 						<div class="datebox">
-							<input type="text" id="testDatepicker" class="txt" value="요일 선택" />
+							<input name="day" type="text" id="testDatepicker" class="txt" value="<?echo date('Y-m-d')?>" />
 						</div>
 						<div class="selbox">
-							<select class="select_st1 w80">
-								<option>00:00</option>
+							<select name="start_time" class="select_st1 w80">
+								<option selected>00:00</option>
 								<option>01:00</option>
 								<option>02:00</option>
 								<option>03:00</option>
@@ -465,7 +466,7 @@ if(!file_exists($filepath)){
 								<option>24:00</option>
 							</select>
 							&nbsp;~&nbsp;
-							<select class="select_st1 w80">
+							<select name="end_time" class="select_st1 w80">
 								<option>00:00</option>
 								<option>01:00</option>
 								<option>02:00</option>
@@ -490,7 +491,7 @@ if(!file_exists($filepath)){
 								<option>21:00</option>
 								<option>22:00</option>
 								<option>23:00</option>
-								<option>24:00</option>
+								<option selected>24:00</option>
 							</select>
 						</div>
 					</dd>
@@ -499,30 +500,30 @@ if(!file_exists($filepath)){
 					<dt><font style="font-weight:bold">난이도</font></dt>
 					<dd>
 						<div class="selbox">
-							<select class="select_st1 w50">
-								<option>1</option>
+							<select name="start_level" class="select_st1 w50">
+								<option selected>1</option>
 								<option>2</option>
 								<option>3</option>
 								<option>4</option>
 								<option>5</option>
 							</select>
 							&nbsp;~&nbsp;
-							<select class="select_st1 w50">
+							<select name="end_level" class="select_st1 w50">
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
 								<option>4</option>
-								<option>5</option>
+								<option selected>5</option>
 							</select>
 							<div class="ml20">
-								<select class="select_st1 w100">
-									<option>공포포함</option>
+								<select name="horror" class="select_st1 w100">
+									<option selected>공포포함</option>
 									<option>공포만</option>
 									<option>공포X</option>
 								</select>
 							</div>
 							<div class="chkbox">
-								<label class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>
+								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>
 							</div>
 						</div>
 					</dd>
@@ -531,29 +532,34 @@ if(!file_exists($filepath)){
 					<dt><font style="font-weight:bold">지역</font></dt>
 					<dd>
 						<ul class="loca_1dep">
-							<li><a href="./page/search.html">전체</a></li>
+							<li><a onclick="search_game('all')">전체</a></li>
 							<li>
 								<a href="#">서울</a>
 								<ul class="loca_2dep">
-									<li><a href="./page/search.html">전체</a></li>
-									<li><a href="./page/search.html">강남</a></li>
-									<li><a href="./page/search.html">홍대</a></li>
-									<li><a href="./page/search.html">종로.대학로</a></li>
-									<li class="ml0"><a href="./page/search.html">건대.잠실</a></li>
-									<li><a href="./page/search.html">영등포.신림</a></li>
+									<li><a  onclick="search_game('seoul')">전체</a></li>
+									<li><a  onclick="search_game('gangnam')"">강남</a></li>
+									<li><a  onclick="search_game('hongdae')">홍대</a></li>
+									<li><a  onclick="search_game('jonglo')">종로.대학로</a></li>
+									<li class="ml0"><a  onclick="search_game('gundae')">건대.잠실</a></li>
+									<li><a  onclick="search_game('youngdeungpo')">영등포.신림</a></li>
 								</ul>
 							</li>
-							<li><a href="./page/search.html">경기</a></li>
-							<li><a href="./page/search.html">인천</a></li>
-							<li><a href="./page/search.html">대전</a></li>
-							<li><a href="./page/search.html">부산</a></li>
+							<li><a onclick="search_game('kyungki')">경기</a></li>
+							<li><a onclick="search_game('incheon')">인천</a></li>
+							<li><a onclick="search_game('daejeon')">대전</a></li>
+							<li><a onclick="search_game('busan')">부산</a></li>
 						</ul>
+						<input name="rigion" type="hidden" id="rigion">
 					</dd>
 				</dl>
+			</form>
+			<form action='./page/search_word.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a href="./page/search.html" class="btn_sch">검색</a>
+					<input name="input" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+					<a onclick="search_word()" class="btn_sch">검색</a>
 				</div>
+			</form>
+			
 			</div>
 		</div>
 <style>
@@ -1068,5 +1074,17 @@ function eval_change5(){
 	eval_img5.style.display="none";
 	eval_i5*=-1;
 	}
+}
+function search_game(y){
+	var f=document.getElementById('search_game_form');
+	var x=document.getElementById('rigion');
+	x.value=y;
+
+	f.submit();
+}
+function search_word(){
+	var f=document.getElementById('search_word_form');
+	
+	f.submit();
 }
 </script>

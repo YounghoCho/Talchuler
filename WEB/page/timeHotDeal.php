@@ -30,7 +30,7 @@ include('./include_head.php');
 	width:100%;
     vertical-align: middle;
 }
-.contnetDiv{
+.contentDiv{
 	width:193px;
 	height:160px;
 	float:left;
@@ -75,8 +75,8 @@ include('./include_head.php');
 	width:100%;
     vertical-align: middle;
 }
-.contnetDiv{
-	width:193px;
+.contentDiv{
+	width:208px;
 	height:160px;
 	float:left;
 	display:inline;
@@ -91,6 +91,11 @@ include('./include_head.php');
 }
 .hotDealBanner{
 	display:none;
+}
+#d{
+	float:left;
+	display:inline;
+	margin-left:5px;
 }
 }
 </style>
@@ -245,16 +250,17 @@ include('./include_head.php');
 					?>
 				<div class="innerContainer">
 					<div class="imgDiv"><img src="../game/<?echo ($data['g_name'])?>.jpg"/></div>
-					<div class="contnetDiv">
+					<div class="contentDiv" style="overflow:scroll;">
 						<strong><font style="font-size:120%;font-weight:bold"><?echo ($data['g_name'])?></font></strong>
 						<font style="font-size:85%;">
 							<ul style="padding-bottom:1%;">
-							<li class="txt"><img src="../images/icon/icon_new1.png" width="13px"/> <?echo ($data['g_location'])?></li>
+							<li class="txt" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <?echo ($data['g_location'])?></li>
 							</ul>
 							<ul>
-							<li class="icon_new1"><img src="../images/icon/icon_new1.png" width="13px"/> <em>난이도</em> <?echo ($data['g_level'])?></li>
-							<li class="icon_new2"><img src="../images/icon/icon_new2.png" width="13px"/> <em>공포감</em> <?echo ($data['g_horror'])?></li>
+							<li class="icon_new1" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <em>난이도</em> <?echo ($data['g_level'])?></li>
+							<li class="icon_new2" id="d"><img src="../images/icon/icon_new2.png" width="13px"/> <em>공포감</em> <?echo ($data['g_horror'])?></li>
 							</ul>
+							<br>
 							<div style="line-height:14px;">
 							<?echo ($data['g_content'])?>	
 							</div>
@@ -274,9 +280,7 @@ include('./include_head.php');
 					?>
 			</div>
 		</div>
-<?
-//include("./include_footer.php");
-?>
+
 </div><!-- end : id : wrap -->
 <script type="text/javascript" src="../js/common.js"></script>
 </body>
