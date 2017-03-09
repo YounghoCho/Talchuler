@@ -616,7 +616,7 @@ if(!file_exists($filepath)){
 								<li>
 									<div class="timebox">
 									<img src="./images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=1'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 <br/>
 											통해 용의자에 대한 정보를 입수한 <br/>
@@ -642,7 +642,7 @@ if(!file_exists($filepath)){
 								<li>
 									<div class="timebox">
 									<img src="./images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=2'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 <br/>
 											통해 용의자에 대한 정보를 입수한 <br/>
@@ -668,7 +668,7 @@ if(!file_exists($filepath)){
 								<li onclick="">
 									<div class="timebox">
 									<img src="./images/contents/img_timenow3.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=3'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 <br/>
 											통해 용의자에 대한 정보를 입수한 <br/>
@@ -694,7 +694,7 @@ if(!file_exists($filepath)){
 								<li onclick="">
 									<div class="timebox">
 									<img src="./images/contents/img_timenow4.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=4'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 <br/>
 											통해 용의자에 대한 정보를 입수한 <br/>
@@ -720,7 +720,7 @@ if(!file_exists($filepath)){
 								<li onclick="">
 									<div class="timebox">
 									<img src="./images/contents/img_timenow5.jpg" alt="" />
-										<div class="o_box" onclick="location.href='./page/theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=5'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 <br/>
 											통해 용의자에 대한 정보를 입수한 <br/>
@@ -757,7 +757,7 @@ if(!file_exists($filepath)){
 								<li onclick="">
 									<div class="timebox">
 									<img src="../images/contents/img_timenow1.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=1'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 
 											통해 용의자에 대한 정보를 입수한 
@@ -783,7 +783,7 @@ if(!file_exists($filepath)){
 								<li onclick="">
 									<div class="timebox">
 									<img src="../images/contents/img_timenow2.jpg" alt="" />
-										<div class="o_box" onclick="location.href='theme_view.php'">
+										<div class="o_box" onclick="location.href='./page/theme_view.php?g_idx=2'">
 											<div class="con">
 											기자 생활 중 알게 된 형사 M씨를 
 											통해 용의자에 대한 정보를 입수한 

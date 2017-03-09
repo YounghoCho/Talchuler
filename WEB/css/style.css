@@ -264,7 +264,7 @@
 .tabarea .timelist {float:left; overflow:hidden; margin:-15px 0 0 -20px; width:850px;}
 .tabarea .timelist li {float:left; margin:15px 0 0 20px; }
 .tabarea .timelist li a {display:block; width:100px; height:45px; color:#707070; font-size:20px; background:#fff; border:solid 3px #4edcfe; line-height:40px; text-align:center;}
-.tabarea .timelist li a.bg_g {background:#cdced2; border:solid 3px #fff;}
+.tabarea .timelist li a.bg_g {background:#cdced2; border:solid 3px #fff; }
 .tabarea .timelist li a:focus {background:#4edcfe; color:#fff;}
 .tabarea .timelist li a.bg_g:focus {background:#cdced2; border:solid 3px #fff; color:#707070;}
 .tabarea .btn_res {display:block; float:right; width:100px; height:105px; color:#707070; font-size:20px; background:#fff; border:solid 3px #4edcfe; line-height:100px; text-align:center;}
@@ -510,7 +510,7 @@
 .masterwrap .titwrap .titinfo dd {text-align:center; margin-top:15px;}
 .masterwrap .titwrap .titinfo dd strong {display:block; font-size:21px; line-height:30px;}
 .masterwrap .titwrap .titinfo dd em {display:block; font-size:16px;}
-.masterwrap .titwrap .titinfo dd div {display:inline-block; margin-top:10px; text-align:center; padding:5px 10px; font-size:16px; border-width:3px 0; border-style:solid; border-color:#56dcfc transparent;}
+.masterwrap .titwrap .titinfo dd div {display:inline-block; margin-top:10px; text-align:center; padding:5px 10px; font-size:16px; border-width:3px 0; border-style:solid; border-color:#56DCFC  transparent;}
 .masterwrap .titwrap .titinfo dd a.btn_wear {position:absolute; top:0; right:-30px; display:block; border:solid 2px #56dcfc; font-size:14px; text-align:center; width:75px; height:25px; line-height:21px;}
 .masterwrap .titwrap .bxslider07 > li > ul {overflow:hidden; background:#f3f3f3; padding:20px 0 20px 40px;}
 .masterwrap .titwrap .bxslider07 > li > ul > li {float:left; width:25%; font-size:14px; line-height:35px;}
@@ -721,7 +721,7 @@
 
 	.timenow {background:#ececec;}
 	.timenow .tit {margin-left:-20px;}
-	.timenow .tit strong {padding:3px 25px 5px 20px; font-size:15px; background:#56dcfc url(../images/icon/bg_timenow.gif) no-repeat 100% -1px;}
+	.timenow .tit strong {padding:3px 25px 5px 20px; font-size:15px; background:#56DCFC  url(../images/icon/bg_timenow.gif) no-repeat 100% -1px;}
 	.timenow .tit em {display:block; font-size:13px; background:none;}
 	.timenow .inner {width:100%; padding:0 20px;}
 	.timenow .slidearea {display:none;}

@@ -230,7 +230,7 @@ $data=mysql_fetch_array($query);
 						//sorting알고리즘 없이 그냥 순서대로 출력할게 지금은
 
 						$i=1;//전역변수
-						while($data=mysql_fetch_array($query)){
+						while($result=mysql_fetch_array($query)){
 							?>
 							<div class="ranking">
 							<?
@@ -238,12 +238,12 @@ $data=mysql_fetch_array($query);
 							if($i==1){
 							?>
 								<img src="../images/icon/icon_master.png" alt="마스터" width="20px"/>
-								<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+								<?echo ($result['grk_time'])?> (<?echo ($result['g_user'])?>)
 							<?
 							}else{
 							?>
 							<?echo ($i)?>위
-							<?echo ($data['grk_time'])?> (<?echo ($data['g_user'])?>)
+							<?echo ($result['grk_time'])?> (<?echo ($result['g_user'])?>)
 						<?
 							}
 							$i += 1;
