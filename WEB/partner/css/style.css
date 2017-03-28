@@ -1,0 +1,45 @@
+#footer {position:relative; width:100%; background:#353535;}
+#footer .footer_inner {position:relative; width:1042px; margin:0 auto; padding:20px 0;}
+#footer .footer_inner .phonebox {position:absolute; top:20px; right:20px; padding:10px 10px 10px 45px; background:#646464 url(../images/icon/icon_phone.png) no-repeat 10px 50%; font-size:21px; color:#d2d2d2;}
+#footer .footer_inner .f_top {overflow:hidden; padding:20px 0;}
+#footer .footer_inner .f_top .left {float:left; width:50%}
+#footer .footer_inner .f_top .left p {color:#b1b1b1; font-size:15px; margin-top:12px;}
+#footer .footer_inner .f_top .left p:first-child {margin-top:0;}
+#footer .footer_inner .f_top .left p.b {font-size:18px; font-family:notob; color:#d2d2d2;}
+#footer .footer_inner .f_top .right {float:left; width:50%}
+#footer .footer_inner .f_top .right p {color:#b1b1b1; font-size:15px; margin-top:12px;}
+#footer .footer_inner .f_top .right p a {color:#b1b1b1; font-size:15px;}
+#footer .footer_inner .f_top .right p:first-child {margin-top:0;}
+#footer .footer_inner .f_top .right p.b {font-size:15px; font-family:notob; color:#d2d2d2;}
+#footer .footer_inner .f_bottom {position:relative; padding-top:15px; border-top:solid 1px #b1b1b1; text-align:center;}
+#footer .footer_inner .f_bottom .policylink {overflow:hidden; display:inline-block;}
+#footer .footer_inner .f_bottom .policylink li {float:left; background:url(../images/icon/icon_policy.gif) no-repeat 0 50%;}
+#footer .footer_inner .f_bottom .policylink li:first-child {background:none;}
+#footer .footer_inner .f_bottom .policylink li a {display:block; padding:0 20px; color:#b1b1b1; font-size:12px;}
+#footer .footer_inner .f_bottom .copyright {margin-top:10px; color:#b1b1b1; font-size:12px;}
+#footer .footer_inner .f_bottom .snsbox {position:absolute; top:27px; right:20px; font-size:0;}
+#footer .footer_inner .f_bottom .snsbox a {display:inline-block; margin-left:10px}
+#footer .footer_inner .f_bottom .snsbox a:first-child {margin-left:0;}
+
+@media all and (max-width:1041px) {/* 320~1024 */
+	
+	#footer {height:185px;}
+	#footer .footer_inner {width:100%; text-align:center; padding:17px 0 17px;}
+	#footer .footer_inner h1 img {width:85px;}
+	#footer .footer_inner .phonebox {display:none;}
+	#footer .footer_inner .f_top {padding:15px 0 10px;}
+	#footer .footer_inner .f_top .left {float:none; width:260px; margin:0 auto; overflow:hidden;}
+	#footer .footer_inner .f_top .right {display:none;}
+	#footer .footer_inner .f_top .left p {float:left; margin-top:5px; font-size:11px; color:#a5a5a5; line-height:13px; text-align:center;}
+	#footer .footer_inner .f_top .left p.b {margin:5px 5px 0 0; font-family:noto; font-size:11px; color:#a5a5a5;}
+	#footer .footer_inner .f_top .left p.cen {float:none; clear:both; margin-top:0; padding-top:5px;}
+	#footer .footer_inner .f_bottom {border:0;}
+	#footer .footer_inner .f_bottom .policylink li {background:none; border:solid 1px #b7b7b7; margin-left:10px}
+	#footer .footer_inner .f_bottom .policylink li:first-child {display:none;}
+	#footer .footer_inner .f_bottom .policylink li:nth-child(2) {margin-left:0;}
+	#footer .footer_inner .f_bottom .policylink li a {font-size:11px; padding:0 10px;}
+	#footer .footer_inner .f_bottom .snsbox {display:none;}
+	#footer .footer_inner .f_bottom .copyright {display:none;}
+
+}
+
