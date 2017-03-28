@@ -275,6 +275,8 @@ $data=mysql_fetch_array($query);
 				</ul>
 			</div>
 		</div>
+	<!--예약페이지로 보내는 form-->
+	<form id="reserve_form" method="POST" action="./reserve_page.php">
 		<div class="tabarea">
 			<div class="container_inner pd44">
 				<div class="tab">
@@ -287,34 +289,72 @@ $data=mysql_fetch_array($query);
 						<ul class="timelist">
 <?
 //[예약정보]
-$sql="select * from game_rooms";//나중에 게임이름으로 where조건문 쓴다음 아래 while문 돌리면됨.
+$sql="select * from game_rooms where g_idx='".$_GET['g_idx']."'";
 $query=mysql_query($sql);
-//이 반복문 안에는 데이터를 조금만 넣어놓을게
 while($data=mysql_fetch_array($query)){
-
 	if($data['gr_reserve']==0){
 	?>
-	<li><a href="#self" class="bg_g" style="border:3px solid #cdced2">
-	<?echo ($data['gr_time'])?>
-	</a></li>	
+	<div style="width:100px;height:50px;border:3px solid #cdced2;background-color:#cdced2;padding:10px;float:left;display:inline-block;margin-left:20px;margin-bottom:5px;margin-top:15px;text-align:center;font-size:17px;">
+		<?echo ($data['gr_time'])?>
+	</div>	
 	<?
 	}else{
 	?>
-	<li><a href="#self" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">
-	<?echo ($data['gr_time'])?>
-	</a></li>
+	<div id="reserve_font<?echo $data['gr_idx']?>" style="width:100px;height:50px;border:3px solid #4edcfe;padding:10px;float:left;display:inline-block;margin-left:20px;margin-bottom:5px;margin-top:15px;text-align:center;font-size:17px;" onclick="change_font(<?echo $data['gr_idx']?>)">
+		<?echo ($data['gr_time'])?>
+	</div>
+	<!--hidden으로 보내기-->
+	<input name="gr_idx" type="hidden" value="<?echo $data['gr_idx']?>">
+	<input name="g_idx" type="hidden" value="<?echo $data['g_idx']?>">
+	<input name="gr_time" type="hidden" value="<?echo $data['gr_time']?>">
 	<?
 	}
 }
 ?>
 						</ul>
-						<a href="#self" class="btn_res" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;">예약하기</a>
+						<a href="#self" class="btn_res" style="border:3px solid #fff;color:#4edcfe;font-weight:bold;" onclick="reserve_go('<?echo $_SESSION['user_email']?>')">예약하기</a>
 					</div>
 					<ul class="ablebox">
 						<li class="disable">예약불가</li>
 						<li class="able">예약가능</li>
 					</ul>
 				</div>
+			</form>
+<script>
+t=1;
+reserve=false;
+function change_font(value){
+	var i=document.getElementById('reserve_font'+value);	
+	if(t>0){
+		i.style.color="white";
+		i.style.backgroundColor="#4edcfe";
+		t*=-1;
+		reserve=value;
+	}else{
+		i.style.color="black";
+		i.style.backgroundColor="#ececec";
+		t*=-1;
+		reserve=false;
+	}
+}
+function reserve_go(value){
+	alert("준비중입니다");
+	return false;
+
+	if(value==''){
+		alert("로그인이 필요합니다.");
+		location.href='./login.php';
+	}else{
+		var f=document.getElementById('reserve_form');
+		if(reserve==false){
+			alert("게임 시간을 선택해주세요");	
+		}else{
+			f.submit();
+		}
+	}	
+}
+</script>
+
 <style>
 .container_eval{
 	background-color:white;
@@ -547,6 +587,8 @@ while($data=mysql_fetch_array($query)){
 	include("include_footer.php");
 ?>
 </div><!-- end : id : wrap -->
+
 <script type="text/javascript" src="../js/common.js"></script>
 </body>
 </html>
+<script>

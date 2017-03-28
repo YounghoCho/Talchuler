@@ -9,7 +9,7 @@
 include("../page/include.php");
 
 $uploaddir = './profiles/';
-$newuploadfile= $uploaddir. $_SESSION['user_email'];
+$newuploadfile= $uploaddir. $_SESSION['user_email'].".jpg";
 
 
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $newuploadfile)) {

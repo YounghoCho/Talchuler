@@ -205,7 +205,7 @@ if(!file_exists($filepath)){
 	<?
 }else{
 	?>
-		<img src="./upload/profiles/<?echo $_SESSION['user_email']?>" style="width:50px;height:65px;" alt="" />
+		<img src="./upload/profiles/<?echo $_SESSION['user_email']?>.jpg" style="width:50px;height:65px;" alt="" />
 		<em class="num">예약수 0</em></a>
 	<?
 }
@@ -221,7 +221,7 @@ if(!file_exists($filepath)){
 	<?
 }else{
 	?>
-		<img src="./upload/profiles/<?echo $_SESSION['user_email']?>" style="width:80px;height:100px;"  alt="" /></div>	
+		<img src="./upload/profiles/<?echo $_SESSION['user_email']?>.jpg" style="width:80px;height:100px;"  alt="" /></div>	
 <?
 }
 ?>
@@ -973,6 +973,7 @@ if(!file_exists($filepath)){
 			</div>
 
 	</div>
+</div>
 <?
 include("./page/include_footer.php");
 ?>

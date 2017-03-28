@@ -37,7 +37,7 @@ if(!file_exists($filepath)){
 	<?
 }else{
 	?>
-		<img src="../upload/profiles/<?echo ($_SESSION['user_email'])?>" style="width:100px;height:150px;"  alt="" />	
+		<img src="../upload/profiles/<?echo ($_SESSION['user_email'])?>.jpg" style="width:100px;height:150px;"  alt="" />	
 <?
 }
 ?>

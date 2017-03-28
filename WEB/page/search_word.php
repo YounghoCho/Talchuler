@@ -199,7 +199,7 @@ include('./include_head.php');
 		<div class="timenow">
 			<div class="inner">
 				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
-					<div class='lowest' onclick="location.href='./page/timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
+					<div class='lowest' onclick="location.href='./timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
 				</div>
 				<!-- s : timenow pc -->
 				<div class="slidearea">
@@ -519,13 +519,14 @@ include('./include_head.php');
 <!--검색 결과 S-->
 
 <?
-print_r($_GET);
+//print_r($_GET);
 //= day, start_time, end_time, start_level, end_level, horror, rigion, input
 $sql="select * from game where g_location like '%".$_GET['input']."%' or g_name like '%".$_GET['input']."%' or g_cafe like '%".$_GET['input']."%';";
 $query=mysql_query($sql);
 while($data=mysql_fetch_array($query)){
+$temp=$data['g_idx'];
 ?>
-
+<a href="./theme_view.php?g_idx=<?echo $temp?>">
 <div class="container">
 	<div class="field">
 	<div class="box">
@@ -571,6 +572,7 @@ while($data=mysql_fetch_array($query)){
 	</div>
 	</div>
 </div>
+</a>
 <?
 }
 ?>

@@ -16,7 +16,7 @@ include('./include_head.php');
 	height:220px;
 	float:left;
 	display:inline;
-	margin-bottom:10px;
+	margin-bottom:10px;	
 }
 .imgDiv{
 	width:108px;
@@ -32,10 +32,12 @@ include('./include_head.php');
 }
 .contentDiv{
 	width:193px;
-	height:160px;
+	height:149px;
 	float:left;
 	display:inline;
 	margin-left:6px;
+	text-overflow:ellipsis;
+	overflow:hidden;
 }
 .bottomDiv{
 	width:307px;
@@ -247,10 +249,12 @@ include('./include_head.php');
 					$sql="select * from game";
 					$query=mysql_query($sql);
 					while($data=mysql_fetch_array($query)){
+					$temp=$data['g_idx'];
 					?>
+			<a href="./theme_view.php?g_idx=<?echo $temp?>">
 				<div class="innerContainer">
 					<div class="imgDiv"><img src="../game/<?echo ($data['g_name'])?>.jpg"/></div>
-					<div class="contentDiv" style="overflow:scroll;">
+					<div class="contentDiv">
 						<strong><font style="font-size:120%;font-weight:bold"><?echo ($data['g_name'])?></font></strong>
 						<font style="font-size:85%;">
 							<ul style="padding-bottom:1%;">
@@ -274,7 +278,7 @@ include('./include_head.php');
 						</div>
 					</div>
 				</div>			
-
+			</a>
 					<?
 					}
 					?>
