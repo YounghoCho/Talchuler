@@ -1,0 +1,88 @@
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+body{
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
+#Head{
+	width:100%;
+	height:68px;
+	background-color: #56dcfc
+}
+#Head .hdmenu{
+    position: absolute;
+    top: 1%;
+	margin-left: 40px;
+	display:table;
+}
+#Head .hdmenu > li {
+	width:20%;
+    margin-left:20%;
+	display:table-cell;
+}
+.main{
+	position:absolute;
+	height:50px;
+	width:200px;
+	
+	left:-30px;
+	top:-10px;
+}
+#Tab{
+	float:left;
+	width:220px;
+	height:100%;
+	background-color:#cccccc;
+}
+#Tab .tbmenu > li{
+	float: center;
+	margin-top:20px;
+	font-size:17px;
+}
+ul{
+    list-style:none;
+}
+.tbmenu li{cursor:pointer;}
+.tbmenu .hide{display:none;}
+</style>
+<script>
+    $(document).ready(function(){
+        $(".tbmenu>li").click(function(){
+			$(this).next("ul").toggleClass("hide");
+		});
+    });
+</script>
+</head>	
+<body>
+	<div id="Head">
+		<ul class='hdmenu'>
+		<li>
+			<h1>
+			<a href="./index.php">
+			<img class='main' src="./images/bg_gnbtop.png" >
+			</a>
+			</h1>
+		</li>
+		<li>ESC홍대지점</li>
+		<li>2017.02.02(월) 22:25</li>
+		<li>4/11후기관리 업데이트 안내</li>
+		</ul>
+	</div>
+	<div id="Tab">
+	<ul class='tbmenu'>
+	<li>내 카페관리</li>
+		<ul class="hide">
+			<a href=""><li>오늘의 게임</li></a>
+			<li>예약 관리</li>
+			<li>카페정보관리</li>
+			<li>게임정보관리</li>
+		</ul>
+	<li>서비스이용</li>
+	<li>서비스소개</li>
+	<li>고객센터</li>
+	</div>
+</body>
+</html>
