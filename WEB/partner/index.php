@@ -36,16 +36,16 @@ body{
 	font-size:20px;
 	text-align:center;
 }
-.TodaysReserve{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
-.OnGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
-.DealingGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
+.TodaysReserve{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
+.OnGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
+.DealingGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
 .Notice{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
 .btn_FQA{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_Inquiry{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 
-td {border:1px solid;}
-.td_head{height:50px;  }
-.td_category{height:8px;}
+table{width:100%;}
+.td_head{height:50px; }
+.td_category{height:8px; border-bottom:1px solid; border-top:1px solid;}
 .td_content{height:40px;}
 </style>
 <body>
@@ -61,15 +61,31 @@ td {border:1px solid;}
 		<div class="TodaysReserve">
 		<!--while문 돌릴때, 5개까지만 나오게 하는거 잊지말자-->
 			<table>
-				<tr><td colspan="2" class="td_head">오늘의 예약현황</td><td></td><td></td><td>더보기></td></tr>
-				<tr><td class="td_category">예약게임</td><td>예약시간</td><td>예약자</td><td>인원</td><td></td></tr>
-				<tr><td class="td_content">암브로시아</td><td>10:10</td><td>박정우</td><td>5</td><td>입장</td></tr>
+				<tr>
+					<td colspan="2" class="td_head">오늘의 예약현황</td>
+					<td></td>
+					<td></td>
+					<td>더보기></td>
+				</tr>
+				<tr>
+					<td class="td_category">예약게임</td>
+					<td class="td_category">예약시간</td>
+					<td class="td_category">예약자</td>
+					<td class="td_category">인원</td>
+					<td class="td_category"></td>
+				</tr>
+				<tr>
+					<td class="td_content">암브로시아</td>
+					<td>10:10</td><td>박정우</td>
+					<td>5</td>
+					<td>입장</td>
+				</tr>
 			</table>
 		</div>
 		<div class="OnGame">
 			<table>
 				<tr><td colspan="2" class="td_head">진행중 게임</td><td></td><td></td><td>더보기></td></tr>
-				<tr><td class="td_category">진행게임</td><td>입장시간</td><td>남은시간</td><td>남은힌트</td><td></td></tr>
+				<tr><td class="td_category">진행게임</td><td class="td_category">입장시간</td><td class="td_category">남은시간</td><td class="td_category">남은힌트</td><td class="td_category"></td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:04</td><td>00:02</td><td>0</td><td>실패</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>18:04</td><td>00:12</td><td>2</td><td>탈출</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>19:04</td><td>02:02</td><td>4</td><td>탈출</td></tr>
@@ -79,7 +95,7 @@ td {border:1px solid;}
 		<div class="DealingGame">
 			<table>
 				<tr><td colspan="2" class="td_head">타임핫딜 게시중 게임</td><td></td><td>더보기></td></tr>
-				<tr><td class="td_category">게시중게임</td><td>게시시간</td><td>가격</td><td></td></tr>
+				<tr><td class="td_category">게시중게임</td><td class="td_category">게시시간</td><td class="td_category">가격</td><td class="td_category"></td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td>게시종료</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td>게시종료</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td>게시종료</td></tr>
@@ -89,7 +105,7 @@ td {border:1px solid;}
 		</div>
 		<div class="Notice">
 			<table>
-				<tr><td class="td_head">공지사항</td><td>더보기></td></tr>
+				<tr><td class="td_head" style="border-bottom:1px solid">공지사항</td><td style="border-bottom:1px solid">더보기></td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
@@ -104,7 +120,7 @@ td {border:1px solid;}
 	</div>
 	<div class="Footer">
 		<?
-		include("./include_footer.php");
+		include("./page/include_footer.php");
 		?>
 	</div>
 </body>
