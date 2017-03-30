@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 <style>
 body{
@@ -36,15 +36,29 @@ body{
 	font-size:20px;
 	text-align:center;
 }
+.MainBanner2{
+	float:right;
+	width:80%;
+	height:290px;
+	margin-right:4%;
+	margin-top:20px;
+	background-color:#999;
+	font-size:20px;
+	text-align:center;
+}
 .TodaysReserve{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
 .OnGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
 .DealingGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
 .Notice{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
+
 .btn_FQA{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_Inquiry{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
+.btn_idpw{float:left; display:inline-block; width:37%; height:50px; margin-left:9%; margin-top:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+.btn_register{float:left; display:inline-block; width:37%; height:50px; margin-left:9%; margin-top:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
 
+.Login{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
 table{width:100%;}
-.td_head{height:50px; }
+.td_head{height:50px; font-size:20px; font-weight:bold;}
 .td_category{height:8px; border-bottom:1px solid; border-top:1px solid;}
 .td_content{height:40px;}
 </style>
@@ -55,6 +69,10 @@ table{width:100%;}
 	<div class="Tab">
 		탭 부분입니다.
 	</div>
+<?
+/* 로그인 이후 S*/
+if(!$_SESSION['user_name']==""){
+?>
 	<div class="Main">
 		<div class="MainBanner">배너자리
 		</div>
@@ -116,8 +134,53 @@ table{width:100%;}
 		<button class="btn_FQA">자주하는질문
 		</button>
 		<button class="btn_Inquiry">1:1문의
+		
+	</div>
+<?
+/* 로그인 이후 E*/
+}else{
+/* 로그인 이전 S*/
+?>
+<style>
+td {border:1px solid}
+</style>
+	<div class="Main">
+		<div class="MainBanner">배너자리
+		</div>
+		<div class="Login">
+			<table>
+				<tr><td class="td_head">로그인</td></tr>
+				<tr><td>
+					<table style="width:60%;margin-left:20%;border:1px solid;margin-top:40px;">
+						<tr><td>아이디로그인</td><td><button style="float:right">ㅁ</button><td style="padding-left:5px;">로그인유지</td></tr>
+						<tr><td colspan="2"><input type="text" style="width:100%;height:25px;"/></td><td rowspan="2" style="padding-left:5px;"><button style="height:100%">로그인</button></td></tr>
+						<tr><td colspan="2"><input type="text" style="width:100%;height:25px;"/></td>
+					</table>
+						<button class="btn_idpw">아이디/비밀번호찾기</button><button class="btn_register">회원가입하기</button>
+				</td></tr>
+			</table>
+		</div>
+		<div class="Notice">
+			<table>
+				<tr><td class="td_head" style="border-bottom:1px solid">공지사항</td><td style="border-bottom:1px solid">더보기></td></tr>
+				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
+				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
+				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
+				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
+				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td>17-04-11</td></tr>
+			</table>
+		</div>
+		<div class="MainBanner2">배너자리
+		</div>
+		<button class="btn_FQA">자주하는질문
+		</button>
+		<button class="btn_Inquiry">1:1문의
 		</button>
 	</div>
+<?
+}
+/* 로그인 이전 E*/
+?>
 	<div class="Footer">
 		<?
 		include("./page/include_footer.php");
