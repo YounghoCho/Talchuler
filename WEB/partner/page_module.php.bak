@@ -29,7 +29,6 @@ body{
 	width:80%;
 	margin-left:20%;
 	margin-top:2%;
-	border-bottom:1px;
 }
 </style>
 <body>
