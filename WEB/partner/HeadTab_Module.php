@@ -1,11 +1,14 @@
 <html>
-<head>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <style>
 body{
 	margin:0;
 	padding:0;
-	overflow:hidden;
+}
+.Main{
+	width:100%;
+	height:740px;
 }
 #Head{
 	width:100%;
@@ -23,7 +26,7 @@ body{
     margin-left:20%;
 	display:table-cell;
 }
-.main{
+.main_logo{
 	position:absolute;
 	height:50px;
 	width:200px;
@@ -34,7 +37,7 @@ body{
 #Tab{
 	float:left;
 	width:220px;
-	height:100%;
+	height:740px;
 	background-color:#cccccc;
 }
 #Tab .tbmenu > li{
@@ -48,21 +51,13 @@ ul{
 .tbmenu li{cursor:pointer;}
 .tbmenu .hide{display:none;}
 </style>
-<script>
-    $(document).ready(function(){
-        $(".tbmenu>li").click(function(){
-			$(this).next("ul").toggleClass("hide");
-		});
-    });
-</script>
-</head>	
 <body>
 	<div id="Head">
 		<ul class='hdmenu'>
 		<li>
 			<h1>
 			<a href="../index.php">
-			<img class='main' src="../images/common/bg_gnbtop.png" >
+			<img class='main_logo' src="./images/common/bg_gnbtop.png" >
 			</a>
 			</h1>
 		</li>
@@ -71,6 +66,7 @@ ul{
 		<li>4/11후기관리 업데이트 안내</li>
 		</ul>
 	</div>
+	
 	<div id="Tab">
 	<ul class='tbmenu'>
 	<li>내 카페관리</li>
@@ -104,8 +100,4 @@ ul{
 			<a href=""><li>약관 및 정책</li></a>
 		</ul>
 	</div>
-	<div>
-
-	</div>
-</body>
-</html>
+	<!--Content가 들어갈 중간 영역입니다-->

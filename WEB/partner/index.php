@@ -1,81 +1,52 @@
-﻿<html>
-<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+<?
+include('./HeadTab_Module.php');
+?>
+
 <style>
-body{
-	margin:0;
-	padding:0;
-/*	overflow:hidden;*/
-}
-.Head{
-	width:100%;
-	height:68px;
-	border:1px solid;
-}
-.Tab{
-	float:left;
-	width:220px;
-	height:100%;
-	border:1px solid;
-}
-.Main{
-	border:1px solid;
-	width:100%;
-	height:100%;
-}
-.Footer{
-	width:100%;
-	margin-top:-20px; /*기본 셋팅에 20px이 들어가있기때문에 빼준다*/
-}
 .MainBanner{
-	float:right;
-	width:80%;
+	float:left;
+	width:75%;
 	height:100px;
-	margin-right:4%;
 	margin-top:20px;
+	margin-left:5%;
 	background-color:#999;
 	font-size:20px;
 	text-align:center;
 }
 .MainBanner2{
-	float:right;
-	width:80%;
-	height:290px;
-	margin-right:4%;
+	float:left;
+	width:75%;
+	height:180px;
 	margin-top:20px;
+	margin-left:5%;
 	background-color:#999;
 	font-size:20px;
 	text-align:center;
 }
-.TodaysReserve{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
-.OnGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
-.DealingGame{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px;}
-.Notice{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
-
-.btn_FQA{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
-.btn_Inquiry{float:left; display:inline-block; width:37%; height:50px; margin-left:5%; margin-top:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
-.btn_idpw{float:left; display:inline-block; width:37%; height:50px; margin-left:9%; margin-top:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
-.btn_register{float:left; display:inline-block; width:37%; height:50px; margin-left:9%; margin-top:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
-
-.Login{float:left; display:inline-block; width:37%; height:300px; margin-left:5%; margin-top:20px; border:1px solid;}
+.TodaysReserve{float:left; display:inline-block; width:35%; height:265px; margin-left:5%; margin-top:20px;}
+.OnGame{float:left; display:inline-block; width:35%; height:265px; margin-left:4%; margin-top:20px;}
+.DealingGame{float:left; display:inline-block; width:35%; height:265px; margin-left:5%; margin-top:20px;}
+.Notice{float:left; display:inline-block; width:35%; height:265px; margin-left:4%; margin-top:20px; border:1px solid;}
+.Login{float:left; display:inline-block; width:35%; height:265px; margin-left:5%; margin-top:20px; border:1px solid;}
 table{width:100%;}
+
+.btn_FQA{float:left; display:inline-block; width:35%; height:50px; margin-left:5%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
+.btn_Inquiry{float:left; display:inline-block; width:35%; height:50px; margin-left:4%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
+.btn_idpw{float:left; display:inline-block; width:35%; height:50px; margin-left:9%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+.btn_register{float:left; display:inline-block; width:35%; height:50px; margin-left:9%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+
 .td_head{height:50px; font-size:20px; font-weight:bold;}
 .td_category{height:8px; border-bottom:1px solid; border-top:1px solid;}
 .td_content{height:40px;}
+
 </style>
-<body>
-	<div class="Head">
-		헤드 부분입니다.
-	</div>
-	<div class="Tab">
-		탭 부분입니다.
-	</div>
 <?
 /* 로그인 이후 S*/
+/* 느낌표 하나로 테스트 가능*/
 if(!$_SESSION['user_name']==""){
 ?>
+<!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 	<div class="Main">
-		<div class="MainBanner">배너자리
-		</div>
 		<div class="TodaysReserve">
 		<!--while문 돌릴때, 5개까지만 나오게 하는거 잊지말자-->
 			<table>
@@ -134,8 +105,8 @@ if(!$_SESSION['user_name']==""){
 		<button class="btn_FQA">자주하는질문
 		</button>
 		<button class="btn_Inquiry">1:1문의
-		
-	</div>
+<!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
+</div>
 <?
 /* 로그인 이후 E*/
 }else{
@@ -180,11 +151,6 @@ td {border:1px solid}
 <?
 }
 /* 로그인 이전 E*/
+include('./Footer_Module.php');
 ?>
-	<div class="Footer">
-		<?
-		include("./page/include_footer.php");
-		?>
-	</div>
-</body>
-</html>
+
