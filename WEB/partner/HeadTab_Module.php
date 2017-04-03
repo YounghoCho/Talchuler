@@ -1,16 +1,23 @@
-<html>
+﻿<html>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<script>
+    $(document).ready(function(){
+        $(".tbmenu>li").click(function(){
+			$(this).next("ul").toggleClass("hide");
+		});
+    });
+</script>
 <style>
 body{
-	margin:0;
-	padding:0;
+	margin:0px;
+	padding:0px;
 }
 .Main{
 	width:100%;
-	height:740px;
+	height:90%;
 }
 #Head{
+	top:1%;
 	width:100%;
 	height:68px;
 	background-color: #56dcfc
@@ -37,7 +44,7 @@ body{
 #Tab{
 	float:left;
 	width:220px;
-	height:740px;
+	height:90%;
 	background-color:#cccccc;
 }
 #Tab .tbmenu > li{
