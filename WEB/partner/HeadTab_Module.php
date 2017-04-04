@@ -16,7 +16,7 @@ body{
 }
 .Main{
 	width:100%;
-	height:80%;
+	height:90%; /*Main의 높이를 90%로 조절합니다.*/
 }
 #Head{
 	top:1%;
@@ -46,7 +46,7 @@ body{
 #Tab{
 	float:left;
 	width:220px;
-	height:80%;
+	height:90%; /*Main을 따라 Tab의 높이도 90%로 조절합니다.*/
 	background-color:#cccccc;
 }
 #Tab .tbmenu > li{

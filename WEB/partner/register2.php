@@ -16,7 +16,7 @@ input{padding:3px;}
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
-	<div style="height:80%;overflow:hidden;">
+	<div style="height:90%;overflow:hidden;">
 		<div class="Head_left">회원가입</div>
 		<div class="Head_right">
 			<div class="Head_right_inner">1.약관동의 >&nbsp;</div>
