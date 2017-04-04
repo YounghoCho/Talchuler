@@ -6,19 +6,21 @@ include('./HeadTab_Module.php');
 .Head_left{float:left;margin-left:4%;margin-bottom:10px;margin-top:20px;font-size:25px;}
 .Head_right{float:right;margin-right:4%;margin-bottom:10px;margin-top:20px;}
 .Head_right_inner{float:left;}
-.btn_bottom{padding:3px;padding-left:10px;padding-right:10px;margin-left:40px;margin-right:40px;}
+
 hr{width:80%;margin-bottom:0px;}
 input{padding:3px;}
 
 .policy{float:left;display:block;width:80%;height:140px;margin-left:4%;margin-bottom:5px;padding:3px;border:1px solid;}
 .agree{float:left;display:block;width:80%;height:50px;margin-left:4%;margin-bottom:5px;background-color:#ddd;padding:3px;}
 .certify{float:left;display:block;width:80%;height:200px;margin-left:4%;margin-bottom:5px;margin-top:20px;padding:3px;}
+.btn_bottom{padding:3px;padding-left:10px;padding-right:10px;margin-left:40px;margin-right:40px;}
+.btn_div{float:left;display:block;width:80%;height:50px;margin-left:4%;margin-top:20px;text-align:center;}
 table {width:50%;}
 table td{height:50px;}
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
-	<div>
+	<div style="height:80%;overflow:hidden;">
 		<div class="Head_left">회원가입</div>
 		<div class="Head_right">
 			<div class="Head_right_inner"><b>1.약관동의 >&nbsp;</b></div>
@@ -52,10 +54,13 @@ table td{height:50px;}
 				</tr>
 			</table>
 		</div>
-		<center><button class="btn_bottom" onclick="location.href=''">이전</button>
-		<button class="btn_bottom" onclick="location.href='./register2.php'">다음</button></center>
+		<div class="btn_div">
+			<button class="btn_bottom" onclick="location.href='./index.php'">이전</button>
+			<button class="btn_bottom" onclick="location.href='./register2.php'">다음</button>
+		</div>
 		<br><br>
 	</div>
+	
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div>
 <?

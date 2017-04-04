@@ -1,4 +1,6 @@
 ﻿<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -14,7 +16,7 @@ body{
 }
 .Main{
 	width:100%;
-	height:90%;
+	height:80%;
 }
 #Head{
 	top:1%;
@@ -44,7 +46,7 @@ body{
 #Tab{
 	float:left;
 	width:220px;
-	height:90%;
+	height:80%;
 	background-color:#cccccc;
 }
 #Tab .tbmenu > li{
@@ -58,6 +60,7 @@ ul{
 .tbmenu li{cursor:pointer;}
 .tbmenu .hide{display:none;}
 </style>
+</head>
 <body>
 	<div id="Head">
 		<ul class='hdmenu'>
