@@ -140,6 +140,7 @@ input{padding:3px;}
 	width:100px;
 	padding-left:5px;
 	margin-left:15px;
+
 }
 #inputbox .container input{
 	display:table-cell;
@@ -184,6 +185,7 @@ input{padding:3px;}
 }
 #promise textarea{
 	float:left;
+
 	display:table-cell;
 }
 #endmessage{

@@ -1,16 +1,25 @@
-<html>
+﻿<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<script>
+    $(document).ready(function(){
+        $(".tbmenu>li").click(function(){
+			$(this).next("ul").toggleClass("hide");
+		});
+    });
+</script>
 <style>
 body{
-	margin:0;
-	padding:0;
+	margin:0px;
+	padding:0px;
 }
 .Main{
 	width:100%;
-	height:740px;
+	height:90%; /*Main의 높이를 90%로 조절합니다.*/
 }
 #Head{
+	top:1%;
 	width:100%;
 	height:68px;
 	background-color: #56dcfc
@@ -37,7 +46,7 @@ body{
 #Tab{
 	float:left;
 	width:220px;
-	height:740px;
+	height:90%; /*Main을 따라 Tab의 높이도 90%로 조절합니다.*/
 	background-color:#cccccc;
 }
 #Tab .tbmenu > li{
@@ -51,6 +60,7 @@ ul{
 .tbmenu li{cursor:pointer;}
 .tbmenu .hide{display:none;}
 </style>
+</head>
 <body>
 	<div id="Head">
 		<ul class='hdmenu'>

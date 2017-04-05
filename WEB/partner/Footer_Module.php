@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="./css/style.css"/>
-
 		<footer id="footer">
 			<div class="footer_inner">
 				<h1><a href="#"><img src="./images/common/logo_f.png" alt="logo" /></a></h1>
