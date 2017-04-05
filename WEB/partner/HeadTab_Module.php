@@ -1,5 +1,8 @@
 ﻿<html>
 <head>
+<!--Intenet Explorer에서 Javascript, JQuery가 동작안하는 것을 막는다-->
+<!--호환문제 때문이며, 해결하는 코드는 바로 아래의 한줄 코드이다-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
