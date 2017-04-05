@@ -40,12 +40,14 @@ include('./HeadTab_Module.php');
 	margin:auto;
 	margin-top:10px;
 	margin-left:35px;
+	margin-bottom:45px;
 	font-weight:bold;
 }
 
 #inputbox{
 	height:auto;
 	width:100%;
+	margin-left:150px;
 	padding-left:20px;
 	padding-top:10px;
 }
@@ -192,7 +194,7 @@ include('./HeadTab_Module.php');
 
 #clickbox_house .gray1{
 	background:#ebebeb;
-	border:1px solid #06aeff;
+	border:1px solid #919191;
 	color:#696969;
 	font-size:17px;
 	font-weight:bold;
@@ -481,7 +483,6 @@ include('./HeadTab_Module.php');
 		</div>
 	</div>
 </div>
-
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div>
 <?
