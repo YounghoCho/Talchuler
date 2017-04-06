@@ -32,7 +32,9 @@ table{width:100%;}
 
 .btn_FQA{float:left; display:inline-block; width:32%; height:50px; margin-left:3%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_Inquiry{float:left; display:inline-block; width:32%; height:50px; margin-left:2%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
-.btn_idpw{float:left; display:inline-block; width:35%; height:50px; margin-left:9%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+.btn_idpw1{float:left; display:inline-block; width:12%; height:50px; margin-left:14%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+.btn_idpw2{float:left; display:inline-block; width:17%; height:50px; margin-left:0%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
+
 .btn_register{float:left; display:inline-block; width:35%; height:50px; margin-left:9%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:blue; background-color:#fff; font-size:15px; border:none;}
 
 .td_head{height:50px; font-size:20px; font-weight:bold;}
@@ -127,7 +129,7 @@ td {border:1px solid}
 						<tr><td colspan="2"><input type="text" style="width:100%;height:25px;"/></td><td rowspan="2" style="padding-left:5px;"><button style="height:100%">로그인</button></td></tr>
 						<tr><td colspan="2"><input type="text" style="width:100%;height:25px;"/></td>
 					</table>
-						<button class="btn_idpw">아이디/비밀번호찾기</button><button class="btn_register" onclick="location.href='./register1.php'">회원가입하기</button>
+						<button class="btn_idpw1" onclick="location.href='./idFind1.php'">아이디&nbsp;/</button><button class="btn_idpw2" onclick="location.href='./pwFind1.php'">비밀번호찾기</button><button class="btn_register" onclick="location.href='./register1.php'">회원가입하기</button>
 				</td></tr>
 			</table>
 		</div>
