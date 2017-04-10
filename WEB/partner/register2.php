@@ -13,7 +13,7 @@ include('./HeadTab_Module.php');
 	height:100%;
 	width:100%;
 	padding-top:20px;
-	padding-left:50px;
+	padding-left:4%;
 }
 
 #Main_titlebar{
@@ -84,6 +84,7 @@ include('./HeadTab_Module.php');
 	line-height:27px;
 	background-color:#dddddd;
 	margin-left:-50px;
+	margin-top:30px;
 	clear:both;
 	padding:2 0 3 20px;
 	font-weight:bold;
@@ -289,7 +290,7 @@ input[type=checkbox]:checked + label:before {
 						<input name="pw_check" placeholder="  비밀번호를 다시 입력해주세요"> <br>
 					</div>
 					<!--나뉘는 부분-->
-					<div class="gray_area">
+					<div class="gray_area" >
 						사장님 정보
 					</div>
 					<div class="container">

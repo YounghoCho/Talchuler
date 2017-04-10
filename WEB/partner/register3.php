@@ -15,11 +15,11 @@ include('./HeadTab_Module.php');
 }
 .member .right{
 	text-align:right;
-	font-size:15pt;
+	font-size:11pt;
 	
 }
 .fs{
-	font-size:25pt;
+	font-size:20pt;
 }
 .reserveDiv{margin-left:4%;margin-top:20px;background-color:#ccc; width:80%;padding: 5px 0px 5px 20px;}
 .lowestPrice{margin-left:4%; width:80%; padding: 20px 0px 20px 20px;}
@@ -36,7 +36,6 @@ include('./HeadTab_Module.php');
 	height:30px;
 }
 </style>
-<?print_r($_POST);?>
 <div id="Main">
 	<div>
 		<table class="member">
@@ -60,7 +59,7 @@ include('./HeadTab_Module.php');
 		<input type="hidden" name="phone3" value="<?echo $_POST['phone3']?>">
 		<input type="hidden" name="tele1" value="<?echo $_POST['tele1']?>">
 		<input type="hidden" name="tele2" value="<?echo $_POST['tele2']?>">
-		<input type="hidden" name="tele3 value="<?echo $_POST['tele3']?>">
+		<input type="hidden" name="tele3" value="<?echo $_POST['tele3']?>">
 		<input type="hidden" name="businessNumber" value="<?echo $_POST['businessNumber']?>">
 		<input type="hidden" name="postNumber1" value="<?echo $_POST['postNumber1']?>">
 		<input type="hidden" name="postNumber2" value="<?echo $_POST['postNumber2']?>">
@@ -91,10 +90,7 @@ include('./Footer_Module.php');
 <script>
 function module1(){
 	var f = document.register3form;
-	
-	if(!document.getElementById('agreement5').checked)
-		alert("약관에 동의해주세요.");
-	else
-		f.submit();
+
+	f.submit();
 }
 </script>

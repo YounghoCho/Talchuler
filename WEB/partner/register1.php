@@ -13,7 +13,7 @@ include('./HeadTab_Module.php');
 	height:100%;
 	width:100%;
 	padding-top:20px;
-	padding-left:50px;
+	padding-left:4%;
 }
 
 #Main_titlebar{
@@ -104,9 +104,9 @@ include('./HeadTab_Module.php');
 #check_area{
 	float:left;
 	height:auto;
-	width : -webkit-calc(80% + 13px); /* for Chrome, Safari */
-    width :    -moz-calc(80% + 13px); /* for Firefox */
-    width :         calc(80% + 13px); /* for IE */
+	width : -webkit-calc(79%); /* for Chrome, Safari */
+    width :    -moz-calc(79%); /* for Firefox */
+    width :         calc(79%); /* for IE */
 	display:table;
 	margin-left:20px;
 	margin-top:5px;
