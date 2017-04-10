@@ -54,23 +54,25 @@ body{
 }
 #Tab .tbmenu > li{
 	float: center;
-	margin-top:20px;
 	font-size:17px;
+	margin-left:15px;
+	margin-top:15px;
 }
 ul{
     list-style:none;
 }
 .tbmenu li{cursor:pointer;}
 .tbmenu .hide{display:none;}
+.tab_li{margin: 10px 0px 0px 25px;}
 </style>
 </head>
 <body>
 	<div id="Head">
-		<ul class='hdmenu'>
+		<ul class='hdmenu' style="line-height:45px;">
 		<li>
 			<h1>
-			<a href="../index.php">
-			<img class='main_logo' src="./images/common/bg_gnbtop.png" >
+			<a href="./index.php">
+			<img class='main_logo' src="./images/common/bg_gnbtop.png" style="margin-top:18px;">
 			</a>
 			</h1>
 		</li>
@@ -84,33 +86,33 @@ ul{
 	<ul class='tbmenu'>
 	<li>내 카페관리</li>
 		<ul class="hide">
-			<a href=""><li>오늘의 게임</li></a>
-			<a href=""><li>예약 관리</li></a>
-			<a href=""><li>후기 관리</li></a>
-			<a href=""><li>카페정보관리/앨범</li></a>
-			<a href=""><li>게임정보관리</li></a>
+			<a href=""><li class="tab_li">오늘의 게임</li></a>
+			<a href=""><li class="tab_li">예약 관리</li></a>
+			<a href=""><li class="tab_li">후기 관리</li></a>
+			<a href=""><li class="tab_li">카페정보관리/앨범</li></a>
+			<a href=""><li class="tab_li">게임정보관리</li></a>
 		</ul>
 	<li>서비스이용</li>
 		<ul class="hide">
-			<a href=""><li>타임핫딜</li></a>
-			<a href=""><li>인사이트</li></a>
-			<a href=""><li>예약 통계</li></a>
-			<a href=""><li>후기 통계</li></a>
+			<a href=""><li class="tab_li">타임핫딜</li></a>
+			<a href=""><li class="tab_li">인사이트</li></a>
+			<a href=""><li class="tab_li">예약 통계</li></a>
+			<a href=""><li class="tab_li">후기 통계</li></a>
 		</ul>
 	<li>서비스소개</li>
 		<ul class="hide">
-			<a href=""><li>타임커머스</li></a>
-			<a href=""><li>메인추천광고</li></a>
-			<a href=""><li>상위노출광고</li></a>
-			<a href=""><li>패키지광고</li></a>
+			<a href=""><li class="tab_li">타임커머스</li></a>
+			<a href=""><li class="tab_li">메인추천광고</li></a>
+			<a href=""><li class="tab_li">상위노출광고</li></a>
+			<a href=""><li class="tab_li">패키지광고</li></a>
 		</ul>
 	<li>고객센터</li>
 		<ul class="hide">
-			<a href=""><li>알림/실행</li></a>
-			<a href=""><li>공지사항</li></a>
-			<a href=""><li>1:1문의</li></a>
-			<a href=""><li>FAQ</li></a>
-			<a href=""><li>약관 및 정책</li></a>
+			<a href=""><li class="tab_li">알림/실행</li></a>
+			<a href=""><li class="tab_li">공지사항</li></a>
+			<a href=""><li class="tab_li">1:1문의</li></a>
+			<a href=""><li class="tab_li">FAQ</li></a>
+			<a href=""><li class="tab_li">약관 및 정책</li></a>
 		</ul>
 	</div>
 	<!--Content가 들어갈 중간 영역입니다-->
