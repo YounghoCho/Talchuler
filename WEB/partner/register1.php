@@ -3,72 +3,159 @@ include('./HeadTab_Module.php');
 ?>
 
 <style>
-.Head_left{float:left;margin-left:4%;margin-bottom:10px;margin-top:20px;font-size:25px;}
-.Head_right{float:right;margin-right:4%;margin-bottom:10px;margin-top:20px;}
-.Head_right_inner{float:left;}
 
-hr{width:80%;margin-bottom:0px;}
-input{padding:3px;}
+#Main{
+	height:80%;
+	overflow:hidden;
+}
 
-.policy{float:left;display:block;width:80%;height:140px;margin-left:4%;margin-bottom:5px;padding:3px;border:1px solid;}
-.agree{float:left;display:block;width:80%;height:50px;margin-left:4%;margin-bottom:5px;background-color:#ddd;padding:3px;}
-.certify{float:left;display:block;width:80%;height:200px;margin-left:4%;margin-bottom:5px;margin-top:20px;padding:3px;}
-.btn_bottom{padding:3px;padding-left:10px;padding-right:10px;margin-left:40px;margin-right:40px;}
-.btn_div{float:left;display:block;width:80%;height:50px;margin-left:4%;margin-top:20px;text-align:center;}
-table {width:50%;}
-table td{height:50px;}
+#Main_container{
+	height:100%;
+	width:100%;
+	padding-top:20px;
+	padding-left:50px;
+}
+
+#Main_titlebar{
+	width:100%;
+	margin:5px 0 5px 0;
+}
+
+#Main_titlebar .title{
+	float:left;
+	font-size:25px;
+	width:85%;
+	color:#666666;
+	margin-right:10px;
+	margin:auto;
+	margin-bottom:0px;
+	padding-bottom:8px;
+	font-weight:bold;
+	border-bottom:2px solid #666666;
+	position:relative;
+}
+
+
+@media screen and (max-width:820px){
+	#Main_titlebar .step{
+		display:none;
+	}
+}
+
+#Main_titlebar .step{
+	float:right;
+	font-size:14px;
+	position:absolute;
+	bottom:10px;
+	right:0px;
+	color:#b8b8b8;
+}
+
+#Main_titlebar .step b{
+	font-weight:bold;
+	color:#000000;
+}
+
+
+
+#promise{
+	width:80%;
+	height:auto;
+	padding-left:20px;
+	margin-top:40px;
+	float:left;
+
+}
+
+#promise .input_box{
+	width:100%;
+}
+
+#promise .input_box div{
+	width:100%;
+	height:80px;
+	resize:none;
+	float:left;
+	font-size:12px;
+	color:#999999;
+	padding:5px;
+	margin-bottom:8px;
+	overflow-y:scroll;
+	border:1px solid #666666;
+}
+
+#promise .input_box b{
+	line-height:20px;
+	width:80%;
+	margin:1px;
+}
+
+#check_area{
+	float:left;
+	height:auto;
+	width : -webkit-calc(80% + 13px); /* for Chrome, Safari */
+    width :    -moz-calc(80% + 13px); /* for Firefox */
+    width :         calc(80% + 13px); /* for IE */
+	display:table;
+	margin-left:20px;
+	margin-top:5px;
+	padding:5px 0px;
+	background-color:#cdcdcd;
+}
+
+#check_area input{
+	display:table-cell;
+	width:20px;
+	height:20px;
+	float:left;
+	margin:5 10 5 10;
+}
+
+#check_area .text_box[
+	font-size:12px;
+	float:left;
+	display:table-cell;
+}
+
+
+
+
+
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
-	<div style="height:80%;overflow:hidden;">
-		<div class="Head_left">회원가입</div>
-		<div class="Head_right">
-			<div class="Head_right_inner"><b>1.약관동의 >&nbsp;</b></div>
-			<div class="Head_right_inner">2.회원정보입력 >&nbsp;</div>
-			<div class="Head_right_inner">3.가입완료&nbsp;</div>
+<div id="Main">
+	<div id="Main_container">
+		<div id="Main_titlebar">
+			<div class="title">회원가입
+				<div class="step"><b>1.약관동의</b> > 2.회원정보입력 > 3.업체등록요청 > 4.가입완료</div>
+			</div>
+			<div class="anything">&nbsp</div>
+			<div class="anything">&nbsp</div>
 		</div>
-		<br>
-		<hr>
-		
-		<div class="policy" style="margin-top:20px;">서비스 이용약관</div>
-		<div class="policy">개인정보 수집 이용약관</div>
-		<div class="agree">
-			<button style="width:20px;height:20px;float:left"></button>
-			탈출러 서비스 이용약관 [필수], 개인정보 수집 및 이용 [필수], 에 모두 동의합니다<br>
-			회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 관한 안내문 읽고 동의해주세요.
+
+		<div id="promise">
+			<div class="input_box">
+				<div><b>약관란입니다.<br></b>약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.약관란입니다.</div>
+				<div><b>내용을 입력하세요.<br></b>내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.내용을 입력하세요.</div>
+				<div><b>임시로 만들어진 페이지 입니다.<br></b>임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.임시로 만들어진 페이지 입니다.</div>
+			</div>
 		</div>
-		<div class="certify">
-			<font size="5pt"><b>회원인증</b>&nbsp;</font>안전한 회원가입을 위해 사업체 정보를 입력하신 후 회원인증 해주세요.<br>
-			<table>
-				<tr>
-					<td style="width:20%">대표자인증</td>
-					<td style="width:55%"><button>휴대폰 인증</button><button style="margin-left:10px;">아이핀 인증</button></td>
-				</tr>
-				<tr>
-					<td style="width:20%">상호</td>
-					<td style="width:55%"><input type="text" /></td>
-				</tr>
-				<tr>
-					<td style="width:20%">사업자등록번호</td>
-					<td style="width:55%"><input type="text" size="4"/>&nbsp;-&nbsp;<input type="text" size="4"/>&nbsp;-&nbsp;<input type="text" size="4"/><button style="margin-left:10px;">중복확인</button></td>
-				</tr>
-			</table>
+		<div id="check_area">
+			<input type="checkbox" name="user_agree">
+			<div class="text_box">
+				<p style='font-size:12px; color:#565656; padding:0; margin:0; font-weight:bold;'>탈출러 서비스 이용약관(필수),개인정보 수집 및 이용(필수)에 모두 동의합니다.</p>
+				<p style='font-size:10px; color:#ee4444; padding:0; margin:0; font-weight:bold;'>회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 관한 안내를 읽고 동의해주세요.</p>
+			</div>
 		</div>
-		<div class="btn_div">
-			<button class="btn_bottom" onclick="location.href='./index.php'">이전</button>
-			<button class="btn_bottom" onclick="location.href='./register2.php'">다음</button>
-		</div>
-		<br><br>
 	</div>
-	
+</div>
+</div>
+
+
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div>
 <?
 include('./Footer_Module.php');
 ?>
 
-<!--
-		<div class="certify">
-
-		</div>
--->
