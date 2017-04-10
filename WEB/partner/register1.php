@@ -34,7 +34,18 @@ include('./HeadTab_Module.php');
 	border-bottom:2px solid #666666;
 	position:relative;
 }
-
+.btndiv{
+	width:80%;
+	margin-left:4%;
+	text-align:center;
+	padding-bottom:40px;
+}
+.btn{
+	margin-left:5%;
+	font-size:15px;
+	width:60px;
+	height:30px;
+}
 
 @media screen and (max-width:820px){
 	#Main_titlebar .step{
@@ -73,7 +84,7 @@ include('./HeadTab_Module.php');
 
 #promise .input_box div{
 	width:100%;
-	height:80px;
+	height:150px; /*약관란 높이조절*/
 	resize:none;
 	float:left;
 	font-size:12px;
@@ -142,15 +153,22 @@ include('./HeadTab_Module.php');
 			</div>
 		</div>
 		<div id="check_area">
-			<input type="checkbox" name="user_agree">
+		<form action="./register2.php" method="POST" name="register1form">
+			<input type="checkbox" name="agreement1" id="agreement1">
 			<div class="text_box">
-				<p style='font-size:12px; color:#565656; padding:0; margin:0; font-weight:bold;'>탈출러 서비스 이용약관(필수),개인정보 수집 및 이용(필수)에 모두 동의합니다.</p>
-				<p style='font-size:10px; color:#ee4444; padding:0; margin:0; font-weight:bold;'>회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 관한 안내를 읽고 동의해주세요.</p>
+				<p style='font-size:13px; color:#565656; padding:0; margin:0; font-weight:bold;'>탈출러 서비스 이용약관(필수),개인정보 수집 및 이용(필수)에 모두 동의합니다.</p>
+				<p style='font-size:11px; color:#ee4444; padding:0; margin:0; font-weight:bold;'>회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 관한 안내를 읽고 동의해주세요.</p>
 			</div>
+		</form>
 		</div>
 	</div>
 </div>
 </div>
+	<div class="btndiv">
+		<a href="./index.php"><input type="button" class="btn" value="이전"></a>
+		<input type="button" class="btn" value="다음" onclick="module1()">
+	</div>
+
 
 
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
@@ -158,4 +176,13 @@ include('./HeadTab_Module.php');
 <?
 include('./Footer_Module.php');
 ?>
+<script>
+function module1(){
+	var f = document.register1form;
 
+	if(!document.getElementById('agreement1').checked)
+	alert("약관에 동의해주세요.");
+	else
+		f.submit();
+}
+</script>

@@ -37,6 +37,8 @@ include('./HeadTab_Module.php');
 	border:none;
 }
 </style>
+<?print_r($_POST);?>
+
 <div id="Main">
 	<div>
 		<table class="member">
@@ -46,7 +48,7 @@ include('./HeadTab_Module.php');
 			</tr>
 		</table>
 	</div>
-	<div class="done"><b>이놀루션 잠실점<br>탈출러매니저 회원가입을 환영합니다.<br>가입하신 아이디 : talchuler6<br><br>[내카페관리]에서 카페정보와 게임정보를 먼저 등록해주세요</b></div>
+	<div class="done"><b><?echo ($_POST['shopName'])?> <br>탈출러매니저 회원가입을 환영합니다.<br>가입하신 아이디 : <?echo ($_POST['id'])?><br><br>[내카페관리]에서 카페정보와 게임정보를 먼저 등록해주세요</b></div>
 
 	<div class="btndiv">
 		<center>

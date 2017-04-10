@@ -34,7 +34,18 @@ include('./HeadTab_Module.php');
 	border-bottom:2px solid #666666;
 	position:relative;
 }
-
+.btndiv{
+	width:80%;
+	margin-left:4%;
+	text-align:center;
+	padding-bottom:40px;
+}
+.btn{
+	margin-left:5%;
+	font-size:15px;
+	width:60px;
+	height:30px;
+}
 
 @media screen and (max-width:820px){
 	#Main_titlebar .step{
@@ -60,7 +71,7 @@ include('./HeadTab_Module.php');
 #inputbox{
 	height:auto;
 	width:100%;
-	margin-left:30px;
+	margin-left:27px;/*input상자의 높이는 총 세군데에서 27px로 높이를 고정한다.*/
 	padding-left:20px;
 	padding-top:10px;
 }
@@ -69,7 +80,8 @@ include('./HeadTab_Module.php');
 	width : -webkit-calc(85% - 20px); /* for Chrome, Safari */
     width :    -moz-calc(85% - 20px); /* for Firefox */
     width :         calc(85% - 20px); /* for IE */
-	height:20px;
+	height:30px;
+	line-height:27px;
 	background-color:#dddddd;
 	margin-left:-50px;
 	clear:both;
@@ -81,7 +93,7 @@ include('./HeadTab_Module.php');
 	height:auto;
 	width:100%;
 	display:table;
-	padding-top:17px;
+	padding-top:8px;
 	padding-bottom:4px;
 	padding-right:0px;
 	padding-left:8px;
@@ -128,7 +140,7 @@ include('./HeadTab_Module.php');
 #inputbox .container2 input{
 	display:table-cell;
 	width:200px;
-	height:30px;
+	height:27px;
 	float:left;
 	padding-top:3px;
 }
@@ -174,7 +186,7 @@ include('./HeadTab_Module.php');
 #inputbox .container_address input{
 	display:table-cell;
 	width:80px;
-	height:30px;
+	height:27px;
 	float:left;
 	padding-top:3px;
 }
@@ -257,90 +269,140 @@ input[type=checkbox]:checked + label:before {
 		</div>
 		<div class="content_box">
 			<div class="inputbox">
-				<form action="url" id="inputbox">
+				<form action="./register3.php" id="inputbox" name="register2form" method="POST">
+					<input type="hidden" name="agreement1" value="<?echo ($_POST['agreement1'])?>">
 					<div class="gray_area">
 						계정 정보
 					</div>
 					<div class="container">
 						<div class="major">아이디</div>
-						<input name="store_id" placeholder="  아이디를 입력해주세요"> <br>
+						<input name="id" id="id" placeholder="  아이디를 입력해주세요"> <br>
 					</div>
 					<div class="help">영문/숫자 조합 4자리-16자리</div>
 					<div class="container">
 						<div class="major">비밀번호</div>
-						<input name="store-pw" placeholder="  비밀번호를 입력해주세요"><p>&nbsp&nbsp&nbsp암호보안수준:</p>
+						<input name="pw" placeholder="  비밀번호를 입력해주세요"><p>&nbsp&nbsp&nbsp암호보안수준:</p>
 					</div>
 					<div class="help">영문 대소문자/숫자/특수문자 중 두가지 이상 조합으로 8~16 자리</div>
 					<div class="container">
 						<div class="major">비밀번호확인</div>
-						<input name="store_pw2" placeholder="  비밀번호를 다시 입력해주세요"> <br>
+						<input name="pw_check" placeholder="  비밀번호를 다시 입력해주세요"> <br>
 					</div>
-				</form>
-			</div>
-			
-			<div class="inputbox">
-				<form action="url" id="inputbox">
+					<!--나뉘는 부분-->
 					<div class="gray_area">
 						사장님 정보
 					</div>
 					<div class="container">
 						<div class="major">사장님 성함</div>
-						<input name="user_name" placeholder="  사업자 등록증상 대표자명"> <br>
+						<input name="name" placeholder="  사업자 등록증상 대표자명"> <br>
 					</div>
 					<div class="container2">
 						<div class="major">업체명</div>
-						<input name="store_name" placeholder="  사업자 등록증상 업체명"> <br>
+						<input name="shopName" placeholder="  사업자 등록증상 업체명"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">휴대폰번호</div>
-						<input type="text" name="phone_number">
+						<input type="text" name="phone1">
 						<div class="need_space">&nbsp</div>
-						<input type="text" name="phone_number">
+						<input type="text" name="phone2">
 						<div class="need_space">&nbsp</div>
-						<input type="text" name="phone_number">
+						<input type="text" name="phone3">
 					</div>
 					<div class="container_address">
 						<div class="major">업체 대표번호</div>
-						<input type="text" name="company_main">
+						<input type="text" name="tele1">
 						<div class="need_space">&nbsp</div>
-						<input type="text" name="company_main">
+						<input type="text" name="tele2">
 						<div class="need_space">&nbsp</div>
-						<input type="text" name="company_main">
+						<input type="text" name="tele3">
 					</div>
 					<div class="container2" style='	padding-bottom:20px;'>
 						<div class="major">사업자 등록번호</div>
-						<input name="store_numvber"> <br>
+						<input name="businessNumber"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">업체 주소</div>
-						<input type="text" name="store_address" style='width:72px;'>
+						<input type="text" name="postNumber1" style='width:72px;'>
 						<div class="need_bar"> - </div>
-						<input type="text" name="store_address" style='width:72px;'> 
+						<input type="text" name="postNumber2" style='width:72px;'> 
 					</div>
 					<div class="container2" style='padding-top:2px;	padding-bottom:0px;'>
 						<div class="major">&nbsp</div>
-						<input name="store_address_add" style='width:320px;' placeholder="  사업자 등록증상 업체주소를 입력해주세요"> <br>
+						<input name="location1" style='width:320px;' placeholder="  사업자 등록증상 업체주소를 입력해주세요"> <br>
 					</div>
 					<div class="container2">
 						<div class="major">&nbsp</div>
-						<input name="store_address_add2" style='width:320px;' placeholder="  나머지 주소를 압력해주세요"> <br>
+						<input name="location2" style='width:320px;' placeholder="  나머지 주소를 압력해주세요"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">이메일</div>
-						<input type="text" name="address" style='width:170px;'>
+						<input type="text" name="email1" style='width:170px;'>
 						<div class="need_bar"> @ </div>
-						<input type="text" name="address" style='width:170px;'> 
+						<input type="text" name="email2" style='width:170px;'> 
 					</div>
-					
+					<div class="container_address">
+						<div class="major"></div>
+						<input type="checkbox" name="agreement2" style='width:20px;height:20px;margin-right:10px;' checked/>탈출러의 다양한 이벤트 및 소식을 받아보실 수 있습니다.
+						<div class="need_bar"> </div>						
+					</div>
 				</form>
 			</div>
 		</div>
-
 	</div>
-</div>
 
+</div>
+	<div class="btndiv">
+		<a href="./register1.php"><input type="button" class="btn" value="이전"></a>
+		<input type="button" class="btn" value="다음" onclick="module2()">
+	</div>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div>
 <?
 include('./Footer_Module.php');
 ?>
+<script>
+function module2(){
+	var f = document.register2form; //form을 form의 name으로 받아오는 방법.
+/*	
+	if(f.id.value==""){
+		alert("아이디를 입력해주세요.");
+	}else if(f.pw.value==""){
+		alert("비밀번호를 입력해주세요.");
+	}else if(f.pw_check.value!=f.pw.value){
+		alert("비밀번호가 같지 않습니다.");
+	}else if(f.name.value==""){
+		alert("사장님 성함을 입력해주세요.");
+	}else if(f.shopName.value==""){
+		alert("업체명을 입력해주세요.");
+	}else if(f.phone1.value==""){
+		alert("휴대폰 번호를 입력해주세요.");
+	}else if(f.phone2.value==""){
+		alert("휴대폰 번호를 입력해주세요.");
+	}else if(f.phone3.value==""){
+		alert("휴대폰 번호를 입력해주세요.");
+	}else if(f.tele1.value==""){
+		alert("업체 대표번호를 입력해주세요.");
+	}else if(f.tele2.value==""){
+		alert("업체 대표번호를 입력해주세요.");
+	}else if(f.tele3.value==""){
+		alert("업체 대표번호를 입력해주세요.");
+	}else if(f.businessNumber.value==""){
+		alert("사업자 등록번호를 입력해주세요.");
+	}else if(f.postNumber1.value==""){
+		alert("우편번호를 입력해주세요.");
+	}else if(f.postNumber2.value==""){
+		alert("우편번호를 입력해주세요.");
+	}else if(f.location1.value==""){
+		alert("주소를 입력해주세요.");
+	}else if(f.location2.value==""){
+		alert("정확한 주소를 입력해주세요.");
+	}else if(f.email1.value==""){
+		alert("이메일을 입력해주세요.");
+	}else if(f.email2.value==""){
+		alert("이메일을 입력해주세요.");
+	}else{
+		f.submit();
+	}*/
+	f.submit();
+}
+</script>

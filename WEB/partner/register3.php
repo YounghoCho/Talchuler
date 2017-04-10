@@ -36,6 +36,7 @@ include('./HeadTab_Module.php');
 	height:30px;
 }
 </style>
+<?print_r($_POST);?>
 <div id="Main">
 	<div>
 		<table class="member">
@@ -46,17 +47,54 @@ include('./HeadTab_Module.php');
 		</table>
 	</div>
 	<div class="reserveDiv"><b>혜택 신청</b></div>
+	<form action="./register4.php" method="POST" name="register3form">
+		<!--hidden data passing S-->
+		<input type="hidden" name="agreement1" value="<?echo $_POST['agreement1']?>">
+		<input type="hidden" name="id" value="<?echo $_POST['id']?>">
+		<input type="hidden" name="pw" value="<?echo $_POST['pw']?>">
+		<input type="hidden" name="pw_check" value="<?echo $_POST['pw_check']?>">
+		<input type="hidden" name="name" value="<?echo $_POST['name']?>">
+		<input type="hidden" name="shopName" value="<?echo $_POST['shopName']?>">
+		<input type="hidden" name="phone1" value="<?echo $_POST['phone1']?>">
+		<input type="hidden" name="phone2" value="<?echo $_POST['phone2']?>">
+		<input type="hidden" name="phone3" value="<?echo $_POST['phone3']?>">
+		<input type="hidden" name="tele1" value="<?echo $_POST['tele1']?>">
+		<input type="hidden" name="tele2" value="<?echo $_POST['tele2']?>">
+		<input type="hidden" name="tele3 value="<?echo $_POST['tele3']?>">
+		<input type="hidden" name="businessNumber" value="<?echo $_POST['businessNumber']?>">
+		<input type="hidden" name="postNumber1" value="<?echo $_POST['postNumber1']?>">
+		<input type="hidden" name="postNumber2" value="<?echo $_POST['postNumber2']?>">
+		<input type="hidden" name="location1" value="<?echo $_POST['location1']?>">
+		<input type="hidden" name="location2" value="<?echo $_POST['location2']?>">
+		<input type="hidden" name="email1" value="<?echo $_POST['email1']?>">
+		<input type="hidden" name="email2" value="<?echo $_POST['email2']?>">
+		<input type="hidden" name="agreement2" value="<?echo $_POST['agreement2']?>">
+		<!--hidden data passing E-->
+
 	<div class="lowestPrice">
 		<table>
-			<tr><td width="130px">최저가 보장</td><td><input type="button" name="agreement5" class="agreebtn"></button>동의 후 신청</td></tr>
+			<tr><td width="130px">최저가 보장</td><td>
+			<input type="checkbox" name="agreement5" id="agreement5" class="agreebtn">
+			동의 후 신청</td></tr>
 			<tr><td></td><td style="padding-left:32px;">사장님 업체의 게임가격을 전국 사이트 중 최저가로 표기합니다.<br>(어느곳에서도 할인하지 않으실 경우 기본가격으로 표기하셔도 좋습니다.)</td></tr>
 		</table>
 	</div>
+	</form>
 	<div class="btndiv">
-		<center><a href="./register4.php"><input type="button" class="btn" value="다음"></a></center>
+		<center><input type="button" class="btn" value="다음" onclick="module1()" /></center>
+
 </div>
 </div>
 <?
 include('./Footer_Module.php');
 ?>
-
+<script>
+function module1(){
+	var f = document.register3form;
+	
+	if(!document.getElementById('agreement5').checked)
+		alert("약관에 동의해주세요.");
+	else
+		f.submit();
+}
+</script>
