@@ -364,7 +364,7 @@ include('./Footer_Module.php');
 <script>
 function module2(){
 	var f = document.register2form; //form을 form의 name으로 받아오는 방법.
-/*	
+	
 	if(f.id.value==""){
 		alert("아이디를 입력해주세요.");
 	}else if(f.pw.value==""){
@@ -403,7 +403,6 @@ function module2(){
 		alert("이메일을 입력해주세요.");
 	}else{
 		f.submit();
-	}*/
-	f.submit();
+	}
 }
 </script>

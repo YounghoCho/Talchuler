@@ -1,4 +1,5 @@
 <?
+session_start();
 include('./HeadTab_Module.php');
 ?>
 
@@ -47,7 +48,8 @@ table{width:100%;height:auto;}
 <?
 /* 로그인 이후 S*/
 /* 느낌표 하나로 테스트 가능*/
-if(!$_SESSION['user_name']==""){
+
+if(!$_SESSION['id']==""){
 ?>
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 	<div class="Main">
@@ -115,36 +117,41 @@ if(!$_SESSION['user_name']==""){
 		<div class="MainBanner">배너자리
 		</div>
 		<div class="Login">
+			
 			<table>
 				<tr><td class="td_head">로그인</td></tr>
 				<tr><td>
-					<table style="width:60%;margin-left:20%;">
-						<tr>
-						<td height="30px">아이디로그인</td>
-						<td>
-							<input type="checkbox" style="float:right" style="width:25px;height:25px"/>
-						</td>
-						<td style="padding-left:5px;text-align:center;margin-bottom:10px;">로그인유지</td>
-						</tr>
+					<form action="./login_chk.php" method="POST" name="loginform">
+						<table style="width:60%;margin-left:20%;">
+							<tr>
+							<td height="30px">아이디로그인</td>
+							<td>
+								<input type="checkbox" name="cookie" style="float:right" style="width:25px;height:25px"/>
+							</td>
+							<td style="padding-left:5px;text-align:center;margin-bottom:10px;">로그인유지</td>
+							</tr>
 
-						<tr>
-						<td colspan="2" height="40px" style="margin-top:10px;">
-							<input type="text" style="width:100%;height:25px;"/>
-						</td>
-						<td rowspan="2" style="padding-left:5px;">
-							<button style="height:100%;background-color:#66ccff;text-align:center;width:60%;margin-left:20%;">로그인</button>
-						</td>
-						</tr>
+							<tr>
+							<td colspan="2" height="40px" style="margin-top:10px;">
+								<input type="text" name="id" style="width:100%;height:25px;"/>
+							</td>
+							<td rowspan="2" style="padding-left:5px;">
+								<button type="button"  style="height:60px;background-color:#66ccff;text-align:center;width:60%;margin-left:20%;" onclick="module2()">로그인</button>
+							</td>
+							</tr>
 
-						<tr>
-						<td colspan="2" style="margin-top:10px;">
-							<input type="text" style="width:100%;height:25px;"/>
-						</td>
-						</tr>
-					</table>
+							<tr>
+							<td colspan="2" style="margin-top:10px;">
+								<input type="text" name="pw" style="width:100%;height:25px;"/>
+							</td>
+
+							</tr>
+						</table>
+					</form>
 						<button class="btn_idpw1" onclick="location.href='./idFind1.php'">아이디찾기</button><button class="btn_idpw2" onclick="location.href='./pwFind1.php'">비밀번호찾기</button><button class="btn_register" onclick="location.href='./register1.php'">회원가입하기</button>
 				</td></tr>
 			</table>
+
 		</div>
 		<div class="Notice">
 			<table>
@@ -168,4 +175,18 @@ if(!$_SESSION['user_name']==""){
 /* 로그인 이전 E*/
 include('./Footer_Module.php');
 ?>
+<script>
+function module2(){
+	var f = document.loginform;
+	
+	if(f.id.value==""){
+		alert("아이디를 입력해주세요.");
+
+	}else if(f.pw.value==""){
+		alert("비밀번호를 입력해주세요.");
+	}else{
+		f.submit();
+	}
+}
+</script>
 
