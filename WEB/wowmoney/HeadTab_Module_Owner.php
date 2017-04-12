@@ -145,7 +145,7 @@ body{
 		<div class="box_module">
 			<div class="title_box">플레이어</div>
 			<div class="categories">
-				<a href=" ">회원관리</a>
+				<a href="./findUser.php">회원관리</a>
 			</div>
 			<div class="categories">
 				<a href=" ">1:1 문의</a>
@@ -154,19 +154,16 @@ body{
 		<div class="box_module">
 			<div class="title_box">업&nbsp&nbsp&nbsp&nbsp소</a></div>
 			<div class="categories">
-				<a href=" ">회원관리</a>
+				<a href="./findPartner.php">회원관리</a>
 			</div>
 			<div class="categories">
 				<a href=" ">1:1 문의</a>
 			</div>
 			<div class="categories">
 				<a href=" ">카페기본정보승인</a>
-				<div class="category_sub">
-					<a href=" ">- 앨범승인</a>
-				</div>
-				<div class="category_sub">
-					<a href=" ">- 앨범확인</a>
-				</div>
+			</div>
+			<div class="categories">
+				<a href="./album.php">앨범정보승인</a>
 			</div>
 			<div class="categories">
 				<a href=" ">게임정보승인</a>
