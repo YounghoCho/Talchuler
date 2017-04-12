@@ -13,17 +13,21 @@
     });
 </script>
 <style>
+
 body{
 	margin:0px;
 	padding:0px;
 }
-.Main{
-	/*Tab 크기 뺴줌*/
-	width : -webkit-calc(100%-220px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-220px); /* for Firefox */
-    width :         calc(100%-220px); /* for IE */
-	height:90%; /*Main의 높이를 90%로 조절합니다.*/
-}
+
+
+	#Main_Backup{ /*Structure_Module_Owner.php내에 #Main으로 선언*/
+		/*Tab 크기 뺴줌*/
+		width : -webkit-calc(100%-220px); /* for Chrome, Safari */
+		width :    -moz-calc(100%-220px); /* for Firefox */
+		width :         calc(100%-220px); /* for IE */
+		height:90%; /*Main의 높이를 90%로 조절합니다.*/
+		overflow:hidden;
+	}
 
 #Head{
 	width:100%;
@@ -168,6 +172,5 @@ body{
 				<a href=" ">게임정보승인</a>
 			</div>
 		</div>
-
 	</div>
 	<!--Content가 들어갈 중간 영역입니다-->
