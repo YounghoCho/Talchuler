@@ -282,12 +282,12 @@ input[type=checkbox]:checked + label:before {
 					<div class="help">영문/숫자 조합 4자리-16자리</div>
 					<div class="container">
 						<div class="major">비밀번호</div>
-						<input name="pw" placeholder="  비밀번호를 입력해주세요"><p>&nbsp&nbsp&nbsp암호보안수준:</p>
+						<input type="password" name="pw" placeholder="  비밀번호를 입력해주세요"><p>&nbsp&nbsp&nbsp암호보안수준:</p>
 					</div>
 					<div class="help">영문 대소문자/숫자/특수문자 중 두가지 이상 조합으로 8~16 자리</div>
 					<div class="container">
 						<div class="major">비밀번호확인</div>
-						<input name="pw_check" placeholder="  비밀번호를 다시 입력해주세요"> <br>
+						<input name="pw_check" type="password" placeholder="  비밀번호를 다시 입력해주세요"> <br>
 					</div>
 					<!--나뉘는 부분-->
 					<div class="gray_area" >

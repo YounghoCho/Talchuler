@@ -1,17 +1,26 @@
-﻿<html>
+﻿<?
+session_start();
+?>
+<html>
 <head>
 <!--Intenet Explorer에서 Javascript, JQuery가 동작안하는 것을 막는다-->
 <!--호환문제 때문이며, 해결하는 코드는 바로 아래의 한줄 코드이다-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".tbmenu>li").click(function(){
-			$(this).next("ul").toggleClass("hide");
+<?
+if($_SESSION['id']){
+	?>
+	<script>
+		$(document).ready(function(){
+			$(".tbmenu>li").click(function(){
+				$(this).next("ul").toggleClass("hide");
+			});
 		});
-    });
-</script>
+	</script>
+	<?
+}
+?>
 <style>
 body{
 	margin:0px;
@@ -34,9 +43,11 @@ body{
 	display:table;
 }
 #Head .hdmenu > li {
-	width:20%;
-    margin-left:20%;
+	width:250px;
+    margin-left:50px;
 	display:table-cell;
+	text-align:center;
+
 }
 .main_logo{
 	position:absolute;
@@ -79,6 +90,13 @@ ul{
 		<li>ESC홍대지점</li>
 		<li>2017.02.02(월) 22:25</li>
 		<li>4/11후기관리 업데이트 안내</li>
+		<?
+		if($_SESSION['id']){
+		?>
+			<li onclick="location.href='./logout.php'">로그아웃</li>
+		<?
+		}	
+		?>
 		</ul>
 	</div>
 	
@@ -90,7 +108,7 @@ ul{
 			<a href="./mypage2.php"><li class="tab_li">예약 관리</li></a>
 			<a href="./mypage3.php"><li class="tab_li">후기 관리</li></a>
 			<a href="./mypage4.php"><li class="tab_li">카페정보관리</li></a>
-			<a href="./mypage5.php"><li class="tab_li">앨범</li></a>
+			<a href="./album.php"><li class="tab_li">앨범</li></a>
 			<a href="./mypage6.php"><li class="tab_li">게임정보관리</li></a>
 		</ul>
 	<li>서비스이용</li>

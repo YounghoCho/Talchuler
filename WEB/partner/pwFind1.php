@@ -59,15 +59,31 @@ p{
 			</tr>
 		</table>
 	</div>
+	<form name="findform" action="./pwFind2.php" method="post">		
 	<div class="namediv">
-				<center><input type="text" id="user" class="username" name="username" size="20"value="   비밀번호를 찾고자하는 아이디를 입력하세요." onfocus="this.value=''; this.style.color='#333333';" style="color:#666666"></center>
-				<p>아이디가 기억나지 않으세요? <b>아이디찾기</p>
+				<center><input type="text" id="user" class="username" name="id" size="20" value="비밀번호를 찾고자하는 아이디를 입력하세요" onfocus="this.value=''; this.style.color='#333333';" style="color:#666666;padding-left:10px;"></center>
+				<p style="margin-top:10px;">아이디가 기억나지 않으세요? 
+				<a href="./idFind1.php"><b>아이디찾기</b></a></p>
 	</div>
+	
 	<div class="btndiv">
-		<center><a href="./pwFind2.php"><input type="button" class="btn" value="다음"></a></center>
+		<center><input type="button" class="btn" value="다음" onclick="module2()"></center>
+	</form>
 </div>
 </div>
 <?
 include('./Footer_Module.php');
 ?>
+<script>
+function module2(){
 
+    var f = document.findform;
+    if(f.id.value == ""){
+        alert("이메일을 입력해 주세요.");
+    }else if( f.id.value == "비밀번호를 찾고자하는 아이디를 입력하세요"){
+		alert("이메일을 입력해 주세요.");
+	}else{
+	f.submit();
+	}
+}
+</script>

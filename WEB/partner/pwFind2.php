@@ -1,4 +1,5 @@
 <?
+include('include.php');
 include('./HeadTab_Module.php');
 ?>
 
@@ -59,6 +60,12 @@ $(document).ready(function() {
     });
 });
 </script>
+<?
+$sql="select p_phone, p_email from partner where p_id='".$_POST['id']."'";
+$q=mysql_query($sql);
+$data=mysql_fetch_array($q);
+?>
+
 <div id="Main">
 	<div>
 		<table class="member">
@@ -70,14 +77,16 @@ $(document).ready(function() {
 		<p><b>비밀번호를 찾으실 방법을 선택하세요.</b></p>
 	</div>
 	<div>
+		<form action="./pwFind3.php" method="POST" name="pwfindform">
 		<table class="way">
 		<tr>
-			<td><input type="checkbox" class="check" name="group">회원정보에 등록한 휴대전화로 인증 (+82 01-7***-***6)</td>
+			<td><input type="checkbox" class="check" id="phone">회원정보에 등록한 휴대전화로 인증 (+82 <?echo(preg_replace(array("/[3-6]/"),"*", $data['p_phone']) );?>)</td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" class="check" name="group">본인확인 이메일로 인증 (HA*********@N****.COM)</td>
+			<td><input type="checkbox" class="check" id="email">본인확인 이메일로 인증 (<?echo $data['p_email']?>)</td>
 		</tr>
 		</table>
+		</form>
 	</div>
 	<div class="btndiv">
 		<a href="./pwFind1.php"><input type="button" class="btn" value="이전"></a>
@@ -90,3 +99,15 @@ $(document).ready(function() {
 include('./Footer_Module.php');
 ?>
 </div>
+<script>
+/*function module1(){
+	var f = document.pwfindform;
+
+	if(document.getElementById('phone').checked)
+		location.href="./pwFind3.php";
+	else if(document.getElementById('email').checked)
+		location.href="pwFind_emailsend.php";
+	else
+		f.submit();
+}*/
+</script>

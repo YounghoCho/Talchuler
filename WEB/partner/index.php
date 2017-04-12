@@ -1,5 +1,4 @@
 <?
-session_start();
 include('./HeadTab_Module.php');
 ?>
 
@@ -142,7 +141,7 @@ if(!$_SESSION['id']==""){
 
 							<tr>
 							<td colspan="2" style="margin-top:10px;">
-								<input type="text" name="pw" style="width:100%;height:25px;"/>
+								<input type="password" name="pw" style="width:100%;height:25px;"/>
 							</td>
 
 							</tr>

@@ -1,4 +1,5 @@
 <?
+include('./include.php');
 include('./HeadTab_Module.php');
 ?>
 
@@ -144,12 +145,23 @@ include('./HeadTab_Module.php');
 			<div class="sub_title">-앨범</div>
 		</div>
 	</div>
+
+<?	
+	//이미지 index를 넘기기위해 미리 선언한다.
+	$sql="select album from partner where p_id='".$_SESSION['id']."';";
+	$q=mysql_query($sql);
+	$data=mysql_fetch_array($q);
+	$i=$data[0]-1;
+?>
 	<div id="Main_content_area">
 		<div id="Check_registration">
 			<div class="left" style='font-size:14x;'>
-				<a href=" ">
-					<div class="clickbox_rightblue">사진등록</div>
-				</a>
+			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000" /><!--100MB제한-->
+				<input name="userfile" type="file" style="margin-left:10px;"/>
+				<input type="hidden" name="index" value="<?echo $i?>" /><!--hidden index-->
+				<input type="submit" value="승인요청" style="padding:3px;"/>
+			</form>
 			</div>
 			<div class="right">
 			<!--<div class="text" style='padding-top:7px;'>내용입력가능</div>-->
@@ -158,69 +170,23 @@ include('./HeadTab_Module.php');
 		<div id="image_group">
 			<div class="image_stack">
 				<a href=" ">
-					<img src="images\common\test_img.png" class="main_img" />
+					<!-- $i가 0인경우 메인사진-->
+					<img src="./album/<?echo ($_SESSION['id'])?>0.jpg" class="main_img" />
 				</a>
 			</div>
+		<?
+		//$i가 1이상인 경우 사진
+		while($i>0){
+			?>
 			<div class="image_stack">
 				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
+					<img src="./album/<?echo ($_SESSION['id']).$i?>.jpg" class="product_img" />
 				</a>
 			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="images\common\test_img.png" class="product_img" />
-				</a>
-			</div>
+		<?
+		$i--;
+			}
+		?>
 		</div>
 	</div>
 </div>

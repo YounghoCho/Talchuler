@@ -130,7 +130,7 @@ input{padding:3px;}
 	float:left;
 	font-size:15px;
 	display:table-cell;
-	width:100px;
+	width:120px;
 	padding-left:5px;
 }
 #inputbox .major_add{
@@ -161,17 +161,18 @@ input{padding:3px;}
 	display:table-cell;
 	width:360px;
 	float:left;
+	margin-left:20px;
 }
 #inputbox .container_add_mid input{
 	display:table-cell;
 	width:360px;
 	float:left;
+	margin-left:20px;
 }
 #promise{
 	width:80%;
-	margin-left:4%;
+	margin-left:0%;
 	height:auto;
-	padding-left:20px;
 	padding-top:10px;
 	display:table;
 }
@@ -192,20 +193,12 @@ input{padding:3px;}
 	width:80%;
 	margin-left:4%;
 	text-align:center;
-	margin-top:60px;
+	margin-top:20px;
 	}
 #endmessage span{
 	margin:0;
 	font-size:15px;
 	color:#7c7c7c;
-}
-.del_icon{
-	margin-top:-5px;
-	font-weight: bold;
-	color:#6d6d6d;
-	font-size:20px;
-	display:table-cell;
-	float:left;
 }
 .click_box{
 	float:left;
@@ -234,8 +227,7 @@ input{padding:3px;}
 	position:relative; 
 }
 .click_box2{
-	margin-top:20px;
-	margin:auto;
+	margin: 10px 0px 10px 0px;
 	text-align:center;
 }
 .link_area{
@@ -247,10 +239,12 @@ input{padding:3px;}
 	height:30px;
 	clear:both;
 	margin:auto;
+	line-height:30px;
 }
 .click_box2 a{
 	cursor:pointer;
 	text-decoration:none;
+	margin-top:5px;
 }
 .need_bar{
 	display:table-cell;
@@ -264,62 +258,89 @@ input{padding:3px;}
 	position:absolute;
 	clear:left;
 }
+#Tab{
+height:100%;
+}
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 
 
-<div style="height:90%;overflow:hidden;">
+<div style="height:100%;overflow:hidden">
 	<div id="Main_titlebar">
 		<div class="title">카페정보관리</div>
 		<div class="subtitle">-카페기본설정</div>
 	</div>
-	
-		<form action="url" id="inputbox">
+
+		<form action="./partnerAsk.php" id="inputbox" method="POST" name="form" enctype="multipart/form-data">
 			<div class="container">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div><div class="major">＊카페명</div><input type="text" name="cafe_name"> <br>
+				<div class="icon"><img src="images\icon\icon6.png" class="icon_sample"/></div><div class="major">＊카페명</div><input type="text" name="shopName"> <br>
 			</div>
 			<div class="container">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="local_name"> <br>
+				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="localName"> <br>
 			</div>
+
+
+
+				<!--이미지전송-->
 			<div class="container_logo">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div><div class="major">＊카페로고</div><img src="images\common\picture.png" class="input_img"/><div class="click_box"><div class="option"><button>등록/수정</button><input type="file" value="파일 업로드"name="cafe_logo"><br><span>(300px×200px 권장 / JPG,PNG)</span></div>
-				</div>
+					<div class="icon"><img src="images\icon\icon1.png" class="icon_sample"/></div><div class="major">＊카페로고</div>
+					<input type="hidden" name="MAX_FILE_SIZE" value="100000" /><!--100MB제한-->
+					<!-- input의 name은 $_FILES 배열의 name을 결정합니다 -->
+					<div style="float:left;border:1px solid #aaa;width:120px;height:120px;">
+						<img src="./partnerAsk/<?echo ($_SESSION['id']);?>.jpg" style="width:100%" />
+					</div>
+					<div style="float:left;">
+						<input name="userfile" type="file" style="margin-left:10px;"/><br>
+					</div>
 			</div>
+				<!--이미지전송 E-->
+			
+			
 			<div class="container">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div><div class="major">＊전화번호</div><input type="text" name="phonenumber" placeholder="전화번호를 입력해주세요.">
+				<div class="icon"><img src="images\icon\icon1.png" class="icon_sample"/></div><div class="major">＊매장전화번호</div><input type="text" name="p_tele" placeholder="전화번호를 입력해주세요.">
 			</div>
 			<div class="container_address">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div><div class="major">＊주소</div><input type="text" name="address"><div class="need_bar"> - </div><input type="text" name="address"><div class="click_box"><button style="width:100px;">우편번호찾기</button><input type="file" value="파일 업로드"style="width:100px;" name="cafe_logo">
+				<div class="icon"><img src="images\icon\icon4.png" class="icon_sample"/></div><div class="major">＊주소</div>
+				<input type="text" name="postNumber1"><div class="need_bar"> - </div><input type="text" name="postNumber2">
+				<div class="click_box"><button style="width:100px;">우편번호찾기</button><input type="file" value="파일 업로드"style="width:100px;" name="cafe_logo">
 				</div> 
 			</div>
 			<div class="container_add_mid">
-				<div class="major_add">&nbsp</div><input type="text" name="address">
+				<div class="major_add">&nbsp</div><input type="text" name="location1">
 			</div>
 			<div class="container_add2">
-				<div class="major_add">&nbsp</div><input type="text" name="address">
+				<div class="major_add">&nbsp</div><input type="text" name="location2">
 			</div>
 			<div class="container2">
-				<div class="icon"><img src="images\icon\sample.png" class="icon_sample"/></div>
+				<div class="icon"><img src="images\icon\icon2.png" class="icon_sample"/></div>
 				<div class="major">&nbsp이용혜택</div>
-				<input type="text" name="want" placeholder="모든테마탈출 : 폴라로이드">
-				<div class="del_icon">－</div>
+				<input type="text" name="benefit1" placeholder="모든테마탈출 : 폴라로이드">
 			</div>
 			<div class="container_add2">
 				<div class="major_add">&nbsp</div>
-				<input type="text" name="want" placeholder="ex) 탈출성공:OOO증정.(최대15자)"> 
-				<div class="del_icon">－＋</div><br>
+				<input type="text" name="benefit2" placeholder="ex) 탈출성공:OOO증정.(최대15자)">
+				<br>
 			</div>
-		</form>
-
+			<div class="container_add2">
+				<div class="major_add">&nbsp</div>
+				<input type="text" name="benefit3">
+				<br>
+			</div>
+			<div class="container_add2">
+				<div class="major_add">&nbsp</div>
+				<input type="text" name="benefit4">
+				<br>
+			</div>
 	<div id="promise">
 		<div class="major">＊예약취소 / 변경 / 환불규정</div>
-		<textarea rows="5" cols="60" name="promise"></textarea>
+		<textarea rows="5" cols="60" name="rule" style="margin-left:143px"></textarea>
 	</div>
-	
+	</form>
+
 	<div id="endmessage">
 		<span>탈출러에서 검토한 후에 등록됩니다. 조금만 기다려주세요! (최대 3일 소요)</span><br>
-		<div class="click_box2"><div class="link_area"><a href=" ">등록/수정</div></a></div>
+		<div class="click_box2" onclick="submit()"><div class="link_area">등록/수정</div></div>
 	</div>
 </div>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
@@ -327,3 +348,9 @@ input{padding:3px;}
 <?
 include('./Footer_Module.php');
 ?>
+<script>
+function submit(){
+	var f=document.form;
+	f.submit();
+}
+</script>
