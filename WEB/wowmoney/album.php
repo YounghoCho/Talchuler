@@ -1,4 +1,5 @@
 <?
+include('./include.php');
 include('./HeadTab_Module_Owner.php');
 ?>
 
@@ -285,6 +286,11 @@ include('./HeadTab_Module_Owner.php');
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
+<?
+$sql="select * from album;";
+$q=mysql_query($sql);
+?>
+<form action="./admit_album.php" method="POST" id="form">	
 
 <div id="Main">
 	<div id="Main_title_area">
@@ -295,237 +301,45 @@ include('./HeadTab_Module_Owner.php');
 	<div id="Main_content_area">
 		<div id="Check_count">
 			<div class="left">
-				<div class="text" style='padding-top:7px;'>승인요청물총 : 00 개</div>
+				<div class="text" style='padding-top:7px;'>승인요청물총 : <?echo count($data);?> 개</div>
 			</div>
 			<div class="right">
-				<div class="clickbox_rightblue" style='float:right;'>
-					<a href=" ">선택승인</a>
-				</div>
+				<button class="clickbox_rightblue" style='float:right;' type="submit">
+					선택승인</button>
 				<div id="all_check">
 					<div class="checks">
-						<input type="checkbox" id="ex_chk">
+						<input type="checkbox" name="all" id="ex_chk">
 						<label for="ex_chk">전체선택</label>
 					</div>
 				</div>
 			</div>
 		</div>
+	<?
+		while($data=mysql_fetch_array($q)){
+			?>
+			
 		<div id="image_stack">
 			<div class="image_box">
 				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check1"> <!--id-for값 다르게 설정해야 해당 체크란에 체크 됨-->
-					<label for="check1"></label>
+					<input type="checkbox" name="<?echo $data['al_idx']?>" id="check<?echo $data['al_idx']?>"> <!--id-for값 다르게 설정해야 해당 체크란에 체크 됨-->
+					<label for="check<?echo $data['al_idx']?>"></label>
 				</div>
-				<img src="images\common\test_img.png" class="product_img" />
+				<img src="../partner/albumAsk/<?echo ($data['filename'])?>.jpg" class="product_img" />
 				<div class="name">
 					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
+					<div class="title"><?echo ($data['p_shopName'])?></div>
+					<div class="sub"> <?echo ($data['p_localName'])?></div>
 				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
+				<div class="date"><?echo ($data['date'])?> 제출</div>
+					<div class="clickbox_rightgray" onclick="location.href='./delete_album.php?al_idx=<?echo $data['al_idx']?>'">거절</div>
 			</div>
 		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check2">
-					<label for="check2"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check3">
-					<label for="check3"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check4">
-					<label for="check4"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check5">
-					<label for="check5"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check6">
-					<label for="check6"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check7">
-					<label for="check7"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check8">
-					<label for="check8"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check9">
-					<label for="check9"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check10">
-					<label for="check10"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check11">
-					<label for="check11"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
-		<div id="image_stack">
-			<div class="image_box">
-				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" id="check12">
-					<label for="check12"></label>
-				</div>
-				<img src="images\common\test_img.png" class="product_img" />
-				<div class="name">
-					<img src="images\icon\icon_phone.png" />
-					<div class="title">업체명111</div>
-					<div class="sub">- 홍대점</div>
-				</div>
-				<div class="date">2017.04.06 오후08:30 제출</div>
-				<a href=" ">
-					<div class="clickbox_rightgray" style=''>거절</div>
-				</a>
-			</div>
-		</div>
+			<?
+				}
+	?>
 	</div>
+</form>
+
 	<div id="Main_pagenumber_area">
 		<div id="page_number">
 			<div class="black"><a href=" ">◀</a></div>
@@ -546,4 +360,3 @@ include('./HeadTab_Module_Owner.php');
 <?
 include('./Footer_Module.php');
 ?>
-

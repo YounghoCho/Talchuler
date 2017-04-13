@@ -93,7 +93,7 @@ ul{
 		<?
 		if($_SESSION['id']){
 		?>
-			<li onclick="location.href='./logout.php'">로그아웃</li>
+			<li onclick="location.href='./logout.php'" style="cursor:pointer;">로그아웃</li>
 		<?
 		}	
 		?>

@@ -55,7 +55,6 @@ include('./HeadTab_Module.php');
 	float:left;
 	font-size:17px;
 	font-weight:lighter;
-	padding-top:10px;
 }
 
 /*타이틀 부분*/
@@ -148,19 +147,27 @@ include('./HeadTab_Module.php');
 
 <?	
 	//이미지 index를 넘기기위해 미리 선언한다.
-	$sql="select album from partner where p_id='".$_SESSION['id']."';";
+	$sql="select * from partner where p_id='".$_SESSION['id']."';";
 	$q=mysql_query($sql);
 	$data=mysql_fetch_array($q);
-	$i=$data[0]-1;
+	$i=$data['album']-1;
 ?>
+<style>
+input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;}
+
+</style>
 	<div id="Main_content_area">
 		<div id="Check_registration">
 			<div class="left" style='font-size:14x;'>
 			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
-				<input type="hidden" name="MAX_FILE_SIZE" value="100000" /><!--100MB제한-->
-				<input name="userfile" type="file" style="margin-left:10px;"/>
-				<input type="hidden" name="index" value="<?echo $i?>" /><!--hidden index-->
-				<input type="submit" value="승인요청" style="padding:3px;"/>
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000000" /><!--10mb제한-->
+				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">업로드</label>
+				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png"/>
+				<input type="hidden" name="album_count" value="<?echo $data['album_count']?>" /><!--사진을 여러장 보내기위한 절대상승값-->
+				<input type="hidden" name="p_id" value="<?echo $data['p_id']?>" /><!--p_id-->
+				<input type="hidden" name="p_shopName" value="<?echo $data['p_shopName']?>" /><!--p_shopName-->
+				<input type="hidden" name="p_localName" value="<?echo $data['p_localName']?>" /><!--p_localName-->
+				<input type="submit" value="승인요청" style="padding:6px 5px 6px 5px;background-color:#66ccff;margin-left:285px;border:none;"/>
 			</form>
 			</div>
 			<div class="right">
@@ -169,10 +176,8 @@ include('./HeadTab_Module.php');
 		</div>
 		<div id="image_group">
 			<div class="image_stack">
-				<a href=" ">
 					<!-- $i가 0인경우 메인사진-->
-					<img src="./album/<?echo ($_SESSION['id'])?>0.jpg" class="main_img" />
-				</a>
+					<img src="./album/<?echo ($_SESSION['id'])?>0.jpg" class="main_img" onerror="this.src='';"/>
 			</div>
 		<?
 		//$i가 1이상인 경우 사진
