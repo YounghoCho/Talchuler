@@ -151,6 +151,7 @@ include('./HeadTab_Module.php');
 	$q=mysql_query($sql);
 	$data=mysql_fetch_array($q);
 	$i=$data['album']-1;
+
 ?>
 <style>
 input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0;}
@@ -174,18 +175,23 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 			<!--<div class="text" style='padding-top:7px;'>내용입력가능</div>-->
 			</div>
 		</div>
+		<?
+		$sql="select path from album_path where p_id='".$_SESSION['id']."'";
+		$q=mysql_query($sql);
+		$path=mysql_fetch_array($q);
+		?>
 		<div id="image_group">
 			<div class="image_stack">
 					<!-- $i가 0인경우 메인사진-->
-					<img src="./album/<?echo ($_SESSION['id'])?>0.jpg" class="main_img" onerror="this.src='';"/>
+					<img src="./album/<?echo ($path[0])?>.jpg" class="main_img" onerror="this.src='';"/>
 			</div>
 		<?
 		//$i가 1이상인 경우 사진
-		while($i>0){
-			?>
+		while($i>0 && $path2=mysql_fetch_array($q)){
+		?>
 			<div class="image_stack">
 				<a href=" ">
-					<img src="./album/<?echo ($_SESSION['id']).$i?>.jpg" class="product_img" />
+					<img src="./album/<?echo ($path2['path'])?>.jpg" class="product_img" />
 				</a>
 			</div>
 		<?

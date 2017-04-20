@@ -1,4 +1,5 @@
 <?
+session_start();
 include('./HeadTab_Module.php');
 include('./include.php');
 ?>
@@ -89,7 +90,10 @@ mysql_query($sql);
 		</table>
 	</div>
 	<div class="done"><font color="#666"><b><?echo ($_POST['shopName'])?> <br>탈출러매니저 회원가입을 환영합니다.<br><font color="#ccc">가입하신 아이디 : </font><?echo ($_POST['id'])?><br><br></font><font color="#ff0066">[내카페관리]에서 카페정보와 게임정보를 먼저 등록해주세요</font></b></div>
-
+<!--자동로그인-->
+<?
+$_SESSION['id']=$_POST['id'];
+?>
 	<div class="btndiv">
 		<center>
 		<a href=""><input type="button" class="donebtn" value="[카페정보관리] 바로가기" style="font-weight:bold;"></a>
