@@ -287,6 +287,7 @@ include('./HeadTab_Module_Owner.php');
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 <?
+//앨범 조회
 $sql="select * from album;";
 $q=mysql_query($sql);
 ?>
@@ -300,9 +301,6 @@ $q=mysql_query($sql);
 	</div>
 	<div id="Main_content_area">
 		<div id="Check_count">
-			<div class="left">
-				<div class="text" style='padding-top:7px;'>승인요청물총 : <?echo count($data);?> 개</div>
-			</div>
 			<div class="right">
 				<button class="clickbox_rightblue" style='float:right;' type="submit">
 					선택승인</button>
@@ -321,7 +319,8 @@ $q=mysql_query($sql);
 		<div id="image_stack">
 			<div class="image_box">
 				<div class="checks" style='top:30px; left:7px;'>
-					<input type="checkbox" name="<?echo $data['al_idx']?>" id="check<?echo $data['al_idx']?>"> <!--id-for값 다르게 설정해야 해당 체크란에 체크 됨-->
+				<input type="checkbox" name="check<?echo $data['al_idx']?>" id="check<?echo $data['al_idx']?>"> <!--id-for값 다르게 설정해야 해당 체크란에 체크 됨-->
+
 					<label for="check<?echo $data['al_idx']?>"></label>
 				</div>
 				<img src="../partner/albumAsk/<?echo ($data['filename'])?>.jpg" class="product_img" />
@@ -331,7 +330,7 @@ $q=mysql_query($sql);
 					<div class="sub"> <?echo ($data['p_localName'])?></div>
 				</div>
 				<div class="date"><?echo ($data['date'])?> 제출</div>
-					<div class="clickbox_rightgray" onclick="location.href='./delete_album.php?al_idx=<?echo $data['al_idx']?>'">거절</div>
+					<div class="clickbox_rightgray" onclick="location.href='./delete_album.php?al_idx=<?echo $data['al_idx']?>&p_id=<?echo $data['p_id']?>&filename=<?echo $data['filename']?>'">거절</div>
 			</div>
 		</div>
 			<?
