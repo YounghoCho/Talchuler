@@ -1,7 +1,4 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
+
 <? 
 include('./HeadTab_Module.php'); 
 ?> 
@@ -14,18 +11,21 @@ include('./HeadTab_Module.php');
 }
 .topPage{
 	width:60%;
-	margin-top:1%;
+	height:4.5%;
 	margin-left:15%;
+	margin-top:2%;
+	font-size:20pt;
 	border-top:1px solid #bfbfbf;
-	border-bottom:1px solid #bfbfbf;
+	border-bottom:1px solid #bfbfbf;	
 }
 .page{
+	margin-left:45%;
+	width:20%;
 	float:left;
-	border:1px solid black;
+	font-size:20pt;
 }
 .time{
-	float:left;
-	border:1px solid black;
+	font-size:20pt;
 }
 .bottomPage{
 	width:60%;
@@ -43,7 +43,7 @@ include('./HeadTab_Module.php');
 .num{
 	width:5%;
 	text-align:center;
-	font-size:13pt;
+	font-size:14pt;
 	border:0;
 }
 .timeBtn{
@@ -143,18 +143,23 @@ include('./HeadTab_Module.php');
 }
 .dnyBtn{
 	margin-left:102%; 
-	margin-top: -1.3%; 
+	margin-top: -10%; 
 	margin-bottom:1%; 
-	width:15%; 
+	width:13%; 
 	height:4%;
 	border:0;
+	font-size:20pt;
+	font-weight:bold;
 	background-color:#eeeeee;
 }
 .acpBtn{
-	margin-left:102%; 
-	width:15%; 
-	height:6%;
+	margin-left:102%;
+	margin-top:-5%;
+	width:13%; 
+	height:12%;
 	border:0;
+	font-size:20pt;
+	font-weight:bold;
 	background-color:#4edcf2;
 }
 </style> 
@@ -165,9 +170,9 @@ include('./HeadTab_Module.php');
 </div>
 <div class="topPage">
 	<div  class="page">
-	 &lt; <input type="textbox" style="text-align:center; width:25px;"> / 13&gt;
+	 &lt; <input type="textbox" style="text-align:center; width:35px; height:30px; font-size:20pt;"> / 13&gt;
 	</div>
-	<div  class="time">
+	<div class="time" align="right">
 	17.04.06. 오후 7:00제출됨
 	</div>
 </div>
@@ -177,13 +182,13 @@ include('./HeadTab_Module.php');
 		<table style="border-spacing:10px 10px;">
 		<tr>
 			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px"></td>
-			<td colspan="3" style="width:700px; height:50px;"><input type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;"onfocus="this.value=''" value=" 제목"></td>
+			<td colspan="3" style="width:700px; height:50px;"><input type="text" style="width:100%;height:100%; font-size:27pt; background-color:#eeeeee; border:0; font-weight:bold;"onfocus="this.value=''"value=" 제목"></td>
 		</tr>
 		<tr>
-			<td colspan="3" style="width:700px; height:50px;"><input type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" onfocus="this.value=''" value=" 부제목"></td>
+			<td colspan="3" style="width:700px; height:50px;"><input type="text" style="width:100%; height:100%; font-size:16pt; background-color:#eeeeee; color:#898989; font-weight:bold; border:0;" onfocus="this.value=''" value="  부제목"></td>
 		</tr>
 		<tr>
-			<td rowspan="3" style="background-color:#eeeeee; width:30%; height:30%;"><textarea style="font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow-invisible;" onfocus="this.value=''">게임설명을 입력해주세요.</textarea></td>
+			<td rowspan="3" style="background-color:#eeeeee; width:30%; height:30%;"><textarea style="font-size:10pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow-invisible;" onfocus="this.value=''"> 게임설명을 입력해주세요.</textarea></td>
 			<td rowspan="3" style="text-align:center; vertical-align:top; width:5%;">(요약)</td>
 			<td style="background-color:#eeeeee; width:30%; height:30%;"><textarea style="font-size:12pt; text-align:center; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" onfocus="this.value='';" >게임요약 설명을 입력해주세요			(미입력시 게임설명 처음4줄 등록)</textarea></td>
 		</tr>
@@ -191,7 +196,7 @@ include('./HeadTab_Module.php');
 			<td style="height:5%;">(예약시간)</td>
 		</tr>
 		<tr>
-			<td style="vertical-align:top;"><input type="button" value="10:00" class="timeBtn"><input type="button" value="11:00" class="timeBtn"><input type="button" value="12:00" class="timeBtn"><input type="button" value="+" class="timeBtn"></td>
+			<td style="vertical-align:top;"><input type="button" value="10:00" class="timeBtn"><input type="button" value="11:00" class="timeBtn"><input type="button" value="12:00" class="timeBtn"><input type="button" value="13:00" class="timeBtn"><input type="button" value="14:00" class="timeBtn"><input type="button" value="15:00" class="timeBtn"><input type="button" value="16:00" class="timeBtn"><input type="button" value="17:00" class="timeBtn"><input type="button" value="18:00" class="timeBtn"><input type="button" value="19:00" class="timeBtn"><input type="button" value="20:00" class="timeBtn"><input type="button" value="21:00" class="timeBtn"><input type="button" value="22:00" class="timeBtn"><input type="button" value="23:00" class="timeBtn"><input type="button" value="24:00" class="timeBtn"><input type="button" value="01:00" class="timeBtn"><input type="button" value="02:00" class="timeBtn"><input type="button" value="03:00" class="timeBtn"></td>
 		</tr>
 	</table>
 	</div>
@@ -275,7 +280,7 @@ include('./HeadTab_Module.php');
 		<div class="discountInfo">할인정보</div>
 		<table style="margin-left:3%; font-size:14pt; margin-bottom:3%;">
 			<tr>
-				<td style="width:35%;">*탈출러최저가(1인가격)</td>
+				<td style="width:35%; font-size:15pt;">*탈출러최저가(1인가격)</td>
 				<td>주중 <input type="textbox" style="width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''" value="(직접입력)">원</td>
 				<td>주말 <input type="textbox" style="width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''" value="(직접입력)">원</td>
 			</tr>
@@ -296,6 +301,33 @@ include('./HeadTab_Module.php');
 	할인가격 - <input type="text" style="width:20%; font-size:14pt; width:12%; text-align:center;" class="defText">원
 	</div>
 
+	<div class="discountContent">
+	할인종류
+		<select name="discount1" class="discountContent_inner">
+			<option value="1">선택하세요</option>
+			<option value="2">조조할인</option>
+			<option value="3">평일할인</option>
+			<option value="4">SNS할인</option>
+			<option value="5">후기할인</option>
+			<option value="6">직접입력</option>
+		</select>
+		<input type="text" style="margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="textValue">
+	할인가격 - <input type="text" style="width:20%; font-size:14pt; width:12%; text-align:center;" class="defText">원
+	</div>
+
+	<div class="discountContent">
+	할인종류
+		<select name="discount1" class="discountContent_inner">
+			<option value="1">선택하세요</option>
+			<option value="2">조조할인</option>
+			<option value="3">평일할인</option>
+			<option value="4">SNS할인</option>
+			<option value="5">후기할인</option>
+			<option value="6">직접입력</option>
+		</select>
+		<input type="text" style="margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="textValue">
+	할인가격 - <input type="text" style="width:20%; font-size:14pt; width:12%; text-align:center;" class="defText">원
+	</div>
 
 	<input type="button" class="dnyBtn" value="거절">
 	<input type="button" class="acpBtn" value="승인하기">
@@ -304,7 +336,6 @@ include('./HeadTab_Module.php');
 
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요--> 
 </div> 
-</html>
 <? 
 include('./Footer_Module.php'); 
 ?>
