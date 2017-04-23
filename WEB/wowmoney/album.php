@@ -7,36 +7,36 @@ include('./HeadTab_Module_Owner.php');
 
 #Main{
 	/*Tab 크기 뺴줌*/
-	width : -webkit-calc(100%-220px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-220px); /* for Firefox */
-    width :         calc(100%-220px); /* for IE */
+	width : -webkit-calc(100% - 240px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 240px); /* for Firefox */
+    width :         calc(100% - 240px); /* for IE */
 	height:90%; /*Main의 높이를 90%로 조절합니다.*/
 	overflow:hidden;
 }
 
 #Main_title_area{
 	/*padding-left 크기 뺴줌*/
-	width : -webkit-calc(100%-30px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-30px); /* for Firefox */
-    width :         calc(100%-30px); /* for IE */
+	width : -webkit-calc(100% - 30px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 30px); /* for Firefox */
+    width :         calc(100% - 30px); /* for IE */
 	overflow:auto;
 	padding:30 0 30 30;
 }
 
 #Main_content_area{
 	/*padding-left 크기 뺴줌*/
-	width : -webkit-calc(100%-30px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-30px); /* for Firefox */
-    width :         calc(100%-30px); /* for IE */
+	width : -webkit-calc(100% - 30px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 30px); /* for Firefox */
+    width :         calc(100% - 30px); /* for IE */
 	overflow:auto;
 	padding:2 0 2 30;
 }
 
 #Main_pagenumber_area{
 	/*padding-left 크기 뺴줌*/
-	width : -webkit-calc(100%-30px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-30px); /* for Firefox */
-    width :         calc(100%-30px); /* for IE */
+	width : -webkit-calc(100% - 30px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 30px); /* for Firefox */
+    width :         calc(100% - 30px); /* for IE */
 	overflow:auto;
 	padding:80 0 10 30;
 }
@@ -189,7 +189,7 @@ include('./HeadTab_Module_Owner.php');
 	text-align:center;
 }
 
-.clickbox_rightblue a{
+.right a{
 	text-decoration:none;
 	color:#3e3e3e;
 }
