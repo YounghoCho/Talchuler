@@ -160,13 +160,13 @@ body{
 				<a href=" ">1:1 문의</a>
 			</div>
 			<div class="categories">
-				<a href=" ">카페기본정보승인</a>
+				<a href="./cafeinfo.php">카페기본정보승인</a>
 			</div>
 			<div class="categories">
 				<a href="./album.php">앨범정보승인</a>
 			</div>
 			<div class="categories">
-				<a href=" ">게임정보승인</a>
+				<a href="cafeinfo.php">게임정보승인</a>
 			</div>
 		</div>
 	</div>

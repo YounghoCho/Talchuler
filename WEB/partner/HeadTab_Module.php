@@ -104,13 +104,16 @@ ul{
 	<ul class='tbmenu'>
 	<li>내 카페관리</li>
 		<ul class="hide">
-			<a href="./mypage1.php"><li class="tab_li">오늘의 게임</li></a>
-			<a href="./mypage2.php"><li class="tab_li">예약 관리</li></a>
-			<a href="./mypage3.php"><li class="tab_li">후기 관리</li></a>
-			<a href="./mypage4.php"><li class="tab_li">카페정보관리</li></a>
+		<!--
+			<a href=""><li class="tab_li">오늘의 게임</li></a>
+			<a href=""><li class="tab_li">예약 관리</li></a>
+			<a href=""><li class="tab_li">후기 관리</li></a>
+		-->
+			<a href="./cafeinfo.php"><li class="tab_li">카페정보관리</li></a>
 			<a href="./album.php"><li class="tab_li">앨범</li></a>
-			<a href="./mypage6.php"><li class="tab_li">게임정보관리</li></a>
+			<a href="./gameinfo.php"><li class="tab_li">게임정보관리</li></a>
 		</ul>
+<!--
 	<li>서비스이용</li>
 		<ul class="hide">
 			<a href=""><li class="tab_li">타임핫딜</li></a>
@@ -118,6 +121,7 @@ ul{
 			<a href=""><li class="tab_li">예약 통계</li></a>
 			<a href=""><li class="tab_li">후기 통계</li></a>
 		</ul>
+-->
 	<li>서비스소개</li>
 		<ul class="hide">
 			<a href=""><li class="tab_li">타임커머스</li></a>
@@ -127,10 +131,12 @@ ul{
 		</ul>
 	<li>고객센터</li>
 		<ul class="hide">
+<!--
 			<a href=""><li class="tab_li">알림/실행</li></a>
 			<a href=""><li class="tab_li">공지사항</li></a>
 			<a href=""><li class="tab_li">1:1문의</li></a>
 			<a href=""><li class="tab_li">FAQ</li></a>
+-->
 			<a href=""><li class="tab_li">약관 및 정책</li></a>
 		</ul>
 	</div>

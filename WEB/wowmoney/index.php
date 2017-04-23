@@ -9,7 +9,7 @@ include('./HeadTab_Module_Owner.php');
 	width : -webkit-calc(100%-220px); /* for Chrome, Safari */
     width :    -moz-calc(100%-220px); /* for Firefox */
     width :         calc(100%-220px); /* for IE */
-	height:880px; /*Main의 높이를 90%로 조절합니다.*/
+	height:90%; /*Main의 높이를 90%로 조절합니다.*/
 	overflow:hidden;
 }
 
