@@ -1,4 +1,7 @@
-﻿<html>
+﻿<?
+session_start();
+?>
+<html>
 <head>
 <!--Intenet Explorer에서 Javascript, JQuery가 동작안하는 것을 막는다-->
 <!--호환문제 때문이며, 해결하는 코드는 바로 아래의 한줄 코드이다-->
@@ -12,8 +15,22 @@
 		});
     });
 </script>
-<style>
+<?
+if(!$_SESSION['admin']){
+	?>
+	<button onclick="login()">로그인</button>
+	<script>
+	function login(){
+		var id=prompt("아이디를 입력해보시오");
+		var pw=prompt("비밀번호는 뭐게?");
 
+		location.href="./admin_login.php?id="+id+"&pw="+pw+"";
+	}
+	</script>
+<?
+}else{
+	?>
+<style>
 body{
 	margin:0px;
 	padding:0px;
@@ -115,10 +132,6 @@ body{
 	font-weight:lighter;
 	padding:7 0 0 10;
 }
-
-
-
-
 </style>
 </head>
 <body>
@@ -137,6 +150,9 @@ body{
 		<div class="category">
 			<img src="images\icon\icon_facebook.png" style='width:20px; top:2px; '/>
 			<div class="category_name" style='margin-left:30px; font-size:12px; padding-top:3px;'>4/11후기관리 업데이트 안내</div>
+		</div>
+		<div class="category">
+			<button style="cursor:pointer;" onclick="location.href='./admin_logout.php'">로그아웃</button>
 		</div>
 	</div>
 		
@@ -171,3 +187,6 @@ body{
 		</div>
 	</div>
 	<!--Content가 들어갈 중간 영역입니다-->
+<?
+}
+?>

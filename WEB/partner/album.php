@@ -163,12 +163,12 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000000" /><!--10mb제한-->
 				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">업로드</label>
-				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png"/>
+				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png" onclick="admitColorChange()"/>
 				<input type="hidden" name="album_count" value="<?echo $data['album_count']?>" /><!--사진을 여러장 보내기위한 절대상승값-->
 				<input type="hidden" name="p_id" value="<?echo $data['p_id']?>" /><!--p_id-->
 				<input type="hidden" name="p_shopName" value="<?echo $data['p_shopName']?>" /><!--p_shopName-->
 				<input type="hidden" name="p_localName" value="<?echo $data['p_localName']?>" /><!--p_localName-->
-				<input type="submit" value="승인요청" style="padding:6px 5px 6px 5px;background-color:#66ccff;margin-left:285px;border:none;"/>
+				<input type="submit" value="승인요청" id="targetButton" style="display:none;padding:6px 5px 6px 5px;background-color:#66ccff;margin-left:285px;border:none;"/>
 			</form>
 			</div>
 			<div class="right">
@@ -209,4 +209,12 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 <?
 include('./Footer_Module.php');
 ?>
-
+<script>
+function admitColorChange(){
+	setInterval(function(){
+		var target=document.getElementById('targetButton');
+		target.style.display='inline';
+	}, 1500)
+	
+}
+</script>

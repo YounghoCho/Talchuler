@@ -16,7 +16,7 @@ if($data['p_id']==""){
 	?>
 		<script>
 			alert("아이디가 존재하지 않습니다.");
-			history.back();
+			location.href='./index.php';
 		</script>
 	<?
 }
@@ -32,7 +32,7 @@ if($data['p_pw']==$_POST['pw']){
 	?>
 		<script>
 			alert("비밀번호가 일치하지 않습니다.");
-			history.back();
+			location.href='./index.php';
 		</script>
 	<?
 }
