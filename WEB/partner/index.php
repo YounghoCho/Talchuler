@@ -26,6 +26,7 @@ include('./HeadTab_Module.php');
 	line-height:180px;
 }
 .TodaysReserve{float:left; display:inline-block; width:32%; height:275px; margin-left:3%; margin-top:20px;}
+.something{float:left; display:inline-block; width:32%; height:275px; margin-left:3%; margin-top:20px;}
 .OnGame{float:left; display:inline-block; width:32%; height:275px; margin-left:2%; margin-top:20px;}
 .DealingGame{float:left; display:inline-block; width:32%; height:275px; margin-left:3%; margin-top:20px;}
 .Notice{float:left; display:inline-block; width:32%; height:275px; margin-left:2%; margin-top:20px; border:1px solid;}
@@ -54,8 +55,11 @@ if(!$_SESSION['id']==""){
 	<div class="Main">
 		<div class="MainBanner">배너자리
 		</div>
-		<div class="TodaysReserve">
-		<!--while문 돌릴때, 5개까지만 나오게 하는거 잊지말자-->
+
+		<div class="something">
+		</div>
+<!--		<div class="TodaysReserve">
+		
 			<table>
 				<tr>
 					<td colspan="2" class="td_head">오늘의 예약현황</td><td></td><td></td><td id="more">더보기></td>
@@ -88,7 +92,7 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td id="more">게시종료</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td id="more">게시종료</td></tr>
 			</table>
-		</div>
+		</div>-->
 		<div class="Notice">
 			<table>
 				<tr><td class="td_head" style="border-bottom:1px solid">공지사항</td><td style="border-bottom:1px solid;" id="more">더보기></td></tr>
@@ -99,8 +103,8 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" ">17-04-11</td></tr>
 			</table>
 		</div>
-			<button class="btn_FQA">자주하는질문</button>
-			<button class="btn_Inquiry">1:1문의</button>
+<!--			<button class="btn_FQA">자주하는질문</button>
+			<button class="btn_Inquiry">1:1문의</button>-->
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div>
 <?

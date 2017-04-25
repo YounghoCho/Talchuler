@@ -1,24 +1,7 @@
 <? 
 include('./include.php');
 include('./HeadTab_Module.php'); 
-if($_GET['refresh']==1){
-   header( "Location: gameinfo.php" );
-   exit;
-}
 ?>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<script>
-$(window).scroll(function() {
-  sessionStorage.scrollTop = $(this).scrollTop();
-});
-
-$(document).ready(function() {
-  if (sessionStorage.scrollTop != "undefined") {
-    $(window).scrollTop(sessionStorage.scrollTop);
-  }
-});
-</script>
 <style> 
 
 .ment{
@@ -65,7 +48,6 @@ $(document).ready(function() {
 	height:29px;
 	background-color:#4edcf2;
 	border:0;
-	cursor:pointer;
 }
 .posBtn2{
 	width:20px;
@@ -73,7 +55,6 @@ $(document).ready(function() {
 	margin-right:6%;
 	background-color:#4edcf2;
 	border:0;
-	cursor:pointer;
 }
 .imposBtn{
 	position:absolute;
@@ -81,7 +62,6 @@ $(document).ready(function() {
 	height:29px;
 	background-color:#bfbfbf;
 	border:0;
-	cursor:pointer;
 }
 .imposBtn2{
 	width:20px;
@@ -89,7 +69,6 @@ $(document).ready(function() {
 	margin-right:6%;
 	border:1px solid #bfbfbf;
 	background-color:white;
-	cursor:pointer;
 }
 .defBtn{
 	border:1px solid #4edcf2;
@@ -109,7 +88,6 @@ $(document).ready(function() {
 	margin-left:3%;
 	background-color:#bfbfbf;
 	border:0;
-	cursor:pointer;
 }
 .textInner{
 	width:40%;
@@ -137,7 +115,6 @@ $(document).ready(function() {
 	margin-top:1%;
 	text-align:center;
 	border:1px solid #4edcf2;
-	cursor:pointer;
 }
 .save{
 	width:15%;
@@ -148,7 +125,6 @@ $(document).ready(function() {
 	font-weight:bold;
 	background-color:#4edcf2;
 	border:0;
-	cursor:pointer;
 }
 .Info2{
 	width:60%;
@@ -161,10 +137,8 @@ $(document).ready(function() {
 	margin-right:4.1%;
 	margin-top:3%;
 	font-size:13pt;
-	border:4px solid #4edcf2;
+	border:1px solid #4edcf2;
 	background:white;
-	padding:5px;
-	cursor:pointer;
 }
 .gameNum_Inner{
 	margin-top:3%;
@@ -197,7 +171,6 @@ $(document).ready(function() {
 	font-weight:bold;
 	border:0;
 	margin-bottom:1%;
-	cursor:pointer;
 }
 .defText{
 	border:1px solid #4edcf2;
@@ -214,7 +187,6 @@ $(document).ready(function() {
 	background-color:#4edcf2;
 	border:0;
 	margin-bottom:1%;
-	cursor:pointer;
 }
 .timeBtn{
 	margin-right:4%;
@@ -260,20 +232,6 @@ vertical-align:top;padding: 10px 10px 10px 10px;
 }
 #summary{
 font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;vertical-align:top;padding: 10px 10px 10px 10px;
-}
-#Page_info{
-	width:100%;
-	padding-left:3%;
-}
-#Page_info .left{
-	float:left;
-	display:table;
-}
-#Page_info .page_count{
-	display:table-cell;
-	font-size:22px;
-	font-weight:bold;
-	padding:0 3;
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -1099,13 +1057,13 @@ function button_onskill(value){
 				a1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				a1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 		case 2:
 			var now=document.getElementById("ability"+value);
@@ -1113,13 +1071,13 @@ function button_onskill(value){
 				b1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				b1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 		case 3:
 			var now=document.getElementById("ability"+value);
@@ -1127,13 +1085,13 @@ function button_onskill(value){
 				c1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				c1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 		case 4:
 			var now=document.getElementById("ability"+value);
@@ -1141,13 +1099,13 @@ function button_onskill(value){
 				d1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				d1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 		case 5:
 			var now=document.getElementById("ability"+value);
@@ -1155,13 +1113,13 @@ function button_onskill(value){
 				e1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				e1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 		case 6:
 			var now=document.getElementById("ability"+value);
@@ -1169,13 +1127,13 @@ function button_onskill(value){
 				f1=-1;
 				now.value="0";
 				now.style.backgroundColor="white";
-				now.style.color="white";break;
+				now.style.color="white";
 			}
 			else{
 				f1=1;
 				now.value="1";
 				now.style.backgroundColor="#4edcf2";
-				now.style.color="#4edcf2";break;
+				now.style.color="#4edcf2";
 			}
 	}
 }
@@ -1320,66 +1278,26 @@ $data=mysql_fetch_array($q);
 </form>
 <!-- partner_priceAsk form E-->
 <?
-//기본가격정보에 사용될 쿼리
-$sql="select * from partner_price where p_id='".$_SESSION['id']."'";
-$q=mysql_query($sql);
-$basic=mysql_fetch_array($q);
 
-//게임정보에 사용될 쿼리들
-//count
-$sql2="select count(p_id) from game where p_id='".$_SESSION['id']."'";
-$q=mysql_query($sql2);
-$count=mysql_fetch_array($q);
-
-//queue
-$queue=array();
-$sql="select g_idx from game where p_id='".$_SESSION['id']."'";
-$q=mysql_query($sql);
-while($result=mysql_fetch_array($q)){
-	//상대인덱스값
-	array_push($queue, $result[0]);
-}
-//역행 금지
-if($_GET['index']==-1){?><script>history.back();</script><?}
-//상대인덱스값(queue값이 페이지갱신되면서 index로 들어옴)
-$index=$_GET['index'];
-//인덱스초기화
-if(!$index){$index=0;}
-
-//index condition
-if($index+1>$count[0]){
-	?>
-	<script>alert("더정보가없지롱");history.back();</script>
-	<?
-}
-
-//call cafe infos
-	$sql="select * from game where g_idx='".$queue[$index]."'";
-	$q=mysql_query($sql);
-	$data=mysql_fetch_array($q);
 ?>
-
 <form action="./gameAsk.php" method="POST">
-<input type="hidden" name="g_idx" value="<?echo $queue[$index]?>"/>
 <div class="Info2">
 	<div class="ment2">
 		게임정보
 	</div>
 	
 	<div align="right";>
-		<input type="button" value="게임추가" class="addGame" onclick="location.href='./gameAdd.php'">
+		<input type="button" value="게임추가" class="addGame">
 	</div>
 	
-	<div id="Page_info">
-	<div class="left">
-		<div class="page_count"><a href="./gameinfo.php?index=<?echo $index-1?>"><</a></div>
-		<div class="page_count"><?echo $index+1?></div>
-		<div class="page_count">/</div>
-		<div class="page_count"><?echo $count[0]?></div>
-		<div class="page_count"><a href="./gameinfo.php?index=<?echo $index+1?>">></a></div>
+	<div>
+		<div class="gameNum_Inner" id="gameNum1" onclick="button_onclick(1)" style="background-color:#4edcf2;">게임11111</div>
+		<div class="gameNum_Inner" id="gameNum2" onclick="button_onclick(2)">게임22222</div>
+		<div class="gameNum_Inner" id="gameNum3" onclick="button_onclick(3)">게임33333</div>
+		<div class="gameNum_Inner" id="gameNum4" onclick="button_onclick(4)">게임44444</div>
+		<div class="gameNum_Inner" id="gameNum5" onclick="button_onclick(5)">게임55555</div>
 	</div>
-	</div>
-
+	
 	<div class="gameInfo">
 	<table style="border-spacing:10px 10px;">
 		<tr>
@@ -1524,23 +1442,23 @@ if(ability6.value==1){
 		</tr>
 		<tr>
 			<td>
-			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" style="background-color:#eeeeee" value="<?echo $data['g_p1']?>" name="g_p9">원</p></td>
+			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" style="background-color:#eeeeee" value="<?echo $data['g_p1']?>">원</p></td>
 			<td>
-			<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" value="<?echo $data['g_p2']?>" name="g_p10">원</p></td>
+			<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" value="<?echo $data['g_p2']?>">원</p></td>
 			<td>
-			<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3<input type="text" class="textInner" id="text11" value="<?echo $data['g_p3']?>" name="g_p11">원</p></td>
+			<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3<input type="text" class="textInner" id="text11" value="<?echo $data['g_p3']?>">원</p></td>
 			<td>
-			<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4<input type="text" class="textInner" id="text12" value="<?echo $data['g_p4']?>" name="g_p12">원</p></td>
+			<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4<input type="text" class="textInner" id="text12" value="<?echo $data['g_p4']?>">원</p></td>
 		</tr>
 		<tr>
 			<td>
-			<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5<input type="text" class="textInner" id="text13" value="<?echo $data['g_p5']?>" name="g_p13">원</p></td>
+			<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5<input type="text" class="textInner" id="text13" value="<?echo $data['g_p5']?>">원</p></td>
 			<td>
-			<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6<input type="text" class="textInner" id="text14" value="<?echo $data['g_p6']?>" name="g_p14">원</p></td>
+			<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6<input type="text" class="textInner" id="text14" value="<?echo $data['g_p6']?>">원</p></td>
 			<td>
-			<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" value="<?echo $data['g_p7']?>" name="g_p15">원</p></td>
+			<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" value="<?echo $data['g_p7']?>">원</p></td>
 			<td>
-			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#eeeeee" value="<?echo $data['g_p8']?>" name="g_p16">원</p></td>
+			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#eeeeee" value="<?echo $data['g_p8']?>">원</p></td>
 		</tr>
 	</table>	
 	</div>
@@ -1632,7 +1550,7 @@ if(ability6.value==1){
 	</div>
 
 	<div align="center";>
-		<input type="button" class="delBtn" value="삭제" onclick="deleteGame()">
+		<input type="button" class="delBtn"value="삭제">
 		<input type="submit" class="saveBtn" value="저장">
 	</div>
 </div>
@@ -1736,12 +1654,5 @@ function data_copy(){
 		dis9.value="";
 		dis10.value="";
 	}
-}
-</script>
-<script>
-function deleteGame(){
-	if(confirm("게임 '<?echo $data['g_title']?>'을 정말 삭제하시겠습니까?")==true){
-		location.href='./gameDelete.php?g_idx=<?echo $queue[$index]?>'		
-	}else{return;}
 }
 </script>

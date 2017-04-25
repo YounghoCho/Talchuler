@@ -137,7 +137,7 @@ body{
 <body>
 	<div id="Head">
 		<div class="logo_box">
-			<img src="./images/common/bg_gnbtop.png" />
+			<a href="./index.php"><img src="./images/common/bg_gnbtop.png" /></a>
 		</div>
 		<div class="category" style=''>
 			<img src="images\icon\icon_facebook.png" style='width:30px; top:-5px;'/>
@@ -163,18 +163,18 @@ body{
 			<div class="categories">
 				<a href="./findUser.php">회원관리</a>
 			</div>
-			<div class="categories">
+		<!--	<div class="categories">
 				<a href=" ">1:1 문의</a>
-			</div>
+			</div>-->
 		</div>
 		<div class="box_module">
 			<div class="title_box">업&nbsp&nbsp&nbsp&nbsp소</a></div>
 			<div class="categories">
 				<a href="./findPartner.php">회원관리</a>
 			</div>
-			<div class="categories">
+		<!--	<div class="categories">
 				<a href=" ">1:1 문의</a>
-			</div>
+			</div>-->
 			<div class="categories">
 				<a href="./cafeinfo.php">카페기본정보승인</a>
 			</div>
@@ -182,7 +182,7 @@ body{
 				<a href="./album.php">앨범정보승인</a>
 			</div>
 			<div class="categories">
-				<a href="cafeinfo.php">게임정보승인</a>
+				<a href="./gameinfo.php">게임정보승인</a>
 			</div>
 		</div>
 	</div>
