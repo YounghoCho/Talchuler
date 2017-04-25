@@ -32,7 +32,7 @@ include('./HeadTab_Module.php');
 .Login{float:left; display:inline-block; width:32%; height:275px; margin-left:3%; margin-top:20px; border:1px solid;}
 table{width:100%;height:auto;}
 
-.btn_FQA{float:left; display:inline-block; width:32%; height:50px; margin-left:3%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px; margin-left:18%;}
+.btn_FQA{float:left; display:inline-block; width:32%; height:50px; margin-left:3%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_Inquiry{float:left; display:inline-block; width:32%; height:50px; margin-left:2%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_idpw1{float:left; display:inline-block; width:12%; height:50px; margin-left:14%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px; border:none;}
 .btn_idpw2{float:left; display:inline-block; width:17%; height:50px; margin-left:0%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px; border:none;}
