@@ -603,7 +603,7 @@ if(!$index){$index=0;}
 //index condition
 if($index+1>$count[0]){
 	?>
-	<script>alert("더정보가없지롱");history.back();</script>
+	<script>alert("더정보가없지롱");location.href='./index.php';</script>
 	<?
 }
 
@@ -641,9 +641,16 @@ if($index+1>$count[0]){
 	<div class="gameInfo">
 	<table style="border-spacing:10px 10px;">
 		<tr>
-
-		<!--제목-->
-			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px"></td>
+<?
+$imageSql="select * from gameImageAsk where g_idx='".$data['g_idx']."'";
+$imageQ=mysql_query($imageSql);
+$image=mysql_fetch_array($imageQ);
+?>
+			<!--이미지-->
+			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
+				<img src="../partner/gameImageAsk/<?echo $image['filename']?>.jpg" style="width:100%;"/>
+			</td>
+			<!--제목-->
 			<td id="title" colspan="3"  style="width:700px; height:50px;">
 			<input name="title" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;" value="<?echo $data['g_title']?>">
 			</td>

@@ -2,6 +2,7 @@
 include('./include.php');
 include('./HeadTab_Module.php'); 
 ?>
+
 <style> 
 
 .ment{
@@ -355,7 +356,7 @@ function myFunction9() {
     if(count9%2==0){
 	document.getElementById("text9").disabled = true;
 	document.getElementById("btn9").style.backgroundColor='#bfbfbf';
-	document.getElementById("text9").style.backgroundColor='#eeeeee';
+	document.getElementById("text9").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text9").disabled = false;
 	document.getElementById("btn9").style.backgroundColor='#4edcf2';
@@ -434,7 +435,7 @@ function myFunction16() {
     if(count16%2==0){
 	document.getElementById("text16").disabled = true;
 	document.getElementById("btn16").style.backgroundColor='#bfbfbf';
-	document.getElementById("text16").style.backgroundColor='#eeeeee';
+	document.getElementById("text16").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text16").disabled = false;
 	document.getElementById("btn16").style.backgroundColor='#4edcf2';
@@ -542,8 +543,6 @@ function button_onskill(value){
 게임추가하기
 </div>
 
-<form action="./gameAddAsk.php" method="POST">
-<input type="hidden" name="g_idx" value="<?echo $queue[$index]?>"/>
 <div class="Info2">
 	<div class="ment2">
 		게임정보
@@ -552,9 +551,41 @@ function button_onskill(value){
 	<div class="gameInfo">
 	<table style="border-spacing:10px 10px;">
 		<tr>
+<style>
+input[type="file"]{ position: absolute;clip:rect(5,180,25,75);margin-left:-50px;}
+#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13pt;border:none;background-color:#4edcf2;}
+</style>
+<?
+//넘길 g_idx값
+$passSql="select g_idx from gameAsk order by g_idx desc";
+$passQ=mysql_query($passSql);
+$pass=mysql_fetch_array($passQ);
+//사진 불러올 쿼리
+$imgsql="select filename from gameImageAsk where g_idx='".$pass['g_idx']."'+1";
+$imgQ=mysql_query($imgsql);
+$img=mysql_fetch_array($imgQ);
+?>
+			<!--사진 업로드-->
+		<form id="f1" action="./gameAddDB.php" method="POST" name="form" enctype="multipart/form-data">
+			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
+				<label for="cover" style=" display: inline-block;background-color:#eee;height:80%;width:100%;"><img id="thisimg" src="" style="width:100%;border:none;" onerror="this.style.display='none'"/></label>
+				<input name="userfile" type="file" id="cover" accept=".gif, .jpg, .png"/>
+				<input type="hidden" name="p_id" value="<?echo	$_SESSION['id']?>" />
+				<input type="hidden" name="isnew" value="1" />
+				<input type="hidden" name="g_idx" value="<?echo	$pass['g_idx']+1?>" />
+				<input type="hidden" name="request_uri" value="<?echo $_SERVER['REQUEST_URI']?>" />
+			</td>
 
+<?
+//사진변경
+if($_GET['refresh']==1){
+?><script>
+	var thisimg=document.getElementById('thisimg');
+	thisimg.src="./gameImageAsk/<?echo $img[0]?>.jpg";
+</script>
+<?}?>
 		<!--제목-->
-			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px"></td>
+
 			<td id="title" colspan="3"  style="width:700px; height:50px;"><input name="title" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;">
 			</td>
 		</tr>
@@ -639,7 +670,7 @@ function button_onskill(value){
 		</tr>
 		<tr>
 			<td>
-			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" name="g_p9">원</p></td>
+			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" name="g_p9" style="background-color:#ccc">원</p></td>
 			<td>
 			<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" name="g_p10">원</p></td>
 			<td>
@@ -655,7 +686,7 @@ function button_onskill(value){
 			<td>
 			<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" name="g_p15">원</p></td>
 			<td>
-			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#eeeeee">원</p></td>
+			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc">원</p></td>
 		</tr>
 	</table>	
 	</div>
@@ -747,7 +778,7 @@ function button_onskill(value){
 	</div>
 
 	<div align="center";>
-		<input type="submit" class="saveBtn" value="추가">
+		<input type="button" class="saveBtn" value="추가" onclick="sendform()">
 	</div>
 </div>
 </form>
@@ -835,5 +866,12 @@ function data_copy(){
 		dis9.value="";
 		dis10.value="";
 	}
+}
+</script>
+<script>
+function sendform(){
+var f1=document.getElementById('f1');
+ 
+	 f1.submit();
 }
 </script>

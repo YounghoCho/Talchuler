@@ -407,7 +407,7 @@ function myFunction1() {
     if(count1%2==0){
 	document.getElementById("text1").disabled = true;
 	document.getElementById("btn1").style.backgroundColor='#bfbfbf';
-	document.getElementById("text1").style.backgroundColor='#eeeeee';
+	document.getElementById("text1").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text1").disabled = false;
 	document.getElementById("btn1").style.backgroundColor='#4edcf2';
@@ -486,7 +486,7 @@ function myFunction8() {
     if(count8%2==0){
 	document.getElementById("text8").disabled = true;
 	document.getElementById("btn8").style.backgroundColor='#bfbfbf';
-	document.getElementById("text8").style.backgroundColor='#eeeeee';
+	document.getElementById("text8").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text8").disabled = false;
 	document.getElementById("btn8").style.backgroundColor='#4edcf2';
@@ -499,7 +499,7 @@ function myFunction9() {
     if(count9%2==0){
 	document.getElementById("text9").disabled = true;
 	document.getElementById("btn9").style.backgroundColor='#bfbfbf';
-	document.getElementById("text9").style.backgroundColor='#eeeeee';
+	document.getElementById("text9").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text9").disabled = false;
 	document.getElementById("btn9").style.backgroundColor='#4edcf2';
@@ -578,7 +578,7 @@ function myFunction16() {
     if(count16%2==0){
 	document.getElementById("text16").disabled = true;
 	document.getElementById("btn16").style.backgroundColor='#bfbfbf';
-	document.getElementById("text16").style.backgroundColor='#eeeeee';
+	document.getElementById("text16").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text16").disabled = false;
 	document.getElementById("btn16").style.backgroundColor='#4edcf2';
@@ -1211,7 +1211,7 @@ $data=mysql_fetch_array($q);
 		</tr>
 		<tr>
 			<td>
-			<input type="button" class="imposBtn" id="btn1" onclick="myFunction1()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text1" style="background-color:#eeeeee" value="<?echo $basic['g_p1']?>" name="g_p1">원</p></td>
+			<input type="button" class="imposBtn" id="btn1" onclick="myFunction1()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text1" style="background-color:#ccc" value="<?echo $basic['g_p1']?>" name="g_p1">원</p></td>
 			<td>
 			<input type="button" class="posBtn" id="btn2" onclick="myFunction2()"><p class="priceText">2<input type="text" class="textInner" id="text2"  value="<?echo $basic['g_p2']?>" name="g_p2">원</p></td>
 			<td>
@@ -1227,7 +1227,7 @@ $data=mysql_fetch_array($q);
 			<td>
 			<input type="button" class="posBtn" id="btn7" onclick="myFunction7()"><p class="priceText">7<input type="text" class="textInner" id="text7" value="<?echo $basic['g_p7']?>" name="g_p7">원</p></td>
 			<td>
-			<input type="button" class="imposBtn" id="btn8" onclick="myFunction8()"><p class="priceText" name="g_p8">8<input type="text8" class="textInner" disabled id="text8" style="background-color:#eeeeee" value="<?echo $basic['g_p8']?>">원</p></td>
+			<input type="button" class="imposBtn" id="btn8" onclick="myFunction8()"><p class="priceText" name="g_p8">8<input type="text8" class="textInner" disabled id="text8" style="background-color:#ccc" value="<?echo $basic['g_p8']?>">원</p></td>
 		</tr>
 	</table>	
 	</div>
@@ -1359,8 +1359,6 @@ if($index+1>$count[0]){
 	$data=mysql_fetch_array($q);
 ?>
 
-<form action="./gameAsk.php" method="POST">
-<input type="hidden" name="g_idx" value="<?echo $queue[$index]?>"/>
 <div class="Info2">
 	<div class="ment2">
 		게임정보
@@ -1383,9 +1381,47 @@ if($index+1>$count[0]){
 	<div class="gameInfo">
 	<table style="border-spacing:10px 10px;">
 		<tr>
+<style>
+input[type="file"]{ position: absolute;clip:rect(5,180,25,75);margin-left:-50px;}
+#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13pt;border:none;background-color:#4edcf2;}
+</style>
 
-		<!--제목-->
-			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px"></td>
+<?
+//넘길 g_idx값 (여기서 쓰이진않고 gameAdd에서 쓰이는데 퍼옴)
+$passSql="select g_idx from gameAsk order by g_idx desc";
+$passQ=mysql_query($passSql);
+$pass=mysql_fetch_array($passQ);
+//요청사진 불러올 쿼리
+$imgsql="select filename from gameImageAsk where g_idx='".$pass['g_idx']."'+1";
+$imgQ=mysql_query($imgsql);
+$img=mysql_fetch_array($imgQ);
+//진짜게임사진을 불러올 쿼리
+$realsql="select filename from gameImage where g_idx='".$data['g_idx']."'";
+$realQ=mysql_query($realsql);
+$real=mysql_fetch_array($realQ);
+?>
+
+			<!--사진 업로드-->
+		<form id="f1" action="./gameDB.php" method="POST" name="form" enctype="multipart/form-data">
+			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
+				<label for="cover" style=" display: inline-block;background-color:#eee;height:80%;width:100%;"><img id="thisimg" src="./gameImage/<?echo $real[0]?>.jpg" style="width:100%;border:none;" onerror="this.style.display='none'"/></label>
+				<input name="userfile" type="file" id="cover" accept=".gif, .jpg, .png"/>
+				<input type="hidden" name="p_id" value="<?echo	$data['p_id']?>" />
+				<input type="hidden" name="isnew" value="0" />
+				<input type="hidden" name="g_idx" value="<?echo	$data['g_idx']?>" />
+			</td>
+<?
+//사진변경
+if($_GET['imageRefresh']==1){
+?><script>
+	var thisimg=document.getElementById('thisimg');
+	thisimg.src="./gameImageAsk/<?echo $img[0]?>.jpg";
+</script>
+<?}?>
+			<!--제목-->
+
+<!--아주 중요한 정보-->
+<input type="hidden" name="g_idx" value="<?echo $queue[$index]?>"/>
 			<td id="title" colspan="3"  style="width:700px; height:50px;"><input name="title" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;" value="<?echo $data['g_title']?>">
 			</td>
 		</tr>
@@ -1524,7 +1560,7 @@ if(ability6.value==1){
 		</tr>
 		<tr>
 			<td>
-			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" style="background-color:#eeeeee" value="<?echo $data['g_p1']?>" name="g_p9">원</p></td>
+			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" style="background-color:#ccc" value="<?echo $data['g_p1']?>" name="g_p9">원</p></td>
 			<td>
 			<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" value="<?echo $data['g_p2']?>" name="g_p10">원</p></td>
 			<td>
@@ -1540,7 +1576,7 @@ if(ability6.value==1){
 			<td>
 			<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" value="<?echo $data['g_p7']?>" name="g_p15">원</p></td>
 			<td>
-			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#eeeeee" value="<?echo $data['g_p8']?>" name="g_p16">원</p></td>
+			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc" value="<?echo $data['g_p8']?>" name="g_p16">원</p></td>
 		</tr>
 	</table>	
 	</div>
@@ -1633,7 +1669,7 @@ if(ability6.value==1){
 
 	<div align="center";>
 		<input type="button" class="delBtn" value="삭제" onclick="deleteGame()">
-		<input type="submit" class="saveBtn" value="저장">
+		<input type="button" class="saveBtn" value="저장" onclick="sendform()">
 	</div>
 </div>
 </form>
@@ -1743,5 +1779,11 @@ function deleteGame(){
 	if(confirm("게임 '<?echo $data['g_title']?>'을 정말 삭제하시겠습니까?")==true){
 		location.href='./gameDelete.php?g_idx=<?echo $queue[$index]?>'		
 	}else{return;}
+}
+</script>
+<script>
+function sendform(){
+	var f1=document.getElementById('f1');
+	f1.submit();
 }
 </script>
