@@ -62,7 +62,6 @@ include('./HeadTab_Module.php');
 		<input type="hidden" name="tele3" value="<?echo $_POST['tele3']?>">
 		<input type="hidden" name="businessNumber" value="<?echo $_POST['businessNumber']?>">
 		<input type="hidden" name="postNumber1" value="<?echo $_POST['postNumber1']?>">
-		<input type="hidden" name="postNumber2" value="<?echo $_POST['postNumber2']?>">
 		<input type="hidden" name="location1" value="<?echo $_POST['location1']?>">
 		<input type="hidden" name="location2" value="<?echo $_POST['location2']?>">
 		<input type="hidden" name="email1" value="<?echo $_POST['email1']?>">

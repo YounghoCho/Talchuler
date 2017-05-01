@@ -47,8 +47,8 @@ if($data=mysql_fetch_array($query)){
 	//이미 가입된 아이디인 경우 insert문을 반복해서 보내지 않도록 중단시킨다.
 	?>
 	<script>
-		alert("이미 가입된 상태입니다.");
-		location.href="./index.php";
+	//	alert("이미 가입된 상태입니다.");
+	//	location.href="./index.php";
 	</script>
 	<?
 }else{
@@ -96,8 +96,8 @@ $_SESSION['id']=$_POST['id'];
 ?>
 	<div class="btndiv">
 		<center>
-		<a href=""><input type="button" class="donebtn" value="[카페정보관리] 바로가기" style="font-weight:bold;"></a>
-		<a href=""><input type="button" class="donebtn" value="[게임정보관리] 바로가기" style="font-weight:bold;"></a>
+		<input type="button" class="donebtn" value="[카페정보관리] 바로가기" onclick="location.href='./cafeinfo.php'" style="font-weight:bold;">
+		<input type="button" class="donebtn" value="[게임정보관리] 바로가기" onclick="location.href='./gameinfo.php'" style="font-weight:bold;">
 		</center>
 </div>
 </div>

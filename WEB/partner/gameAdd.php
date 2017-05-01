@@ -4,6 +4,9 @@ include('./HeadTab_Module.php');
 ?>
 
 <style> 
+.container{
+	margin-left:100px;
+}
 
 .ment{
 	margin-top:2%;
@@ -91,7 +94,7 @@ include('./HeadTab_Module.php');
 	cursor:pointer;
 }
 .textInner{
-	width:40%;
+	width:70px;
 	margin-left:4%; 
 	font-size:14pt;
 	text-align:center;
@@ -538,250 +541,251 @@ function button_onskill(value){
 </script>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.--> 
-
-<div class="ment">
-게임추가하기
-</div>
-
-<div class="Info2">
-	<div class="ment2">
-		게임정보
-	</div>
-		
-	<div class="gameInfo">
-	<table style="border-spacing:10px 10px;">
-		<tr>
-<style>
-input[type="file"]{ position: absolute;clip:rect(5,180,25,75);margin-left:-50px;}
-#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13pt;border:none;background-color:#4edcf2;}
-</style>
-<?
-//넘길 g_idx값
-$passSql="select g_idx from gameAsk order by g_idx desc";
-$passQ=mysql_query($passSql);
-$pass=mysql_fetch_array($passQ);
-//사진 불러올 쿼리
-$imgsql="select filename from gameImageAsk where g_idx='".$pass['g_idx']."'+1";
-$imgQ=mysql_query($imgsql);
-$img=mysql_fetch_array($imgQ);
-?>
-			<!--사진 업로드-->
-		<form id="f1" action="./gameAddDB.php" method="POST" name="form" enctype="multipart/form-data">
-			<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
-				<label for="cover" style=" display: inline-block;background-color:#eee;height:80%;width:100%;"><img id="thisimg" src="" style="width:100%;border:none;" onerror="this.style.display='none'"/></label>
-				<input name="userfile" type="file" id="cover" accept=".gif, .jpg, .png"/>
-				<input type="hidden" name="p_id" value="<?echo	$_SESSION['id']?>" />
-				<input type="hidden" name="isnew" value="1" />
-				<input type="hidden" name="g_idx" value="<?echo	$pass['g_idx']+1?>" />
-				<input type="hidden" name="request_uri" value="<?echo $_SERVER['REQUEST_URI']?>" />
-			</td>
-
-<?
-//사진변경
-if($_GET['refresh']==1){
-?><script>
-	var thisimg=document.getElementById('thisimg');
-	thisimg.src="./gameImageAsk/<?echo $img[0]?>.jpg";
-</script>
-<?}?>
-		<!--제목-->
-
-			<td id="title" colspan="3"  style="width:700px; height:50px;"><input name="title" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;">
-			</td>
-		</tr>
-		<tr>
-			<td id="subtitle" colspan="3" style="width:700px; height:50px;"><input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" onfocus="this.value=''">
-			</td>
-		</tr>
-		<tr>
-			<td id="content" rowspan="3" style="background-color:#eeeeee; width:30%;"><textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;"></textarea>
-			</td>
-			<td rowspan="3" style="text-align:right; width:5%;vertical-align:top;">(요약)</td>
-			<td id="summary" style="background-color:#eeeeee; width:30%; height:30%;"><textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" onfocus="this.value='';"></textarea></td>
-		</tr>
-		<tr>
-			<td style="height:5%;"><!--(예약시간)-->&nbsp;</td>
-		</tr>
-		<tr>
-			<td style="vertical-align:top;">
-			&nbsp;<!--
-			<input type="button" value="10:00" class="timeBtn"><input type="button" value="11:00" class="timeBtn"><input type="button" value="12:00" class="timeBtn"><input type="button" value="13:00" class="timeBtn"><input type="button" value="14:00" class="timeBtn"><input type="button" value="15:00" class="timeBtn"><input type="button" value="16:00" class="timeBtn"><input type="button" value="17:00" class="timeBtn"><input type="button" value="18:00" class="timeBtn"><input type="button" value="19:00" class="timeBtn"><input type="button" value="20:00" class="timeBtn"><input type="button" value="21:00" class="timeBtn"><input type="button" value="22:00" class="timeBtn"><input type="button" value="23:00" class="timeBtn"><input type="button" value="24:00" class="timeBtn"><input type="button" value="01:00" class="timeBtn"><input type="button" value="02:00" class="timeBtn"><input type="button" value="03:00" class="timeBtn">
-			-->
-			</td>
-		</tr>
-	</table>
+<div class="container">
+	<div class="ment">
+	게임추가하기
 	</div>
 
-	<div>
-	<table style="width:80%; margin-left:3%;">
-	<tr>
-		<td style="font-size:12pt; width:25%;">(게임설정)</td>
-		<td style="font-size:12pt;">(필요능력)</td>
-	</tr>
-    <tr> 
-      <td rowspan="2" style="font-size:13pt;">
-	  난이도
-		<a href="#a" class="bt_up">올림</a> 
-		<input id="level" name="level" type="text" name="num" class="num" value="0">
-		<a href="#a" class="bt_down">내림</a>
-	  </td>
-      <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability1" onclick=button_onskill(1)>직관력<input id="a1" type="hidden" name="ability1"></td>
-	  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability2" onclick=button_onskill(2)>관찰력<input id="a2" type="hidden" name="ability2"></td>
-      <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2"  id="ability3" onclick=button_onskill(3)>수리력<input id="a3" type="hidden" name="ability3"></td>
-      <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2"  id="ability4" onclick=button_onskill(4)>팀워크<input id="a4" type="hidden" name="ability4"></td>
-    </tr>
-    <tr>       
-    </tr>
-    <tr>
-      <td rowspan="2" style="font-size:13pt;">
-	  공포감
-	  	<a href="#a" class="bt_up">올림</a> 
-		<input id="horror" name="horror" type="text" name="num" class="num" value="0">
-		<a href="#a" class="bt_down">내림</a>
-		</td>
-    </tr>
-    <tr>     
-      <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability5" onclick=button_onskill(5)>활동성<input id="a5" type="hidden" name="ability5"></td>
-	  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability6" onclick=button_onskill(6)>담력<input id="a6" type="hidden" name="ability6"></td>
-	  <td rowspan="3"></td>
-	  <td rowspan="3"></td>
-    </tr>
-
-    <tr>
-      <td rowspan="2" style="font-size:13pt;">
-	  인원수
-	  	<a href="#a" class="bt_up1">올림</a> 
-		<input id="people" name="people" type="text" name="num1" class="num1" value="0">
-		<a href="#a" class="bt_down1">내림</a>
-	  </td>
-    </tr>
-	</table>
-		<HR width="93%" align="center" border="1" style="margin-top:3%; margin-left:2.9%;"/>
-		<div style="text-align:right; margin-right:4.1%; margin-top:3%; font-size:15pt;">
-			기본 가격정보와 같음<input type="button" class="exBtn" onclick="data_copy()" id="copy" name="copy">
+	<div class="Info2">
+		<div class="ment2">
+			게임정보
 		</div>
-	</div>
-
-	<div>
-	<table id="copytable" class="gamePrice">
-		<tr>
-			<td colspan="3" class="sMent1_1">게임가격</td>
-			<td class="sMent1_2"><input type="button" class="pos" style="margin-left:2%;">가능<input type="button" class="impos">불가능</td>
-		</tr>
-		<tr>
-			<td>
-			<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" name="g_p9" style="background-color:#ccc">원</p></td>
-			<td>
-			<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" name="g_p10">원</p></td>
-			<td>
-			<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3<input type="text" class="textInner" id="text11" name="g_p11">원</p></td>
-			<td>
-			<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4<input type="text" class="textInner" id="text12" name="g_p12">원</p></td>
-		</tr>
-		<tr>
-			<td>
-			<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5<input type="text" class="textInner" id="text13" name="g_p13">원</p></td>
-			<td>
-			<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6<input type="text" class="textInner" id="text14" name="g_p14">원</p></td>
-			<td>
-			<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" name="g_p15">원</p></td>
-			<td>
-			<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc">원</p></td>
-		</tr>
-	</table>	
-	</div>
-
-	<div>
-		<div class="discountInfo">할인정보</div>
-		<table style="margin-left:3%; font-size:14pt; margin-bottom:3%;">
+			
+		<div class="gameInfo">
+		<table style="border-spacing:10px 10px;">
 			<tr>
-				<td style="width:35%;">*탈출러최저가(1인가격)</td>
-				<td>주중 <input type="textbox" id="week2" name="week" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''">원</td>
-				<td>주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''">원</td>
+	<style>
+	input[type="file"]{ position: absolute;clip:rect(5,180,25,75);margin-left:-50px;}
+	#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13pt;border:none;background-color:#4edcf2;}
+	</style>
+	<?
+	//넘길 g_idx값
+	$passSql="select g_idx from gameAsk order by g_idx desc";
+	$passQ=mysql_query($passSql);
+	$pass=mysql_fetch_array($passQ);
+	//사진 불러올 쿼리
+	$imgsql="select filename from gameImageAsk where g_idx='".$pass['g_idx']."'+1";
+	$imgQ=mysql_query($imgsql);
+	$img=mysql_fetch_array($imgQ);
+	?>
+				<!--사진 업로드-->
+			<form id="f1" action="./gameAddDB.php" method="POST" name="form" enctype="multipart/form-data">
+				<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
+					<label for="cover" style=" display: inline-block;background-color:#eee;height:80%;width:100%;"><img id="thisimg" src="" style="width:100%;border:none;" onerror="this.style.display='none'"/></label>
+					<input name="userfile" type="file" id="cover" accept=".gif, .jpg, .png"/>
+					<input type="hidden" name="p_id" value="<?echo	$_SESSION['id']?>" />
+					<input type="hidden" name="isnew" value="1" />
+					<input type="hidden" name="g_idx" value="<?echo	$pass['g_idx']+1?>" />
+					<input type="hidden" name="request_uri" value="<?echo $_SERVER['REQUEST_URI']?>" />
+				</td>
+
+	<?
+	//사진변경
+	if($_GET['refresh']==1){
+	?><script>
+		var thisimg=document.getElementById('thisimg');
+		thisimg.src="./gameImageAsk/<?echo $img[0]?>.jpg";
+	</script>
+	<?}?>
+			<!--제목-->
+
+				<td id="title" colspan="3"  style="width:70%; height:50px;"><input name="title" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee;  border:0;">
+				</td>
+			</tr>
+			<tr>
+				<td id="subtitle" colspan="3" style="width:70%; height:50px;"><input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" onfocus="this.value=''">
+				</td>
+			</tr>
+			<tr>
+				<td id="content" rowspan="3" style="background-color:#eeeeee;"><textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;"></textarea>
+				</td>
+				<td rowspan="3" style="width:30px;text-align:right; width:5%;vertical-align:top;">(요약)</td>
+				<td id="summary" style="background-color:#eeeeee; width:30%; height:30%;"><textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" onfocus="this.value='';"></textarea></td>
+			</tr>
+			<tr>
+				<td style="height:5%;"><!--(예약시간)-->&nbsp;</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;">
+				&nbsp;<!--
+				<input type="button" value="10:00" class="timeBtn"><input type="button" value="11:00" class="timeBtn"><input type="button" value="12:00" class="timeBtn"><input type="button" value="13:00" class="timeBtn"><input type="button" value="14:00" class="timeBtn"><input type="button" value="15:00" class="timeBtn"><input type="button" value="16:00" class="timeBtn"><input type="button" value="17:00" class="timeBtn"><input type="button" value="18:00" class="timeBtn"><input type="button" value="19:00" class="timeBtn"><input type="button" value="20:00" class="timeBtn"><input type="button" value="21:00" class="timeBtn"><input type="button" value="22:00" class="timeBtn"><input type="button" value="23:00" class="timeBtn"><input type="button" value="24:00" class="timeBtn"><input type="button" value="01:00" class="timeBtn"><input type="button" value="02:00" class="timeBtn"><input type="button" value="03:00" class="timeBtn">
+				-->
+				</td>
 			</tr>
 		</table>
-	</div>
+		</div>
 
-	<div class="discountContent">
-	할인종류
-		<select id="discount6" name="discount1" class="discountContent_inner" onChange="getSelectValue6();">
-			<option value="1">선택하세요</option>
-			<option value="2">조조할인</option>
-			<option value="3">평일할인</option>
-			<option value="4">SNS할인</option>
-			<option value="5">후기할인</option>
-			<option value="6">직접입력</option>
-		</select>
-		<input type="text" id="value6" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value6">
-	할인가격 - <input type="text" id="dis6" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis6">원
-	</div>
+		<div>
+		<table style="width:80%; margin-left:3%;">
+		<tr>
+			<td style="font-size:12pt; width:25%;">(게임설정)</td>
+			<td style="font-size:12pt;">(필요능력)</td>
+		</tr>
+		<tr> 
+		  <td rowspan="2" style="font-size:13pt;">
+		  난이도
+			<a href="#a" class="bt_up">올림</a> 
+			<input id="level" name="level" type="text" name="num" class="num" value="0">
+			<a href="#a" class="bt_down">내림</a>
+		  </td>
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability1" onclick=button_onskill(1)>직관력<input id="a1" type="hidden" name="ability1"></td>
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability2" onclick=button_onskill(2)>관찰력<input id="a2" type="hidden" name="ability2"></td>
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2"  id="ability3" onclick=button_onskill(3)>수리력<input id="a3" type="hidden" name="ability3"></td>
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2"  id="ability4" onclick=button_onskill(4)>팀워크<input id="a4" type="hidden" name="ability4"></td>
+		</tr>
+		<tr>       
+		</tr>
+		<tr>
+		  <td rowspan="2" style="font-size:13pt;">
+		  공포감
+			<a href="#a" class="bt_up">올림</a> 
+			<input id="horror" name="horror" type="text" name="num" class="num" value="0">
+			<a href="#a" class="bt_down">내림</a>
+			</td>
+		</tr>
+		<tr>     
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability5" onclick=button_onskill(5)>활동성<input id="a5" type="hidden" name="ability5"></td>
+		  <td rowspan="3" style="font-size:15pt;"><input type="button" class="imposBtn2" id="ability6" onclick=button_onskill(6)>담력<input id="a6" type="hidden" name="ability6"></td>
+		  <td rowspan="3"></td>
+		  <td rowspan="3"></td>
+		</tr>
 
-	<div class="discountContent">
-	할인종류
-		<select id="discount7" name="discount1" class="discountContent_inner" onChange="getSelectValue7();">
-			<option value="1">선택하세요</option>
-			<option value="2">조조할인</option>
-			<option value="3">평일할인</option>
-			<option value="4">SNS할인</option>
-			<option value="5">후기할인</option>
-			<option value="6">직접입력</option>
-		</select>
-		<input type="text" id="value7" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value7">
-	할인가격 - <input type="text" id="dis7" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis7">원
-	</div>
+		<tr>
+		  <td rowspan="2" style="font-size:13pt;">
+		  인원수
+			<a href="#a" class="bt_up1">올림</a> 
+			<input id="people" name="people" type="text" name="num1" class="num1" value="0">
+			<a href="#a" class="bt_down1">내림</a>
+		  </td>
+		</tr>
+		</table>
+			<HR width="93%" align="center" border="1" style="margin-top:3%; margin-left:2.9%;"/>
+			<div style="text-align:right; margin-right:4.1%; margin-top:3%; font-size:15pt;">
+				기본 가격정보와 같음<input type="button" class="exBtn" onclick="data_copy()" id="copy" name="copy">
+			</div>
+		</div>
 
-	<div class="discountContent">
-	할인종류
-		<select id="discount8" name="discount1" class="discountContent_inner" onChange="getSelectValue8();">
-			<option value="1">선택하세요</option>
-			<option value="2">조조할인</option>
-			<option value="3">평일할인</option>
-			<option value="4">SNS할인</option>
-			<option value="5">후기할인</option>
-			<option value="6">직접입력</option>
-		</select>
-		<input type="text" id="value8" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value8">
-	할인가격 - <input type="text" id="dis8" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis8">원
-	</div>
+		<div>
+		<table id="copytable" class="gamePrice">
+			<tr>
+				<td colspan="3" class="sMent1_1">게임가격</td>
+				<td class="sMent1_2"><input type="button" class="pos" style="margin-left:2%;">가능<input type="button" class="impos">불가능</td>
+			</tr>
+			<tr>
+				<td>
+				<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1<input type="text1" class="textInner" disabled id="text9" name="g_p9" style="background-color:#ccc">원</p></td>
+				<td>
+				<input type="button" class="posBtn" id="btn10" onclick="myFunction10()"><p class="priceText">2<input type="text" class="textInner" id="text10" name="g_p10">원</p></td>
+				<td>
+				<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3<input type="text" class="textInner" id="text11" name="g_p11">원</p></td>
+				<td>
+				<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4<input type="text" class="textInner" id="text12" name="g_p12">원</p></td>
+			</tr>
+			<tr>
+				<td>
+				<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5<input type="text" class="textInner" id="text13" name="g_p13">원</p></td>
+				<td>
+				<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6<input type="text" class="textInner" id="text14" name="g_p14">원</p></td>
+				<td>
+				<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7<input type="text" class="textInner" id="text15" name="g_p15">원</p></td>
+				<td>
+				<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc">원</p></td>
+			</tr>
+		</table>	
+		</div>
 
-	<div class="discountContent">
-	할인종류
-		<select id="discount9" name="discount1
-		" class="discountContent_inner" onChange="getSelectValue9();">
-			<option value="1">선택하세요</option>
-			<option value="2">조조할인</option>
-			<option value="3">평일할인</option>
-			<option value="4">SNS할인</option>
-			<option value="5">후기할인</option>
-			<option value="6">직접입력</option>
-		</select>
-		<input type="text" id="value9" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value9">
-	할인가격 - <input type="text" id="dis9" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis9">원
-	</div>
+		<div>
+			<div class="discountInfo">할인정보</div>
+			<table style="margin-left:3%; font-size:14pt; margin-bottom:3%;">
+				<tr>
+					<td style="width:35%;">*탈출러최저가(1인가격)</td>
+					<td>주중 <input type="textbox" id="week2" name="week" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''">원</td>
+					<td>주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''">원</td>
+				</tr>
+			</table>
+		</div>
 
-	<div class="discountContent">
-	할인종류
-		<select id="discount10" name="discount1" class="discountContent_inner" onChange="getSelectValue10();">
-			<option value="1">선택하세요</option>
-			<option value="2">조조할인</option>
-			<option value="3">평일할인</option>
-			<option value="4">SNS할인</option>
-			<option value="5">후기할인</option>
-			<option value="6">직접입력</option>
-		</select>
-		<input type="text" id="value10" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value10">
-	할인가격 - <input type="text" id="dis10" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis10">원
-	</div>
+		<div class="discountContent">
+		할인종류
+			<select id="discount6" name="discount1" class="discountContent_inner" onChange="getSelectValue6();">
+				<option value="1">선택하세요</option>
+				<option value="2">조조할인</option>
+				<option value="3">평일할인</option>
+				<option value="4">SNS할인</option>
+				<option value="5">후기할인</option>
+				<option value="6">직접입력</option>
+			</select>
+			<input type="text" id="value6" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value6">
+		할인가격 - <input type="text" id="dis6" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis6">원
+		</div>
 
-	<div class="lastMent">
-		탈출러에서 검토 후 등록됩니다. 조금만기다려주세요!(최대3일 소요)승인결과는 메일로 안내해드리겠습니다.
-	</div>
+		<div class="discountContent">
+		할인종류
+			<select id="discount7" name="discount1" class="discountContent_inner" onChange="getSelectValue7();">
+				<option value="1">선택하세요</option>
+				<option value="2">조조할인</option>
+				<option value="3">평일할인</option>
+				<option value="4">SNS할인</option>
+				<option value="5">후기할인</option>
+				<option value="6">직접입력</option>
+			</select>
+			<input type="text" id="value7" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value7">
+		할인가격 - <input type="text" id="dis7" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis7">원
+		</div>
 
-	<div align="center";>
-		<input type="button" class="saveBtn" value="추가" onclick="sendform()">
+		<div class="discountContent">
+		할인종류
+			<select id="discount8" name="discount1" class="discountContent_inner" onChange="getSelectValue8();">
+				<option value="1">선택하세요</option>
+				<option value="2">조조할인</option>
+				<option value="3">평일할인</option>
+				<option value="4">SNS할인</option>
+				<option value="5">후기할인</option>
+				<option value="6">직접입력</option>
+			</select>
+			<input type="text" id="value8" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value8">
+		할인가격 - <input type="text" id="dis8" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis8">원
+		</div>
+
+		<div class="discountContent">
+		할인종류
+			<select id="discount9" name="discount1
+			" class="discountContent_inner" onChange="getSelectValue9();">
+				<option value="1">선택하세요</option>
+				<option value="2">조조할인</option>
+				<option value="3">평일할인</option>
+				<option value="4">SNS할인</option>
+				<option value="5">후기할인</option>
+				<option value="6">직접입력</option>
+			</select>
+			<input type="text" id="value9" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value9">
+		할인가격 - <input type="text" id="dis9" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis9">원
+		</div>
+
+		<div class="discountContent">
+		할인종류
+			<select id="discount10" name="discount1" class="discountContent_inner" onChange="getSelectValue10();">
+				<option value="1">선택하세요</option>
+				<option value="2">조조할인</option>
+				<option value="3">평일할인</option>
+				<option value="4">SNS할인</option>
+				<option value="5">후기할인</option>
+				<option value="6">직접입력</option>
+			</select>
+			<input type="text" id="value10" style="margin-top:10px;height:30px;margin-right:5%; font-size:14pt; width:12%; border:1px solid #4edcf2; text-align:center;" name="value10">
+		할인가격 - <input type="text" id="dis10" style="height:30px;width:20%; font-size:14pt; width:12%; text-align:center;" class="defText" name="dis10">원
+		</div>
+
+		<div class="lastMent">
+			탈출러에서 검토 후 등록됩니다. 조금만기다려주세요!(최대3일 소요)승인결과는 메일로 안내해드리겠습니다.
+		</div>
+
+		<div align="center";>
+			<input type="button" class="saveBtn" value="추가" onclick="sendform()">
+		</div>
 	</div>
+	</form>
 </div>
-</form>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요--> 
 </div> 
 <? 

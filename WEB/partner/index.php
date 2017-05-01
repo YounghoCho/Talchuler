@@ -20,6 +20,7 @@ include('./HeadTab_Module.php');
 	height:180px;
 	margin-top:20px;
 	margin-left:3%;
+	margin-bottom:20px;
 	background-color:#999;
 	font-size:20px;
 	text-align:center;
@@ -35,10 +36,10 @@ table{width:100%;height:auto;}
 
 .btn_FQA{float:left; display:inline-block; width:32%; height:50px; margin-left:3%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
 .btn_Inquiry{float:left; display:inline-block; width:32%; height:50px; margin-left:2%; margin-top:50px;margin-bottom:20px; border:1px solid; color:white; background-color:#333; font-size:20px;}
-.btn_idpw1{float:left; display:inline-block; width:12%; height:50px; margin-left:14%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px; border:none;}
-.btn_idpw2{float:left; display:inline-block; width:17%; height:50px; margin-left:0%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px; border:none;}
+.btn_idpw1{float:left; display:inline-block; width:80px; height:50px; margin-left:23%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px;}
+.btn_idpw2{float:left; display:inline-block; width:90px; height:50px; margin-left:0%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px;}
 
-.btn_register{float:left; display:inline-block; width:35%; height:50px; margin-left:9%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px; border:none;}
+.btn_register{float:left; display:inline-block; width:100px; height:50px; margin-left:7%; margin-top:10px;margin-bottom:20px; text-decoration:underline; color:#66ccff; background-color:#fff; font-size:15px;}
 
 .td_head{width:60%;height:50px; font-size:22px; font-weight:bold; padding-left:20px;}
 .td_category{height:8px; border-bottom:1px solid; border-top:1px solid; padding: 3px 0px 3px 25px;}
@@ -112,9 +113,7 @@ if(!$_SESSION['id']==""){
 }else{
 /* 로그인 이전 S*/
 ?>
-<style>
 
-</style>
 	<div class="Main">
 		<div class="MainBanner">배너자리
 		</div>
@@ -124,33 +123,36 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_head">로그인</td></tr>
 				<tr><td>
 					<form action="./login_chk.php" method="POST" name="loginform">
-						<table style="width:60%;margin-left:20%;">
+						<table style="width:180px;margin-left:26%;float:left">
 							<tr>
 							<td height="30px">아이디로그인</td>
 							<td>
 								<input type="checkbox" name="cookie" style="float:right" style="width:25px;height:25px"/>
 							</td>
-							<td style="padding-left:5px;text-align:center;margin-bottom:10px;">로그인유지</td>
 							</tr>
 
 							<tr>
 							<td colspan="2" height="40px" style="margin-top:10px;">
-								<input type="text" name="id" style="width:100%;height:25px;"/>
-							</td>
-							<td rowspan="2" style="padding-left:5px;">
-								<button type="button"  style="height:60px;background-color:#66ccff;text-align:center;width:60%;margin-left:20%;" onclick="module2()">로그인</button>
+								<input type="text" name="id" style="width:100%;height:25px;padding-left:5px;"/>
 							</td>
 							</tr>
 
 							<tr>
 							<td colspan="2" style="margin-top:10px;">
-								<input type="password" name="pw" style="width:100%;height:25px;"/>
+								<input type="password" name="pw" style="width:100%;height:25px;padding-left:5px;"/>
 							</td>
-
 							</tr>
 						</table>
+							<div style="padding-left:5px;margin-top:3px;float:left;">
+								로그인 유지<br>
+								<button type="submit"  style="height:60px;background-color:#66ccff;text-align:center;width:80px;margin-left:3px;margin-top:11px;" onclick="module2()">로그인</button>
+							</div>
 					</form>
-						<button class="btn_idpw1" onclick="location.href='./idFind1.php'">아이디찾기</button><button class="btn_idpw2" onclick="location.href='./pwFind1.php'">비밀번호찾기</button><button class="btn_register" onclick="location.href='./register1.php'">회원가입하기</button>
+					<div style="float:left;width:100%;">
+						<button class="btn_idpw1" onclick="location.href='./idFind1.php'">아이디찾기</button>
+						<button class="btn_idpw2" onclick="location.href='./pwFind1.php'">비밀번호찾기</button>
+						<button class="btn_register" onclick="location.href='./register1.php'">회원가입하기</button>
+					</div>
 				</td></tr>
 			</table>
 
@@ -167,10 +169,10 @@ if(!$_SESSION['id']==""){
 		</div>
 		<div class="MainBanner2">배너자리
 		</div>
-		<button class="btn_FQA">자주하는질문
+<!--		<button class="btn_FQA">자주하는질문
 		</button>
 		<button class="btn_Inquiry">1:1문의
-		</button>
+		</button>-->
 	</div>
 <?
 }

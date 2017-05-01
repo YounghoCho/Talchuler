@@ -6,12 +6,6 @@ $sql = "select p_id, p_pw from partner where p_id='".$_POST['id']."';";
 $q=mysql_query($sql);
 $data=mysql_fetch_array($q);
 
-if($_POST['cookie']=='on'){
-	ini_set("session.cookie_lifetime", "259200");//3days 
-	ini_set("session.cache_expire", "259200"); 
-	ini_set("session.gc_maxlifetime", "259200");
-}
-
 if($data['p_id']==""){
 	?>
 		<script>
@@ -21,19 +15,40 @@ if($data['p_id']==""){
 	<?
 }
 
-if($data['p_pw']==$_POST['pw']){
-	$_SESSION['id']=$data['p_id'];
-	?>
-	<script>
-	location.href='./index.php';
-	</script>
-	<?	
-}else{
-	?>
+if($_POST['cookie']=='on'){
+	if($data['p_pw']==$_POST['pw']){
+		$_SESSION['id']=$data['p_id'];
+		//쿠키생성
+		setcookie('id', $_SESSION['id'], time()+86400);
+		?>
 		<script>
-			alert("비밀번호가 일치하지 않습니다.");
-			location.href='./index.php';
+		location.href='./index.php';
 		</script>
-	<?
+		<?	
+	}else{
+		?>
+			<script>
+				alert("비밀번호가 일치하지 않습니다.");
+				location.href='./index.php';
+			</script>
+		<?
+	}
+}else{
+	if($data['p_pw']==$_POST['pw']){
+		$_SESSION['id']=$data['p_id'];
+		?>
+		<script>
+		location.href='./index.php';
+		</script>
+		<?	
+	}else{
+		?>
+			<script>
+				alert("비밀번호가 일치하지 않습니다.");
+				location.href='./index.php';
+			</script>
+		<?
+	}
 }
+
 ?>

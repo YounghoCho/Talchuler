@@ -1,6 +1,9 @@
 <?
 include('./include.php');
 include('./HeadTab_Module.php');
+if($_GET['refresh']==1){
+   header( "Location: index.php" );
+}
 ?>
 
 <style>
@@ -100,7 +103,7 @@ include('./HeadTab_Module.php');
 
 #image_group .main_img{
 	width:405px;
-	height:265px;
+	height:278px;
 }
 
 #image_group .product_img{
@@ -150,7 +153,7 @@ include('./HeadTab_Module.php');
 	$sql="select * from partner where p_id='".$_SESSION['id']."';";
 	$q=mysql_query($sql);
 	$data=mysql_fetch_array($q);
-	$i=$data['album']-1;
+	$i=$data['album'];
 
 ?>
 <style>
@@ -162,7 +165,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 			<div class="left" style='font-size:14x;'>
 			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000000" /><!--10mb제한-->
-				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">업로드</label>
+				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">사진추가</label>
 				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png" onclick="admitColorChange()"/>
 				<input type="hidden" name="album_count" value="<?echo $data['album_count']?>" /><!--사진을 여러장 보내기위한 절대상승값-->
 				<input type="hidden" name="p_id" value="<?echo $data['p_id']?>" /><!--p_id-->
@@ -176,32 +179,59 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 			</div>
 		</div>
 		<?
-		$sql="select path from album_path where p_id='".$_SESSION['id']."'";
+		//메인사진불러오기
+		$sql="select path, ap_idx from album_main where p_id='".$_SESSION['id']."'";
 		$q=mysql_query($sql);
-		$path=mysql_fetch_array($q);
+		$main=mysql_fetch_array($q);
+
+		//앨범불러오기
+		$sql="select path, ap_idx from album_path where p_id='".$_SESSION['id']."'";
+		$q=mysql_query($sql);
 		?>
 		<div id="image_group">
 			<div class="image_stack">
 					<!-- $i가 0인경우 메인사진-->
-					<img src="./album/<?echo ($path[0])?>.jpg" class="main_img" onerror="this.style.display='none'"/>
+					<img src="./album/<?echo ($main[0])?>.jpg" class="main_img" onerror="this.src='./images/button/up.png'" style="border: 1px solid #aaa"/>
 			</div>
 		<?
 		//$i가 1이상인 경우 사진
-		while($i>0 && $path2=mysql_fetch_array($q)){
+		while($path=mysql_fetch_array($q)){
 		?>
-			<div class="image_stack">
-				<a href=" ">
-					<img src="./album/<?echo ($path2['path'])?>.jpg" class="product_img" />
-				</a>
+			<div class="image_stack" style="border: 1px solid #aaa;margin:3px;cursor:pointer;" onclick="popup(value='<?echo ($path['path'])?>', al_idx='<?echo ($path['ap_idx'])?>')">
+					<img src="./album/<?echo ($path['path'])?>.jpg" class="product_img" />
 			</div>
 		<?
-		$i--;
-			}
+		}
 		?>
 		</div>
 	</div>
 </div>
 
+<style>
+#popup{position:absolute;top:25%;left:15%;width:70%;height:50%;background-color:RGBA(1,1,1,0.8);display:none;}
+#makemain{float:left;width:6%;height:30px;margin:10px;}
+#deletepic{float:left;width:6%;height:30px;margin:10px 0px 10px 0px;}
+#empty{float:left;width:81%;height:30px;}
+#close{float:left;width:3%;height:30px;margin:10px;}
+#leftbutton{float:left;width:15%;height:80%;text-align:center;}
+#rightbutton{float:left;width:70%;height:80%;}
+#centerpicture{float:left;width:15%;height:80%;text-align:center;}
+#imagepath{width:36%;height:90%;margin-left:32%;margin-top:2%;}
+@media all and (max-width:1024px){
+	#empty{float:left;width:76%;height:30px;}
+	#imagepath{width:80%;height:90%;margin-left:10%;margin-top:5%;}
+}
+</style>
+<div id="popup">
+	<div id="makemain"><input type="button" value="메인등록" style="width:100%;height:100%;background-color:#66ccff;border:none;cursor:pointer;" onclick="gotomain()"/></div>
+	<div id="deletepic"><input type="button" value="삭제" style="width:100%;height:100%;color:#444;border:none;cursor:pointer;" onclick="deletepicture()"/></div>
+	<div id="empty"></div>
+	<div id="close" onclick="closer()"><input type="button" value="x" style="width:100%;height:100%;color:#ccc;border:none;font-weight:bold;font-size:26px;cursor:pointer;background-color:RGBA(50,50,50,0.1);"/></div>
+	<div id="leftbutton"><!--<img src="./images/button/left.png" style="width:30px;margin-top:90%;cursor:pointer;"/>--></div>
+	<div id="rightbutton"><img src="" id="imagepath"></p></div>
+	<div id="centerpicture"><!--<img src="./images/button/right.png" style="width:30px;margin-top:90%;cursor:pointer;"/>--></div>
+	
+</div>
 
 
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
@@ -216,5 +246,34 @@ function admitColorChange(){
 		target.style.display='inline';
 	}, 1500)
 	
+}
+</script>
+<script>
+var ap;
+var filename;
+
+function popup(value, ap_idx){
+	var popup= document.getElementById('popup');
+	popup.style.display="block";
+	var imagepath= document.getElementById('imagepath');
+	imagepath.src='./album/'+value+'.jpg';
+	ap=ap_idx;//전역변수에 앨범의 고유번호를 넣어준다.
+	filename=value;
+}
+function closer(){
+	var popup= document.getElementById('popup');
+	popup.style.display="none";
+}
+function deletepicture(){
+	if(confirm("사진을 지우시겠습니까?")==true){
+		location.href="./album_delete.php?ap_idx="+ap+"&filename="+filename+"";
+	}
+	else return;
+}
+function gotomain(){
+	if(confirm("메인 사진으로 등록하시겠습니까?")==true){
+		location.href="./album_gotomain.php?ap_idx="+ap+"&filename="+filename+"";
+	}
+	else return;
 }
 </script>
