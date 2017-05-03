@@ -20,10 +20,6 @@ include('./HeadTab_Module_Owner.php');
 
 <div id="Main">
 
-	<div class="js-layer  layer  hidden">
-	    <!-- 내용은 알아서 -->
-	</div>
-
 </div>
 
 
@@ -32,4 +28,3 @@ include('./HeadTab_Module_Owner.php');
 <?
 include('./Footer_Module.php');
 ?>
-
