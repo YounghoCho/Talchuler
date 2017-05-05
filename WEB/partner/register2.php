@@ -279,12 +279,12 @@ input[type=checkbox]:checked + label:before {
 						<div class="major">아이디</div>
 						<input type="text" maxlength="16" style="padding-left:5px;" name="id" id="id" placeholder="아이디를 입력해주세요"> <br>
 					</div>
-					<div class="help">영문/숫자 조합 4자리-16자리</div>
+					<div class="help">4자리-16자리</div>
 					<div class="container">
 						<div class="major">비밀번호</div>
 						<input type="password" maxlength="16" style="padding-left:5px;" name="pw" id="pw" placeholder="비밀번호를 입력해주세요"><p><!--&nbsp;&nbsp;암호보안수준:--></p>
 					</div>
-					<div class="help">영문 대소문자/숫자/특수문자 중 두가지 이상 조합으로 8~16 자리</div>
+					<div class="help">8~16자리</div>
 					<div class="container">
 						<div class="major">비밀번호확인</div>
 						<input name="pw_check" maxlength="16" style="padding-left:5px;"type="password" placeholder="비밀번호를 다시 입력해주세요"> <br>
@@ -319,11 +319,11 @@ input[type=checkbox]:checked + label:before {
 					</div>
 					<div class="container2" style='	padding-bottom:20px;'>
 						<div class="major">사업자 등록번호</div>
-						<input name="businessNumber" onKeyPress="return numkeyCheck(event)" maxlength="11" style="padding-left:5px;width:131px;"> <br>
+						<input name="businessNumber" onKeyPress="return numkeyCheck(event)" maxlength="10" style="padding-left:5px;width:131px;"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">업체 주소</div>
-						<input type="text" id="sample6_postcode" name="postNumber1"  style="width:60px;padding-left:5px;">
+						<input type="text" id="sample6_postcode" name="postNumber1" style="width:60px;padding-left:5px;" disabled>
 						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background-color:#eee;border:1px solid #aaa;font-weight:bold;padding:2px 3px 2px 3px;margin-left:10px;width:100px" >
 					</div>
 
@@ -346,7 +346,12 @@ input[type=checkbox]:checked + label:before {
 					</div>
 					<div class="container_address">
 						<div class="major"></div>
-						<input type="checkbox" name="agreement2" style='width:20px;height:20px;margin-right:10px;' checked/>탈출러의 다양한 이벤트 및 소식을 받아보실 수 있습니다.
+						<input type="checkbox" name="agreement2" style='width:20px;height:20px;margin-right:10px;' checked/>탈출러의 다양한 이벤트 및 소식을 받아보실 수 있습니다.(선택)
+						<div class="need_bar"> </div>						
+					</div>
+					<div class="container_address">
+						<div class="major"></div>
+						<input type="checkbox" name="agreement6" style='width:20px;height:20px;margin-right:10px;' checked/><font color="#CC0066">게임정보, 카페정보 등록 및 수정시 탈출러에서 정보 확인 후 이메일로 결과(승인/반려)를 전송해드립니다.(필수)</font>
 						<div class="need_bar"> </div>						
 					</div>
 				</form>
@@ -444,6 +449,8 @@ function module2(){
 		alert("업체 대표번호를 입력해주세요.");
 	}else if(f.businessNumber.value==""){
 		alert("사업자 등록번호를 입력해주세요.");
+	}else if(f.businessNumber.value.length!=10){
+		alert("사업자등록번호 10자리를 확인해주세요.");
 	}else if(f.postNumber1.value==""){
 		alert("우편번호를 입력해주세요.");
 	}else if(f.location1.value==""){
@@ -454,6 +461,8 @@ function module2(){
 		alert("이메일을 입력해주세요.");
 	}else if(f.email2.value==""){
 		alert("이메일을 입력해주세요.");
+	}else if(!f.agreement6.checked){
+		alert("이메일 수신 필수항목에 동의해주세요.");
 	}else{
 		f.submit();
 	}

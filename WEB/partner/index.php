@@ -3,12 +3,14 @@ include('./HeadTab_Module.php');
 ?>
 
 <style>
+.Main{height:780px;}
 .MainBanner{
 	float:left;
 	width:66%;
 	height:100px;
 	margin-top:20px;
 	margin-left:3%;
+	margin-bottom:1%;
 	background-color:#999;
 	font-size:20px;
 	text-align:center;
@@ -54,7 +56,16 @@ if(!$_SESSION['id']==""){
 ?>
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 	<div class="Main">
-		<div class="MainBanner">배너자리
+		<div class="MainBanner">
+			<div class="mySlides fade">
+			  <img src="./images/banner/banner_top1.png" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="./images/banner/banner_top2.png" style="width:100%">
+			</div>
+			<div class="mySlides fade">
+			  <img src="./images/banner/banner_top3.png" style="width:100%">
+			</div>
 		</div>
 
 		<div class="something">
@@ -115,8 +126,7 @@ if(!$_SESSION['id']==""){
 ?>
 
 	<div class="Main">
-		<div class="MainBanner">배너자리
-		</div>
+	
 		<div class="Login">
 			
 			<table>
@@ -167,7 +177,8 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" ">17-04-11</td></tr>
 			</table>
 		</div>
-		<div class="MainBanner2">배너자리
+		<div class="MainBanner2">
+			<img src="./images/banner/banner_bottom.png" style="width:100%;"/>
 		</div>
 <!--		<button class="btn_FQA">자주하는질문
 		</button>
@@ -193,4 +204,23 @@ function module2(){
 	}
 }
 </script>
+<script>
+//banner change
+var slideIndex = 0;
+showSlides();
 
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+
+    slides[slideIndex-1].style.display = "block";  
+
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>

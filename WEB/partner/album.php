@@ -10,29 +10,31 @@ if($_GET['refresh']==1){
 
 #Main{
 	/*Tab 크기 뺴줌*/
-	width : -webkit-calc(100%-220px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-220px); /* for Firefox */
-    width :         calc(100%-220px); /* for IE */
+	width : -webkit-calc(100% - 220px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 220px); /* for Firefox */
+    width :         calc(100% - 220px); /* for IE */
 	height:90%; /*Main의 높이를 90%로 조절합니다.*/
-	overflow:hidden;
+	font-family:'NotoSansCJKkr-Regular.eot';
+	overflow:auto;
 }
 
 #Main_title_area{
 	/*padding-left 크기 뺴줌*/
-	width : -webkit-calc(100%-30px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-30px); /* for Firefox */
-    width :         calc(100%-30px); /* for IE */
-	overflow:auto;
-	padding:30 0 30 50;
+	width : -webkit-calc(100% - 30px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 30px); /* for Firefox */
+    width :         calc(100% - 30px); /* for IE */
+	overflow:visible;
+	margin:50 0 0 33;
+	padding:0 0 30 26;
 }
 
 #Main_content_area{
 	/*padding-left 크기 뺴줌*/
-	width : -webkit-calc(100%-30px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-30px); /* for Firefox */
-    width :         calc(100%-30px); /* for IE */
+	width : -webkit-calc(100% - 30px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 30px); /* for Firefox */
+    width :         calc(100% - 30px); /* for IE */
 	overflow:auto;
-	padding:2 0 2 50;
+	padding:2 0 2 59;
 }
 
 /*타이틀 부분*/
@@ -40,8 +42,8 @@ if($_GET['refresh']==1){
 #Main_titlebar{
 	display:table;
 	width:100%;
+	height:auto;
 	color:#666666;
-	overflow:auto;
 }
 
 
@@ -49,8 +51,10 @@ if($_GET['refresh']==1){
 	display:table-cell;
 	float:left;
 	font-size:25px;
+	line-height:26px;
 	font-weight:bold;
 	padding-right:10px;
+	margin-top:-3px;
 }
 
 #Main_titlebar .sub_title{
@@ -58,6 +62,8 @@ if($_GET['refresh']==1){
 	float:left;
 	font-size:17px;
 	font-weight:lighter;
+	margin-top:5px;
+	font-weight:normal;
 }
 
 /*타이틀 부분*/
@@ -144,7 +150,7 @@ if($_GET['refresh']==1){
 	<div id="Main_title_area">
 		<div id="Main_titlebar">
 			<div class="title">카페정보관리</div>
-			<div class="sub_title">-앨범</div>
+			<div class="sub_title">-&nbsp앨범</div>
 		</div>
 	</div>
 
@@ -171,7 +177,9 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 				<input type="hidden" name="p_id" value="<?echo $data['p_id']?>" /><!--p_id-->
 				<input type="hidden" name="p_shopName" value="<?echo $data['p_shopName']?>" /><!--p_shopName-->
 				<input type="hidden" name="p_localName" value="<?echo $data['p_localName']?>" /><!--p_localName-->
-				<input type="submit" value="승인요청" id="targetButton" style="display:none;padding:6px 5px 6px 5px;background-color:#66ccff;margin-left:285px;border:none;"/>
+				<input type="button" onclick="submiter()" value="승인요청" id="targetButton" style="display:none; padding:6px 5px 6px 5px; background-color:#ff6600; color:#ffffff; margin-left:7px; border:none;margin-top:-5px;"/>
+				<div id="imageNotice" style="display:none;"><font style="color:#ff6600;">승인요청 해주시면 탈출러에서 검토, 승인 후 탈출러 웹사이트에 등록됩니다.(최대3일소요)</font></div>
+				<div id="imageSize" style="display:inline; margin-left:5px;"><font>jpg, png 파일을 등록바랍니다.</font></div>
 			</form>
 			</div>
 			<div class="right">
@@ -240,10 +248,15 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 include('./Footer_Module.php');
 ?>
 <script>
-function admitColorChange(){
-	setInterval(function(){
+function admitColorChange(){   
+	setTimeout(function(){
+		
 		var target=document.getElementById('targetButton');
 		target.style.display='inline';
+		var imageNotice= document.getElementById('imageNotice');
+		imageNotice.style.display='inline';
+		var imageNotice= document.getElementById('imageSize');
+		imageNotice.style.display='none';
 	}, 1500)
 	
 }
@@ -275,5 +288,16 @@ function gotomain(){
 		location.href="./album_gotomain.php?ap_idx="+ap+"&filename="+filename+"";
 	}
 	else return;
+}
+</script>
+<script>
+function submiter(){
+   var f=document.form;
+   var file= document.getElementById('cover');
+   if(file.value==""){
+      alert('사진 파일을 선택해주세요.');
+	}else{
+		f.submit();
+	}
 }
 </script>

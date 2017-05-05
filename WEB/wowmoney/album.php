@@ -305,22 +305,23 @@ $q=mysql_query($sql);
 				<button class="clickbox_rightblue" style='float:right;' type="submit">
 					선택승인</button>
 				<div id="all_check">
-					<div class="checks">
-						<input type="checkbox" name="all" id="ex_chk">
+				<!--	<div class="checks">
+						<input type="checkbox" name="all" id="ex_chk" onclick="button_onclickall()">
 						<label for="ex_chk">전체선택</label>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
-	<?
-		while($data=mysql_fetch_array($q)){
+	<?	
+	while($data=mysql_fetch_array($q)){
+
 			?>
 			
 		<div id="image_stack">
 			<div class="image_box">
 				<div class="checks" style='top:30px; left:7px;'>
 				<input type="checkbox" name="check<?echo $data['al_idx']?>" id="check<?echo $data['al_idx']?>"> <!--id-for값 다르게 설정해야 해당 체크란에 체크 됨-->
-
+	
 					<label for="check<?echo $data['al_idx']?>"></label>
 				</div>
 				<img src="../partner/albumAsk/<?echo ($data['filename'])?>.jpg" class="product_img" />

@@ -67,6 +67,7 @@ include('./HeadTab_Module.php');
 		<input type="hidden" name="email1" value="<?echo $_POST['email1']?>">
 		<input type="hidden" name="email2" value="<?echo $_POST['email2']?>">
 		<input type="hidden" name="agreement2" value="<?echo $_POST['agreement2']?>">
+		<input type="hidden" name="agreement6" value="<?echo $_POST['agreement6']?>">
 		<!--hidden data passing E-->
 
 	<div class="lowestPrice">

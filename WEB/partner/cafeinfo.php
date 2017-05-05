@@ -3,20 +3,25 @@ include('./HeadTab_Module.php');
 ?>
 
 <style>
+
 input{padding:3px;}
 #Main_titlebar{
+	font-family:'NotoSansCJKkr-Regular.eot';
+	color:#626262;
 	width:80%;
-	margin-left:4%;
+	margin-left:33px;
 	height:auto;
 	width:100%;
 	display:table;
-	margin-top:20px;
+	margin-top:50px;
+	padding-left:26px;
 }
 #Main_titlebar .title{
 	height:100%;
 	float:left;
-	font-size:26px;
+	font-size:25px;
 	margin-right:10px;
+	font-weight:bold;
 	display:table-cell;
 	margin-bottom:20px;
 }
@@ -79,6 +84,8 @@ input{padding:3px;}
 	display:block;
 }
 #inputbox .container_add{
+	font-family:'NotoSansCJKkr-Regular.eot';
+	color:#626262;
 	height:auto;
 	width:100%;
 	display:table;
@@ -88,6 +95,8 @@ input{padding:3px;}
 	padding-right:0px;
 }
 #inputbox .container_address{
+	font-family:'NotoSansCJKkr-Regular.eot';
+	color:#626262;
 	height:auto;
 	width:100%;
 	display:table;
@@ -97,6 +106,8 @@ input{padding:3px;}
 	padding-left:8px;
 }
 #inputbox .container_add2{
+	font-family:'NotoSansCJKkr-Regular.eot';
+	color:#626262;
 	height:auto;
 	width:100%;
 	display:table;
@@ -106,6 +117,8 @@ input{padding:3px;}
 	padding-right:0px;
 }
 #inputbox .container_add_mid{
+	font-family:'NotoSansCJKkr-Regular.eot';
+	color:#626262;
 	height:auto;
 	width:100%;
 	display:table;
@@ -127,7 +140,9 @@ input{padding:3px;}
 	background-color:#ff0099;
 }
 #inputbox .major{
+	font-family:'NotoSansCJKkr-Regular.eot';
 	float:left;
+	font-weight:medium;
 	font-size:15px;
 	display:table-cell;
 	width:120px;
@@ -137,6 +152,7 @@ input{padding:3px;}
 	float:left;
 	font-size:15px;
 	display:table-cell;
+	color:#626262;
 	width:100px;
 	padding-left:5px;
 	margin-left:15px;
@@ -146,28 +162,34 @@ input{padding:3px;}
 	display:table-cell;
 	width:180px;
 	float:left;
+	font-size:10pt;
+	
 }
 #inputbox .container2 input{
 	display:table-cell;
 	width:360px;
 	float:left;
+	font-size:10pt;
 }
 #inputbox .container_address input{
 	display:table-cell;
-	width:81px;
+	width:82px;
 	float:left;
+	font-size:10pt;
 }
 #inputbox .container_add2 input{
 	display:table-cell;
 	width:360px;
 	float:left;
 	margin-left:20px;
+	font-size:10pt;
 }
 #inputbox .container_add_mid input{
 	display:table-cell;
 	width:360px;
 	float:left;
 	margin-left:20px;
+	font-size:10pt;
 }
 #promise{
 	width:80%;
@@ -193,12 +215,13 @@ input{padding:3px;}
 	width:80%;
 	margin-left:4%;
 	text-align:center;
+	font-family:'NotoSansCJKkr-Regular.eot';
 	margin-top:20px;
 	}
 #endmessage span{
 	margin:0;
 	font-size:15px;
-	color:#7c7c7c;
+	color:#ff6600;
 }
 .click_box{
 	float:left;
@@ -209,20 +232,19 @@ input{padding:3px;}
 .click_box button{
 	position:absolute;
 	width:80px;
-	height:20px;
+	height:26px;
 	font-size:14px;
-	font-weight:200;
 	/*font-stretch: ultra-condensed;*/
 	border-color:transparent;
 	padding:0;
 	border:0;
 	background:#66ccff;
-	color:#000000;
+	color:#626262;
 	cursor:pointer;
 }
 .click_box input{
 	width:80px;
-	height:20px;
+	height:26px;
 	opacity:0;
 	position:relative; 
 }
@@ -231,13 +253,14 @@ input{padding:3px;}
 	text-align:center;
 }
 .link_area{
+	font-family:'NotoSansCJKkr-Regular.eot';
 	background:#66ccff;
-	color:#000000;
-	font-size:20px;
-	font-weight:200;
+	color:#626262;
+	font-size:16pt;
 	width:130px;
 	height:30px;
 	clear:both;
+	font-weight:bold;
 	margin:auto;
 	line-height:30px;
 }
@@ -269,7 +292,7 @@ height:100%;
 <div style="height:850px;overflow:hidden;">
 	<div id="Main_titlebar">
 		<div class="title">카페정보관리</div>
-		<div class="subtitle">-카페기본설정</div>
+		<div class="subtitle">-&nbsp카페기본설정</div>
 	</div>
 <?
 //infos to be into placeholders
@@ -286,30 +309,29 @@ $data=mysql_fetch_array($q);
 				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="localName" value="<?echo $data['p_localName']?>"> <br>
 			</div>
 
-
-
 				<!--이미지전송-->
 			<div class="container_logo">
 					<div class="icon"><img src="images\icon\icon1.png" class="icon_sample"/></div><div class="major">＊카페로고</div>
 					<input type="hidden" name="MAX_FILE_SIZE" value="100000" /><!--100MB제한-->
 					<!-- input의 name은 $_FILES 배열의 name을 결정합니다 -->
-					<div style="float:left;border:1px solid #aaa;width:120px;height:120px;">
-						<img src="./partnerpic/<?echo ($_SESSION['id']);?>.jpg" style="width:100%"  onerror="this.style.display='none'"/>
+					<div style=" position:relative; float:left;border:0px solid #aaa; width:182px; height:62px; text-align:center; display:table-cell; background-color:#a0a0a0;">
+						<img src="./partnerpic/<?echo ($_SESSION['id']);?>.jpg" style="position:absolute; width:auto; height:auto; max-height:60px; max-width:180px; border:0px solid #aaa; background-color:#ffffff; margin:auto;
+            top:0; bottom:0; left:0; right:0;" onerror="this.style.display='none'"/>
 					</div>
 					<div style="float:left;">
-						<input name="userfile" type="file" style="margin-left:10px;"/><br>
+						<input name="userfile" id="file" type="file" style="margin-left:10px;"/><br>
 					</div>
 			</div>
 				<!--이미지전송 E-->
 			
 			
 			<div class="container">
-				<div class="icon"><img src="images\icon\icon1.png" class="icon_sample"/></div><div class="major">＊매장전화번호</div><input type="text" name="p_tele" value="<?echo $data['p_tele']?>">
+				<div class="icon"><img src="images\icon\icon3.png" class="icon_sample"/></div><div class="major">＊매장전화번호</div><input type="text" name="p_tele" value="<?echo $data['p_tele']?>" placeholder="전화번호를 입력해주세요.">
 			</div>
 			<div class="container_address">
 				<div class="icon"><img src="images\icon\icon4.png" class="icon_sample"/></div><div class="major">＊주소</div>
 				<input type="text" name="postNumber1" value="<?echo $data['p_postNumber1']?>"><div class="need_bar"> - </div><input type="text" name="postNumber2" value="<?echo $data['p_postNumber2']?>">
-				<div class="click_box"><button style="width:100px;">우편번호찾기</button><input type="file" value="파일 업로드"style="width:100px;" name="cafe_logo">
+				<div class="click_box"><button style="width:100px;">우편번호찾기</button><input type="file" value="파일 업로드"style="font-weight:normal; width:100px;" name="cafe_logo">
 				</div> 
 			</div>
 			<div class="container_add_mid">
@@ -321,11 +343,11 @@ $data=mysql_fetch_array($q);
 			<div class="container2">
 				<div class="icon"><img src="images\icon\icon2.png" class="icon_sample"/></div>
 				<div class="major">&nbsp이용혜택</div>
-				<input type="text" name="benefit1" value="<?echo $data['benefit1']?>">
+				<input type="text" name="benefit1" value="<?echo $data['benefit1']?>" placeholder="모든테마탈출:폴라로이드">
 			</div>
 			<div class="container_add2">
 				<div class="major_add">&nbsp</div>
-				<input type="text" name="benefit2" value="<?echo $data['benefit2']?>">
+				<input type="text" name="benefit2" value="<?echo $data['benefit2']?>" placeholder="ex)탈출성공:OOO증정{최대15자}">
 				<br>
 			</div>
 			<div class="container_add2">
@@ -356,7 +378,23 @@ include('./Footer_Module.php');
 ?>
 <script>
 function submit(){
-	var f=document.form;
-	f.submit();
+   var f=document.form;
+   var file= document.getElementById('file');
+   
+   var re = /(?:\.([^.]+))?$/;
+   var ext = re.exec(file.value)[1];         
+   if(ext==undefined){
+      alert('사진 파일을 선택해주세요.');
+      return false;
+   }else if(ext!='png' && ext!='jpg' && ext!='gif' && ext!='bmp' && ext!='png'){
+      alert("확장자는 jpg, png, gif, bmp, png형식만 가능합니다.");
+      return false;
+   }else if(file.files[0].size>3000000){
+      //3mb이하
+      alert('파일사이즈는 3MB를 넘을 수 없습니다.');
+      return false;
+   }else{
+      f.submit();
+   }
 }
 </script>

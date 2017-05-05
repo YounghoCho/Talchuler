@@ -246,7 +246,7 @@ if(!$index){$index=0;}
 //index condition
 if($index+1>$count[0]){
 	?>
-	<script>alert("더정보가없지롱");history.back();</script>
+	<script>alert("더정보가없지롱");location.href="./index.php";</script>
 	<?
 }
 

@@ -182,6 +182,7 @@ function server_time()
 				<a href=""><li class="tab_li">후기 통계</li></a>
 			</ul>
 		-->
+		<!--
 		<li>서비스소개</li>
 			<ul class="hide">
 				<a href=""><li class="tab_li">타임커머스</li></a>
@@ -189,6 +190,7 @@ function server_time()
 				<a href=""><li class="tab_li">상위노출광고</li></a>
 				<a href=""><li class="tab_li">패키지광고</li></a>
 			</ul>
+			-->
 		<li>고객센터</li>
 			<ul class="hide">
 		<!--
