@@ -1,5 +1,6 @@
 ﻿<?
 include('./include_head.php');
+include('./include.php');
 ?>
 <html xml:lang="ko" lang="ko">
  
@@ -115,31 +116,40 @@ include('./include_head.php');
 								</select>
 							</div>
 							<div class="chkbox">
-								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>
+<!--								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>-->
 							</div>
 						</div>
 					</dd>
 				</dl>
 				<dl class="cho3">
-					<dt><font style="font-weight:bold">지역</font></dt>
-					<dd>
+					<dt><font style="font-weight:bold;margin-right:15px;">지역</font></dt>
+					<dd style="width:100%;">
 						<ul class="loca_1dep">
-							<li><a onclick="search_game('all')">전체</a></li>
+							<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
 							<li>
-								<a href="#">서울</a>
+								<a href="#">서울</a> 
 								<ul class="loca_2dep">
 									<li><a  onclick="search_game('seoul')">전체</a></li>
-									<li><a  onclick="search_game('gangnam')"">강남</a></li>
-									<li><a  onclick="search_game('hongdae')">홍대</a></li>
-									<li><a  onclick="search_game('jonglo')">종로.대학로</a></li>
-									<li class="ml0"><a  onclick="search_game('gundae')">건대.잠실</a></li>
-									<li><a  onclick="search_game('youngdeungpo')">영등포.신림</a></li>
+									<li><a  onclick="search_game('mapo')">홍대</a></li>
+									<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
+									<li><a  onclick="search_game('gangnam')">강남</a></li>
+									<li><a  onclick="search_game('jonglo')">대학로</a></li>
+									<li><a  onclick="search_game('gwanack')">신림</a></li>
+									<li><a  onclick="search_game('gwangjin')">건대</a></li>
+									<li><a  onclick="search_game('yangcheon')">목동</a></li>
 								</ul>
 							</li>
-							<li><a onclick="search_game('kyungki')">경기</a></li>
-							<li><a onclick="search_game('incheon')">인천</a></li>
+							<li><a href="#">경기</a>
+								<ul class="loca_2dep">
+									<li><a  onclick="search_game('suwon')">수원</a></li>
+									<li><a  onclick="search_game('anyang')">안양</a></li>
+									<li><a  onclick="search_game('hwasung')">화성</a></li>
+								</ul>
+							</li>
+
+						<!--<li><a onclick="search_game('incheon')">인천</a></li>
 							<li><a onclick="search_game('daejeon')">대전</a></li>
-							<li><a onclick="search_game('busan')">부산</a></li>
+							<li><a onclick="search_game('busan')">부산</a></li>-->
 						</ul>
 						<input name="rigion" type="hidden" id="rigion">
 					</dd>
@@ -147,8 +157,8 @@ include('./include_head.php');
 			</form>
 			<form action='./search_word.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input name="input" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a onclick="search_word()" class="btn_sch">검색</a>
+					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
 				</div>
 			</form>
 
@@ -156,6 +166,7 @@ include('./include_head.php');
 		</div>
 
 <style>
+#searcharea{width:25%}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -173,6 +184,7 @@ include('./include_head.php');
 	 padding-top:5px;
 }
 @media all and (max-width:1041px){
+#searcharea{width:80%;font-size:12px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -196,13 +208,13 @@ include('./include_head.php');
 
 }
 </style>
-		<div class="timenow">
+	<!--	<div class="timenow">
 			<div class="inner">
-				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
+			<!--<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
 					<div class='lowest' onclick="location.href='./page/timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
 				</div>
 				<!-- s : timenow pc -->
-				<div class="slidearea">
+			<!--	<div class="slidearea">
 					<ul class="bxslider01">
 						<li>
 							<ul>
@@ -337,13 +349,13 @@ include('./include_head.php');
 									<div class="infobox"><strong>데드넘버</strong><em>건대</em></div>
 								</li>
 							</ul>
-						</li>
+						</li>-->
 					<!--li~/li반복하면 dot표시가 생기면서 화면넘어감-->
-					</ul>
-				</div>
+				<!--	</ul>
+				</div>-->
 				<!-- e : timenow pc -->
 				<!-- s : timenow mobile -->
-				<div class="slidearea_m">
+			<!--	<div class="slidearea_m">
 					<ul class="bxslider01_m">
 						<li>
 							<ul>
@@ -402,10 +414,10 @@ include('./include_head.php');
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</div>-->
 				<!-- e : timenow mobile -->
-			</div>
-		</div>
+		<!--	</div>
+		</div>-->
 <style>
 .container{
 	width:74%;
@@ -461,6 +473,11 @@ include('./include_head.php');
 .empty{width:16%;float:left;display:inline;}
 .basicPrice{width:30%;float:left;display:inline;}
 .lowestPrice{width:30%;float:left;display:inline;}
+
+.ultracase{width:60%;margin-left:20%;margin-right:20%;margin-top:20px;}
+.pieces{width:33%;float:left;}
+.gImage{width:90%;}
+.img1, .img2, .img3{width:13px;margin-right:2px;margin-bottom:2px;}
 @media all and (max-width:1041px){
 	.ultra{
 	font-size:100%;
@@ -510,82 +527,98 @@ include('./include_head.php');
 	.basicPrice{width:30%;float:left;display:inline;}
 	.lowestPrice{width:30%;float:left;display:inline;}
 
+	.ultracase{width:90%;margin-left:5%;margin-right:5%;margin-top:20px;}
+	.pieces{width:100%;float:left;}
+	.gImage{width:90%;}
+	.img1, .img2, .img3{width:10px;margin-right:2px;margin-bottom:10px;}
+	td {font-size:11px;}
 }
 </style>
-<div class="ultra">
-	 울트라추천 광고
-</div>
 
-<!--검색 결과 S-->
-
+<!--출력시작부-->
+<div class="ultracase">
+		<div style="width:300px;"><img src="../images/icon/icon_maintit.gif" style="margin-right:1px;"/><font size="4pt"><b>울트라 추천</b></font>&nbsp;&nbsp;<font color="#888">광고</font></div>
 <?
-print_r($_GET);
-//= day, start_time, end_time, start_level, end_level, horror, rigion, input
-if($_GET['horror']=='공포포함'){
-	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')";
-}elseif($_GET['horror']=='공포만'){
-	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')
-		  and (g_horror > 0);";
-}else{
-	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')
-		  and g_horror < 1";
+//먼저 지역데이터로 파트너를 검색한다.
+//홍대-마포구, 신촌-서대문구, 강남-강남구, 대학로-종로구, 신림-관악구, 건대-광진구, 목동-양천구
+//안양시, 화성시, 수원시
+$startPostNumber=0;
+$endPostNumber=0;
+$startLevel=$_GET['start_level'];
+$endLevel=$_GET['end_level'];
+$horror=$_GET['horror'];
+
+switch($_GET['rigion']){
+	case 'seoul':
+	case 'mapo':
+	case 'seodaemoon':
+	case 'gangnam':
+	case 'jonglo':
+	case 'gwanack':
+	case 'gwangjin':
+	case 'yangcheon':
+	case 'suwon':
+	case 'anyang':
+		$startPostNumber=13905;
+		$endPostNumber=14128;
+		break;
+	case 'hwasung':
+}
+$postSql="select p_id, p_localName from partner where p_postNumber1 >= '".$startPostNumber."' and p_postNumber1 <= '".$endPostNumber."'";
+$postQuery=mysql_query($postSql);
+while($post=mysql_fetch_array($postQuery)){
+	//난이도> <, 공포 여부에 따라 게임을 출력한다.
+	if($_GET['horror']=='공포포함'){
+		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."'";
+	}elseif($_GET['horror']=='공포만'){
+		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror > 0";
+	}else{
+		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror <= 0";
+	}
+	$q=mysql_query($sql);
+	while($data=mysql_fetch_array($q)){
+
+	//실제출력
+	?>
+	<table class="pieces">
+	<tr>
+		<td>
+			<table>
+				<tr>
+				<td rowspan="3" width="165px" style="padding-top:10px; padding-bottom:10px;">
+					<img class="gImage" src="../images/contents/img_timenow1.jpg"></td>
+				<td style="height:20px;padding-top:10px;">
+					<font size="4pt" style="font-weight:bold"><?echo $data['g_title']?></font></td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;height:40px;">
+					<img class="img1" src="../images/icon/icon_new1.png"/><?echo $post['p_localName']?><br>
+					<img class="img2" src="../images/icon/icon_new1.png"/>난이도 : <?echo $data['g_level']?>&nbsp;&nbsp;
+					<img  class="img3" src="../images/icon/icon_new2.png"/>공포감 : <?echo $data['g_horror']?>
+				</td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;padding:0;">
+					<?
+					if($data['g_summary']==''){
+						echo $data['g_content'];
+					}else{
+						echo $data['g_summary'];					
+					}
+					?>
+				</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	<?
+ }
 }
 
-$query=mysql_query($sql);
-while($data=mysql_fetch_array($query)){
 ?>
 
-<div class="container">
-	<div class="field">
-	<div class="box">
-		<div class="imgDiv">
-			<img src="../game/<?echo $data['g_name']?>.jpg">
-		</div>
-		<div class="contentDiv">
-			<strong><font style="font-size:120%;font-weight:bold"><?echo ($data['g_name'])?></font></strong>
-						<font style="font-size:85%;">
-							<ul style="padding-bottom:1%;">
-							<li class="txt" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <?echo ($data['g_location'])?></li>
-							</ul>
-							<ul>
-							<li class="icon_new1" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <em>난이도</em> <?echo ($data['g_level'])?></li>
-							<li class="icon_new2" id="d"><img src="../images/icon/icon_new2.png" width="13px"/> <em>공포감</em> <?echo ($data['g_horror'])?></li>
-							</ul>
-							<br>
-							<div style="line-height:14px;">
-							<?echo ($data['g_content'])?>	
-							</div>
-						</font>				
-		</div>
-		<center>
-		<div class="bottomDiv">
-			<div class="heart"> 
-			♡
-			</div>
-			<div class="share">
-			＃
-			</div>
-			<div class="empty">
-			</div>
-			<div class="basicPrice">
-			기본가<br>
-			22,000원
-			</div>
-			<div class="lowestPrice">
-			최저가<br>
-			15,000원
-			</div>
-		</div>
-		</center>
-	</div>
-	</div>
 </div>
-<?
-}
-?>
-
-<!--검색 결과 E-->
-
 
 <!--아래 스크립트가, 날짜 스케쥴 가져오는 js-->
 <script type="text/javascript" src="../js/common.js"></script>

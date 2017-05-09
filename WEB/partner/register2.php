@@ -323,8 +323,8 @@ input[type=checkbox]:checked + label:before {
 					</div>
 					<div class="container_address">
 						<div class="major">업체 주소</div>
-						<input type="text" id="sample6_postcode" name="postNumber1" style="width:60px;padding-left:5px;" disabled>
-						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="background-color:#eee;border:1px solid #aaa;font-weight:bold;padding:2px 3px 2px 3px;margin-left:10px;width:100px" >
+						<input type="text" id="sample6_postcode" name="postNumber1" style="width:60px;padding-left:5px;">
+						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="font-weight:bold;padding:2px 3px 2px 3px;margin-left:10px;width:100px;background-color:#56DCFC;border:none;" >
 					</div>
 
 						
@@ -332,7 +332,7 @@ input[type=checkbox]:checked + label:before {
 
 					<div class="container2" style='padding-top:2px;	padding-bottom:0px;'>
 						<div class="major">&nbsp</div>
-						<input type="text" name="location1" id="sample6_address" disabled  style="padding-left:5px;width:340px;"><br>
+						<input type="text" name="location1" id="sample6_address" style="padding-left:5px;width:340px;"><br>
 					</div>
 					<div class="container2">
 						<div class="major">&nbsp</div>

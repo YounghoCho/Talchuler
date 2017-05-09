@@ -80,8 +80,8 @@ else
 	$_POST['agreement3']='0';
 
 //쿼리문전송
-$sql="insert into partner (p_idx, p_agreement1, p_id, p_pw, p_name, p_shopName, p_phone, p_tele, p_businessNumber, p_postNumber1, p_postNumber2, p_location1, p_location2, p_email, p_agreement2, p_agreement6, p_bank, p_bankNumber, p_depositor, p_agreement3, p_agreement4,
-p_joinDate, p_localName ) values ('','".$_POST['agreement1']."', '".$_POST['id']."', '".$_POST['pw']."', '".$_POST['name']."', '".$_POST['shopName']."', '".$phone."', '".$tele."', '".$_POST['businessNumber']."', '".$_POST['postNumber1']."','".$_POST['postNumber2']."', '".$_POST['location1']."','".$_POST['location2']."', '".$email."', '".$_POST['agreement2']."', '".$_POST['agreement6']."', '','','','".$_POST['agreement3']."','',now(),'');";
+$sql="insert into partner (p_idx, p_agreement1, p_id, p_pw, p_name, p_shopName, p_phone, p_tele, p_businessNumber, p_postNumber1, p_location1, p_location2, p_email, p_agreement2, p_agreement6, p_bank, p_bankNumber, p_depositor, p_agreement3, p_agreement4,
+p_joinDate, p_localName ) values ('','".$_POST['agreement1']."', '".$_POST['id']."', '".$_POST['pw']."', '".$_POST['name']."', '".$_POST['shopName']."', '".$phone."', '".$tele."', '".$_POST['businessNumber']."', '".$_POST['postNumber1']."', '".$_POST['location1']."','".$_POST['location2']."', '".$email."', '".$_POST['agreement2']."', '".$_POST['agreement6']."', '','','','".$_POST['agreement3']."','',now(),'');";
 mysql_query($sql);
 
 ?>

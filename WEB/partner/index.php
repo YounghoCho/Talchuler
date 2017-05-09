@@ -11,7 +11,6 @@ include('./HeadTab_Module.php');
 	margin-top:20px;
 	margin-left:3%;
 	margin-bottom:1%;
-	background-color:#999;
 	font-size:20px;
 	text-align:center;
 	line-height:100px;
@@ -55,16 +54,17 @@ table{width:100%;height:auto;}
 if(!$_SESSION['id']==""){
 ?>
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
-	<div class="Main">
+
+	<div class="Main" id="Main">
 		<div class="MainBanner">
 			<div class="mySlides fade">
-			  <img src="./images/banner/banner_top1.png" style="width:100%">
+			  <img src="./images/banner/banner_topA.png" style="width:100%" onclick="popup()">
 			</div>
 			<div class="mySlides fade">
-			  <img src="./images/banner/banner_top2.png" style="width:100%">
+			  <img src="./images/banner/banner_topB.png" style="width:100%">
 			</div>
 			<div class="mySlides fade">
-			  <img src="./images/banner/banner_top3.png" style="width:100%">
+			  <img src="./images/banner/banner_topC.png" style="width:100%" onclick="location.href='./banner_lowest.html'">
 			</div>
 		</div>
 
@@ -104,7 +104,7 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td id="more">게시종료</td></tr>
 				<tr><td class="td_content">암브로시아</td><td>17:00~18:00</td><td>14000원</td><td id="more">게시종료</td></tr>
 			</table>
-		</div>-->
+		</div>
 		<div class="Notice">
 			<table>
 				<tr><td class="td_head" style="border-bottom:1px solid">공지사항</td><td style="border-bottom:1px solid;" id="more">더보기></td></tr>
@@ -114,7 +114,7 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" >17-04-11</td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" ">17-04-11</td></tr>
 			</table>
-		</div>
+		</div>-->
 <!--			<button class="btn_FQA">자주하는질문</button>
 			<button class="btn_Inquiry">1:1문의</button>-->
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
@@ -124,7 +124,6 @@ if(!$_SESSION['id']==""){
 }else{
 /* 로그인 이전 S*/
 ?>
-
 	<div class="Main">
 	
 		<div class="Login">
@@ -167,7 +166,7 @@ if(!$_SESSION['id']==""){
 			</table>
 
 		</div>
-		<div class="Notice">
+<!--		<div class="Notice">
 			<table>
 				<tr><td class="td_head" style="border-bottom:1px solid">공지사항</td><td style="border-bottom:1px solid;" id="more">더보기></td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" >17-04-11</td></tr>
@@ -176,9 +175,9 @@ if(!$_SESSION['id']==""){
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" >17-04-11</td></tr>
 				<tr><td class="td_content">여성과학기술인지원센터 탈출러 보도</td><td id="more" ">17-04-11</td></tr>
 			</table>
-		</div>
+		</div>-->
 		<div class="MainBanner2">
-			<img src="./images/banner/banner_bottom.png" style="width:100%;"/>
+			<img src="./images/banner/banner_bottom.png" style="width:100%;" onclick="location.href='./banner_free.html'"/>
 		</div>
 <!--		<button class="btn_FQA">자주하는질문
 		</button>
@@ -187,6 +186,7 @@ if(!$_SESSION['id']==""){
 	</div>
 <?
 }
+
 /* 로그인 이전 E*/
 include('./Footer_Module.php');
 ?>
@@ -222,5 +222,30 @@ function showSlides() {
     slides[slideIndex-1].style.display = "block";  
 
     setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+t=1;
+function popup(){
+	//팝업은 headTap모듈에있습니다.
+	var popup= document.getElementById('popup');
+	var Tab=document.getElementById('Tab');
+    var Head=document.getElementById('Head');
+	var Main=document.getElementById('Main');
+	var footer=document.getElementById('footer');
+
+	if(t>0){
+		popup.style.display="block";
+		Tab.style.display="none";
+		Head.style.display="none";
+		Main.style.display="none";
+		footer.style.display="none";
+		t=-1;
+	}else{
+		popup.style.display="none";
+		Tab.style.display="block";
+		Head.style.display="block";
+		Main.style.display="block";
+		footer.style.display="block";
+		t=1;
+	}
 }
 </script>

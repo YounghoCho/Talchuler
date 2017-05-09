@@ -22,7 +22,7 @@ if($c['p_id']){
 	<?
 }
 else{
-	$sql="insert into partnerAsk (p_idx, p_agreement1, p_id, p_pw, p_name, p_shopName, p_phone, p_tele, p_businessNumber, p_postNumber1, p_postNumber2, p_location1, p_location2, p_email, p_agreement2, p_bank, p_bankNumber, p_depositor, p_agreement3, p_agreement4, p_localName, benefit1, benefit2, benefit3, benefit4, rule, time  ) values ('','', '".$_SESSION['id']."', '', '', '".$_POST['shopName']."', '', '".$_POST['p_tele']."', '', '".$_POST['postNumber1']."','".$_POST['postNumber2']."', '".$_POST['location1']."','".$_POST['location2']."', '', '', '','','','','','".$_POST['localName']."', '".$_POST['benefit1']."', '".$_POST['benefit2']."', '".$_POST['benefit3']."', '".$_POST['benefit4']."', '".nl2br($_POST['rule'])."', now());";
+	$sql="insert into partnerAsk (p_idx, p_agreement1, p_id, p_pw, p_name, p_shopName, p_phone, p_tele, p_businessNumber, p_postNumber1, p_location1, p_location2, p_email, p_agreement2, p_bank, p_bankNumber, p_depositor, p_agreement3, p_agreement4, p_localName, benefit1, benefit2, benefit3, benefit4, rule, time) values ('','', '".$_SESSION['id']."', '', '', '".$_POST['shopName']."', '', '".$_POST['p_tele']."', '', '".$_POST['postNumber1']."', '".$_POST['location1']."','".$_POST['location2']."', '', '', '','','','','','".$_POST['localName']."', '".$_POST['benefit1']."', '".$_POST['benefit2']."', '".$_POST['benefit3']."', '".$_POST['benefit4']."', '".nl2br($_POST['rule'])."', now());";
 	//주목: id에 세션정보가 들어감. 매장전화번호는 $_POST['p_tele']가 들어감. localName이 들어감. benefit들과 rule이 추가됨.
 	
 	mysql_query($sql);

@@ -5,17 +5,47 @@ include('./HeadTab_Module.php');
 <style>
 
 input{padding:3px;}
+
+/*대분류 영역*/
 #Main_titlebar{
 	font-family:'NotoSansCJKkr-Regular.eot';
 	color:#626262;
 	width:80%;
-	margin-left:33px;
 	height:auto;
 	width:100%;
 	display:table;
-	margin-top:50px;
-	padding-left:26px;
+	margin:50 0 0 33;
+	padding:0 0 0 26;
 }
+
+
+#inputbox{
+	height:auto;
+	width:80%;
+	margin:0 0 0 33;
+	padding:10 0 0 20;
+}
+
+#promise{
+	width:80%;
+	height:auto;
+	margin:0 0 0 33;
+	padding:10 0 0 20;
+	display:table;
+}
+
+#endmessage{
+	width:80%;
+	text-align:center;
+	font-family:'NotoSansCJKkr-Regular.eot';
+	margin:20 0 0 33;
+	padding:0 0 0 20;
+}
+
+/*대분류 영역*/
+
+/*타이틀 영역*/
+
 #Main_titlebar .title{
 	height:100%;
 	float:left;
@@ -32,13 +62,11 @@ input{padding:3px;}
 	display:table-cell;
 	margin-top:5px;
 }
-#inputbox{
-	height:auto;
-	width:80%;
-	margin-left:4%;
-	padding-left:20px;
-	padding-top:10px;
-}
+
+/*타이틀 영역*/
+
+/*인풋박스 입력 영역*/
+
 #inputbox .container{
 	height:auto;
 	width:100%;
@@ -133,7 +161,7 @@ input{padding:3px;}
 	display:table-cell;
 	padding:0px;
 }
-#inputbo .cafe_logo{
+#inputbox .cafe_logo{
 	width:50px;
 	height:50px;
 	display:table-cell;
@@ -191,13 +219,12 @@ input{padding:3px;}
 	margin-left:20px;
 	font-size:10pt;
 }
-#promise{
-	width:80%;
-	margin-left:0%;
-	height:auto;
-	padding-top:10px;
-	display:table;
-}
+
+/*인풋박스 입력 영역*/
+
+/*약관동의 영역*/
+
+
 #promise .major{
 	float:left;
 	font-size:15px;
@@ -208,21 +235,24 @@ input{padding:3px;}
 }
 #promise textarea{
 	float:left;
-
 	display:table-cell;
+	margin:0 0 0 90;
 }
-#endmessage{
-	width:80%;
-	margin-left:4%;
-	text-align:center;
-	font-family:'NotoSansCJKkr-Regular.eot';
-	margin-top:20px;
-	}
+
+/*약관동의 영역*/
+
+/*등록 수정 버튼 영역*/
+
 #endmessage span{
 	margin:0;
 	font-size:15px;
 	color:#ff6600;
 }
+
+/*등록 수정 버튼 영역*/
+
+/*클릭박스 영역*/
+
 .click_box{
 	float:left;
 	width:100px;
@@ -281,9 +311,8 @@ input{padding:3px;}
 	position:absolute;
 	clear:left;
 }
-#Tab{
-height:100%;
-}
+
+
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
@@ -306,20 +335,20 @@ $data=mysql_fetch_array($q);
 				<div class="icon"><img src="images\icon\icon6.png" class="icon_sample"/></div><div class="major">＊카페명</div><input type="text" name="shopName" value="<?echo $data['p_shopName']?>"> <br>
 			</div>
 			<div class="container">
-				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="localName" value="<?echo $data['p_localName']?>"> <br>
+				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="localName" value="<?echo $data['p_localName']?>" placeholder="ex) 홍대점, 강남점"> <br>
 			</div>
 
 				<!--이미지전송-->
 			<div class="container_logo">
 					<div class="icon"><img src="images\icon\icon1.png" class="icon_sample"/></div><div class="major">＊카페로고</div>
-					<input type="hidden" name="MAX_FILE_SIZE" value="100000" /><!--100MB제한-->
+					<input type="hidden" name="MAX_FILE_SIZE" value="10000000" /><!--10MB제한-->
 					<!-- input의 name은 $_FILES 배열의 name을 결정합니다 -->
 					<div style=" position:relative; float:left;border:0px solid #aaa; width:182px; height:62px; text-align:center; display:table-cell; background-color:#a0a0a0;">
 						<img src="./partnerpic/<?echo ($_SESSION['id']);?>.jpg" style="position:absolute; width:auto; height:auto; max-height:60px; max-width:180px; border:0px solid #aaa; background-color:#ffffff; margin:auto;
-            top:0; bottom:0; left:0; right:0;" onerror="this.style.display='none'"/>
+            top:0; bottom:0; left:0; right:0;" onerror="this.src='./images/button/plus.png'"/>
 					</div>
 					<div style="float:left;">
-						<input name="userfile" id="file" type="file" style="margin-left:10px;"/><br>
+						<input name="userfile" id="file" type="file" style="margin-left:10px;" accept=".gif, .jpg, .png"/><br>
 					</div>
 			</div>
 				<!--이미지전송 E-->
@@ -330,15 +359,14 @@ $data=mysql_fetch_array($q);
 			</div>
 			<div class="container_address">
 				<div class="icon"><img src="images\icon\icon4.png" class="icon_sample"/></div><div class="major">＊주소</div>
-				<input type="text" name="postNumber1" value="<?echo $data['p_postNumber1']?>"><div class="need_bar"> - </div><input type="text" name="postNumber2" value="<?echo $data['p_postNumber2']?>">
-				<div class="click_box"><button style="width:100px;">우편번호찾기</button><input type="file" value="파일 업로드"style="font-weight:normal; width:100px;" name="cafe_logo">
-				</div> 
+				<input type="text" id="sample6_postcode" name="postNumber1" value="<?echo $data['p_postNumber1']?>">
+				<input type="button" value="우편번호 찾기" style="font-weight:normal;background-color:#56DCFC;height:25px;border:none;margin-left:10px; width:100px;" name="cafe_logo" onclick="sample6_execDaumPostcode()">
 			</div>
 			<div class="container_add_mid">
-				<div class="major_add">&nbsp</div><input type="text" name="location1" value="<?echo $data['p_location1']?>">
+				<div class="major_add">&nbsp</div><input type="text" name="location1" id="sample6_address" value="<?echo $data['p_location1']?>">
 			</div>
 			<div class="container_add2">
-				<div class="major_add">&nbsp</div><input type="text" name="location2" value="<?echo $data['p_location2']?>">
+				<div class="major_add">&nbsp</div><input type="text" name="location2" id="sample6_address2" placeholder="나머지 주소를 압력해주세요" value="<?echo $data['p_location2']?>">
 			</div>
 			<div class="container2">
 				<div class="icon"><img src="images\icon\icon2.png" class="icon_sample"/></div>
@@ -362,7 +390,7 @@ $data=mysql_fetch_array($q);
 			</div>
 	<div id="promise">
 		<div class="major">＊예약취소 / 변경 / 환불규정</div>
-		<textarea rows="5" cols="60" name="rule" style="margin-left:143px" value="<?echo $data['rule']?>"></textarea>
+		<textarea rows="5" cols="60" name="rule"><?echo $data['rule']?></textarea>
 	</div>
 	</form>
 
@@ -379,22 +407,51 @@ include('./Footer_Module.php');
 <script>
 function submit(){
    var f=document.form;
-   var file= document.getElementById('file');
-   
-   var re = /(?:\.([^.]+))?$/;
-   var ext = re.exec(file.value)[1];         
-   if(ext==undefined){
-      alert('사진 파일을 선택해주세요.');
-      return false;
-   }else if(ext!='png' && ext!='jpg' && ext!='gif' && ext!='bmp' && ext!='png'){
-      alert("확장자는 jpg, png, gif, bmp, png형식만 가능합니다.");
-      return false;
-   }else if(file.files[0].size>3000000){
-      //3mb이하
-      alert('파일사이즈는 3MB를 넘을 수 없습니다.');
-      return false;
-   }else{
-      f.submit();
-   }
+   f.submit();
 }
+</script>
+<!--주소검색-->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('sample6_address2').focus();
+            }
+        }).open();
+    }
 </script>

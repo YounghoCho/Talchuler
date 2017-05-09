@@ -6,7 +6,6 @@ if($_GET['refresh']==1){
    exit;
 }
 ?>
-
 <script type="text/javascript">
 // content와 sidebar를 같은 높이로 맞추기
 (window.onload = function() {  // 화면이 뜬 뒤 처리
@@ -312,8 +311,10 @@ if($index+1>$count[0]){
 						<img src="images\icon\icon4.png" />
 					</div>
 					<div class="title">*주소</div>
-					<div class="sub"><?echo $data['p_location1']?><br>
-					<?echo $data['p_location2']?></div>
+					<div class="sub">
+					우편번호: <?echo $data['p_postNumber1']?><br>
+					주소: <?echo $data['p_location1']?><br>
+					상세주소: <?echo $data['p_location2']?></div>
 				</div>
 				<div class="name">
 					<div class="logo_area">

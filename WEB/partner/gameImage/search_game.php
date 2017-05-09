@@ -1,4 +1,4 @@
-<?
+﻿<?
 include('./include_head.php');
 ?>
 <html xml:lang="ko" lang="ko">
@@ -115,39 +115,31 @@ include('./include_head.php');
 								</select>
 							</div>
 							<div class="chkbox">
-							<!--	<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>-->
+								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>
 							</div>
 						</div>
 					</dd>
 				</dl>
 				<dl class="cho3">
-					<dt><font style="font-weight:bold;margin-right:15px;">지역</font></dt>
-					<dd style="width:100%;">
+					<dt><font style="font-weight:bold">지역</font></dt>
+					<dd>
 						<ul class="loca_1dep">
-							<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
+							<li><a onclick="search_game('all')">전체</a></li>
 							<li>
 								<a href="#">서울</a>
 								<ul class="loca_2dep">
 									<li><a  onclick="search_game('seoul')">전체</a></li>
-									<li><a  onclick="search_game('mapo')">홍대</a></li>
-									<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
-									<li><a  onclick="search_game('gangnam')">강남</a></li>
-									<li><a  onclick="search_game('jonglo')">대학로</a></li>
-									<li><a  onclick="search_game('gwanack')">신림</a></li>
-									<li><a  onclick="search_game('gwangjin')">건대</a></li>
-									<li><a  onclick="search_game('yangcheon')">목동</a></li>
+									<li><a  onclick="search_game('gangnam')"">강남</a></li>
+									<li><a  onclick="search_game('hongdae')">홍대</a></li>
+									<li><a  onclick="search_game('jonglo')">종로.대학로</a></li>
+									<li class="ml0"><a  onclick="search_game('gundae')">건대.잠실</a></li>
+									<li><a  onclick="search_game('youngdeungpo')">영등포.신림</a></li>
 								</ul>
 							</li>
-							<li><a href="#">경기</a>
-								<ul class="loca_2dep">
-									<li><a  onclick="search_game('suwon')">수원</a></li>
-									<li><a  onclick="search_game('anyang')"">안양</a></li>
-									<li><a  onclick="search_game('hwasung')">화성</a></li>
-								</ul>
-							</li>
-						<!--<li><a onclick="search_game('incheon')">인천</a></li>
+							<li><a onclick="search_game('kyungki')">경기</a></li>
+							<li><a onclick="search_game('incheon')">인천</a></li>
 							<li><a onclick="search_game('daejeon')">대전</a></li>
-							<li><a onclick="search_game('busan')">부산</a></li>-->
+							<li><a onclick="search_game('busan')">부산</a></li>
 						</ul>
 						<input name="rigion" type="hidden" id="rigion">
 					</dd>
@@ -155,8 +147,8 @@ include('./include_head.php');
 			</form>
 			<form action='./search_word.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
+					<input name="input" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+					<a onclick="search_word()" class="btn_sch">검색</a>
 				</div>
 			</form>
 
@@ -164,7 +156,6 @@ include('./include_head.php');
 		</div>
 
 <style>
-#searcharea{width:25%}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -182,7 +173,6 @@ include('./include_head.php');
 	 padding-top:5px;
 }
 @media all and (max-width:1041px){
-#searcharea{width:80%;font-size:12px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -209,7 +199,7 @@ include('./include_head.php');
 		<div class="timenow">
 			<div class="inner">
 				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
-					<div class='lowest' onclick="location.href='./timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
+					<div class='lowest' onclick="location.href='./page/timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
 				</div>
 				<!-- s : timenow pc -->
 				<div class="slidearea">
@@ -522,159 +512,194 @@ include('./include_head.php');
 
 }
 </style>
-<div class="container_inner pd44">
-			<div class="newarea">
-				<div class="new_f_l">
-					<div class="maintit"><b>탈출러 추천</b><em>따끈따끈 새로나온 테마!</em></div>
-					<div class="slidearea">
-						<ul class="bxslider02">
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new1.jpg" alt="" /></dt>
-									<dd>
-										<strong>올드보이</strong>
-										<ul><li class="icon_new1">난이도: 2</li></ul>
-										<div>
-											15년의 감금, 60분의 추적!
-											사설 감금방에서 탈출하고
-											임무를 수행하라!
-										</div>
-										<a href="./page/theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new2.jpg" alt="" /></dt>
-									<dd>
-										<strong>장기밀매</strong>
-										<ul><li class="icon_new1">난이도: 2</li><li class="icon_new2">공포감</li></ul>
-										<div>
-											당신은 장기밀매단에 납치되어 
-											한 시간 후에는 장기적출 수술을 받고 
-											죽는 운명에 처해있다. 
-											이 밀실을 탈출하라.
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new1.jpg" alt="" /></dt>
-									<dd>
-										<strong>올드보이</strong>
-										<ul><li class="icon_new1">난이도: 2</li></ul>
-										<div>
-											15년의 감금, 60분의 추적!
-											사설 감금방에서 탈출하고
-											임무를 수행하라!
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new2.jpg" alt="" /></dt>
-									<dd>
-										<strong>장기밀매</strong>
-										<ul><li class="icon_new1">난이도: 2</li><li class="icon_new2">공포감</li></ul>
-										<div>
-											당신은 장기밀매단에 납치되어 
-											한 시간 후에는 장기적출 수술을 받고 
-											죽는 운명에 처해있다. 
-											이 밀실을 탈출하라.
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="new_f_r">
-					<div class="maintit">명예의 게임<em>요즘 가장 인기있는 테마!</em></div>
-					<div class="slidearea">
-						<ul class="bxslider02">
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new2.jpg" alt="" /></dt>
-									<dd>
-										<strong>장기밀매</strong>
-										<ul><li class="icon_new1">난이도: 2</li><li class="icon_new2">공포감</li></ul>
-										<div>
-											당신은 장기밀매단에 납치되어 
-											한 시간 후에는 장기적출 수술을 받고 
-											죽는 운명에 처해있다. 
-											이 밀실을 탈출하라.
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new1.jpg" alt="" /></dt>
-									<dd>
-										<strong>올드보이</strong>
-										<ul><li class="icon_new1">난이도: 2</li></ul>
-										<div>
-											15년의 감금, 60분의 추적!
-											사설 감금방에서 탈출하고 
-											임무를 수행하라!
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new2.jpg" alt="" /></dt>
-									<dd>
-										<strong>장기밀매</strong>
-										<ul><li class="icon_new1">난이도: 2</li><li class="icon_new2">공포감</li></ul>
-										<div>
-											당신은 장기밀매단에 납치되어 
-											한 시간 후에는 장기적출 수술을 받고 
-											죽는 운명에 처해있다. 
-											이 밀실을 탈출하라.
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt><img src="./images/contents/img_new1.jpg" alt="" /></dt>
-									<dd>
-										<strong>올드보이</strong>
-										<ul><li class="icon_new1">난이도: 2</li></ul>
-										<div>
-											15년의 감금, 60분의 추적!
-											사설 감금방에서 탈출하고 
-											임무를 수행하라!
-										</div>
-										<a href="theme_view.php">자세히보기</a>
-									</dd>
-								</dl>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+<div width="90%">
+<table>
+<tr>
+<td rowspan="5" align="center">@검색 후 타임핫딜은<p>검색지역 타임핫딜제품으로<p>가장 최근등록5개표시<p><p><p>@지금은 울트라추천 광고 안받아서<p>울트라추천 숨겨주세요!<p><p><p>@찜하트<p>@최저가<p>가격바탕</p></td>
+<td colspan="4">울트라 추천</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td rowspan=4 width="165px" style="padding-top:10px; padding-bottom:10px;"><img src="../images/contents/img_timenow1.jpg"></td>
+<td>올드보이</td>
+</tr>
+<tr>
+<td>신림</td>
+</tr>
+<tr>
+<td>난이도</td>
+</tr>
+<tr>
+<td>줄거리</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
 
 <!--검색 결과 S-->
 
 <?
-//print_r($_GET);
+print_r($_GET);
 //= day, start_time, end_time, start_level, end_level, horror, rigion, input
-$sql="select * from game where g_location like '%".$_GET['input']."%' or g_name like '%".$_GET['input']."%' or g_cafe like '%".$_GET['input']."%';";
+if($_GET['horror']=='공포포함'){
+	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')";
+}elseif($_GET['horror']=='공포만'){
+	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')
+		  and (g_horror > 0);";
+}else{
+	$sql="select * from game where g_location='".$_GET['rigion']."' and (g_level >='".$_GET['start_level']."' and g_level <= '".$_GET['end_level']."')
+		  and g_horror < 1";
+}
+
 $query=mysql_query($sql);
 while($data=mysql_fetch_array($query)){
-$temp=$data['g_idx'];
 ?>
-<a href="./theme_view.php?g_idx=<?echo $temp?>">
+
 <div class="container">
 	<div class="field">
 	<div class="box">
@@ -720,7 +745,6 @@ $temp=$data['g_idx'];
 	</div>
 	</div>
 </div>
-</a>
 <?
 }
 ?>

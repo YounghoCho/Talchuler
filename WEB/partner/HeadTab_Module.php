@@ -7,6 +7,15 @@ if($_COOKIE['id'])
 ?>
 <html>
 <head>
+<meta name="naver-site-verification" content="6b21cafa992f802dd95e784ac4accb85395c0980"/>
+<meta name="title" content="탈출러">
+<meta name="description" content="오프라인 방탈출, 방탈출게임 맞춤검색, 방탈출카페 예약, 방탈출 추천, 방탈출 후기, 커플 방탈출,  ">
+
+<meta property="og:type" content="website">
+ <meta property="og:title" content="탈출러">
+ <meta property="og:description" content="오프라인 방탈출, 방탈출게임 맞춤검색, 방탈출카페 예약, 방탈출 추천, 방탈출 후기, 커플 방탈출 ">
+ <meta property="og:image" content="-"> 
+ <meta property="og:url" content="http://www.talchuler.com">
 <!--Intenet Explorer에서 Javascript, JQuery가 동작안하는 것을 막는다-->
 <!--호환문제 때문이며, 해결하는 코드는 바로 아래의 한줄 코드이다-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -76,6 +85,13 @@ ul{
 .tab_li{margin: 10px 0px 0px 25px;}
 </style>
 </head>
+<!--메인에서 사용될 팝업입니다-->
+<div id="popup" style="background-color:RGBA(1,1,1,0.7);width:100%;display:none;">
+	<div style="width:100%;" onclick="popup()">
+			<img src="./images/banner/nothing.png" style="width:66%;margin-left:17%;margin-top:2%;margin-bottom:2%;padding-bottom:1%;"/>		
+	</div>
+</div>
+
 <body>
 	<div id="Head">
 		<ul class='hdmenu' style="line-height:45px;">
@@ -135,6 +151,7 @@ function server_time()
     document.getElementById("server_time").innerHTML = year + "." + month + "." + date + " " + hours + ":" + minutes + ":" + seconds;
 }
 </script>
+<!--index에서 사용될 팝업-->
 
 	<!--	<li>4/11후기관리 업데이트 안내</li>-->
 		<?
@@ -162,7 +179,7 @@ function server_time()
 	<ul class='tbmenu'>
 	
 		<li>내 카페관리</li>
-			<ul class="hide">
+			<ul class="hide" style='background-color:#ffffff;'>
 			<!-- 여기 바꿀때, register4.php의 수동으로 만든 탭도 바꿔야합니다.
 
 				<a href=""><li class="tab_li">오늘의 게임</li></a>

@@ -1,4 +1,4 @@
-	<footer id="footer">
+	<footer id="footer" style="float:left">
 		<div class="footer_inner">
 			<h1><a href="#"><img src="../images/common/logo_f.png" alt="logo" /></a></h1>
 			<div class="phonebox">1566-0280</div>

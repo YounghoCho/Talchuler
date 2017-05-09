@@ -80,12 +80,41 @@ $data=mysql_fetch_array($query);
 	font-size:2;
 	padding-top:6px;
 	padding-bottom:6px;
-}
+} 
 .eval_img{
 	display:none;
 	width:14px;
 	height:14px;
 	margin-left:4px;
+}
+.mySlides{
+	width:45%;height:180px;float:left;display:inline-block;margin:10px 25% 2% 26%;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: #aaa;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+
+}
+
+/* Position the "next button" to the right */
+.prev{left:22%;  border-radius: 5px 0px 0px 5px;}
+.next {
+  right: 25%;
+  border-radius: 0 5px 5px 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(86,220,252,0.8);
+  color:#444;
 }
 </style>
 
@@ -523,31 +552,40 @@ if(!file_exists($filepath)){
 								</select>
 							</div>
 							<div class="chkbox">
-								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>
+							<!--	<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>-->
 							</div>
 						</div>
 					</dd>
 				</dl>
 				<dl class="cho3">
-					<dt><font style="font-weight:bold">지역</font></dt>
-					<dd>
+					<dt><font style="font-weight:bold;margin-right:15px;">지역</font></dt>
+					<dd style="width:100%;">
 						<ul class="loca_1dep">
-							<li><a onclick="search_game('all')">전체</a></li>
+							<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
 							<li>
-								<a href="#">서울</a>
+								<a href="#">서울</a> 
 								<ul class="loca_2dep">
 									<li><a  onclick="search_game('seoul')">전체</a></li>
-									<li><a  onclick="search_game('gangnam')"">강남</a></li>
-									<li><a  onclick="search_game('hongdae')">홍대</a></li>
-									<li><a  onclick="search_game('jonglo')">종로.대학로</a></li>
-									<li class="ml0"><a  onclick="search_game('gundae')">건대.잠실</a></li>
-									<li><a  onclick="search_game('youngdeungpo')">영등포.신림</a></li>
+									<li><a  onclick="search_game('mapo')">홍대</a></li>
+									<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
+									<li><a  onclick="search_game('gangnam')">강남</a></li>
+									<li><a  onclick="search_game('jonglo')">대학로</a></li>
+									<li><a  onclick="search_game('gwanack')">신림</a></li>
+									<li><a  onclick="search_game('gwangjin')">건대</a></li>
+									<li><a  onclick="search_game('yangcheon')">목동</a></li>
 								</ul>
 							</li>
-							<li><a onclick="search_game('kyungki')">경기</a></li>
-							<li><a onclick="search_game('incheon')">인천</a></li>
+							<li><a href="#">경기</a>
+								<ul class="loca_2dep">
+									<li><a  onclick="search_game('suwon')">수원</a></li>
+									<li><a  onclick="search_game('anyang')"">안양</a></li>
+									<li><a  onclick="search_game('hwasung')">화성</a></li>
+								</ul>
+							</li>
+
+						<!--<li><a onclick="search_game('incheon')">인천</a></li>
 							<li><a onclick="search_game('daejeon')">대전</a></li>
-							<li><a onclick="search_game('busan')">부산</a></li>
+							<li><a onclick="search_game('busan')">부산</a></li>-->
 						</ul>
 						<input name="rigion" type="hidden" id="rigion">
 					</dd>
@@ -555,14 +593,15 @@ if(!file_exists($filepath)){
 			</form>
 			<form action='./page/search_word.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input name="input" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a onclick="search_word()" class="btn_sch">검색</a>
+					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
 				</div>
 			</form>
 			
 			</div>
 		</div>
 <style>
+#searcharea{width:25%}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -579,7 +618,16 @@ if(!file_exists($filepath)){
 	 font-size:19px; 
 	 padding-top:5px;
 }
+.mySlidesContainer{background-color:#eee;width:100%;height:260px;padding:30px;cursor:pointer;}
+.mySlidesContainerMobile{display:none;}
+.recommandCafe{width:50%;height:40px;margin-left:25%;margin-top:2%;font-size:12pt;font-weight:bold;}
+.recommandCafe img{margin:3px;}
+.firstbanner{width:22%;height:194px;float:left;display:inline-block;margin:0px 10px 10px 26%;cursor:pointer;}
+.secondbanner{width:22%;height:194px;float:left;display:inline-block;margin:0px 25% 10px 10px;cursor:pointer;}
+.thirdbanner{width:45%;float:left;display:inline-block;margin:10px 25% 2% 26%;cursor:pointer;}
+
 @media all and (max-width:1041px){
+#searcharea{width:80%;font-size:12px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -600,16 +648,73 @@ if(!file_exists($filepath)){
 	 margin-top:-57px;
 	 margin-right:-10px;
 }
-
+.mySlidesContainer{display:none;}
+.mySlidesContainerMobile{display:block;width:100%;height:90px;background-color:#ccc;}
+.mySlides2{display:none;}
+.mySlides2{width:96%;height:90px;float:left;display:inline-block;margin:2%;}
+/* Position the "next button" to the right */
+.prev{position:absolute;left:0;top:72%;width:0px;padding:14px;margin-left:2px;}
+.next{position:absolute;right:0;top:72%;width:0px;padding:14px;margin-right:2px;}
+.recommandCafe{width:100%;height:30px;margin:25px 0 0px 2px;font-size:14px;font-weight:bold;position:absolute;padding:0 0 0 0;}
+.recommandCafe img{margin:3px;}
+.firstbanner{width:47%;height:78px;float:left;margin:35px 0 0 2%;}
+.secondbanner{width:47%;height:78px;float:left;margin:35px 2% 0 2%;}
+.thirdbanner{width:96%;float:left;margin:0 2% 35px 2%;}
 }
+
 </style>
+<!-- 2017-05-10 -->
+<div class="mySlidesContainer">
+	<!--buttons-->
+	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="next" onclick="plusSlides(1)">&#10095;</a>	
+	<div class="mySlides fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+	<div class="mySlides fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+	<div class="mySlides fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+</div>
+<div class="mySlidesContainerMobile">
+	<!--buttons-->
+	<div class="mySlides2 fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+	<div class="mySlides2 fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+	<div class="mySlides2 fade">
+	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	</div>
+</div>
+
+<div style="width:100%;">
+	<div class="recommandCafe">
+		<img src="./images/icon/icon_maintit.gif"/>추천 카페&nbsp;&nbsp;<font color="#888"><b>광고</b></font>
+	</div>
+	<div class="firstbanner">
+		<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+	</div>
+	<div class="secondbanner">
+		<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+	</div>
+	<div class="thirdbanner">
+		<img src="./images/banner/manager.jpg" style="width:100%" onclick="location.href='./page/banner_send.html'"/>
+	</div>
+</div>
+
+
+<!--
 		<div class="timenow">
 			<div class="inner">
 				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
 					<div class='lowest' onclick="location.href='./page/timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
 				</div>
 				<!-- s : timenow pc -->
-				<div class="slidearea">
+			<!--	<div class="slidearea">
 					<ul class="bxslider01">
 						<li>
 							<ul>
@@ -746,11 +851,11 @@ if(!file_exists($filepath)){
 							</ul>
 						</li>
 					<!--li~/li반복하면 dot표시가 생기면서 화면넘어감-->
-					</ul>
+			<!--		</ul>
 				</div>
 				<!-- e : timenow pc -->
 				<!-- s : timenow mobile -->
-				<div class="slidearea_m">
+		<!--		<div class="slidearea_m">
 					<ul class="bxslider01_m">
 						<li>
 							<ul>
@@ -811,7 +916,7 @@ if(!file_exists($filepath)){
 					</ul>
 				</div>
 				<!-- e : timenow mobile -->
-			</div>
+	<!--		</div>
 		</div>
 		<div class="container_inner pd44">
 			<div class="newarea">
@@ -967,12 +1072,12 @@ if(!file_exists($filepath)){
 					<li><a href="#"><img src="../images/contents/img_cafe4.jpg" alt="카페4" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe5.jpg" alt="카페5" /></a></li>
 					<li><a href="#"><img src="../images/contents/img_cafe6.jpg" alt="카페6" /></a></li>
-				</ul>-->
+				</ul>
 				</div>
 				
 			</div>
 
-	</div>
+	</div>-->
 </div>
 <?
 include("./page/include_footer.php");
@@ -1087,5 +1192,63 @@ function search_word(){
 	var f=document.getElementById('search_word_form');
 	
 	f.submit();
+}
+</script>
+<script>
+//banner change
+//var slideIndex = 0;
+//showSlides();
+
+//button S
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+//button E
+function showSlides(n/*버튼은n변수필요*/) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+ //   slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+	//버튼S
+	if (n < 1) {slideIndex = slides.length}
+	for (i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none"; 
+	  }
+	//버튼E
+    slides[slideIndex-1].style.display = "block";  
+  //  setTimeout(showSlides, 2000); // Change image every 2 seconds
+
+
+}
+</script>
+<script>
+//banner change
+var slideIndex = 0;
+showSlides();
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides2");
+
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+
+    slides[slideIndex-1].style.display = "block";  
+	setTimeout(showSlides, 2000); // Change image every 2 seconds
+
+
 }
 </script>

@@ -170,7 +170,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 		<div id="Check_registration">
 			<div class="left" style='font-size:14x;'>
 			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
-				<input type="hidden" name="MAX_FILE_SIZE" value="100000000" /><!--10mb제한-->
+				<input type="hidden" name="MAX_FILE_SIZE" value="10000000" /><!--10mb제한-->
 				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">사진추가</label>
 				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png" onclick="admitColorChange()"/>
 				<input type="hidden" name="album_count" value="<?echo $data['album_count']?>" /><!--사진을 여러장 보내기위한 절대상승값-->
@@ -199,7 +199,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 		<div id="image_group">
 			<div class="image_stack">
 					<!-- $i가 0인경우 메인사진-->
-					<img src="./album/<?echo ($main[0])?>.jpg" class="main_img" onerror="this.src='./images/button/up.png'" style="border: 1px solid #aaa"/>
+					<img src="./album/<?echo ($main[0])?>.jpg" class="main_img" onerror="this.src='./images/button/plus.png'" style="border: 1px solid #aaa"/>
 			</div>
 		<?
 		//$i가 1이상인 경우 사진

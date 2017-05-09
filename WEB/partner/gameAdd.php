@@ -571,6 +571,7 @@ function button_onskill(value){
 				<!--사진 업로드-->
 			<form id="f1" action="./gameAddDB.php" method="POST" name="form" enctype="multipart/form-data">
 				<td rowspan="5" style="background-color:#eeeeee; width:250px; height:500px">
+					<input type="hidden" name="MAX_FILE_SIZE" value="10000000" /><!--10mb제한-->
 					<label for="cover" style=" display: inline-block;background-color:#eee;height:80%;width:100%;"><img id="thisimg" src="" style="width:100%;border:none;" onerror="this.style.display='none'"/></label>
 					<input name="userfile" type="file" id="cover" accept=".gif, .jpg, .png"/>
 					<input type="hidden" name="p_id" value="<?echo	$_SESSION['id']?>" />
