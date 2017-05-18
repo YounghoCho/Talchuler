@@ -12,6 +12,15 @@ $data=mysql_fetch_array($query);
 <html xml:lang="ko" lang="ko">
 <head>
 <title>탈출러</title>
+<!--naver bot-->
+<meta name="title" content="탈출러">
+<meta name="description" content="방탈출 하러갈땐 탈출러! 언제,난이도,지역 맞춤검색! 성향별 추천!">
+<meta property="go:type" content="website">
+<meta property="go:title" content="탈출러">
+<meta property="go:description" content="방탈출 200% 즐기는 방법!">
+<meta property="og:image" content="http://talchuler.com/images/common/img_logo.png">
+<meta property="og:url" content="http://www.talchuler.com">
+
 <meta charset="utf-8" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -212,7 +221,7 @@ if(@!$_SESSION['user_email']){
 				<li><a href="#">예약확인</a></li>
 				<li><a href="#">랭킹검색</a></li>
 				<li><a href="./search_user.php">탈출러검색</a></li>
-				<li><a href="./page/notice.php">고객센터</a></li>
+			<!--	<li><a href="./page/notice.php">고객센터</a></li>-->
 			</ul>
 			<!-- e : 로그인 전 pc -->
 <?
@@ -347,7 +356,7 @@ if(@!$_SESSION['user_email']){
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
 					<li><a href="./search_user.php">탈출러검색</a></li>
-					<li class="gnb3"><a href="./page/notice.php">고객센터</a></li>
+			<!--		<li class="gnb3"><a href="./page/notice.php">고객센터</a></li>-->
 				</ul>
 				<!-- e : 로그인 전 mobile -->
 <?
@@ -577,6 +586,7 @@ if(!file_exists($filepath)){
 							</li>
 							<li><a href="#">경기</a>
 								<ul class="loca_2dep">
+									<li><a  onclick="search_game('gyeonggi')">전체</a></li>
 									<li><a  onclick="search_game('suwon')">수원</a></li>
 									<li><a  onclick="search_game('anyang')"">안양</a></li>
 									<li><a  onclick="search_game('hwasung')">화성</a></li>
@@ -618,16 +628,20 @@ if(!file_exists($filepath)){
 	 font-size:19px; 
 	 padding-top:5px;
 }
-.mySlidesContainer{background-color:#eee;width:100%;height:260px;padding:30px;cursor:pointer;}
+.mySlidesContainer{background-color:#eee;width:100%;padding:30px;cursor:pointer;}
+/*부모 div영역이 자식의 크기만큼 감싸게하는 방법*/
+.mySlidesContainer:after { content:""; clear:both; display:block; *zoom:1;}
 .mySlidesContainerMobile{display:none;}
 .recommandCafe{width:50%;height:40px;margin-left:25%;margin-top:2%;font-size:12pt;font-weight:bold;}
 .recommandCafe img{margin:3px;}
-.firstbanner{width:22%;height:194px;float:left;display:inline-block;margin:0px 10px 10px 26%;cursor:pointer;}
-.secondbanner{width:22%;height:194px;float:left;display:inline-block;margin:0px 25% 10px 10px;cursor:pointer;}
+.firstbanner{width:22%;float:left;display:inline-block;margin:0px 10px 10px 26%;cursor:pointer;}
+.secondbanner{width:22%;float:left;display:inline-block;margin:0px 25% 10px 10px;cursor:pointer;}
 .thirdbanner{width:45%;float:left;display:inline-block;margin:10px 25% 2% 26%;cursor:pointer;}
 
 @media all and (max-width:1041px){
-#searcharea{width:80%;font-size:12px;}
+.schbox{width:100%;}
+#searcharea{width:90%;float:left;font-size:12px;display:inline;}
+.btn_sch{float:left;display:inline;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -649,17 +663,19 @@ if(!file_exists($filepath)){
 	 margin-right:-10px;
 }
 .mySlidesContainer{display:none;}
-.mySlidesContainerMobile{display:block;width:100%;height:90px;background-color:#ccc;}
+.mySlidesContainerMobile{display:block;width:100%;}
+/*부모 div영역이 자식의 크기만큼 감싸게하는 방법*/
+.mySlidesContainerMobile:after { content:""; clear:both; display:block; *zoom:1;}
 .mySlides2{display:none;}
-.mySlides2{width:96%;height:90px;float:left;display:inline-block;margin:2%;}
+.mySlides2{width:96%;float:left;display:inline-block;margin:2%;}
 /* Position the "next button" to the right */
 .prev{position:absolute;left:0;top:72%;width:0px;padding:14px;margin-left:2px;}
 .next{position:absolute;right:0;top:72%;width:0px;padding:14px;margin-right:2px;}
 .recommandCafe{width:100%;height:30px;margin:25px 0 0px 2px;font-size:14px;font-weight:bold;position:absolute;padding:0 0 0 0;}
 .recommandCafe img{margin:3px;}
-.firstbanner{width:47%;height:78px;float:left;margin:35px 0 0 2%;}
-.secondbanner{width:47%;height:78px;float:left;margin:35px 2% 0 2%;}
-.thirdbanner{width:96%;float:left;margin:0 2% 35px 2%;}
+.firstbanner{width:96%;float:left;margin:55px 2% 0 2%;}
+.secondbanner{width:96%;float:left;margin:2%;}
+.thirdbanner{display:none;}
 }
 
 </style>
@@ -693,16 +709,18 @@ if(!file_exists($filepath)){
 
 <div style="width:100%;">
 	<div class="recommandCafe">
-		<img src="./images/icon/icon_maintit.gif"/>추천 카페&nbsp;&nbsp;<font color="#888"><b>광고</b></font>
+		<img src="./images/icon/icon_maintit.gif"/>성향별 추천&nbsp;&nbsp;<font color="#888"><!--<b>광고</b>--></font>
 	</div>
 	<div class="firstbanner">
-		<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+		<a href="http://www.talchuler.com/page/facebook_beginner_banner1.html" target="_blank">
+			<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+		</a>
 	</div>
 	<div class="secondbanner">
-		<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+		<img src="./images/banner/couple.jpg" style="width:100%"/>
 	</div>
 	<div class="thirdbanner">
-		<img src="./images/banner/manager.jpg" style="width:100%" onclick="location.href='./page/banner_send.html'"/>
+		<img src="./images/banner/manager1.jpg" style="width:100%" onclick="location.href='./manager/mozib.php'"/>
 	</div>
 </div>
 

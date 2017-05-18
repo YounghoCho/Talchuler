@@ -21,152 +21,11 @@ include('./include.php');
 
 		<div class="choicearea">
 			<div class="inner">
-
-			<form action='./search_game.php' method='get' id='search_game_form'>
-			<div class="inner">
-				<dl class="cho1">
-					<dt><font style="font-weight:bold">언제</font></dt>
-					<dd>
-						<div class="datebox">
-							<input name="day" type="text" id="testDatepicker" class="txt" value="<?echo date('Y-m-d')?>" />
-						</div>
-						<div class="selbox">
-							<select name="start_time" class="select_st1 w80">
-								<option selected>00:00</option>
-								<option>01:00</option>
-								<option>02:00</option>
-								<option>03:00</option>
-								<option>04:00</option>
-								<option>05:00</option>
-								<option>06:00</option>
-								<option>07:00</option>
-								<option>08:00</option>
-								<option>09:00</option>
-								<option>10:00</option>
-								<option>11:00</option>
-								<option>12:00</option>
-								<option>13:00</option>
-								<option>14:00</option>
-								<option>15:00</option>
-								<option>16:00</option>
-								<option>17:00</option>
-								<option>18:00</option>
-								<option>19:00</option>
-								<option>20:00</option>
-								<option>21:00</option>
-								<option>22:00</option>
-								<option>23:00</option>
-								<option>24:00</option>
-							</select>
-							&nbsp;~&nbsp;
-							<select name="end_time" class="select_st1 w80">
-								<option>00:00</option>
-								<option>01:00</option>
-								<option>02:00</option>
-								<option>03:00</option>
-								<option>04:00</option>
-								<option>05:00</option>
-								<option>06:00</option>
-								<option>07:00</option>
-								<option>08:00</option>
-								<option>09:00</option>
-								<option>10:00</option>
-								<option>11:00</option>
-								<option>12:00</option>
-								<option>13:00</option>
-								<option>14:00</option>
-								<option>15:00</option>
-								<option>16:00</option>
-								<option>17:00</option>
-								<option>18:00</option>
-								<option>19:00</option>
-								<option>20:00</option>
-								<option>21:00</option>
-								<option>22:00</option>
-								<option>23:00</option>
-								<option selected>24:00</option>
-							</select>
-						</div>
-					</dd>
-				</dl>
-				<dl class="cho2">
-					<dt><font style="font-weight:bold">난이도</font></dt>
-					<dd>
-						<div class="selbox">
-							<select name="start_level" class="select_st1 w50">
-								<option selected>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
-							&nbsp;~&nbsp;
-							<select name="end_level" class="select_st1 w50">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option selected>5</option>
-							</select>
-							<div class="ml20">
-								<select name="horror" class="select_st1 w100">
-									<option selected>공포포함</option>
-									<option>공포만</option>
-									<option>공포X</option>
-								</select>
-							</div>
-							<div class="chkbox">
-<!--								<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>-->
-							</div>
-						</div>
-					</dd>
-				</dl>
-				<dl class="cho3">
-					<dt><font style="font-weight:bold;margin-right:15px;">지역</font></dt>
-					<dd style="width:100%;">
-						<ul class="loca_1dep">
-							<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
-							<li>
-								<a href="#">서울</a> 
-								<ul class="loca_2dep">
-									<li><a  onclick="search_game('seoul')">전체</a></li>
-									<li><a  onclick="search_game('mapo')">홍대</a></li>
-									<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
-									<li><a  onclick="search_game('gangnam')">강남</a></li>
-									<li><a  onclick="search_game('jonglo')">대학로</a></li>
-									<li><a  onclick="search_game('gwanack')">신림</a></li>
-									<li><a  onclick="search_game('gwangjin')">건대</a></li>
-									<li><a  onclick="search_game('yangcheon')">목동</a></li>
-								</ul>
-							</li>
-							<li><a href="#">경기</a>
-								<ul class="loca_2dep">
-									<li><a  onclick="search_game('suwon')">수원</a></li>
-									<li><a  onclick="search_game('anyang')">안양</a></li>
-									<li><a  onclick="search_game('hwasung')">화성</a></li>
-								</ul>
-							</li>
-
-						<!--<li><a onclick="search_game('incheon')">인천</a></li>
-							<li><a onclick="search_game('daejeon')">대전</a></li>
-							<li><a onclick="search_game('busan')">부산</a></li>-->
-						</ul>
-						<input name="rigion" type="hidden" id="rigion">
-					</dd>
-				</dl>
-			</form>
-			<form action='./search_word.php' method='get' id='search_word_form'>
-				<div class="schbox">
-					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
-				</div>
-			</form>
-
+			<?include('./search_module.php');?>
 			</div>
 		</div>
 
 <style>
-#searcharea{width:25%}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -183,8 +42,9 @@ include('./include.php');
 	 font-size:19px; 
 	 padding-top:5px;
 }
+.hidecontent{width:100%;height:84px;overflow:hidden;}
+
 @media all and (max-width:1041px){
-#searcharea{width:80%;font-size:12px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -205,7 +65,6 @@ include('./include.php');
 	 margin-top:-57px;
 	 margin-right:-10px;
 }
-
 }
 </style>
 	<!--	<div class="timenow">
@@ -475,8 +334,10 @@ include('./include.php');
 .lowestPrice{width:30%;float:left;display:inline;}
 
 .ultracase{width:60%;margin-left:20%;margin-right:20%;margin-top:20px;}
-.pieces{width:33%;float:left;}
-.gImage{width:90%;}
+.pieces{width:33%;float:left;cursor:pointer;height:150px;}
+.gImage_box{position:relative; float:left;border:0px solid #aaa; width:155px; height:150px; text-align:center; display:table-cell; background-color:#a0a0a0;}
+.gImage{position:absolute; width:auto; height:auto; max-height:150px; max-width:155px; border:0px solid #aaa; background-color:#ffffff; margin:auto; top:0; bottom:0; left:0; right:0;}
+/*.gImage{width:94%;margin:2%;height:150px;}*/
 .img1, .img2, .img3{width:13px;margin-right:2px;margin-bottom:2px;}
 @media all and (max-width:1041px){
 	.ultra{
@@ -528,16 +389,22 @@ include('./include.php');
 	.lowestPrice{width:30%;float:left;display:inline;}
 
 	.ultracase{width:90%;margin-left:5%;margin-right:5%;margin-top:20px;}
-	.pieces{width:100%;float:left;}
-	.gImage{width:90%;}
+	.pieces{width:100%;float:left;cursor:pointer;}
+
+	/*.gImage{width:90%;}*/
 	.img1, .img2, .img3{width:10px;margin-right:2px;margin-bottom:10px;}
 	td {font-size:11px;}
 }
 </style>
 
+
+</div><!--여기까지가 wrap이라서 파란선이 남는다-->
+
 <!--출력시작부-->
 <div class="ultracase">
-		<div style="width:300px;"><img src="../images/icon/icon_maintit.gif" style="margin-right:1px;"/><font size="4pt"><b>울트라 추천</b></font>&nbsp;&nbsp;<font color="#888">광고</font></div>
+		<!--<div style="width:300px;"><img src="../images/icon/icon_maintit.gif" style="margin-right:1px;"/><font size="4pt"><b>울트라 추천</b></font>&nbsp;&nbsp;<font color="#888">광고</font></div>-->
+
+<!--search_module.php S-->
 <?
 //먼저 지역데이터로 파트너를 검색한다.
 //홍대-마포구, 신촌-서대문구, 강남-강남구, 대학로-종로구, 신림-관악구, 건대-광진구, 목동-양천구
@@ -549,63 +416,110 @@ $endLevel=$_GET['end_level'];
 $horror=$_GET['horror'];
 
 switch($_GET['rigion']){
+	case 'all':
+		$startPostNumber='01000';
+		$endPostNumber='18635';
+		break;
 	case 'seoul':
+		$startPostNumber='01000';
+		$endPostNumber='08866';
+		break;
 	case 'mapo':
+		$startPostNumber='03900';
+		$endPostNumber='04214';
+		break;
 	case 'seodaemoon':
+		$startPostNumber='03600';
+		$endPostNumber='03789';
+		break;
 	case 'gangnam':
+		$startPostNumber='06000';
+		$endPostNumber='06378';
+		break;
 	case 'jonglo':
+		$startPostNumber='03000';
+		$endPostNumber='03198';
+		break;
 	case 'gwanack':
+		$startPostNumber='08700';
+		$endPostNumber='08866';
+		break;
 	case 'gwangjin':
+		$startPostNumber='04900';
+		$endPostNumber='05120';
+		break;
 	case 'yangcheon':
+		$startPostNumber='07900';
+		$endPostNumber='08111';
+		break;
+	case 'gyeonggi':
+		$startPostNumber='10000';
+		$endPostNumber='18635';
+		break;
 	case 'suwon':
+		$startPostNumber='16200';
+		$endPostNumber='16713';
+		break;
 	case 'anyang':
-		$startPostNumber=13905;
-		$endPostNumber=14128;
+		$startPostNumber='13900';
+		$endPostNumber='14128';
 		break;
 	case 'hwasung':
+		$startPostNumber='18200';
+		$endPostNumber='18635';
+		break;
 }
 $postSql="select p_id, p_localName from partner where p_postNumber1 >= '".$startPostNumber."' and p_postNumber1 <= '".$endPostNumber."'";
 $postQuery=mysql_query($postSql);
-while($post=mysql_fetch_array($postQuery)){
+while($post=mysql_fetch_array($postQuery)){	//회원수만큼 돌고
+	
 	//난이도> <, 공포 여부에 따라 게임을 출력한다.
 	if($_GET['horror']=='공포포함'){
-		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."'";
+		$sql="select g_idx, g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and p_id='".$post['p_id']."'";
 	}elseif($_GET['horror']=='공포만'){
-		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror > 0";
+		$sql="select g_idx, g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror > 0 and p_id='".$post['p_id']."'";
 	}else{
-		$sql="select g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror <= 0";
+		$sql="select g_idx, g_title, g_level, g_horror, g_content, g_summary from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror <= 0 and p_id='".$post['p_id']."'";
 	}
 	$q=mysql_query($sql);
 	while($data=mysql_fetch_array($q)){
-
+		//partner = $post
+		//game = $data
+		//gameImage = $image
+		$imagesql="select filename from gameImage where g_idx='".$data['g_idx']."'";
+		$imageq=mysql_query($imagesql);
+		$image=mysql_fetch_array($imageq);
 	//실제출력
 	?>
-	<table class="pieces">
+	<table class="pieces" onclick='letsview(<?echo $data['g_idx']?>)'>
 	<tr>
 		<td>
-			<table>
+			<table style="table-layout: fixed;height:165px;">
 				<tr>
 				<td rowspan="3" width="165px" style="padding-top:10px; padding-bottom:10px;">
-					<img class="gImage" src="../images/contents/img_timenow1.jpg"></td>
+					<div class="gImage_box"><img class="gImage" src="../manager/gameImage/<?echo $image['filename']?>.jpg"></div></td>
 				<td style="height:20px;padding-top:10px;">
 					<font size="4pt" style="font-weight:bold"><?echo $data['g_title']?></font></td>
 				</tr>
 				<tr>
 				<td style="vertical-align:top;height:40px;">
-					<img class="img1" src="../images/icon/icon_new1.png"/><?echo $post['p_localName']?><br>
+					<img class="img1" src="../images/icon/shop.png"/><?echo $post['p_localName']?><br>
 					<img class="img2" src="../images/icon/icon_new1.png"/>난이도 : <?echo $data['g_level']?>&nbsp;&nbsp;
 					<img  class="img3" src="../images/icon/icon_new2.png"/>공포감 : <?echo $data['g_horror']?>
 				</td>
 				</tr>
 				<tr>
-				<td style="vertical-align:top;padding:0;">
+				<td style="vertical-align:top;padding:0;overflow:hidden;">
+					<div class="hidecontent">
 					<?
 					if($data['g_summary']==''){
-						echo $data['g_content'];
+						$data['g_summary']=$data['g_content'];
+						echo $data['g_summary'];
 					}else{
 						echo $data['g_summary'];					
 					}
 					?>
+					</div>
 				</td>
 				</tr>
 			</table>
@@ -617,27 +531,8 @@ while($post=mysql_fetch_array($postQuery)){
 }
 
 ?>
-
-</div>
-
 <!--아래 스크립트가, 날짜 스케쥴 가져오는 js-->
 <script type="text/javascript" src="../js/common.js"></script>
 
 </html>
 
-<script>
-function search_game(value){
-	var f=document.getElementById('search_game_form');
-	var x=document.getElementById('rigion');
-	var rigion=value;
-	
-	x.value=rigion;	
-
-	f.submit();
-}
-function search_word(){
-	var f=document.getElementById('search_word_form');
-	
-	f.submit();
-}
-</script>

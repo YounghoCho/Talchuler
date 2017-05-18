@@ -6,6 +6,7 @@ if($_GET['refresh']==1){
    exit;
 }
 ?>
+<meta charset="utf-8"/>
 <script type="text/javascript">
 // content와 sidebar를 같은 높이로 맞추기
 (window.onload = function() {  // 화면이 뜬 뒤 처리
@@ -185,25 +186,25 @@ if($_GET['refresh']==1){
 }
 /*클릭박스 영역*/
 /*예약취소 / 변경 / 환불규정*/
-#promise{
+#promise1{
 	overflow:auto;
 	height:auto;
 	float:left;
 	color:#666666;
 }
-#promise .major{
+#promise1 .major{
 	float:left;
 	font-size:15px;
 	font-weight:medium;
 	padding-left:50px;
 }
-#promise .show_box{
+#promise1 .show_box{
 	clear:both;
 	overflow:auto;
 	padding-left:190px;
 	margin-top:40px;
 }
-#promise .show_box div{
+#promise1 .show_box div{
 	width:100%;
 	height:200px; /*약관란 높이조절*/
 	resize:none;
@@ -212,7 +213,7 @@ if($_GET['refresh']==1){
 	color:#999999;
 	border:none;
 }
-#promise .show_box b{
+#promise1 .show_box b{
 	line-height:20px;
 	width:80%;
 }
@@ -295,7 +296,7 @@ if($index+1>$count[0]){
 					</div>
 					<div class="title">*카페로고</div>
 					<div class="cafe_logo">
-						<img src="../partner/partnerAsk/<?echo $data['p_id']?>.jpg" />
+						<img src="../manager/partnerAsk/<?echo $data['p_id']?>.jpg" />
 					</div>
 					<div style='font-size:11px; font-weight:lighter; vertical-align:bottom; color:#cccccc; padding-left:5px;'>(80px × 80px)</div>
 				</div>
@@ -328,14 +329,19 @@ if($index+1>$count[0]){
 				</div>
 			</div>
 		</div>
-		<div id="clickbox_area">	
+		<div id="clickbox_area">
 			<div id="clickbox_house">
-				<a href="./partnerReject.php?p_idx=<?echo $data['p_idx']?>&p_id=<?echo $data['p_id']?>"><div class="gray">거절</div></a>
+				<div class="gray" onclick="popup1()">거절
+				</div><!--</a>-->
 				<div class="empty_space">&nbsp</div>
-				<a href="./partnerAdmit.php?p_idx=<?echo $data['p_idx']?>&p_id=<?echo $data['p_id']?>"><div class="rightblue">승인하기</div></a>
+				<form action="./partnerAdmit.php" method="GET" id="admitform">
+					<input type="hidden" name="p_idx" value="<?echo $data['p_idx']?>"/>
+					<input type="hidden" name="p_id" value="<?echo $data['p_id']?>"/>
+					<div class="rightblue" onclick="popup2()">승인하기</div>
+				</form>
 			</div>
 		</div>
-		<div id="promise">
+		<div id="promise1">
 			<div class="major">＊예약취소 / 변경 / 환불규정</div>
 			<div class="show_box">
 				<div>
@@ -345,7 +351,73 @@ if($index+1>$count[0]){
 		</div>
 	</div>
 </div>
-
+<!--popup module-->
+<style>
+.blackarea{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background-color:RGBA(1,1,1,0.8);display:none;}
+.blackarea2{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background-color:RGBA(1,1,1,0.8);display:none;}
+.whitearea{position:absolute;width:40%;height:40%;background-color:white;margin:15% 30% 15% 30%;}
+.reason{width:92%;height:10%;margin-left:4%;border:1px solid;margin:10px;}
+.buttons{width:100%;text-align:center;float:left;}
+.buttonreject{width:80px;height:40px;background-color:#ccc;border:none;padding:5px;}
+.buttonadmit{width:80px;height:40px;background-color:#4edcf2;border:none;padding:5px;}
+.leftdiv{float:left;}
+.check{width:30px;height:30px;}
+</style>
+	<!--popup1-->
+	<div class="blackarea" id="blackarea">
+		<div class="whitearea">
+			<div class="buttons">
+				<form action="./partnerReject.php" method="GET" id="rejectform">
+				<input type="checkbox" name="reject1" class="check"/>카페로고에 잘못 된 이미지가 첨부되었으니 확인 후 재요청 부탁드립니다.<br>
+				<div class="leftdiv">거절 사유를 입력주세요.</div>
+				<input type="text" name="reason" class="reason"/>
+					<!--hidden-->
+					<input type="hidden" name="p_idx" value="<?echo $data['p_idx']?>"/>
+					<input type="hidden" name="p_id" value="<?echo $data['p_id']?>"/>
+				<input type="hidden" name="g_idx" value="<?echo $queue[$index]?>"/>
+				<input type="button" class="buttonreject" value="취소" onclick="closepopup()"/>
+				<input type="button" class="buttonadmit" value="거절" onclick="submit()"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--popup2-->
+	<div class="blackarea2" id="blackarea2">
+		<div class="whitearea">
+			<div class="buttons">
+				<div class="leftdiv">최종 승인 하시겠습니까?</div>
+				<input type="button" class="buttonreject" value="취소" onclick="closepopup2()"/>
+				<input type="button" class="buttonadmit" value="승인" onclick="submit2()"/>
+			</div>
+		</div>
+	</div>
+<script>
+function popup1(){
+	var popup=document.getElementById('blackarea');
+	popup.style.display="block";
+}
+function popup2(){
+	var popup=document.getElementById('blackarea2');
+	popup.style.display="block";
+}
+function closepopup(){
+	var popup=document.getElementById('blackarea');
+	popup.style.display="none";
+}
+function closepopup2(){
+	var popup=document.getElementById('blackarea2');
+	popup.style.display="none";
+}
+function submit(){
+	var f=document.getElementById('rejectform');
+	f.submit();
+}
+function submit2(){
+	var f=document.getElementById('admitform');
+	f.submit();
+}
+</script>
+<!--popup module-->
 
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div> <!--body를 닫는 태그입니다.-->

@@ -1,52 +1,74 @@
 <?
 include('./include.php');
 
-/*ÀüÃ¼½ÂÀÎ
-°ªÀÌ ³Ñ¾î¿À´Â°Ô ¾Æ´Ï¶ó, ÀüÃ¼½ÂÀÎÀ» Ã¼Å©ÇÏ¸é
-´Ù¸¥³à¼®µéµµ ´Ù Ã¼Å©µÇ°Ô ÇØ¶ó */
+/*ì „ì²´ìŠ¹ì¸
+ê°’ì´ ë„˜ì–´ì˜¤ëŠ”ê²Œ ì•„ë‹ˆë¼, ì „ì²´ìŠ¹ì¸ì„ ì²´í¬í•˜ë©´
+ë‹¤ë¥¸ë…€ì„ë“¤ë„ ë‹¤ ì²´í¬ë˜ê²Œ í•´ë¼ */
 
-//ºÎºĞ½ÂÀÎ
-//½ÂÀÎ¿äÃ»ÀÌ 100°³±îÁö ½×ÀÏ¼öÀÖ¾î.
+//ë¶€ë¶„ìŠ¹ì¸
+//ìŠ¹ì¸ìš”ì²­ì´ 100ê°œê¹Œì§€ ìŒ“ì¼ìˆ˜ìˆì–´.
 for($i=0; $i<100; $i++){
 	if($_POST['check'.$i]=='on'){
 		$sql="select al_idx,p_id, filename from album where al_idx=".$i.";";
 		$q=mysql_query($sql);
 		$data=mysql_fetch_array($q);
-		/*¼±ÅÃµÇ¾î ³Ñ¾î¿À´Â ³à¼®ÀÇ Á¤º¸
-		»çÁøÀÎµ¦½º´Â $data['al_idx']
-		»çÁø¿Ã¸°»ç¶÷Àº $data['p_id'], 
-		´Ü, al_idx´Â partnerÀÇ albumAskÆÄÀÏ¾È¿¡ ±ÔÄ¢¿¡ ÀÇÇØ¼­ 1ºÎÅÍ ½ÃÀÛÇÏ°ÔµÈ´Ù.
-		µû¶ó¼­, ³Ñ¾î¿À´Â checkµéÀº 0ºÎÅÍ°¡ ¾Æ´Ï¶ó 1ºÎÅÍ ½ÃÀÛÇÑ´Ù.
-		ÀÌ¶§, µğ·ºÅä¸®¿¡ ÀúÀåµÇ´Â »çÁøÀº 0ºÎÅÍÀÓÀ» ±â¾ïÇØ¶ó*/
+		/*ì„ íƒë˜ì–´ ë„˜ì–´ì˜¤ëŠ” ë…€ì„ì˜ ì •ë³´
+		ì‚¬ì§„ì¸ë±ìŠ¤ëŠ” $data['al_idx']
+		ì‚¬ì§„ì˜¬ë¦°ì‚¬ëŒì€ $data['p_id'], 
+		ë‹¨, al_idxëŠ” partnerì˜ albumAskíŒŒì¼ì•ˆì— ê·œì¹™ì— ì˜í•´ì„œ 1ë¶€í„° ì‹œì‘í•˜ê²Œëœë‹¤.
+		ë”°ë¼ì„œ, ë„˜ì–´ì˜¤ëŠ” checkë“¤ì€ 0ë¶€í„°ê°€ ì•„ë‹ˆë¼ 1ë¶€í„° ì‹œì‘í•œë‹¤.
+		ì´ë•Œ, ë””ë ‰í† ë¦¬ì— ì €ì¥ë˜ëŠ” ì‚¬ì§„ì€ 0ë¶€í„°ì„ì„ ê¸°ì–µí•´ë¼*/
 
-		//1.À¯ÀúÀÇ albumÄÃ·³À» Áõ°¡½ÃÄÑ¶ó
-			//partnerÀÇ album°ªÀ» Áõ°¡½ÃÅ°±âÀü¿¡ ÇöÀç ¾ó¸¶ÀÎÁö ÆÄ¾ÇÇÑ´Ù
-				//albumÀº »çÁø°¹¼ö, album_count´Â ¾÷·Îµå¿äÃ»°³¼ö.
+		//1.ìœ ì €ì˜ albumì»¬ëŸ¼ì„ ì¦ê°€ì‹œì¼œë¼
+			//partnerì˜ albumê°’ì„ ì¦ê°€ì‹œí‚¤ê¸°ì „ì— í˜„ì¬ ì–¼ë§ˆì¸ì§€ íŒŒì•…í•œë‹¤
+				//albumì€ ì‚¬ì§„ê°¯ìˆ˜, album_countëŠ” ì—…ë¡œë“œìš”ì²­ê°œìˆ˜.
 			$sql="select album, album_count from partner where p_id='".$data['p_id']."'";
 			$q=mysql_query($sql);
 			$album=mysql_fetch_array($q);
 
-	//Ãâ·Â		echo($album['album']." ".$album['album_count']."<br>");
+	//ì¶œë ¥		echo($album['album']." ".$album['album_count']."<br>");
   
-			//ÃÑ¾Ù¹ü¼ö 1Áõ°¡, ¾Ù¹ü¿äÃ»¼ö 1°¨¼Ò
+			//ì´ì•¨ë²”ìˆ˜ 1ì¦ê°€, ì•¨ë²”ìš”ì²­ìˆ˜ 1ê°ì†Œ
 			$sql="update partner set album='".$album['album']."'+1 , album_count='".$album['album_count']."'-1 where p_id='".$data['p_id']."'";
 			mysql_query($sql);
 			
 
-		//2.ÆÄÀÏÀ»ÀÌµ¿½ÃÄÑ¶ó		
-		echo(rename("../partner/albumAsk/".$data['filename'].".jpg", "/home/hosting_users/talchuler6/www/partner/album/".$data['filename'].".jpg"));
-		//3. album Ä®·³¿¡ ½ÂÀÎ ´ë±âÁßÀÌ´ø ³à¼®ÀÇ filenameÀ» path·Î ¾÷¼ÒµéÀÌ ºÒ·¯¿Í¾ß ÇÏ¹Ç·Î album_pathÅ×ÀÌºí¿¡ °ªÀ»ÀúÀåÇÑ´Ù.
+		//2.íŒŒì¼ì„ì´ë™ì‹œì¼œë¼		
+		echo(rename("../manager/albumAsk/".$data['filename'].".jpg", "../manager/album/".$data['filename'].".jpg"));
+		//3. album ì¹¼ëŸ¼ì— ìŠ¹ì¸ ëŒ€ê¸°ì¤‘ì´ë˜ ë…€ì„ì˜ filenameì„ pathë¡œ ì—…ì†Œë“¤ì´ ë¶ˆëŸ¬ì™€ì•¼ í•˜ë¯€ë¡œ album_pathí…Œì´ë¸”ì— ê°’ì„ì €ì¥í•œë‹¤.
 		$sql="insert into album_path (ap_idx, p_id, path) values ('','".$data['p_id']."','".$data['filename']."')";
 		mysql_query($sql);
 
-		//4. album Ä®·³¿¡ ´ë±âÁßÀÌ´ø ³à¼®À» ¾ø¾Ø´Ù.
+		//4. album ì¹¼ëŸ¼ì— ëŒ€ê¸°ì¤‘ì´ë˜ ë…€ì„ì„ ì—†ì•¤ë‹¤.
 		$sql="delete from album where al_idx='".$data['al_idx']."'";
 		mysql_query($sql);
 		
-		//5.À¯ÀúÀÇ album_count¸¦ °¨¼Ò½ÃÄÑ¶ó
+		//5.ìœ ì €ì˜ album_countë¥¼ ê°ì†Œì‹œì¼œë¼
 		$sql="update partner set album_count='".$album['album_count']."'-1 where p_id='".$data['p_id']."'";
 		mysql_query($sql);
 
+	//ë©”ì¼ë³´ë‚´ê¸° S
+	//ë©”ì¼íŒŒíŠ¸ë„ˆì •ë³´sql
+	$partnersql="select p_email from partner where p_id='".$data['p_id']."'";
+	$partnerq=mysql_query($partnersql);
+	$partner=mysql_fetch_array($partnerq);
+
+	$to = $partner[0]; // note the comma
+	$subject = 'íƒˆì¶œëŸ¬ ìŠ¹ì¸ë©”ì„¸ì§€';
+	// Message
+	$message='<table style="width:100%;text-align:center">
+	<tr><td colspan="2"><img src="http://www.talchuler.com/wowmoney/images/common/mail_logo.png"></td><td style="text-align:center;vertical-align:bottom;">ì¹´í˜ì•¨ë²” ìŠ¹ì¸ ì•ˆë‚´&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+	<tr><td colspan="3" style="height:20px;"><img src="http://www.talchuler.com/wowmoney/images/common/mail_bar.png"/></td></tr>
+	<tr><td colspan="3" style="height:190px;vertical-align:middle;"><br><b>'.$partner['p_shopName'].' '.$partner['p_localName'].'</b><br>íƒˆì¶œëŸ¬ ì¹´í˜ì•¨ë²” ë“±ë¡(ìˆ˜ì •)ì´ ìŠ¹ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.</td></tr>
+	<tr><td colspan="3" style="text-align:center"><img src="http://www.talchuler.com/wowmoney/images/common/mail_bottom1.png"/></td></tr>
+	</table>';
+
+	$headers[] = 'MIME-Version: 1.0';
+	$headers[] = 'Content-type: text/html; charset=utf-8';
+	$headers[] = 'From: íƒˆì¶œëŸ¬ <talchul_er@naver.com>';
+
+	mail($to, $subject, $message, implode("\r\n", $headers));
+	//ë©”ì¼ë³´ë‚´ê¸° S
 	}
 }
 ?>

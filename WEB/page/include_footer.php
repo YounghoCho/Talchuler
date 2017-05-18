@@ -1,4 +1,10 @@
-	<footer id="footer" style="float:left">
+<style>
+#footer{float:left}
+@media all and (max-width:1024px){
+	#footer{height:100%;}
+}
+</style>
+	<footer id="footer">
 		<div class="footer_inner">
 			<h1><a href="#"><img src="../images/common/logo_f.png" alt="logo" /></a></h1>
 			<div class="phonebox">1566-0280</div>
@@ -18,15 +24,15 @@
 			</div>
 			<div class="f_bottom">
 				<ul class="policylink">
-					<li><a href="./policy0.php">회사소개</a></li>
-					<li><a href="./policy1.php">이용약관</a></li>
-					<li><a href="./policy2.php">개인정보처리방침</a></li>
-					<li><a href="./policy3.php">위치정보이용약관</a></li>
+					<li><a id="mostBottom" href="./policy0.php">회사소개</a></li>
+					<li><a id="mostBottom" href="./policy1.php">이용약관</a></li>
+					<li><a id="mostBottom" href="./policy2.php">개인정보처리방침</a></li>
+					<li><a id="mostBottom" href="./policy3.php">위치정보이용약관</a></li>
 				</ul>
 				<div class="copyright">COPYRIGHT INOLUTION CORP.ALL RIGHT RESERVED</div>
 				<div class="snsbox">
 					<a href="https://www.facebook.com/2scaper/"><img src="../images/icon/icon_facebook.png" alt="페이스북" /></a>
-					<a href="http://blog.naver.com/talchul_er"><img src="../images/icon/icon_blog.png" alt="블로그" /></a>
+				<!--	<a href="http://blog.naver.com/talchul_er"><img src="../images/icon/icon_blog.png" alt="블로그" /></a>-->
 				</div>
 			</div>
 		</div>

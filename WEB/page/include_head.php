@@ -15,6 +15,7 @@ $data=mysql_fetch_array($query);
 <meta charset="utf-8" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
@@ -52,10 +53,10 @@ if(!$_SESSION['user_email']){
 			<ul class="gnb clfix">
 				<li><a href="./login.php">로그인</a></li>
 				<li><a href="./join.php">회원가입</a></li>
-				<li><a href="#">예약확인</a></li>
-				<li><a href="#">랭킹검색</a></li>
+			<!--	<li><a href="#">예약확인</a></li>
+				<li><a href="#">랭킹검색</a></li>-->
 				<li><a href="../search_user.php">탈출러검색</a></li>
-				<li><a href="./notice.php">고객센터</a></li>
+			<!--	<li><a href="./notice.php">고객센터</a></li>-->
 			</ul>
 			<!-- e : 로그인 전 pc -->
 <?

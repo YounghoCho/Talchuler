@@ -20,146 +20,7 @@ include('./include_head.php');
 
 		<div class="choicearea">
 			<div class="inner">
-
-			<form action='./search_game.php' method='get' id='search_game_form'>
-			<div class="inner">
-				<dl class="cho1">
-					<dt><font style="font-weight:bold">언제</font></dt>
-					<dd>
-						<div class="datebox">
-							<input name="day" type="text" id="testDatepicker" class="txt" value="<?echo date('Y-m-d')?>" />
-						</div>
-						<div class="selbox">
-							<select name="start_time" class="select_st1 w80">
-								<option selected>00:00</option>
-								<option>01:00</option>
-								<option>02:00</option>
-								<option>03:00</option>
-								<option>04:00</option>
-								<option>05:00</option>
-								<option>06:00</option>
-								<option>07:00</option>
-								<option>08:00</option>
-								<option>09:00</option>
-								<option>10:00</option>
-								<option>11:00</option>
-								<option>12:00</option>
-								<option>13:00</option>
-								<option>14:00</option>
-								<option>15:00</option>
-								<option>16:00</option>
-								<option>17:00</option>
-								<option>18:00</option>
-								<option>19:00</option>
-								<option>20:00</option>
-								<option>21:00</option>
-								<option>22:00</option>
-								<option>23:00</option>
-								<option>24:00</option>
-							</select>
-							&nbsp;~&nbsp;
-							<select name="end_time" class="select_st1 w80">
-								<option>00:00</option>
-								<option>01:00</option>
-								<option>02:00</option>
-								<option>03:00</option>
-								<option>04:00</option>
-								<option>05:00</option>
-								<option>06:00</option>
-								<option>07:00</option>
-								<option>08:00</option>
-								<option>09:00</option>
-								<option>10:00</option>
-								<option>11:00</option>
-								<option>12:00</option>
-								<option>13:00</option>
-								<option>14:00</option>
-								<option>15:00</option>
-								<option>16:00</option>
-								<option>17:00</option>
-								<option>18:00</option>
-								<option>19:00</option>
-								<option>20:00</option>
-								<option>21:00</option>
-								<option>22:00</option>
-								<option>23:00</option>
-								<option selected>24:00</option>
-							</select>
-						</div>
-					</dd>
-				</dl>
-				<dl class="cho2">
-					<dt><font style="font-weight:bold">난이도</font></dt>
-					<dd>
-						<div class="selbox">
-							<select name="start_level" class="select_st1 w50">
-								<option selected>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
-							&nbsp;~&nbsp;
-							<select name="end_level" class="select_st1 w50">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option selected>5</option>
-							</select>
-							<div class="ml20">
-								<select name="horror" class="select_st1 w100">
-									<option selected>공포포함</option>
-									<option>공포만</option>
-									<option>공포X</option>
-								</select>
-							</div>
-							<div class="chkbox">
-							<!--	<label name="except" class="ichk"><span>했던테마 제외</span><input type="checkbox"><i><em></em></i></label>-->
-							</div>
-						</div>
-					</dd>
-				</dl>
-				<dl class="cho3">
-					<dt><font style="font-weight:bold;margin-right:15px;">지역</font></dt>
-					<dd style="width:100%;">
-						<ul class="loca_1dep">
-							<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
-							<li>
-								<a href="#">서울</a>
-								<ul class="loca_2dep">
-									<li><a  onclick="search_game('seoul')">전체</a></li>
-									<li><a  onclick="search_game('mapo')">홍대</a></li>
-									<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
-									<li><a  onclick="search_game('gangnam')">강남</a></li>
-									<li><a  onclick="search_game('jonglo')">대학로</a></li>
-									<li><a  onclick="search_game('gwanack')">신림</a></li>
-									<li><a  onclick="search_game('gwangjin')">건대</a></li>
-									<li><a  onclick="search_game('yangcheon')">목동</a></li>
-								</ul>
-							</li>
-							<li><a href="#">경기</a>
-								<ul class="loca_2dep">
-									<li><a  onclick="search_game('suwon')">수원</a></li>
-									<li><a  onclick="search_game('anyang')"">안양</a></li>
-									<li><a  onclick="search_game('hwasung')">화성</a></li>
-								</ul>
-							</li>
-						<!--<li><a onclick="search_game('incheon')">인천</a></li>
-							<li><a onclick="search_game('daejeon')">대전</a></li>
-							<li><a onclick="search_game('busan')">부산</a></li>-->
-						</ul>
-						<input name="rigion" type="hidden" id="rigion">
-					</dd>
-				</dl>
-			</form>
-			<form action='./search_word.php' method='get' id='search_word_form'>
-				<div class="schbox">
-					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
-					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
-				</div>
-			</form>
-
+				<?include('./search_module.php');?>
 			</div>
 		</div>
 
@@ -206,13 +67,14 @@ include('./include_head.php');
 
 }
 </style>
+<!--
 		<div class="timenow">
 			<div class="inner">
 				<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
 					<div class='lowest' onclick="location.href='./timeHotDeal.php'">현재 29개 중 <b><font color="red">최저가 9000</font>원 > </b></div>
 				</div>
 				<!-- s : timenow pc -->
-				<div class="slidearea">
+			<!--	<div class="slidearea">
 					<ul class="bxslider01">
 						<li>
 							<ul>
@@ -349,11 +211,11 @@ include('./include_head.php');
 							</ul>
 						</li>
 					<!--li~/li반복하면 dot표시가 생기면서 화면넘어감-->
-					</ul>
+		<!--			</ul>
 				</div>
 				<!-- e : timenow pc -->
 				<!-- s : timenow mobile -->
-				<div class="slidearea_m">
+		<!--		<div class="slidearea_m">
 					<ul class="bxslider01_m">
 						<li>
 							<ul>
@@ -414,7 +276,7 @@ include('./include_head.php');
 					</ul>
 				</div>
 				<!-- e : timenow mobile -->
-			</div>
+<!--			</div>
 		</div>
 <style>
 .container{
@@ -661,70 +523,122 @@ include('./include_head.php');
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
 
 <!--검색 결과 S-->
-
+<style>
+.pieces{width:33%;float:left;cursor:pointer;}
+.ultracase{width:60%;margin-left:20%;margin-right:20%;margin-top:20px;}
+.gImage{width:90%;}
+.img1, .img2, .img3{width:13px;margin-right:2px;margin-bottom:2px;}
+</style>
+<div class="ultracase">
 <?
-//print_r($_GET);
-//= day, start_time, end_time, start_level, end_level, horror, rigion, input
-$sql="select * from game where g_location like '%".$_GET['input']."%' or g_name like '%".$_GET['input']."%' or g_cafe like '%".$_GET['input']."%';";
+//게임에서 검색한다, 왜냐하면 게임검색이므로.
+$sql="select g_idx, p_id, g_title, g_level, g_horror, g_content, g_summary from game where g_title like '%".$_GET['input']."%'";
 $query=mysql_query($sql);
-while($data=mysql_fetch_array($query)){
-$temp=$data['g_idx'];
-?>
-<a href="./theme_view.php?g_idx=<?echo $temp?>">
-<div class="container">
-	<div class="field">
-	<div class="box">
-		<div class="imgDiv">
-			<img src="../game/<?echo $data['g_name']?>.jpg">
-		</div>
-		<div class="contentDiv">
-			<strong><font style="font-size:120%;font-weight:bold"><?echo ($data['g_name'])?></font></strong>
-						<font style="font-size:85%;">
-							<ul style="padding-bottom:1%;">
-							<li class="txt" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <?echo ($data['g_location'])?></li>
-							</ul>
-							<ul>
-							<li class="icon_new1" id="d"><img src="../images/icon/icon_new1.png" width="13px"/> <em>난이도</em> <?echo ($data['g_level'])?></li>
-							<li class="icon_new2" id="d"><img src="../images/icon/icon_new2.png" width="13px"/> <em>공포감</em> <?echo ($data['g_horror'])?></li>
-							</ul>
-							<br>
-							<div style="line-height:14px;">
-							<?echo ($data['g_content'])?>	
-							</div>
-						</font>				
-		</div>
-		<center>
-		<div class="bottomDiv">
-			<div class="heart"> 
-			♡
-			</div>
-			<div class="share">
-			＃
-			</div>
-			<div class="empty">
-			</div>
-			<div class="basicPrice">
-			기본가<br>
-			22,000원
-			</div>
-			<div class="lowestPrice">
-			최저가<br>
-			15,000원
-			</div>
-		</div>
-		</center>
-	</div>
-	</div>
-</div>
-</a>
-<?
+while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
+	//이미지쿼리
+	$imgsql="select filename from gameImage where g_idx='".$data['g_idx']."'";
+	$imgquery=mysql_query($imgsql);
+	$image=mysql_fetch_array($imgquery);
+	//업소쿼리
+	$localsql="select p_localName from partner where p_id='".$data['p_id']."'";
+	$localquery=mysql_query($localsql);
+	$local=mysql_fetch_array($localquery);
+	//실제출력
+	?>
+	<table class="pieces" onclick='letsview(<?echo $data['g_idx']?>)'>
+	<tr>
+		<td>
+			<table style="border:1px solid;height:165px;">
+				<tr>
+				<td rowspan="3" width="165px" style="padding-top:10px; padding-bottom:10px;">
+					<img class="gImage" src="../manager/gameImage/<?echo $image['filename']?>.jpg"></td>
+				<td style="height:20px;padding-top:10px;">
+					<font size="4pt" style="font-weight:bold"><?echo $data['g_title']?></font></td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;height:40px;">
+					<img class="img1" src="../images/icon/icon_new1.png"/><?echo $local['p_localName']?><br>
+					<img class="img2" src="../images/icon/icon_new1.png"/>난이도 : <?echo $data['g_level']?>&nbsp;&nbsp;
+					<img  class="img3" src="../images/icon/icon_new2.png"/>공포감 : <?echo $data['g_horror']?>
+				</td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;padding:0;overflow:hidden;">
+					<div style="width:100%;height:84px;">
+					<?
+					if($data['g_summary']==''){
+						echo $data['g_content'];
+					}else{
+						echo $data['g_summary'];					
+					}
+					?>
+					</div>
+				</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	<?
 }
 ?>
+<?
+//파트너에서 업체명,지점명 검색하고
+$localsql2="select p_id, p_shopName, p_localName from partner where p_shopName like '%".$_GET['input']."%' or p_localName like '%".$_GET['input']."%'";
+$localquery2=mysql_query($localsql2);
+$local2=mysql_fetch_array($localquery2);
+//해당되는 게임들을 불러온다
+$sql2="select g_idx, p_id, g_title, g_level, g_horror, g_content, g_summary from game where p_id='".$local2['p_id']."'";
+$query2=mysql_query($sql2);
+while($data2=mysql_fetch_array($query2)){	//회원수만큼 돌고
+	//이미지쿼리
+	$imgsql2="select filename from gameImage where g_idx='".$data2['g_idx']."'";
+	$imgquery2=mysql_query($imgsql2);
+	$image2=mysql_fetch_array($imgquery2);
+	//실제출력
+	?>
+	<table class="pieces" onclick='letsview(<?echo $data2['g_idx']?>)'>
+	<tr>
+		<td>
+			<table>
+				<tr>
+				<td rowspan="3" width="165px" style="padding-top:10px; padding-bottom:10px;">
+					<img class="gImage" src="../manager/gameImage/<?echo $image2['filename']?>.jpg"></td>
+				<td style="height:20px;padding-top:10px;">
+					<font size="4pt" style="font-weight:bold"><?echo $data2['g_title']?></font></td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;height:40px;">
+					<img class="img1" src="../images/icon/shop.png"/><?echo $local2['p_localName']?><br>
+					<img class="img2" src="../images/icon/icon_new1.png"/>난이도 : <?echo $data2['g_level']?>&nbsp;&nbsp;
+					<img  class="img3" src="../images/icon/icon_new2.png"/>공포감 : <?echo $data2['g_horror']?>
+				</td>
+				</tr>
+				<tr>
+				<td style="vertical-align:top;padding:0;">
+					<?
+					if($data2['g_summary']==''){
+						echo $data2['g_content'];
+					}else{
+						echo $data2['g_summary'];					
+					}
+					?>
+				</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	<?
+}
+//페이징 해야될듯
+?>
 
+</div>
 <!--검색 결과 E-->
 
 

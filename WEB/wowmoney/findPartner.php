@@ -62,7 +62,7 @@ td{border: 1px solid #aaa;}
 		<tr>
 			<td><?echo $data['p_joinDate']?></td>
 			<td><?echo $data['p_id']?></td>
-			<td><?echo $data['p_shopName']?><?if(!$data['p_localName']=="")echo("(".$data['p_localName'].")")?></td>
+			<td><?echo $data['p_shopName']?><?if(!$data['p_localName']=="")echo("(".$data['p_localName'].")")?><img src="./images/icon/right.png" style="margin-left:5px;"height="10px"></td>
 			<td><?echo $data['p_email']?></td>
 			<td><?echo $data['p_name']?></td>
 			<td><?echo $data['p_phone']?></td>
@@ -73,7 +73,11 @@ td{border: 1px solid #aaa;}
 		?>
 	</table>
 </div>
-
+<style>
+.btn{
+	border:0px;
+}
+</style>
 
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div> <!--body를 닫는 태그입니다.-->

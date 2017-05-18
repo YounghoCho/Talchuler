@@ -1,41 +1,58 @@
 <?
-include('./HeadTab_Module_Owner.php');
+@session_start();
 ?>
+<html>
+<head>
+<!--Intenet Explorer에서 Javascript, JQuery가 동작안하는 것을 막는다-->
+<!--호환문제 때문이며, 해결하는 코드는 바로 아래의 한줄 코드이다-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 <script>
-	function wrapWindowByMask(){
+	window.onload = function()
+{
+ // div height 설정
+ popup_1();
+}
+
+</script>
+
+<script>
+	function popup_1(){
 		//화면의 높이와 너비를 구한다.
-		var maskHeight = $(window).height();  
-		var maskWidth = $(document).width();  
+		var popup_1Height = $(window).height();  
+		var popup_1Width = $(document).width();  
 
 		//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-		$('#mask').css({'width':maskWidth,'height':maskHeight});  
+		$('#mask').css({'width':popup_1Width,'height':popup_1Height});  
 		// 플로팅 효과
 		$('#mask').fadeIn(500); //시간 딜레이 1000=1s    
 		$('#mask').fadeTo("slow",0.5); //띄우는 시간, 어둡기 투명도 조절
 
 		//윈도우 같은 거 띄운다.
-		$('.window').show();
+		$('.popup_1_window').show();
 	}
 
 	$(document).ready(function(){
 		//검은 막 띄우기
-		$('.openMask').click(function(e){
+		$('.popup_1_openMask').click(function(e){
 			e.preventDefault();
-			wrapWindowByMask();
+			popup_1();
 		});
 
 		//닫기 버튼을 눌렀을 때
-		$('.window .close').click(function (e) {  
+		$('.popup_1_window .close').click(function (e) {  
 		    //링크 기본동작은 작동하지 않도록 한다.
 		    e.preventDefault();  
-		    $('#mask, .window').hide();  
+		    $('#mask, .popup_1_window').hide();  
 		});       
 /*
 		//검은 막을 눌렀을 때
 		$('#mask').click(function () {  
 		    $(this).hide();  
-		    $('.window').hide();  
+		    $('.popup_1_window').hide();  
 		});     
 */
 	});
@@ -46,27 +63,18 @@ include('./HeadTab_Module_Owner.php');
 
 <style>
 
-#Main{
+#max_WH{
 	/*Tab 크기 뺴줌*/
-	width : -webkit-calc(100%-220px); /* for Chrome, Safari */
-    width :    -moz-calc(100%-220px); /* for Firefox */
-    width :         calc(100%-220px); /* for IE */
-	height:90%; /*Main의 높이를 90%로 조절합니다.*/
+	width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+    width :    -moz-calc(100%) - 0px); /* for Firefox */
+    width :         calc(100% - 0px); /* for IE */
+	height:100%; /*Main의 높이를 90%로 조절합니다.*/
 	overflow:hidden;
 }
 
-/*background는 일반 컨텐츠 영역임*/
-#background{
-	background:#339933;
-	width:800px;
-	height:800px;
-	float:left;
-	text-align:center;
-}
-/*background는 일반 컨텐츠 영역임*/
 
 /*팝업 중 쉐이딩 되지 않은 영역*/
-#note{
+#popup_1_note{
 	background:#f3f3f3;
 	width:300px;
 	height:180px;
@@ -74,7 +82,7 @@ include('./HeadTab_Module_Owner.php');
 	padding:5 10;
 }
 
-#note input{
+#popup_1_note input{
 	position:absolute; 
 	bottom:0;
 	left:0;
@@ -85,7 +93,7 @@ include('./HeadTab_Module_Owner.php');
 	margin:10px;
 }
 
-#note .text_box{
+#popup_1_note .text_box{
 	float:left;
 	font-size:14px;
 	width: -webkit-calc(100% - 20px); /* for Chrome, Safari */
@@ -96,12 +104,12 @@ include('./HeadTab_Module_Owner.php');
 	padding:0 10;
 }
 
-#note .icon_box{
+#popup_1_note .icon_box{
 	overflow:auto;
 	width:100%;
 }
 
-#note .icon_area{
+#popup_1_note .icon_area{
 	width:32%;
 	font-size:14px;
 	font-weight:bold;
@@ -111,12 +119,12 @@ include('./HeadTab_Module_Owner.php');
 	padding:10 0;
 }
 
-#note .icon_area img{
+#popup_1_note .icon_area img{
 	float:left;
 	height:20px;
 }
 
-#note .icon_text{
+#popup_1_note .icon_text{
 	width:40%;
 	float:right;
 	margin-right:10%;
@@ -132,15 +140,15 @@ include('./HeadTab_Module_Owner.php');
 	  position:absolute;  
 	  z-index:9000;  
 	  background-color:#000;  
-	  display:none;  
+	  display:inline;  
 	  left:0;
 	  top:0;
 }
 /*어둡기를 조절하는 마스크*/
 
 /*팝업 중 쉐이딩 되지 않은 영역*/
-.window{
-	  display: none;
+.popup_1_window{
+	  display:inline;
 	  position:absolute;  
 	  left:40%;
 	  top:30%;
@@ -153,12 +161,10 @@ include('./HeadTab_Module_Owner.php');
 </style>
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
-
-<div id="Main">
-	<div id="background">
+<div id="max_WH">
 		<div id="mask"></div>
-		<div class="window">
-			<div id="note">
+		<div class="popup_1_window">
+			<div id="popup_1_note">
 				<div class="text_box">
 					전화하셔서 <span style='color:#ef7a10;'>'탈출러 예약자'</span>라고 알려주시면 표시된 최저가로 이용이 가능합니다.
 				</div>
@@ -172,13 +178,7 @@ include('./HeadTab_Module_Owner.php');
 				<input type="button" href="#" class="close" style='	background:#66ccff; border:1px solid #06aeff; color:##000000; font-size:14px; font-weight:bold; padding:5 0 5 0; ' value="확인"/>
 			</div>
 		</div>
-		<a href="#" class="openMask">검은 막 띄우기</a>
-	</div>
 </div>
-
-<!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
-</div> <!--body를 닫는 태그입니다.-->
-<?
-include('./Footer_Module.php');
-?>
-
+<!--
+		<a href="#" class="popup_1_openMask">검은 막 띄우기</a>
+-->

@@ -134,6 +134,40 @@ body{
 }
 </style>
 </head>
+
+
+<!--tab과 main부분의 높이 다름 문제를 해결하기 위한 코드-->
+
+<script type="text/javascript">
+<!--
+/*------------------------------------------------------------------------------------------
+// 화면 로드 후 처리
+------------------------------------------------------------------------------------------*/
+window.onload = function()
+{
+ // div height 설정
+ setDivHeight('Tab','Main');
+}
+
+
+/*------------------------------------------------------------------------------------------
+// div height 설정
+// objSet : 변경할 div id
+// objTar : height값을 구할 대상 div id
+------------------------------------------------------------------------------------------*/
+function setDivHeight(objSet, objTarHeight)
+{ 
+  var objSet   = document.getElementById('Tab'); 
+  var objTarHeight= document.getElementById('Main').offsetHeight;
+  objSet.style.height  = objTarHeight - 30 + "px";
+
+} 
+//-->
+</script>
+
+<!--tab과 main부분의 높이 다름 문제를 해결하기 위한 코드-->
+
+
 <body>
 	<div id="Head">
 		<div class="logo_box">
