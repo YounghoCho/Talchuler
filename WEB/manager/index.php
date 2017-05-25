@@ -47,6 +47,7 @@ table{width:100%;height:auto;}
 .td_content{width:40%;height:40px;padding-left:20px;}
 #more{text-align:right;padding-right:20px;}
 </style>
+
 <?
 /* 로그인 이후 S*/
 /* 느낌표 하나로 테스트 가능*/
@@ -190,6 +191,7 @@ if(!$_SESSION['id']==""){
 /* 로그인 이전 E*/
 include('./Footer_Module.php');
 ?>
+
 <script>
 function module2(){
 	var f = document.loginform;

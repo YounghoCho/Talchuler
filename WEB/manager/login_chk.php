@@ -1,11 +1,9 @@
-﻿<?
+<?
 session_start();
 include('./include.php');
-
 $sql = "select p_id, p_pw from partner where p_id='".$_POST['id']."';";
 $q=mysql_query($sql);
 $data=mysql_fetch_array($q);
-
 if($data['p_id']==""){
 	?>
 		<script>
@@ -14,7 +12,6 @@ if($data['p_id']==""){
 		</script>
 	<?
 }
-
 if($_POST['cookie']=='on'){
 	if($data['p_pw']==$_POST['pw']){
 		$_SESSION['id']=$data['p_id'];
@@ -50,5 +47,5 @@ if($_POST['cookie']=='on'){
 		<?
 	}
 }
-
 ?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

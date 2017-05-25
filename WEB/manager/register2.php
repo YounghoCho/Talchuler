@@ -296,31 +296,31 @@ input[type=checkbox]:checked + label:before {
 					</div>
 					<div class="container">
 						<div class="major">사장님 성함</div>
-						<input name="name" type="text" maxlength="5" style="padding-left:5px;" placeholder="사업자 등록증상 대표자명"> <br>
+						<input name="name" type="text" style="padding-left:5px;" placeholder="사업자 등록증상 대표자명"> <br>
 					</div>
 					<div class="container2">
 						<div class="major">업체명</div>
-						<input name="shopName" type="text" maxlength="16" style="padding-left:5px;" placeholder="사업자 등록증상 업체명"> <br>
+						<input name="shopName" type="text" style="padding-left:5px;" placeholder="사업자 등록증상 업체명"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">휴대폰번호</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="3" style="padding-left:5px;width:60px;" name="phone1">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="3" style="padding-left:5px;width:60px;" name="phone1">
 						<div class="need_space">&nbsp</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="phone2">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="phone2">
 						<div class="need_space">&nbsp</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="phone3">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="phone3">
 					</div>
 					<div class="container_address">
 						<div class="major">업체 대표번호</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="3" style="padding-left:5px;width:60px;" name="tele1">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="tele1">
 						<div class="need_space">&nbsp</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="tele2">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="tele2">
 						<div class="need_space">&nbsp</div>
-						<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="tele3">
+						<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="4" style="padding-left:5px;width:60px;" name="tele3">
 					</div>
 					<div class="container2" style='	padding-bottom:20px;'>
 						<div class="major">사업자 등록번호</div>
-						<input name="businessNumber" onKeyPress="return numkeyCheck(event)" maxlength="10" style='padding-left:5px;' placeholder="- 를 제외하고 입력바랍니다"> <br>
+						<input name="businessNumber" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onKeyPress="return numkeyCheck(event)" maxlength="10" style='padding-left:5px;' placeholder="- 를 제외하고 입력바랍니다"> <br>
 					</div>
 					<div class="container_address">
 						<div class="major">업체 주소</div>

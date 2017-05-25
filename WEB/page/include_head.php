@@ -29,20 +29,23 @@ $data=mysql_fetch_array($query);
 	<script type="text/javascript" src="../js/html5shiv.js"></script>
 <![endif]-->
 </head>
+<?
+include('include_follow.php');
+?>
 <body class="main">
 <div id="wrap">
 	<header id="header">
 		<div class="header_inner">
 			<h1><a href="../index.php"><img src="../images/common/img_logo.png" alt="logo" /></a></h1>
-			<div class="h_banner">
+			<div class="h_banner" style="width:240px;padding-top:2px;">
 				<div class="slidearea">
-					<!-- 컨텐츠 정해지기 전까지 빼놓기로함
+					
 					<ul class="bxslider04">
-						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
-						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
-						<li><a href="#"><img src="../images/common/img_h_banner.png" alt="배너이미지" /></a></li>
+						<li><a href="#"><img src="../images/common/zz200.png" alt="배너이미지" style="width:100%;" /></a></li>
+						<li><a href="#"><img src="../images/common/zz200.png" alt="배너이미지" style="width:100%;"/></a></li>
+						<li><a href="#"><img src="../images/common/zz200.png" alt="배너이미지" style="width:100%;" /></a></li>
 					</ul>
-					-->
+				
 				</div>
 			</div>
 			<a href="#" class="btn_gnb" onclick="gnbView();"><img src="../images/btn/btn_gnb.png" alt="" /></a>

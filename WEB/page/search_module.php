@@ -140,7 +140,7 @@
 </form>
 <form action='./search_word.php' method='get' id='search_word_form'>
 	<div class="schbox">
-		<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+		<input name="input" id="searcharea" type="text" class="txt" placeholder="&nbsp&nbsp&nbsp카페, 테마 직접검색 가능합니다." />
 		<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
 	</div>
 </form>

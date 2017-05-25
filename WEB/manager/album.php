@@ -15,7 +15,7 @@ if($_GET['refresh']==1){
     width :         calc(100% - 220px); /* for IE */
 	height:90%; /*Main의 높이를 90%로 조절합니다.*/
 	font-family:'NotoSansCJKkr-Regular.eot';
-	overflow:auto;
+	overflow:hidden;
 }
 
 #Main_title_area{
@@ -165,7 +165,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 			<div class="left" style='font-size:14x;'>
 			<form action="./albumAsk.php" method="POST" name="form" enctype="multipart/form-data">
 				<input type="hidden" name="MAX_FILE_SIZE" value="10000000" /><!--10mb제한-->
-				<label for="cover" style=" display: inline-block;background-color:#66ccff;padding:5px;border:none;">사진추가</label>
+				<label for="cover" style=" display: inline-block;background-color:#56dcfc;padding:5px;border:none;">사진추가</label>
 				<input name="userfile" id="cover" type="file" accept=".gif, .jpg, .png" onclick="admitColorChange()"/>
 				<input type="hidden" name="album_count" value="<?echo $data['album_count']?>" /><!--사진을 여러장 보내기위한 절대상승값-->
 				<input type="hidden" name="p_id" value="<?echo $data['p_id']?>" /><!--p_id-->
@@ -193,7 +193,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 		<div id="image_group">
 			<div class="image_stack">
 					<!-- $i가 0인경우 메인사진-->
-					<div style="width:405px;height:278px;border:1px solid #999;">
+					<div style="width:405px;height:278px;">
 						<img src="./album/<?echo ($main[0])?>.jpg" class="main_img" onerror="this.src='./images/button/plus.png';this.style.width='40%';this.style.marginLeft='30%';this.style.marginTop='13%';" style="width:100%;z-index:0"/>
 						<p style="z-index:1;margin-top:-160px;margin-left:10px;color:#56dcfc;">메인사진</p>
 					</div>
@@ -228,7 +228,7 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 }
 </style>
 <div id="popupzone">
-	<div id="makemain"><input type="button" value="메인등록" style="width:100%;height:100%;background-color:#66ccff;border:none;cursor:pointer;" onclick="gotomain()"/></div>
+	<div id="makemain"><input type="button" value="메인등록" style="width:100%;height:100%;background-color:#56dcfc;border:none;cursor:pointer;" onclick="gotomain()"/></div>
 	<div id="deletepic"><input type="button" value="삭제" style="width:100%;height:100%;color:#444;border:none;cursor:pointer;" onclick="deletepicture()"/></div>
 	<div id="empty"></div>
 	<div id="close" onclick="closer()"><input type="button" value="x" style="width:100%;height:100%;color:#ccc;border:none;font-weight:bold;font-size:26px;cursor:pointer;background-color:RGBA(50,50,50,0.1);"/></div>

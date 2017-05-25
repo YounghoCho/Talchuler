@@ -3,6 +3,7 @@
 
 include("./page/include.php");
 
+
 @$sql="select * from user where email='".$_SESSION['user_email']."';";
 $query=mysql_query($sql);
 $data=mysql_fetch_array($query);
@@ -97,7 +98,7 @@ $data=mysql_fetch_array($query);
 	margin-left:4px;
 }
 .mySlides{
-	width:45%;height:180px;float:left;display:inline-block;margin:10px 25% 2% 26%;
+	width:47%;height:25%;float:left;display:inline-block;margin:2% 24% 2% 25%;
 }
 .prev, .next {
   cursor: pointer;
@@ -199,15 +200,13 @@ $data=mysql_fetch_array($query);
 	<header id="header">
 		<div class="header_inner">
 			<h1><a href="./index.php"><img src="./images/common/img_logo.png" alt="logo" /></a></h1>
-			<div class="h_banner">
+			<div class="h_banner" style="width:240px;padding-top:2px;">
 				<div class="slidearea">
-					<!-- 컨텐츠 정해지기 전까지 빼놓기로함
 					<ul class="bxslider04">
-						<li><a href="#"><img src="./images/common/img_h_banner.png" alt="배너이미지" /></a></li>
-						<li><a href="#"><img src="./images/common/img_h_banner.png" alt="배너이미지" /></a></li>
-						<li><a href="#"><img src="./images/common/img_h_banner.png" alt="배너이미지" /></a></li>
+						<li><a href="#"><img src="./images/common/zz200.png" alt="배너이미지" style="width:100%;"/></a></li>
+						<li><a href="#"><img src="./images/common/zz200.png" alt="배너이미지" style="width:100%;" /></a></li>
+						<li><a href="#"><img src="./images/common/zz200.png" alt="배너이미지" style="width:100%;" /></a></li>
 					</ul>
-					-->
 				</div>
 			</div>
 			<a href="#" class="btn_gnb" onclick="gnbView();"><img src="./images/btn/btn_gnb.png" alt="" /></a>
@@ -463,7 +462,11 @@ if(!file_exists($filepath)){
 		</div>
 	</div>
 -->
-
+<style>
+.choicearea{
+	border-bottom:solid 3px #f8f8f8;
+}
+</style>
 
 	<div id="main_container">
 		<div class="choicearea">
@@ -603,7 +606,7 @@ if(!file_exists($filepath)){
 			</form>
 			<form action='./page/search_word.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." />
+					<input name="input" id="searcharea" type="text" class="txt" placeholder="&nbsp&nbsp&nbsp카페, 테마 직접검색 가능합니다." />
 					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
 				</div>
 			</form>
@@ -628,16 +631,15 @@ if(!file_exists($filepath)){
 	 font-size:19px; 
 	 padding-top:5px;
 }
-.mySlidesContainer{background-color:#eee;width:100%;padding:30px;cursor:pointer;}
+.mySlidesContainer{background-color:#eee;width:100%;padding:30px;background-image:url("./images/banner/background3.jpg");}
 /*부모 div영역이 자식의 크기만큼 감싸게하는 방법*/
 .mySlidesContainer:after { content:""; clear:both; display:block; *zoom:1;}
 .mySlidesContainerMobile{display:none;}
 .recommandCafe{width:50%;height:40px;margin-left:25%;margin-top:2%;font-size:12pt;font-weight:bold;}
 .recommandCafe img{margin:3px;}
-.firstbanner{width:22%;float:left;display:inline-block;margin:0px 10px 10px 26%;cursor:pointer;}
-.secondbanner{width:22%;float:left;display:inline-block;margin:0px 25% 10px 10px;cursor:pointer;}
+.firstbanner{width:22%;float:left;display:inline-block;margin:0px 10px 30px 26%;cursor:pointer;}
+.secondbanner{width:22%;float:left;display:inline-block;margin:0px 25% 30px 10px;}
 .thirdbanner{width:45%;float:left;display:inline-block;margin:10px 25% 2% 26%;cursor:pointer;}
-
 @media all and (max-width:1041px){
 .schbox{width:100%;}
 #searcharea{width:90%;float:left;font-size:12px;display:inline;}
@@ -682,28 +684,28 @@ if(!file_exists($filepath)){
 <!-- 2017-05-10 -->
 <div class="mySlidesContainer">
 	<!--buttons-->
-	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-	<a class="next" onclick="plusSlides(1)">&#10095;</a>	
+<!--	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="next" onclick="plusSlides(1)">&#10095;</a>-->	
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 </div>
 <div class="mySlidesContainerMobile">
 	<!--buttons-->
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_lowest.jpg" style="width:100%">
+	  <img src="./images/banner/user_highest.jpg" style="width:100%">
 	</div>
 </div>
 
@@ -713,15 +715,19 @@ if(!file_exists($filepath)){
 	</div>
 	<div class="firstbanner">
 		<a href="http://www.talchuler.com/page/facebook_beginner_banner1.html" target="_blank">
-			<img src="./images/banner/cardnews.jpg" style="width:100%"/>
+			<img src="./images/banner/cardnews1.jpg" style="width:100%"/>
 		</a>
 	</div>
 	<div class="secondbanner">
-		<img src="./images/banner/couple.jpg" style="width:100%"/>
+		<a href="http://www.talchuler.com/page/facebook_couple_banner1.html" target="_blank">
+			<img src="./images/banner/couple1.jpg" style="width:100%"/>
+		</a>
 	</div>
+	
 	<div class="thirdbanner">
-		<img src="./images/banner/manager1.jpg" style="width:100%" onclick="location.href='./manager/mozib.php'"/>
+		<img src="./images/banner/manager2.jpg" style="width:100%" onclick="location.href='./page/mozib.php'"/>
 	</div>
+
 </div>
 
 
@@ -1098,6 +1104,7 @@ if(!file_exists($filepath)){
 	</div>-->
 </div>
 <?
+include('./page/include_follow.php');
 include("./page/include_footer.php");
 ?>
 </div><!-- end : id : wrap -->

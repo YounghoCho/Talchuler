@@ -79,18 +79,18 @@ $data=mysql_fetch_array($q);
 	<div>
 		<form action="./pwFind3.php" method="POST" name="pwfindform">
 		<table class="way">
-		<tr>
+		<!--<tr>
 			<td><input type="checkbox" class="check" id="phone">회원정보에 등록한 휴대전화로 인증 (+82 <?echo(preg_replace(array("/[3-6]/"),"*", $data['p_phone']) );?>)</td>
-		</tr>
+		</tr>-->
 		<tr>
-			<td><input type="checkbox" class="check" id="email">본인확인 이메일로 인증 (<?echo $data['p_email']?>)</td>
+			<td><input type="checkbox" class="check" id="email" style="margin:0;padding:0;">본인확인 이메일로 인증 (<?echo $data['p_email']?>)</td>
 		</tr>
 		</table>
 		</form>
 	</div>
 	<div class="btndiv">
 		<a href="./pwFind1.php"><input type="button" class="btn" value="이전"></a>
-		<a href="./pwFind3.php"><input type="button" class="btn" value="다음"></a>
+		<a href="./pwFind3.php?email=<?echo $data['p_email']?>"><input type="button" class="btn" value="다음"></a>
 	</div>
 </div>
 </div>

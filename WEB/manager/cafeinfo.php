@@ -268,7 +268,7 @@ input{padding:3px;}
 	border-color:transparent;
 	padding:0;
 	border:0;
-	background:#66ccff;
+	background:#56dcfc;
 	color:#626262;
 	cursor:pointer;
 }
@@ -284,7 +284,7 @@ input{padding:3px;}
 }
 .link_area{
 	font-family:'NotoSansCJKkr-Regular.eot';
-	background:#66ccff;
+	background:#56dcfc;
 	color:#626262;
 	font-size:16pt;
 	width:130px;
@@ -292,7 +292,7 @@ input{padding:3px;}
 	clear:both;
 	font-weight:bold;
 	margin:auto;
-	line-height:30px;
+	line-height:25px;
 }
 .click_box2 a{
 	cursor:pointer;
@@ -344,7 +344,12 @@ $data=mysql_fetch_array($q);
 					<input type="hidden" name="MAX_FILE_SIZE" value="10000000" /><!--10MB제한-->
 					<!-- input의 name은 $_FILES 배열의 name을 결정합니다 -->
 					<div style=" position:relative; float:left;border:0px solid #aaa; width:182px; height:62px; text-align:center; display:table-cell; background-color:#a0a0a0;">
-						<img src="./partnerpic/<?echo ($_SESSION['id']);?>.jpg" style="position:absolute; width:auto; height:auto; max-height:60px; max-width:180px; border:0px solid #aaa; background-color:#ffffff; margin:auto;
+					<?
+					$sql="select filename from partnerImage where p_id='".$_SESSION['id']."'";
+					$q=mysql_query($sql);
+					$path=mysql_fetch_array($q);
+					?>
+						<img src="./partnerpic/<?echo ($path['filename']);?>.jpg" style="position:absolute; width:auto; height:auto; max-height:60px; max-width:180px; border:0px solid #aaa; background-color:#ffffff; margin:auto;
             top:0; bottom:0; left:0; right:0;" onerror="this.src='./images/button/plus.png'"/>
 					</div>
 					<div style="float:left;">
@@ -360,7 +365,7 @@ $data=mysql_fetch_array($q);
 			<div class="container_address">
 				<div class="icon"><img src="images\icon\icon4.png" class="icon_sample"/></div><div class="major">＊주소</div>
 				<input type="text" id="sample6_postcode" name="postNumber1" value="<?echo $data['p_postNumber1']?>">
-				<input type="button" value="우편번호 찾기" style="font-weight:normal;background-color:#56DCFC;height:25px;border:none;margin-left:10px; width:100px;" name="cafe_logo" onclick="sample6_execDaumPostcode()">
+				<input type="button" value="우편번호 찾기" style="font-weight:normal;background-color:#56DCFC;height:25px;line-height:100%;border:none;margin-left:10px; width:100px;" name="cafe_logo" onclick="sample6_execDaumPostcode()">
 			</div>
 			<div class="container_add_mid">
 				<div class="major_add">&nbsp</div><input type="text" name="location1" id="sample6_address" value="<?echo $data['p_location1']?>">

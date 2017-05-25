@@ -87,6 +87,9 @@ include("./include_head.php");
 							<a onClick="nick()" class="btn_gray">중복확인</a>
 						</div>
 						<div class="inputbox">
+							<input id="phone" name="phone" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="txt st04" placeholder="휴대폰 번호를 입력해주세요. ('-' 문자 제외)" style="ime-mode:disabled" />
+						</div>
+						<div class="inputbox">
 							<input id="p1" name="userpassword" type="password" class="txt st04" placeholder="비밀번호를 입력해주세요. ( 영문,숫자 포함 6~20자 )" />
 						</div>
 						<div class="inputbox">
@@ -807,19 +810,22 @@ include("./include_footer.php");
 <script>
 function join(){
     var f = document.joinform;
-
-	if(!document.getElementById('check1').checked){
-		alert('서비스 약관에 동의해주세요');
+	var phone=document.getElementById('phone').value;
+	if(phone.indexOf('-')!='-1'){
+		alert("' - '문자를 제외하고 휴대폰 번호를 입력해주세요");
 		return false;
 	}
-	if(!document.getElementById('check2').checked){
-		alert('개인정보 수집 이용 동의해주세요');
-		return false;
-	}
-    if(f.useremail.value == ""){
+	var email=document.getElementById('e').value;
+	if(f.useremail.value == ""){
         alert("이메일을 입력해 주세요.");
         return false;
     }
+	var echeck=email.indexOf("@");
+	if(echeck==-1){
+		alert("잘못된 이메일 형식입니다.");
+		return false;
+	}
+
     if(f.nickname.value == ""){
         alert("닉네임을 입력해 주세요.");
         return false;
@@ -841,13 +847,15 @@ function join(){
         alert("비밀번호를 다시 확인해 주세요.");
         return false;
     }
-
-	var email=document.getElementById('e').value;
-	var echeck=email.indexOf("@");
-	if(echeck==-1){
-		alert("없는 이메일 주소입니다.");
+	if(!document.getElementById('check1').checked){
+		alert('서비스 약관에 동의해주세요');
 		return false;
 	}
+	if(!document.getElementById('check2').checked){
+		alert('개인정보 수집 이용 동의해주세요');
+		return false;
+	}
+
 	 f.submit();
 }
 

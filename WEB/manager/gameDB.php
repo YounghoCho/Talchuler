@@ -1,8 +1,30 @@
 <?
 session_start();
-print_r($_POST);
 include("./include.php");
-$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
+
+if($_POST['g_idx1']){
+	//수정페이지에서 새로운게임을 추가하경우
+	$realidx=$_POST['g_idx1'];
+	//새게임 추가에서도 g_idx에서 +1해서 게임추가하는데, 여기서도 같은원리로 추가하게되면 같은 g_idx를 가져
+	//gameAsk에서 g_idx를 불러오는데, game+1보다 큰 인덱스가 있을경우를 구한다.
+	
+	$ssql="select g_idx from gameAsk";//idx 다불러와
+	$qq=mysql_query($ssql);
+	while($gumsa=mysql_fetch_array($qq)){//gameAsk에 같은 g_idx가없을때까지
+		if($gumsa[0]==$realidx){
+			//만약 g_idx가 이미 있으면 g_idx에 계속 1씩더해준다
+			$realidx +='1';
+		}
+	}
+//이제 최종g_idx인 $realidx를 foo()에서 gameAsk에 넣어주면된다.
+}
+elseif($_POST['g_idx2']){
+	//이미있는 게임을 수정하는경우
+	$realidx=$_POST['g_idx2'];
+}
+
+
+$sql="select filename from gameImage where g_idx='".$realidx."'";
 $q=mysql_query($sql);
 $ch=mysql_fetch_array($q);
 
@@ -20,7 +42,7 @@ if($ch[0]!=''){
 			move_uploaded_file($_FILES['userfile']['tmp_name'], $newuploadfile);
 			$filename=$_POST['p_id']."_".date("Ymdhis");
 		}
-		foo($filename);
+		foo($filename, $realidx);
 }
 //최초 이미지가 없으면 새로등록
 else{
@@ -38,11 +60,12 @@ else{
 
 		$filename=$_POST['p_id']."_".date("Ymdhis");
 
-		foo($filename);
+		foo($filename, $realidx);
 	}
 }
 
-function foo($filename){
+function foo($filename, $realidx){
+
 		//일단 gameAsk에 g_idx값을 넣어준다.
 		$sql="insert into gameAsk (
 			g_idx, p_id,
@@ -55,7 +78,7 @@ function foo($filename){
 			g_disprice1, g_disprice2, g_disprice3, g_disprice4, g_disprice5, 
 			time
 			) values (
-			'".$_POST['g_idx']."','".$_SESSION['id']."',
+			'".$realidx."','".$_SESSION['id']."',
 			'".$_POST['title']."', '".$_POST['subtitle']."', '".$_POST['content']."', '".$_POST['summary']."',
 			'".$_POST['level']."', '".$_POST['people']."', '".$_POST['people2']."', '".$_POST['horror']."',
 			'".$_POST['ability1']."', '".$_POST['ability2']."', '".$_POST['ability3']."', '".$_POST['ability4']."', '".$_POST['ability5']."', '".$_POST['ability6']."',
@@ -65,16 +88,12 @@ function foo($filename){
 			'".$_POST['dis6']."', '".$_POST['dis7']."', '".$_POST['dis8']."', '".$_POST['dis9']."', '".$_POST['dis10']."',
 			now())";
 			mysql_query($sql);
-		//gameAsk에서 g_idx를읽어와서 gameImageAsk에 넣어준다.
-		$sql="select g_idx from gameAsk where p_id='".$_POST['p_id']."' order by g_idx desc";
-		$q=mysql_query($sql);
-		$result=mysql_fetch_array($q);
 
-		$sql="insert into gameImageAsk (gi_idx, g_idx, p_id, filename, time, isnew) values ('','".$result['g_idx']."', '".$_POST['p_id']."', '".$filename."', '".date("Ymdhis")."', '".$_POST['isnew']."')";
+		$sql="insert into gameImageAsk (gi_idx, g_idx, p_id, filename, time, isnew) values ('','".$realidx."', '".$_POST['p_id']."', '".$filename."', '".date("Ymdhis")."', '".$_POST['isnew']."')";
 		mysql_query($sql);
 
 		//game_time을 추가한다
-		$sql="insert into game_timeAsk values('', '".$result['g_idx']."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
+		$sql="insert into game_timeAsk values('', '".$realidx."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
 		mysql_query($sql);
 		?>
 		<script>

@@ -5,7 +5,7 @@ include("./include_head.php");
 		<div class="path"><div class="container_inner pd44"><span>홈 > </span><span>로그인 > </span><strong>비밀번호 찾기</strong></div></div>
 		<div class="container_inner">
 			<div class="loginarea">
-				<div class="tit"><span>비밀번호 찾기</span><div class="lfind"><strong>01. 아이디입력 ></strong><span>02. 본인 확인 ></span><span>03. 비밀번호 재설정</span></div></div>
+				<div class="tit"><span>비밀번호 찾기</span><div class="lfind"><b>01. 아이디입력&nbsp;>&nbsp;</b><span>02. 본인 확인&nbsp;>&nbsp;</span><span>03. 비밀번호 재설정</span></div></div>
 				<div class="graybox find">
 					<div class="ftit">비밀번호를 찾고자하는 아이디를 입력하세요.</div>
 					<div class="topbox">
@@ -20,7 +20,7 @@ include("./include_head.php");
 				</div>
 				<div class="nextarea">
 					이메일이 기억나지 않으세요? 
-					<a href="#" class="btn_emailfind">이메일 찾기</a>
+					<a href="./login_find4.php" class="btn_emailfind">이메일 찾기</a>
 					<button onClick="find()"><a class="btn_next">다음</a></button>
 				</div>
 			</div>

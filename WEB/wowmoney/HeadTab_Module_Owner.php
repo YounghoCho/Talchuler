@@ -30,6 +30,22 @@ if(!$_SESSION['admin']){
 <?
 }else{
 	?>
+
+
+<script>
+
+	$(function(){
+		$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
+		$(window).resize(function(){
+			$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
+		});
+	});
+
+
+
+</script>
+
+
 <style>
 body{
 	margin:0px;
@@ -39,10 +55,10 @@ body{
 
 	#Main_Backup{ /*Structure_Module_Owner.php내에 #Main으로 선언*/
 		/*Tab 크기 뺴줌*/
-		width : -webkit-calc(100%-220px); /* for Chrome, Safari */
-		width :    -moz-calc(100%-220px); /* for Firefox */
-		width :         calc(100%-220px); /* for IE */
-		height:90%; /*Main의 높이를 90%로 조절합니다.*/
+		width : -webkit-calc(100% - 220px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 220px); /* for Firefox */
+		width :         calc(100% - 220px); /* for IE */
+		/*height:90%; Main의 높이를 90%로 조절합니다.*/
 		overflow:hidden;
 	}
 
@@ -157,15 +173,16 @@ window.onload = function()
 ------------------------------------------------------------------------------------------*/
 function setDivHeight(objSet, objTarHeight)
 { 
-  var objSet   = document.getElementById('Tab'); 
+  var objSet = document.getElementById('Tab'); 
   var objTarHeight= document.getElementById('Main').offsetHeight;
-  objSet.style.height  = objTarHeight - 30 + "px";
+  objSet.style.height  = objTarHeight + "px";
 
 } 
 //-->
 </script>
 
 <!--tab과 main부분의 높이 다름 문제를 해결하기 위한 코드-->
+
 
 
 <body>

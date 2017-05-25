@@ -5,7 +5,7 @@ include('./include.php');
 ?>
 <meta charset="utf-8"/>
 <?
-//gaem에 있는 index인지 확인하고 없으면 inset, 있으면 update
+//game에 있는 index인지 확인하고 없으면 inset, 있으면 update
 $sql="select g_idx from game where g_idx='".$_POST['g_idx']."'";
 $q=mysql_query($sql);
 $test=mysql_fetch_array($q);
@@ -35,19 +35,22 @@ mysql_query($sql);
 	$sql="select filename, time, isnew from gameImageAsk where g_idx='".$test[0]."'";
 	$q=mysql_query($sql);
 	$move=mysql_fetch_array($q);
+	
+	//혹시 이미지가 없으면 삽입
+	$sql="insert into gameImage (gi_idx, g_idx, p_id, filename, time, isnew) select gi_idx, g_idx, p_id, filename, time, isnew 
+   from gameImageAsk
+   where g_idx='".$_POST['g_idx']."'";
+	mysql_query($sql);
 
+	//이미 이미지가 있으면 업데이트
 	$sql="update gameImage set filename='".$move['filename']."', time='".$move['time']."', isnew='".$move['isnew']."' where g_idx='".$test[0]."'";
 	mysql_query($sql);
-	
 	
 	//만약 기존에 사진이 있는 게임이었으면, 기존사진을 지운다.
 	$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
 	$q=mysql_query($sql);
 	$data=mysql_fetch_array($q);
 	rename("../manager/gameImage/".$data[0].".jpg", "../manager/albumTrash/".$data[0].".jpg");
-
-
-
 }
 else{
 	//게임추가
@@ -86,14 +89,12 @@ mysql_query($sql);
 $sql="delete from game_timeAsk where g_idx='".$_POST['g_idx']."'";
 mysql_query($sql);
 
-//★이전 게임 이미지는 안지운다, 나중에 history보여줄수도 있음.
-
-//이미지 지우기전에 filename불러오기
+//새사진을 넣는다. 
 $sql="select filename from gameImageAsk where g_idx='".$_POST['g_idx']."'";
 $q=mysql_query($sql);
 $data=mysql_fetch_array($q);
 
-//새사진을 넣는다. gameImageAsk폴더의 사진을 gameImage폴더에 넣는다. 
+//gameImageAsk폴더의 사진을 gameImage폴더에 넣는다. 
 rename("../manager/gameImageAsk/".$data[0].".jpg", "../manager/gameImage/".$data[0].".jpg");
 
 //gameImageAsk디비를지운다
@@ -120,7 +121,7 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=utf-8';
 $headers[] = 'From: 탈출러 <talchul_er@naver.com>';
 
-mail($to, $subject, $message, implode("\r\n", $headers));
+//mail($to, $subject, $message, implode("\r\n", $headers));
 //메일보내기 E
 ?>
 <script>

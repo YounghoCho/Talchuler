@@ -5,6 +5,7 @@ include('./include.php');
 $sql="select * from partnerAsk where p_id='".$_GET['p_id']."'";
 $q=mysql_query($sql);
 $data=mysql_fetch_array($q);
+
 //조회결과를 partner에 수정시킨다
 $sql="update partner set 
 p_shopName='".$data['p_shopName']."',
@@ -15,14 +16,41 @@ p_location1='".$data['p_location1']."', p_location2='".$data['p_location2']."',
 benefit1='".$data['benefit1']."', benefit2='".$data['benefit2']."', benefit3='".$data['benefit3']."', benefit4='".$data['benefit4']."',
 rule='".$data['rule']."' 
 where p_id='".$data['p_id']."'";
-//mysql_query($sql);
+mysql_query($sql);
 
 //partnerAsk도 지운다
 $sql="delete from partnerAsk where p_id='".$_GET['p_id']."'";
 mysql_query($sql);
 
+//사진경로를 얻어온다.
+$sql="select filename, time from partnerImageAsk where p_id='".$_GET['p_id']."'";
+$q=mysql_query($sql);
+$path=mysql_fetch_array($q);
+//이전 사진을 지우고
+rename("../manager/partnerpic/".$path['filename'].".jpg", "../manager/albumTrash/".$path['filename'].".jpg");
 //사진도 디렉토리를 옮긴다.
-rename("../manager/partnerAsk/".$_GET['p_id'].".jpg", "../manager/partnerpic/".$_GET['p_id'].".jpg");
+rename("../manager/partnerAsk/".$path['filename'].".jpg", "../manager/partnerpic/".$path['filename'].".jpg");
+
+//사진경로를 저장한다.
+	//일단 사진이 있나보자
+	echo($_GET['p_id']);
+	$sql="select pi_idx, filename, time from partnerImage where p_id='".$_GET['p_id']."'";
+	$q=mysql_query($sql);
+	$real=mysql_fetch_array($q);
+
+	//파일이있으면
+	if(!$real['pi_idx']==''){
+		//업데이트
+		echo($path['filename']);
+		$sql="update partnerImage set filename='".$path['filename']."', time='".$path['time']."'";
+		mysql_query($sql);
+	}else{
+		$sql="insert into partnerImage values('', '".$_GET['p_id']."', '".$path['filename']."', '".$path['time']."');";
+		mysql_query($sql);
+	}
+//이미지요청을 지운다
+$sql="delete from partnerImageAsk where p_id='".$_GET['p_id']."'";
+mysql_query($sql);
 
 //메일보내기 S
 //메일파트너정보sql
@@ -44,7 +72,7 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=utf-8';
 $headers[] = 'From: 탈출러 <talchul_er@naver.com>';
 
-mail($to, $subject, $message, implode("\r\n", $headers));
+//mail($to, $subject, $message, implode("\r\n", $headers));
 //메일보내기 S
 ?>
 <meta charset="utf-8"/>

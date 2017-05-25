@@ -7,7 +7,7 @@ $password=$_POST["userpassword"];
 $hash= password_hash($password, PASSWORD_DEFAULT);
 
 $sql="insert into user values ('', '".$_POST['useremail']."', '".$hash."','".$_POST['nickname']."'
-,'','','','','','','','','','','',now());";
+,'".$_POST['phone']."','','','','','','','','','','',now());";
 
 mysql_query($sql);
 

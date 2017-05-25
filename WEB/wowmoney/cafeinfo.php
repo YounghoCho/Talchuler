@@ -28,7 +28,7 @@ if($_GET['refresh']==1){
 	width : -webkit-calc(100% - 240px); /* for Chrome, Safari */
     width :    -moz-calc(100% - 240px); /* for Firefox */
     width :         calc(100% - 240px); /* for IE */
-	height:880px; /*Main의 높이를 90%로 조절합니다.*/
+	/*height:880px; Main의 높이를 90%로 조절합니다.*/
 	overflow:hidden;
 }
 #Main_title_area{
@@ -296,7 +296,12 @@ if($index+1>$count[0]){
 					</div>
 					<div class="title">*카페로고</div>
 					<div class="cafe_logo">
-						<img src="../manager/partnerAsk/<?echo $data['p_id']?>.jpg" />
+					<?
+					$sql="select filename from partnerImageAsk where p_id='".$data['p_id']."'";
+					$q=mysql_query($sql);
+					$path=mysql_fetch_array($q);
+					?>
+						<img src="../manager/partnerAsk/<?echo $path['filename']?>.jpg" />
 					</div>
 					<div style='font-size:11px; font-weight:lighter; vertical-align:bottom; color:#cccccc; padding-left:5px;'>(80px × 80px)</div>
 				</div>

@@ -13,7 +13,7 @@
 					<p class="b">이놀루션</p>
 					<p>대표: 최연진    사업자등록번호: 438-18-00364</p>
 					<p>주소: 서울 강남구 테헤란로7길 22  과학기술회관 1109-1호</p>
-					<p class="cen">통신판매번호: 제0000-0000-0000 (미정)</p>
+					<p class="cen">&nbsp<!--통신판매번호: 제0000-0000-0000 (미정)--></p>
 				</div>
 				<div class="right">
 					<p class="b">고객센터</p>
@@ -24,7 +24,7 @@
 			</div>
 			<div class="f_bottom">
 				<ul class="policylink">
-					<li><a id="mostBottom" href="./policy0.php">회사소개</a></li>
+					<li><a id="mostBottom" href="http://www.talchuler.com/page/company_info.php">회사소개</a></li>
 					<li><a id="mostBottom" href="./policy1.php">이용약관</a></li>
 					<li><a id="mostBottom" href="./policy2.php">개인정보처리방침</a></li>
 					<li><a id="mostBottom" href="./policy3.php">위치정보이용약관</a></li>

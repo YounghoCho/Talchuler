@@ -27,9 +27,9 @@ if(!$find_r[0]){
 					
 						<ul class="lflist">
 							<li>
-								<div class="lchkbox">
+							<!--	<div class="lchkbox">
 									<label class="ichk"><input id="first" name="first" type="checkbox"><i></i><span>회원정보에 등록한 휴대전화로 인증<em>(+82 01-7***-***6 )</em></span></label>
-								</div>
+								</div>-->
 							</li>
 							<li>
 								<div class="lchkbox">
@@ -44,7 +44,7 @@ if(!$find_r[0]){
 					</div> 
 				</div>
 				<div class="nextarea">
-					<a onclick="find()" class="btn_next">다음</a>
+					<a onclick="findemail()" class="btn_next">다음</a>
 				</div>
 
 			</div>
@@ -59,19 +59,24 @@ include("./include_footer.php");
 </html>
 
 <script>
-function find(){
+function findemail(){
     var f = document.findform;
-	if(!document.getElementById('first').checked && !document.getElementById('second').checked){
+	/*if(!document.getElementById('first').checked && !document.getElementById('second').checked){
 	alert('한가지 방식을 선택해 주세요');
 	return false;
 	}
 	if(document.getElementById('first').checked && document.getElementById('second').checked){
 	alert('한가지 방식만 선택해 주세요');
 	return false;
+	}*/
+	if(!document.getElementById('second').checked){
+	alert('이메일을 선택해 주세요');
+	return false;
 	}
-	if(document.getElementById('first').checked)
-		location.href="login_find4.php";
-	if(document.getElementById('second').checked)
+//	if(document.getElementById('first').checked)
+//		location.href="login_find4.php";
+	else{
 		location.href="login_find_mailsend.php?email=<?echo $find_r['email']?>";
+	}
 }
 </script>

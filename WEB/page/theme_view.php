@@ -26,7 +26,173 @@ $imgsql="select filename from gameImage where g_idx='".$_GET['g_idx']."'";
 $imgquery=mysql_query($imgsql);
 $img=mysql_fetch_array($imgquery);
 
-?>					<style>
+?>					
+		<!--예약하기 팝업창 스크립트 및 스타일시트 S-->
+			<script>
+				function popupWindowByMask_3(){
+					//화면의 높이와 너비를 구한다.
+					var maskHeight_3 = $(window).height();  
+					var maskWidth_3 = $(document).width();  
+
+					//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+					$('#mask').css({'width':maskWidth_3,'height':maskHeight_3});  
+					// 플로팅 효과
+					$('#mask').fadeIn(500); //시간 딜레이 1000=1s    
+					$('#mask').fadeTo("slow",0.5); //띄우는 시간, 어둡기 투명도 조절
+
+					//윈도우 같은 거 띄운다.
+					$('.window_3').show();
+				}
+
+				$(document).ready(function(){
+					//검은 막 띄우기
+					$('.openMask_3').click(function(e){
+						e.preventDefault();
+						popupWindowByMask_3();
+					});
+
+					//닫기 버튼을 눌렀을 때
+					$('.window_3 .close').click(function (e) {  
+						//링크 기본동작은 작동하지 않도록 한다.
+						e.preventDefault();  
+						$('#mask, .window_3').hide();  
+					});       
+					/*
+					//검은 막을 눌렀을 때
+					$('#mask').click(function () {  
+						$(this).hide();  
+						$('.window_1').hide();  
+					});     
+					*/
+				});
+			</script>
+
+<style>
+
+/*어둡기를 조절하는 마스크(공통)*/
+#mask{  
+	  position:fixed;  
+	  z-index:9000;  
+	  background-color:#000;  
+	  display:none;  
+	  left:0;
+	  top:0;
+}
+/*어둡기를 조절하는 마스크(공통)*/
+
+/*팝업창 내부 클릭박스 디자인 영역(공통)*/
+.popup_clickbox_area{
+	position:absolute; 
+	bottom:0;
+	left:0;
+	width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+    width:    -moz-calc(100% - 0px); /* for Firefox */
+    width:         calc(100% - 0px); /* for IE */
+	height:54px;
+	padding:10px;
+}
+
+.popup_clickbox_area input{
+	height:100%;
+	width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+    width:    -moz-calc(100% - 0px); /* for Firefox */
+    width:         calc(100% - 0px); /* for IE */
+	font-size:14px;
+	font-weight:bold;
+}
+/*팝업창 내부 클릭박스 디자인 영역(공통)*/
+
+/*예약하기 버튼 팝업 s*/
+	.window_3{
+		  display: none;
+		  position:fixed;  
+		  left:40%;
+		  top:35%;
+		  z-index:10000;
+	}
+
+	#note_3{
+		background:#ffffff;
+		width:350px;
+		height:220px;
+		padding:5 10;
+		color:#000000;
+	}
+
+	#note_3 .title_box_3{
+		width: -webkit-calc(100% - 10px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 10px); /* for Firefox */
+		width:         calc(100% - 10px); /* for IE */
+		overflow:auto;
+		margin:0 5px 10px 5px;
+		padding-top:26px;
+		font-weight:bold;
+	}
+
+	#note_3 .title_3{
+		font-size:12pt;
+		line-height:16pt;
+		text-align:center;
+		padding-bottom:8px;
+		font-weight:bold;
+	}
+
+	#note_3 .input_box_3{
+		width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 0px); /* for Firefox */
+		width:         calc(100% - 0px); /* for IE */
+		margin:30px 0 0 0;
+		padding:0px;
+		font-size:12pt;
+		font-weight:bold;
+		overflow:auto;
+	}
+
+	#note_3 .email_change_area{
+		width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 0px); /* for Firefox */
+		width:         calc(100% - 0px); /* for IE */
+		overflow:auto;
+		padding:0 20px;
+	}
+
+	#note_3 .mid_content_left{
+		width:47%;
+		height:27px;
+		text-align:center;
+		float:left;
+		padding-left:50px;
+	}
+
+	#note_3 .mid_content_left img{
+		float:left;
+		margin-right:15px;
+	}
+
+	#note_3 .mid_content_left div{
+		float:left;
+		font-size:13pt;
+		line-height:13pt;
+	}
+
+	#note_3 .mid_content_right{
+		width:53%;
+		height:27px;
+		text-align:right;
+		font-size:14pt;
+		line-height:14pt;
+		float:right;
+		padding-right:50px;
+		padding-top:1px;
+	}
+
+	/*예약하기 버튼 팝업 e*/
+
+</style>
+
+			
+
+					<style>
 					#gameinfo_wrap{
 						width:550px; overflow:auto; float:left;
 					}
@@ -106,6 +272,70 @@ $img=mysql_fetch_array($imgquery);
 					
 					.game_detail{
 						font-size:12pt; line-height:18pt; color:black; margin-top:17px;
+					}
+
+					.game_price{
+						width:100%;
+						overflow:auto;
+						margin:0;
+					}
+					.game_price_top{
+						width:100%;
+						line-height:16pt;
+						padding-left:48px;
+						margin-bottom:10px;
+						font-size:18pt;
+						text-decoration:line-through;
+						color:#a7a7a7;
+					}
+					.game_price_bot{
+						width:100%;
+						height:47px;
+						overflow:visible;
+					}
+					.game_price_left{
+						width:50%;
+						float:left;
+					}
+					.game_price_left img{
+						float:left;
+						margin-top:5px;
+						margin-right:10px;
+					}
+					.game_price_left_text{
+						font-weight:bold;
+						font-size:29pt;
+						line-height:29pt;
+						color:#d90000;
+						float:left;
+					}
+
+					.game_price_left_text div{
+						font-size:18pt;
+						line-height:18pt;
+						float:right;
+						padding-top:9px;
+					}
+
+					.game_price_right{
+						overflow:visible;
+						height:27px;
+						float:left;
+						color:#444444;
+						padding-top:10px;
+					}
+
+					.game_price_right .big{
+						font-size:18pt;
+						line-height:18pt;
+						float:left;
+					}
+
+					.game_price_right .small{
+						font-size:11pt;
+						line-height:11pt;
+						float:left;
+						padding-top:8px;
 					}
 
 					@media all and (max-width: 1024px){
@@ -192,8 +422,167 @@ $img=mysql_fetch_array($imgquery);
 							float:left; 
 							text-align:center;
 						}
+
+						.game_price_top{
+							text-align:left;
+							margin-bottom:0px;
+							padding-left:65px;
+						}
+
+						.game_price_top span{
+							font-size:14pt;
+						}
+						
+						.game_price_bot{
+							padding-left:4%;
+							height:40px;
+						}
+
+						.game_price_left{
+							width:55%;
+						}
+
+						.game_price_left img{
+							width:30px;
+							height:auto;
+							margin-right:5px;
+						}
+
+						.game_price_left_text{
+							font-size:26pt;
+							line-height:26pt;
+						}
+						.game_price_left_text div{
+							font-size:16pt;
+							line-height:20pt;
+							padding-top:8px;
+						}
+
+						.game_price_left{
+							overflow:visible;
+						}
+
+						.game_price_right{
+							height:100%;
+							padding-top:7px;
+							vertical-align:bottom;
+						}
+
+						/*팝업창 내부 클릭박스 디자인 영역(공통) S */
+						.popup_clickbox_area{
+							position:absolute; 
+							bottom:0;
+							left:0;
+							width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+							width:    -moz-calc(100% - 0px); /* for Firefox */
+							width:         calc(100% - 0px); /* for IE */
+							height:54px;
+						}
+
+						.popup_clickbox_area input{
+							height:100%;
+							width: -webkit-calc(66% - 0px); /* for Chrome, Safari */
+							width:    -moz-calc(66% - 0px); /* for Firefox */
+							width:         calc(66% - 0px); /* for IE */
+							margin:0 17%;
+							margin-bottom:5%;
+							font-size:11px;
+							font-weight:bold;
+						}
+						/*팝업창 내부 클릭박스 디자인 영역(공통) E */
+
+						/*예약하기 버튼 팝업 s*/
+						.window_3{
+							  display: none;
+							  position:fixed;  
+							  left:0%;
+							  top:35%;
+							  z-index:10000;
+						}
+
+						#note_3{
+							background:#ffffff;
+							width:70%;
+							margin:0 15%;
+							height:180px;
+							padding:5 10;
+							color:#000000;
+						}
+
+						#note_3 .title_box_3{
+							width: -webkit-calc(100% - 40px); /* for Chrome, Safari */
+							width:    -moz-calc(100% - 40px); /* for Firefox */
+							width:         calc(100% - 40px); /* for IE */
+							overflow:auto;
+							margin:0 20px 8px 20px;
+							padding-top:20px;
+							font-weight:bold;
+						}
+
+						#note_3 .title_3{
+							font-size:10pt;
+							line-height:14pt;
+							text-align:center;
+							padding-bottom:6px;
+							font-weight:bold;
+						}
+
+						#note_3 .input_box_3{
+							width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+							width:    -moz-calc(100% - 0px); /* for Firefox */
+							width:         calc(100% - 0px); /* for IE */
+							margin:24px 0 0 0;
+							padding:0px;
+							font-size:10pt;
+							font-weight:bold;
+							overflow:auto;
+						}
+
+						#note_3 .email_change_area{
+							width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+							width:    -moz-calc(100% - 0px); /* for Firefox */
+							width:         calc(100% - 0px); /* for IE */
+							overflow:auto;
+							padding:0 16px;
+						}
+
+						#note_3 .mid_content_left{
+							width:47%;
+							height:27px;
+							text-align:center;
+							float:left;
+							padding-left:30px;
+						}
+
+						#note_3 .mid_content_left img{
+							width:16px;
+							height:auto;
+							float:left;
+							margin-right:12px;
+						}
+
+						#note_3 .mid_content_left div{
+							float:left;
+							font-size:11pt;
+							line-height:11pt;
+						}
+
+						#note_3 .mid_content_right{
+							width:53%;
+							height:27px;
+							text-align:right;
+							font-size:11pt;
+							line-height:11pt;
+							float:right;
+							padding-right:30px;
+							padding-top:1px;
+						}
+
+						/*예약하기 버튼 팝업 e*/
 	
 					}
+
+
 					
 
 					</style>
@@ -219,7 +608,21 @@ $img=mysql_fetch_array($imgquery);
 
 						<div id="gameinfo_wrap" style=''>
 							<dd style='float:left; padding-left:0px;'>
-								<ul style='width:100%;'>
+								<ul style='width:100%; margin-top:17px;'>
+								<div class="game_price">
+									<div class="game_price_top"><?echo $data['g_p2']/2?><span>원</span></div>
+									<div class="game_price_bot">
+										<div class="game_price_left">
+											<img src="../images/icon/icon_detail_price.png" />
+											<div class="game_price_left_text"><?echo $data['g_weekprice']?><div>원</div></div>
+										</div>
+										<div class="game_price_right" style=''>
+											<div class="small">(주말:&nbsp</div><div class="big"><?echo $data['g_holyprice']?></div><div class="small">&nbsp원)</div>
+										</div>
+									</div>
+								</div>
+								</ul>
+								<ul style='width:100%; margin-top:17px;'>
 								<!--초기 icon_new1,2,3 초기 css위치-->
 								<div id="icon_wrap">
 									<li class="icon_new1" style=''>
@@ -427,15 +830,16 @@ $img=mysql_fetch_array($imgquery);
 /*예약 시간 css*/
 .hiddenarea_timetable{ /*테이블 전체*/
 	margin-top:20px;
-	width:100%;
+	width:85%;
 	overflow:auto;
 	font-size:12pt;
+	float:left;
 }
 
 .hiddenarea_timearray{ /*시간 박스 모음*/
 	 float:left;
 	 height:100%;
-	 width:84%;
+	 width:100%;
 }
 
 .hiddenarea_timecell_top{ /*시간박스 하나*/
@@ -491,6 +895,7 @@ $img=mysql_fetch_array($imgquery);
     width :    -moz-calc(15% - 2px); /* for Firefox */
     width :         calc(15% - 2px); /* for IE */
 	height:79px;
+	margin-top:20px;
 	display:table;
 	text-align:center;
 	border:2px solid #56DCFC;
@@ -516,10 +921,14 @@ $img=mysql_fetch_array($imgquery);
 
 @media all and (max-width: 1024px) {
  .prev, .next,.text {font-size: 11px}
- .hiddenarea_timearray{width:77%;}
+ .hiddenarea_timetable{width:80%;}
+ .hiddenarea_timearray{width:100%;}
  .hiddenarea_timecell_top{margin:0 3px 3px 3px;font}
  .hiddenarea_timecell_bot{margin:0 3px 3px 3px;}
  .hiddenarea_timecell_top input,.hiddenarea_timecell_bot input{font-size:11pt;padding-left:2px;padding-right:2px;}
+ .openMask_3{float:left; width:20%;}
+.hiddenarea_reservation{width:100%;}
+.hiddenarea_reservation_inner{width:100%;}
  #topspace{margin-left:3px;}
  #botspace{margin-right:6px;}
  .albumsize{height:90px}
@@ -551,23 +960,64 @@ $img=mysql_fetch_array($imgquery);
 .next2 {right: 0;margin-right:10px;}
 .prev2 {left: 0;margin-left:10px;}
  }
+ /*Date*/
 .hiddenarea_date{
 	width:100%;
-	height:50px;
+	height:60px;
 	margin-top:20px;
-	border:1px solid black;
+	padding-top:5px;
 }
 .hiddenarea_year{
-	width:30%;
-	height:10px;
-	border:1px solid black;
+	width:20%;
+	height:50px;
+	margin-left:20px;
+	padding:10px 0 10px 20px;
+	vertical-align:middle;
+	float:left;
 }
 .hiddenarea_day{
-	width:30px;
-	height:10px;
-	border:1px solid black;
+	width:65%;
+	height:50px;
+	margin-left:100px;
+	float:left;
+}
+.year{
+	color:black;
+	font-size:17pt;
+}
+.mySlidesa{display:none; margin-left:20px;text-align:center; padding:10px 0 0 0}
+.slideshow-containera {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.preva, .nexta {
+  cursor: pointer;
+  position: absolute;
+  width:auto;
+  margin-top: -23px;
+  color: #56DCFC;
+  font-weight: bold;
+  font-size: 20pt;
+  border-radius: 0 3px 3px 0;
+}
+
+.nexta {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.date_num{
+	background-color:#ececec;
+	color:#666666;
+	border:0px;
+	font-size:15pt;
+	margin-right:30px;
+	font-weight:bold;
 }
 </style>
+
 				<ul class="orderlist">
 				<!--	<div class="rank_con">
 						<div class="rank_title">순위</div>
@@ -642,18 +1092,38 @@ $img=mysql_fetch_array($imgquery);
 				<!--	<a href="#self"><span>게임후기</span></a>-->
 					<a style="width:48%;margin-left:4%;" onclick="mapfunction('b')"><span>카페정보</span></a>
 				</div>
-				<div class="hiddenarea_date">
+				
+				<div class="hiddenarea on">
+<div class="hiddenarea_date">
 				
 				<div class="hiddenarea_year">
-
+				<span class="year">2017년 5월 19일</span>
 				</div>
 				
 				<div class="hiddenarea_day">
+					<div class="slideshow-containera">
+					<div class="mySlidesa">
+					<a class="date_num" href="#Redirect" onclick="changedate(0)">1</a><a class="date_num" href="#Redirect" onclick="changedate(1)">2</a><a class="date_num" href="#Redirect" onclick="changedate(2)">3</a><a class="date_num" href="#Redirect" onclick="changedate(3)">4</a><a class="date_num" href="#Redirect" onclick="changedate(4)">5</a><a class="date_num" href="#Redirect" onclick="changedate(5)">6</a><a class="date_num" href="#Redirect" onclick="changedate(6)">7</a><a class="date_num" href="#Redirect" onclick="changedate(7)">8</a><a class="date_num" href="#Redirect" onclick="changedate(8)">9</a><a class="date_num" href="#Redirect" onclick="changedate(9)">10</a>
+					</div>
+
+					<div class="mySlidesa">
+					<input type="button" class="date_num" onclick="changedate(10)" value="11"><input type="button" class="date_num" onclick="changedate(11)" value="12"><input type="button" class="date_num" onclick="changedate(12)" value="13"><input type="button" class="date_num" onclick="changedate(13)" value="14"><input type="button" onclick="changedate(14)" class="date_num" value="15"><input type="button" class="date_num" onclick="changedate(15)" value="16"><input type="button" class="date_num" onclick="changedate(16)" value="17"><input type="button" class="date_num" onclick="changedate(17)" value="18"><input type="button" class="date_num" onclick="changedate(18)" value="19"><input type="button" class="date_num" onclick="changedate(19)" value="20">
+					</div>
+
+					<div class="mySlidesa">
+					<input type="button" class="date_num" onclick="changedate(20)" value="21"><input type="button" class="date_num" onclick="changedate(21)" value="22"><input type="button" class="date_num" onclick="changedate(22)" value="23"><input type="button" class="date_num" onclick="changedate(23)" value="24"><input type="button" onclick="changedate(24)" class="date_num" value="25"><input type="button" class="date_num" onclick="changedate(25)" value="26"><input type="button" class="date_num" onclick="changedate(26)" value="27"><input type="button" class="date_num" onclick="changedate(27)" value="28"><input type="button" class="date_num" onclick="changedate(28)" value="29"><input type="button" class="date_num" onclick="changedate(29)" value="30">
+					</div>
+
+					<div class="mySlidesa" style="text-align:left;">
+					<input type="button" class="date_num" onclick="changedate(30)" value="31" style="margin-left:40px;">
+					</div>
+
+					<a class="preva" onclick="plusSlidesa(-1)">&#10094;</a>
+					<a class="nexta" onclick="plusSlidesa(1)">&#10095;</a>
+					</div>
 				</div>
 				
 				</div>
-				<div class="hiddenarea on">
-
 					<!--시간 설정박스 컬러변경 활성 /중복가능-->
 					<!--<script language="JavaScript">
 						function colorchange(obj){
@@ -672,72 +1142,196 @@ $img=mysql_fetch_array($imgquery);
 
 					<!--시간 설정박스 한개만 on-->
 					<script language="JavaScript">
+					var arr=new Array();
+					for(var i=0; i<16; i++)
+						arr[i]='0';
+						
 						function changetime(time){ //색상비교 후 값 반환
 							var hour = document.getElementsByClassName("time_button");
-							for(var i = 0; i < hour.length; i++){
-								if(i==2||i==7||i==11||i==12)
-									continue;
-								hour[i].style.background = '#ffffff';
-								hour[i].style.color = '#666666';
-								if(i==time){
-									hour[i].style.background = '#56DCFC';
-									hour[i].style.color = '#ffffff';
-									
+								
+								if(arr[time]=='0'){
+									hour[time].style.background = '#56DCFC';
+									hour[time].style.color = '#ffffff';
+									arr[time]='1';
+								}else{
+									hour[time].style.background = '#fff';
+									hour[time].style.color = 'black';
+									arr[time]='0';
 								}
-							}
 						}
 					</script>
 					<!--시간 설정박스 한개만 on-->
-
+					<?
+					//시간정보
+					$sql="select * from game_time where g_idx='".$_GET['g_idx']."'";
+					$q=mysql_query($sql);
+					$time=mysql_fetch_array($q);
+					//예약정보
+					$sql="select * from game_available where g_idx='".$_GET['g_idx']."'";
+					$q=mysql_query($sql);
+					$ava=mysql_fetch_array($q);
+					?>
 					<div class="hiddenarea_timetable">
 						<div class="hiddenarea_timearray">
+							<?if($time['gt_1']){
+								if(!$ava['ga_1']){?><script>setTimeout(function(){
+									reserved(1);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top" id="topspace">
-								<input type="button" value="10:00" class="time_button" onclick="changetime(0)" style=''/>
+								<input type="button" id="re1" value="<?echo $time['gt_1']?>" class="time_button" onclick="changetime(0)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_2']){
+								if($ava['ga_2']){?><script>setTimeout(function(){
+									reserved(2);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
-								<input type="button" value="11:00" class="time_button" onclick="changetime(1)" style=''/>
+								<input type="button" id="re2" value="<?echo $time['gt_2']?>" class="time_button" onclick="changetime(1)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_3']){
+								if($ava['ga_3']){?><script>setTimeout(function(){
+									reserved(3);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
-								<input type="button" value="12:00" class="time_button" onclick="changetime(2)" style='border:2px solid #ffffff; background:#d3d3d3;'/>
+								<input type="button" id="re3" value="<?echo $time['gt_3']?>" class="time_button" onclick="changetime(2)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_4']){
+								if($ava['ga_4']){?><script>setTimeout(function(){
+									reserved(4);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
-								<input type="button" value="13:00" class="time_button" onclick="changetime(3)" style=''/>
+								<input type="button" id="re4" value="<?echo $time['gt_4']?>" class="time_button" onclick="changetime(3)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_5']){
+								if($ava['ga_5']){?><script>setTimeout(function(){
+									reserved(5);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
-								<input type="button" value="14:00" class="time_button" onclick="changetime(4)" style=''/>
+								<input type="button" id="re5" value="<?echo $time['gt_5']?>" class="time_button" onclick="changetime(4)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_6']){
+								if($ava['ga_6']){?><script>setTimeout(function(){
+									reserved(6);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
-								<input type="button" value="15:00" class="time_button" onclick="changetime(5)" style=''/>
+								<input type="button" id="re6" value="<?echo $time['gt_6']?>" class="time_button" onclick="changetime(5)" style=''/>
 							</div>
+							<?}?>
+								<?if($time['gt_7']){
+								if($ava['ga_7']){?><script>setTimeout(function(){
+									reserved(7);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top" id="botspace">
-								<input type="button" value="16:00" class="time_button" onclick="changetime(6)" style=''/>
+								<input type="button" id="re7" value="<?echo $time['gt_7']?>" class="time_button" onclick="changetime(6)" style=''/>
 							</div>
+							<?}?>
 							<!--줄나눔-->
+							<?if($time['gt_8']){
+								if($ava['ga_8']){?><script>setTimeout(function(){
+									reserved(8);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot" style="margin-left:0px;">
-								<input type="button" value="17:00" class="time_button" onclick="changetime(7)" style='border:2px solid #ffffff; background:#d3d3d3;'/>
+								<input type="button" id="re8" value="<?echo $time['gt_8']?>" class="time_button" onclick="changetime(7)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_9']){
+								if($ava['ga_9']){?><script>setTimeout(function(){
+									reserved(9);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot">
-								<input type="button" value="18:00" class="time_button" onclick="changetime(8)" style=''/>
+								<input type="button" id="re9" value="<?echo $time['gt_9']?>" class="time_button" onclick="changetime(8)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_10']){
+								if($ava['ga_10']){?><script>setTimeout(function(){
+									reserved(10);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot">
-								<input type="button" value="19:00" class="time_button" onclick="changetime(9)" style=''/>
+								<input type="button" id="re10" value="<?echo $time['gt_10']?>" class="time_button" onclick="changetime(9)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_11']){
+								if($ava['ga_11']){?><script>setTimeout(function(){
+									reserved(11);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot">
-								<input type="button" value="20:00" class="time_button" onclick="changetime(10)" style=''/>
+								<input type="button" id="re11" value="<?echo $time['gt_11']?>" class="time_button" onclick="changetime(10)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_12']){
+								if($ava['ga_12']){?><script>setTimeout(function(){
+									reserved(12);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot">
-								<input type="button" value="21:00" class="time_button" onclick="changetime(11)" style='border:2px solid #ffffff; background:#d3d3d3;'/>
+								<input type="button" id="re12" value="<?echo $time['gt_12']?>" class="time_button" onclick="changetime(11)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_13']){
+								if($ava['ga_13']){?><script>setTimeout(function(){
+									reserved(13);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot">
-								<input type="button" value="22:00" class="time_button" onclick="changetime(12)" style='border:2px solid #ffffff; background:#d3d3d3;'/>
+								<input type="button" id="re13" value="<?echo $time['gt_13']?>" class="time_button" onclick="changetime(12)" style=''/>
 							</div>
+							<?}?>
+							<?if($time['gt_14']){
+								if($ava['ga_14']){?><script>setTimeout(function(){
+									reserved(14);
+								},100)</script><?}?>
 							<div class="hiddenarea_timecell_bot" style="margin-right:0px;">
-								<input type="button" value="23:00" class="time_button" onclick="changetime(13)" style=''/>
+								<input type="button" id="re14" value="<?echo $time['gt_14']?>" class="time_button" onclick="changetime(13)" style=''/>
+							</div>
+							<?}?>
+							<?if($time['gt_15']){
+								if($ava['ga_15']){?><script>setTimeout(function(){
+									reserved(15);
+								},100)</script><?}?>
+							<div class="hiddenarea_timecell_bot" style="margin-left:-1px">
+								<input type="button" id="re15" value="<?echo $time['gt_15']?>" class="time_button" onclick="changetime(14)" style=''/>
+							</div>
+							<?}?>
+							<?if($time['gt_16']){
+								if($ava['ga_16']){?><script>setTimeout(function(){
+									reserved(16);
+								},100)</script><?}?>
+							<div class="hiddenarea_timecell_bot">
+								<input type="button" id="re16" value="<?echo $time['gt_16']?>" class="time_button" onclick="changetime(15)" style=''/>
+							</div>
+							<?}?>
+						</div>
+
+
+
+						<div id="mask"></div>
+						<div class="window_3">
+							<div id="note_3">
+								<div class="title_box_3">
+									<div class="title_3">전화하셔서 
+									<font style='color:#f36a21;'>'탈출러 예약자'</font>라고 알려주시면 표시된 최저가로 이용이 가능합니다.</div>
+								</div>
+								<div class="input_box_3">
+									<div class="mid_content_left"><img src="../images/icon/shop.png"><div>ESC신림</div></div>
+									<div class="mid_content_right">000-000-0000</div>
+									</div>
+								</div>
+								<div class="popup_clickbox_area">
+									<input type="button" href="#" class="close" style='background:#66ccff; border:1px solid #06aeff; color:#000000;' value="확인"/>
+								</div>
 							</div>
 						</div>
+						<!--예약하기 팝업 E-->
+
+
+
+						<a href="#" class="openMask_3">
 						<div class="hiddenarea_reservation">
-							<div class="hiddenarea_reservation_inner">예약하기</div>
+								<div class="hiddenarea_reservation_inner">예약하기</div>
 						</div>
+						</a>
 					</div>
 
 					<ul class="ablebox">
@@ -978,7 +1572,7 @@ $psql="select p_id, p_shopName, p_localName, benefit1, benefit2, benefit3, benef
 $q=mysql_query($psql);
 $partner=mysql_fetch_array($q);
 ?>
-				<div class="hiddenarea" id="matter"><!--지도의 비밀은 여기에 있었다-->					
+				<div class="hiddenarea" style="width:41%; margin-left:29.5%;" id="matter"><!--지도의 비밀은 여기에 있었다-->					
 					<div class="cafeinfo">
 						<div class="f_a">
 							<div style="margin-bottom:30px;">
@@ -1156,9 +1750,9 @@ $partner=mysql_fetch_array($q);
 								<a href="./theme_view.php?g_idx=<?echo $imgloop['g_idx']?>">
 								<!--하단 롤링부분-->
 								<div class="rollingImage_box"> 
-									<img class="rollingImage" src="../manager/gameImage/<?echo $imgloop[1]?>.jpg" />
+									<img class="rollingImage" src="../manager/gameImage/<?echo $imgloop['filename']?>.jpg" />
 								</div>
-								<span><?echo $gname[0]?></span>
+								<span style="margin-bottom:20px;"><?echo $gname[0]?></span>
 								</a>
 							</div>
 						<?
@@ -1169,7 +1763,7 @@ $partner=mysql_fetch_array($q);
 				</div>
 				
 				<!--mobile 다른테마정보-->
-				<div class="slidearea_m">
+				<div class="slidearea_m" style="height:300px;">
 					<ul class="bxslider05_m" style='padding-top:20px;'>
 						<?
 						$sql="select g_idx, filename from gameImage where p_id='".$data['p_id']."'";
@@ -1181,7 +1775,7 @@ $partner=mysql_fetch_array($q);
 								<a href="./theme_view.php?g_idx=<?echo $imgloop['g_idx']?>">
 									<!--하단 롤링부분 max-width:1041px-->
 									<div class="rollingImage_box_mobile">
-										<img src="../manager/gameImage/<?echo $imgloop[1]?>.jpg"/>
+										<img src="../manager/gameImage/<?echo $imgloop[1]?>.jpg" style="width:100%"/>
 									</div>
 									<span><?echo $gname[0]?></span>
 									<!--하단 롤링부분 max-width:1041px-->
@@ -1262,8 +1856,34 @@ function showSlides2(n) {
   dot[slideIndex2-1].className += " active";
 }
 </script>
+<script>
+var slideIndexa = 1;
+showSlidesa(slideIndexa);
 
-	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=759d7a8b0f7209f4ab7d54ecb981c809"></script>
+function plusSlidesa(n) {
+  showSlidesa(slideIndexa += n);
+}
+function currentSlidea(n) {
+  showSlidesa(slideIndexa = n);
+}
+function showSlidesa(n) {
+  var j;
+  var slidesa = document.getElementsByClassName("mySlidesa");
+  var dota = document.getElementsByClassName("dota");
+  if (n > slidesa.length) {slideIndexa = 1}    
+  if (n < 1) {slideIndexa = slidesa.length}
+  for (j = 0; j < slidesa.length; j++) {
+      slidesa[j].style.display = "none";  
+  }
+  for (j = 0; j < dot.length; j++) {
+      dota[j].className = dota[j].className.replace(" active", "");
+  }
+  slidesa[slideIndexa-1].style.display = "block";  
+  dota[slideIndexa-1].className += " active";
+
+}
+</script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=759d7a8b0f7209f4ab7d54ecb981c809"></script>
 	<script>
 		var container = document.getElementById('map');
 		var options = {
@@ -1274,4 +1894,23 @@ function showSlides2(n) {
 		function mapload(){
 			var map = new daum.maps.Map(container, options);
 		}
+</script>
+<script language="JavaScript">
+		function changedate(datenum){ //색상비교 후 값 반환
+			var week = document.getElementsByClassName("date_num");
+			for(var i = 0; i < week.length; i++){
+				week[i].style.color = '#666666'
+				if(i==datenum){
+					week[i].style.color = '#56DCFC'
+				}
+			}
+		}
+</script>
+<script>
+function reserved(value){
+	var k= document.getElementById('re'+value);
+	k.style.backgroundColor="#ccc";
+	k.style.border="2px solid #fff";
+	k.onclick="";
+}
 </script>

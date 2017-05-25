@@ -446,7 +446,40 @@ include('./HeadTab_Module.php');
 
 /*클릭박스 디자인 영역*/
 
+.mySlidesa{display:none; margin-left:20px;text-align:center; padding:10px 0 0 0}
+.slideshow-containera {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
 
+.preva, .nexta {
+  cursor: pointer;
+  position: absolute;
+  width:auto;
+  margin-top: -26px;
+  color: #56DCFC;
+  font-weight: bold;
+  font-size: 20pt;
+  border-radius: 0 3px 3px 0;
+}
+
+.nexta {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.date_num{
+	width:30px;
+	height:30px;
+	background-color:white;
+	color:#666666;
+	border:none;
+	font-size:17pt;
+	margin-right:20px;
+	margin-left:20px;
+	font-weight:bold;
+}
 </style>
 
 
@@ -467,31 +500,27 @@ include('./HeadTab_Module.php');
 			<div class="rightblue_bar">
 				<span>2017.03.20(월)</span>
 			</div>
-			<script language="JavaScript">
-				function changedate(datenum){ //색상비교 후 값 반환
-					var week = document.getElementsByClassName("date_button");
-					for(var i = 0; i < week.length; i++){
-						week[i].style.color = '#666666'
-						if(i==datenum){
-							week[i].style.color = '#56dcfc'
-						}
-					}
-				}
-			</script>
 			
-			<center>
-				<div class="date_choice">
-					<input type="button" value="<" onclick="" style="color:#666666; float:left; width:auto;">
-					<input type="button" value="19(일)" class="date_button" onclick="changedate(0)" style="color:#666666;">
-					<input type="button" value="20(월)" class="date_button" onclick="changedate(1)" style="color:#666666;">
-					<input type="button" value="21(화)" class="date_button" onclick="changedate(2)" style="color:#666666;">
-					<input type="button" value="22(수)" class="date_button" onclick="changedate(3)" style="color:#666666;">
-					<input type="button" value="23(목)" class="date_button" onclick="changedate(4)" style="color:#666666;">
-					<input type="button" value="24(금)" class="date_button" onclick="changedate(5)" style="color:#666666;">
-					<input type="button" value="25(토)" class="date_button" onclick="changedate(6)" style="color:#666666;">
-					<input type="button" value=">" onclick="" style="color:#666666; float:right; width:auto;">
+			<div class="slideshow-containera">
+				<div class="mySlidesa">
+					<input type="button" class="date_num" onclick="changedate(0)" value="1"><input type="button" class="date_num" onclick="changedate(1)" value="2"><input type="button" class="date_num" onclick="changedate(2)" value="3"><input type="button" class="date_num" onclick="changedate(3)" value="4"><input type="button" onclick="changedate(4)" class="date_num" value="5"><input type="button" class="date_num" onclick="changedate(5)" value="6"><input type="button" class="date_num" onclick="changedate(6)" value="7"><input type="button" class="date_num" onclick="changedate(7)" value="8"><input type="button" class="date_num" onclick="changedate(8)" value="9"><input type="button" class="date_num" onclick="changedate(9)" value="10">
 				</div>
-			</center>
+
+				<div class="mySlidesa">
+					<input type="button" class="date_num" onclick="changedate(10)" value="11"><input type="button" class="date_num" onclick="changedate(11)" value="12"><input type="button" class="date_num" onclick="changedate(12)" value="13"><input type="button" class="date_num" onclick="changedate(13)" value="14"><input type="button" onclick="changedate(14)" class="date_num" value="15"><input type="button" class="date_num" onclick="changedate(15)" value="16"><input type="button" class="date_num" onclick="changedate(16)" value="17"><input type="button" class="date_num" onclick="changedate(17)" value="18"><input type="button" class="date_num" onclick="changedate(18)" value="19"><input type="button" class="date_num" onclick="changedate(19)" value="20">
+				</div>
+
+				<div class="mySlidesa">
+					<input type="button" class="date_num" onclick="changedate(20)" value="21"><input type="button" class="date_num" onclick="changedate(21)" value="22"><input type="button" class="date_num" onclick="changedate(22)" value="23"><input type="button" class="date_num" onclick="changedate(23)" value="24"><input type="button" onclick="changedate(24)" class="date_num" value="25"><input type="button" class="date_num" onclick="changedate(25)" value="26"><input type="button" class="date_num" onclick="changedate(26)" value="27"><input type="button" class="date_num" onclick="changedate(27)" value="28"><input type="button" class="date_num" onclick="changedate(28)" value="29"><input type="button" class="date_num" onclick="changedate(29)" value="30">
+				</div>
+
+				<div class="mySlidesa" style="text-align:left;">
+					<input type="button" class="date_num" onclick="changedate(30)" value="31" style="margin-left:40px;">
+				</div>
+
+				<a class="preva" onclick="plusSlidesa(-1)">&#10094;</a>
+				<a class="nexta" onclick="plusSlidesa(1)">&#10095;</a>
+			</div>
 		</div>
 	</div>
 	<div id="Main_content_area">
@@ -501,10 +530,12 @@ include('./HeadTab_Module.php');
 					<div class="colorbox" style='background-color:#ffffff; border:1px solid #999999;'></div>
 					<span>&nbsp&nbsp&nbsp예약가능</span>
 				</div>
+				<!--
 				<div class="infotable">
 					<div class="colorbox" style='background-color:#56dcfc; border:1px solid #56dcfc;'></div>
 					<span>&nbsp&nbsp&nbsp탈출러예약</span>
 				</div>
+				-->
 				<div class="infotable">
 					<div class="colorbox" style='background-color:#999999; border:1px solid #999999;'></div>
 					<span>&nbsp&nbsp&nbsp예약불가</span>
@@ -607,7 +638,7 @@ include('./HeadTab_Module.php');
 				<div id="note_1">
 					<div class="info_area">
 						<div class="text_box">
-							테마제목1111 10:00 탈출러 예약불가로 전환하시겠습니까?
+							테마제목1111 10:00 예약불가로 전환하시겠습니까?
 						</div>
 						<div class="checkbox_text">
 								예약자 정보 등록
@@ -639,7 +670,7 @@ include('./HeadTab_Module.php');
 							<div class="inputboxes">
 								<span class="major" style="padding-left:20px;">추가결제금</span>
 								<input name="next" type="text" style="width:80px; padding-left:5px;" placeholder="30000">
-								<span class="sub">명</span><br>
+								<span class="sub">원</span><br>
 							</div>
 						</form>
 					</div>
@@ -1053,4 +1084,35 @@ include('./HeadTab_Module.php');
 <?
 include('./Footer_Module.php');
 ?>
+<script>
+var slideIndexa = 1;
+showSlidesa(slideIndexa);
 
+function plusSlidesa(n) {
+  showSlidesa(slideIndexa += n);
+}
+
+function showSlidesa(n) {
+  var j;
+  var slidesa = document.getElementsByClassName("mySlidesa");
+  if (n > slidesa.length) {slideIndexa = 1}    
+  if (n < 1) {slideIndexa = slidesa.length}
+  for (j = 0; j < slidesa.length; j++) {
+      slidesa[j].style.display = "none";  
+  }
+  slidesa[slideIndexa-1].style.display = "block";  
+}
+</script>
+<script language="JavaScript">
+		function changedate(datenum){ //색상비교 후 값 반환
+			var week = document.getElementsByClassName("date_num");
+			for(var i = 0; i < week.length; i++){
+				week[i].style.color = '#666666'
+				week[i].style.backgroundColor='white'
+				if(i==datenum){
+					week[i].style.color = 'white'
+					week[i].style.backgroundColor='#56DCFC'
+				}
+			}
+		}
+</script>

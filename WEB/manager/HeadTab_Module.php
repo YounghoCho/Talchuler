@@ -97,6 +97,7 @@ body{
 	display:table-cell;
 	vertical-align:middle;
 	text-align:center;
+	font-weight:lighter;
 }
 
 #Tab .tbmenu > li{
@@ -138,11 +139,11 @@ ul{
 			
 <?
 $id=$_SESSION['id'];
-$sql="select p_localName from partner where p_id='".$id."' ";
+$sql="select p_localName, p_shopName from partner where p_id='".$id."' ";
 $q=mysql_query($sql);
 $data=mysql_fetch_array($q);
 ?>
-		<div class="cell_store"><?echo($data[0])?></div>
+		<div class="cell_store"><?echo($data['p_shopName'])?>&nbsp;<?echo($data[0])?></div>
 		<div class="cell_time" id="server_time"><?echo date('Y.m.d h:i:s');?></div>
 <!--서버시간-->
 	<script>
@@ -213,6 +214,8 @@ function server_time()
 	background-color:#cccccc;
 	font-family:'NotoSansCJKkr-Regular.eot';
 	}
+	#back img{margin-right:4px;}
+	#back1 img{margin-right:4px;}
 	</style>
 		<ul id="back"><img src="../images/icon/a.png" width="20px" height="20px"> 내 카페관리</ul>
 			<!-- 여기 바꿀때, register4.php의 수동으로 만든 탭도 바꿔야합니다.

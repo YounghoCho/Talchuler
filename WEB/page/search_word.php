@@ -529,14 +529,424 @@ include('./include_head.php');
 <!--검색 결과 S-->
 <style>
 .pieces{width:33%;float:left;cursor:pointer;}
-.ultracase{width:60%;margin-left:20%;margin-right:20%;margin-top:20px;}
+.ultracase{width:100%;}
 .gImage{width:90%;}
 .img1, .img2, .img3{width:13px;margin-right:2px;margin-bottom:2px;}
 </style>
+
+<style>
+	#gameinfo_stack{
+		width:1048px;
+		margin:0 auto;
+		font-family:'NotoSansCJKkr-Regular.eot';
+	}
+	/*반복되는 영역*/
+	#gameinfo_stack .gameinfo_container{
+		width : -webkit-calc(33.3% - 20px); /* for Chrome, Safari */
+		width :    -moz-calc(33.3% - 20px); /* for Firefox */
+		width :         calc(33.3% - 20px); /* for IE */ 
+		margin:10px;
+		height:270px; float:left; overflow:hidden;
+		cursor:pointer;
+	}
+	/*이미지 공간*/
+	#gameinfo_stack .image_content{
+		height:auto;
+		overflow:auto; 
+		float:left;
+	}
+
+	#gameinfo_stack .image_area{
+		position:relative; float:left; width:150px; height:200px; text-align:center; display:table-cell; background:none;
+	}
+
+	#gameinfo_stack .image_area img{
+		position:absolute; width:auto; height:auto; max-width:150px; max-height:200px; margin:auto; top:0; bottom:0; left:0; right:0;
+	}
+	/*이미지 공간*/
+
+	/*텍스트 공간*/
+	#gameinfo_stack .text_content{
+		float:left;
+		width : -webkit-calc(100% - 160px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 160px); /* for Firefox */
+		width :         calc(100% - 160px); /* for IE */
+		height:200px;
+		margin-left:10px;
+		overflow:hidden;
+		font-size:10pt;
+	}
+
+	#gameinfo_stack .text_title{
+		width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 15px); /* for Firefox */
+		width :         calc(100% - 15px); /* for IE */
+		float:left;
+		font-size:14pt;
+		line-height:16pt;
+		font-weight:bold;
+		margin:5px 0 0 5px;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		word-wrap:normal;
+	}
+
+	#gameinfo_stack .text_location{
+		width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 15px); /* for Firefox */
+		width :         calc(100% - 15px); /* for IE */
+		float:left;
+		margin:5px 0 0 5px;
+	}
+
+	#gameinfo_stack .text_location img{
+		float:left;
+		width:12px;
+		height:auto;
+		padding:3px 0;
+		margin-right:5px;
+	}
+
+	#gameinfo_stack .text_double_container{
+		width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 15px); /* for Firefox */
+		width :         calc(100% - 15px); /* for IE */
+		margin:5px 0 0 5px;
+		float:left;
+		overflow:auto;
+	}
+
+	#gameinfo_stack .text_hard{
+		width:50%;
+		float:left;
+		font-size:9pt;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		word-wrap:normal;
+	}
+
+	#gameinfo_stack .text_hard img{
+		float:left;
+		width:10px;
+		height:auto;
+		padding:3px 0;
+		margin-right:5px;
+	}
+
+	#gameinfo_stack .text_fear{
+		width:50%;
+		float:left;
+		font-size:9pt;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		word-wrap:normal;
+	}
+
+	#gameinfo_stack .text_fear img{
+		float:left;
+		width:10px;
+		height:auto;
+		padding:3px 0;
+		margin-right:5px;
+	}
+
+	#gameinfo_stack .text_detail{
+		width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+		width :    -moz-calc(100% - 15px); /* for Firefox */
+		width :         calc(100% - 15px); /* for IE */
+		float:left;
+		margin:5px 0 0 5px;
+		line-height:13pt;
+		word-break:break-all;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		display:block;
+		display:-webkit-box;
+		-webkit-line-clamp:7;
+		-webkit-box-orient:vertical;
+		height:120px;
+		word-wrap:break-word;
+	}
+	/*텍스트 공간*/
+
+	/*가격정보 공간*/
+		#gameinfo_stack .price_container{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:60px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			margin-top:10px;
+		}
+
+		#gameinfo_stack .gray_price{
+			width : -webkit-calc(50% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 15px); /* for Firefox */
+			width :         calc(50% - 15px); /* for IE */
+			height:60px;
+			float:left;
+			padding:17px 0 17px 15px;
+			overflow:hidden;
+		}
+
+		#gameinfo_stack .arrow_icon{
+			overflow:hidden;
+			float:left;
+			margin:0 11px;
+			padding:23px 0;
+		}
+
+		#gameinfo_stack .arrow_icon img{
+			
+		}
+
+		#gameinfo_stack .blue_price{
+			width : -webkit-calc(50% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 15px); /* for Firefox */
+			width :         calc(50% - 15px); /* for IE */
+			height:60px;
+			color:#0066cc;
+			float:left;
+			padding:17px 15px 17px 0;
+			overflow:hidden;
+		}
+
+		#gameinfo_stack .info_title{
+			width:40%;
+			font-size:11pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+		}
+
+		#gameinfo_stack .info_price{
+			width:60%;
+			font-size:15pt;
+			line-height:18pt;
+			text-align:right;
+			float:left;
+		}
+
+		/*가격정보 공간*/
+
+	@media all and (max-width:1041px){
+		#gameinfo_stack{
+			width:100%;
+			margin:0 auto;
+			font-family:'NotoSansCJKkr-Regular.eot';
+		}
+
+		/*반복되는 영역*/
+		#gameinfo_stack .gameinfo_container{
+			width : -webkit-calc(100% - 10px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 10px); /* for Firefox */
+			width :         calc(100% - 10px); /* for IE */ 
+			margin:10px 5px 5px; 5px;
+			height:245px; float:left; overflow:hidden;
+		}
+
+		/*이미지 공간*/
+		#gameinfo_stack .image_content{
+			height:auto;
+			overflow:auto; 
+			float:left;
+		}
+
+		#gameinfo_stack .image_area{
+			position:relative; float:left; width:150px; height:200px; text-align:center; display:table-cell; background:none;
+		}
+
+		#gameinfo_stack .image_area img{
+			position:absolute; width:auto; height:auto; max-width:150px; max-height:200px; margin:auto; top:0; bottom:0; left:0; right:0;
+		}
+		/*이미지 공간*/
+
+		/*텍스트 공간*/
+		#gameinfo_stack .text_content{
+			float:left;
+			width : -webkit-calc(100% - 160px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 160px); /* for Firefox */
+			width :         calc(100% - 160px); /* for IE */
+			height:200px;
+			margin-left:10px;
+			overflow:hidden;
+			font-size:10pt;
+		}
+
+		#gameinfo_stack .text_title{
+			width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 15px); /* for Firefox */
+			width :         calc(100% - 15px); /* for IE */
+			float:left;
+			font-size:14pt;
+			line-height:16pt;
+			font-weight:bold;
+			margin:5px 0 0 5px;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			word-wrap:normal;
+		}
+
+		#gameinfo_stack .text_location{
+			width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 15px); /* for Firefox */
+			width :         calc(100% - 15px); /* for IE */
+			float:left;
+			margin:5px 0 0 5px;
+		}
+
+		#gameinfo_stack .text_location img{
+			float:left;
+			width:12px;
+			height:auto;
+			padding:3px 0;
+		}
+
+		#gameinfo_stack .text_double_container{
+			width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 15px); /* for Firefox */
+			width :         calc(100% - 15px); /* for IE */
+			margin:5px 0 0 5px;
+			float:left;
+			overflow:auto;
+		}
+
+		#gameinfo_stack .text_hard{
+			width:50%;
+			float:left;
+			font-size:9pt;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			word-wrap:normal;
+		}
+
+		#gameinfo_stack .text_hard img{
+			float:left;
+			width:10px;
+			height:auto;
+			padding:3px 0;
+			margin-right:5px;
+		}
+
+		#gameinfo_stack .text_fear{
+			width:50%;
+			float:left;
+			font-size:9pt;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			word-wrap:normal;
+		}
+
+		#gameinfo_stack .text_fear img{
+			float:left;
+			width:10px;
+			height:auto;
+			padding:3px 0;
+			margin-right:5px;
+		}
+
+		#gameinfo_stack .text_detail{
+			width : -webkit-calc(100% - 15px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 15px); /* for Firefox */
+			width :         calc(100% - 15px); /* for IE */
+			float:left;
+			margin:5px 0 0 5px;
+			line-height:13pt;
+			word-break:break-all;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			display:block;
+			display:-webkit-box;
+			-webkit-line-clamp:7;
+			-webkit-box-orient:vertical;
+			height:120px;
+			word-wrap:break-word;
+		}
+		/*텍스트 공간*/
+
+		/*가격정보 공간*/
+		#gameinfo_stack .price_container{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:40px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			margin-top:5px;
+		}
+
+		#gameinfo_stack .gray_price{
+			width : -webkit-calc(50% - 25px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 25px); /* for Firefox */
+			width :         calc(50% - 25px); /* for IE */
+			height:40px;
+			float:left;
+			padding:7px 0 7px 25px;
+			overflow:hidden;
+		}
+
+		#gameinfo_stack .arrow_icon{
+			overflow:hidden;
+			float:left;
+			margin:0 21px;
+			padding:13px 0;
+		}
+
+		#gameinfo_stack .arrow_icon img{
+			
+		}
+
+		#gameinfo_stack .blue_price{
+			width : -webkit-calc(50% - 25px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 25px); /* for Firefox */
+			width :         calc(50% - 25px); /* for IE */
+			height:40px;
+			color:#0066cc;
+			float:left;
+			padding:7px 25px 7px 0;
+			overflow:hidden;
+		}
+
+		#gameinfo_stack .info_title{
+			width:40%;
+			font-size:11pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+			margin-top:2px;
+		}
+
+		#gameinfo_stack .info_price{
+			width:60%;
+			font-size:15pt;
+			line-height:18pt;
+			text-align:right;
+			float:left;
+			margin-top:3px;
+		}
+
+		/*가격정보 공간*/
+	}
+
+	}
+
+</style>
+
 <div class="ultracase">
 <?
 //게임에서 검색한다, 왜냐하면 게임검색이므로.
-$sql="select g_idx, p_id, g_title, g_level, g_horror, g_content, g_summary from game where g_title like '%".$_GET['input']."%'";
+$sql="select g_idx, p_id, g_title, g_level, g_horror, g_content, g_summary, g_p1, g_p2, g_weekprice from game where g_title like '%".$_GET['input']."%'";
 $query=mysql_query($sql);
 while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
 	//이미지쿼리
@@ -549,6 +959,65 @@ while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
 	$local=mysql_fetch_array($localquery);
 	//실제출력
 	?>
+
+
+
+<div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
+	<div class="gameinfo_container" onclick='letsview(<?echo $data['g_idx']?>)'> <!--컨텐츠를 담는 공간-->
+		<div class="image_content"> <!--이미지를 담는 공간-->
+			<div class="image_area"> <!--이미지 담기-->
+				<img src="../manager/gameImage/<?echo $image['filename']?>.jpg">
+			</div>
+		</div>
+		<div class="text_content"> <!--텍스트를 담는 공간-->
+			<div class="text_title"> <!--제목-->
+				<?echo $data['g_title']?>
+			</div>
+			<div class="text_location"> <!--지역-->
+				<img src="../images/icon/shop.png"/>
+				<?echo $local['p_localName']?>
+			</div>
+			<div class="text_double_container"> <!--텍스트 영역 공간 두개로-->
+				<div class="text_hard"> <!--난이도-->
+					<img src="../images/icon/icon_new1.png"/>
+					난이도 <?echo $data['g_level']?>
+				</div>
+				<div class="text_fear"> <!--공포감-->
+					<img src="../images/icon/icon_new2.png"/>
+					공포감 <?echo $data['g_horror']?>
+				</div>
+			</div>
+			<div class="text_detail"> <!--상세설명-->
+				<?
+					if($data['g_summary']==''){
+						//	$data['g_summary']=$data['g_content'];
+						echo $data['g_content'];
+					}else{
+						echo $data['g_summary'];					
+					}
+					?>
+			</div>
+		</div>
+		<div class="price_container"> <!--가격을 담는 공간-->
+			<div class="gray_price">
+				<div class="info_title">기본가</div>
+				<div class="info_price"><?if($data['g_p1'])echo $data['g_p1'];else echo ($data['g_p2']/2);?>원</div>
+			</div>
+			<div class="arrow_icon">
+				<img src="../images/icon/icon_right_triangle.png"/>
+			</div>
+			<div class="blue_price">
+			<?if($data['g_weekprice']!='0'){?>
+				<div class="info_title">판매가</div>
+				<div class="info_price"><?echo $data['g_weekprice']?>원</div>
+			</div>
+			<?}?>
+		</div>
+	</div>
+</div>
+
+
+	<!--
 	<table class="pieces" onclick='letsview(<?echo $data['g_idx']?>)'>
 	<tr>
 		<td>
@@ -583,6 +1052,8 @@ while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
 		</td>
 	</tr>
 	</table>
+	-->
+
 	<?
 }
 ?>
@@ -601,6 +1072,49 @@ while($data2=mysql_fetch_array($query2)){	//회원수만큼 돌고
 	$image2=mysql_fetch_array($imgquery2);
 	//실제출력
 	?>
+
+<div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
+	<div class="gameinfo_container" onclick='letsview(<?echo $data2['g_idx']?>)'> <!--컨텐츠를 담는 공간-->
+		<div class="image_content"> <!--이미지를 담는 공간-->
+			<div class="image_area"> <!--이미지 담기-->
+				<img src="../manager/gameImage/<?echo $image2['filename']?>.jpg">
+			</div>
+		</div>
+		<div class="text_content"> <!--텍스트를 담는 공간-->
+			<div class="text_title"> <!--제목-->
+				<?echo $data2['g_title']?>
+			</div>
+			<div class="text_location"> <!--지역-->
+				<img src="../images/icon/shop.png"/>
+				<?echo $local2['p_localName']?>
+			</div>
+			<div class="text_double_container"> <!--텍스트 영역 공간 두개로-->
+				<div class="text_hard"> <!--난이도-->
+					<img src="../images/icon/icon_new1.png"/>
+					난이도 <?echo $data2['g_level']?>
+				</div>
+				<div class="text_fear"> <!--공포감-->
+					<img src="../images/icon/icon_new2.png"/>
+					공포감 <?echo $data2['g_horror']?>
+				</div>
+			</div>
+			<div class="text_detail"> <!--상세설명-->
+				<?
+					if($data2['g_summary']==''){
+						//	$data['g_summary']=$data['g_content'];
+						echo $data2['g_content'];
+					}else{
+						echo $data2['g_summary'];					
+					}
+					?>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+	<!--
 	<table class="pieces" onclick='letsview(<?echo $data2['g_idx']?>)'>
 	<tr>
 		<td>
@@ -633,6 +1147,7 @@ while($data2=mysql_fetch_array($query2)){	//회원수만큼 돌고
 		</td>
 	</tr>
 	</table>
+	-->
 	<?
 }
 //페이징 해야될듯

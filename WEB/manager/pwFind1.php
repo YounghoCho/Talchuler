@@ -61,7 +61,7 @@ p{
 	</div>
 	<form name="findform" action="./pwFind2.php" method="post">		
 	<div class="namediv">
-				<center><input type="text" id="user" class="username" name="id" size="20" value="비밀번호를 찾고자하는 아이디를 입력하세요" onfocus="this.value=''; this.style.color='#333333';" style="color:#666666;padding-left:10px;"></center>
+				<center><input type="text" id="user" class="username" name="id" size="20" value="<?if($_GET['email']){echo($_GET['email']);}else{echo('비밀번호를 찾고자하는 아이디를 입력하세요');}?>" onfocus="this.value=''; this.style.color='#333333';" style="color:#666666;padding-left:10px;"></center>
 				<p style="margin-top:10px;">아이디가 기억나지 않으세요? 
 				<a href="./idFind1.php"><b>아이디찾기</b></a></p>
 	</div>

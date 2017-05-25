@@ -8,6 +8,14 @@ if($_GET['refresh']==1){
 ?>
 <meta charset="utf-8"/>
 <style> 
+#Main{
+	/*Tab 크기 뺴줌*/
+	width : -webkit-calc(100% - 240px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 240px); /* for Firefox */
+    width :         calc(100% - 240px); /* for IE */
+	/*height:880px; Main의 높이를 90%로 조절합니다.*/
+	overflow:hidden;
+}
 
 .ment{
 	margin-top:2%;
@@ -360,7 +368,8 @@ $(function(){
 -->
 
 
-<!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.--> 
+<!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
+<div id="Main">
 <?
 //기본가격정보에 사용될 쿼리
 $sql="select * from gameAsk where p_id='".$_SESSION['id']."'";
@@ -445,7 +454,7 @@ $image=mysql_fetch_array($imageQ);
 		</tr>
 		<tr>
 			<td id="subtitle" colspan="4" style="width:700px; height:50px;">
-			<input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" onfocus="this.value=''" value="<?echo $data['g_subtitle']?>">
+			<input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;"  value="<?echo $data['g_subtitle']?>">
 			</td>
 		</tr>
 		<tr>
@@ -453,7 +462,7 @@ $image=mysql_fetch_array($imageQ);
 			<textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;"  ><?echo $data['g_content']?></textarea>
 			</td>
 			<td id="summary"rowspan="1" style="background-color:#eeeeee; width:30%; height:30%;">
-			<textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" onfocus="this.value='';" ><?echo $data['g_summary']?></textarea></td>
+			<textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" ><?echo $data['g_summary']?></textarea></td>
 		</tr>
 		<tr>
 		<?
@@ -554,8 +563,8 @@ $image=mysql_fetch_array($imageQ);
 		<table style="margin-left:3%; font-size:14pt; margin-bottom:3%;">
 			<tr>
 				<td style="width:35%;">*탈출러최저가(1인가격)</td>
-				<td>주중 <input type="textbox" id="week2" name="week" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $data['g_weekprice']?>">원</td>
-				<td>주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $data['g_holyprice']?>">원</td>
+				<td>주중 <input type="textbox" id="week2" name="week" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" value="<?echo $data['g_weekprice']?>">원</td>
+				<td>주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:40%; font-size:14pt; text-align:center;" class="defText" value="<?echo $data['g_holyprice']?>">원</td>
 			</tr>
 		</table>
 	</div>
@@ -697,6 +706,7 @@ function submit(){
 }
 </script>
 <!--popup module-->
+</div>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요--> 
 </div> 
 <script>

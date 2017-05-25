@@ -7,6 +7,10 @@ mysql_query($sql);
 //서버디렉토리에 파일도 지워야함	
 echo(rename("../manager/partnerAsk/".$_GET['p_id'].".jpg", "../manager/albumTrash/".$_GET['p_id'].".jpg"));
 
+//이미지요청을 지운다
+$sql="delete from partnerImageAsk where p_id='".$_GET['p_id']."'";
+mysql_query($sql);
+
 //메일보내기 S
 //메일파트너정보sql
 $partnersql="select p_email, p_shopName, p_localName from partner where p_id='".$_GET['p_id']."'";
@@ -36,7 +40,7 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=utf-8';
 $headers[] = 'From: 탈출러 <talchul_er@naver.com>';
 
-mail($to, $subject, $message, implode("\r\n", $headers));
+//mail($to, $subject, $message, implode("\r\n", $headers));
 //메일보내기 S
 ?>
 <meta charset="utf-8"/>

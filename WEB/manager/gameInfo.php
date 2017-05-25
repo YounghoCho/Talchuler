@@ -1,4 +1,5 @@
 <? 
+//#56dcfc
 include('./include.php');
 include('./HeadTab_Module.php'); 
 ?>
@@ -34,6 +35,115 @@ $(document).ready(function() {
     $(window).scrollTop(sessionStorage.scrollTop);
   }
 });
+
+a1=1;b1=1;c1=1;d1=1;e1=1;f1=1;
+function button_onskill(value){
+	var v1=document.getElementById('a1');
+	var v2=document.getElementById('a2');
+	var v3=document.getElementById('a3');
+	var v4=document.getElementById('a4');
+	var v5=document.getElementById('a5');
+	var v6=document.getElementById('a6');
+
+	switch(value){
+		case 1:
+			var now=document.getElementById("ability"+value);
+			if(a1==1){
+				a1=-1;
+				v1.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				a1=1;
+				v1.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';
+				break;
+				}
+		case 2:
+			var now=document.getElementById("ability"+value);
+			if(b1==1){
+				b1=-1;
+				v2.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				b1=1;
+				v2.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';
+				break;
+			}
+		case 3:
+			var now=document.getElementById("ability"+value);
+			if(c1==1){
+				c1=-1;
+				v3.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				c1=1;
+				v3.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';
+				break;
+			}
+		case 4:
+			var now=document.getElementById("ability"+value);
+			if(d1==1){
+				d1=-1;
+				v4.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				d1=1;
+				v4.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';
+				break;
+			}
+		case 5:
+			var now=document.getElementById("ability"+value);
+			if(e1==1){
+				e1=-1;
+				v5.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				e1=1;
+				v5.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';break;
+
+			}
+		case 6:
+			var now=document.getElementById("ability"+value);
+			if(f1==1){
+				f1=-1;
+				v6.value="1";
+				now.style.backgroundColor="#56dcfc";
+				now.style.color='#56dcfc';
+				break;
+			}
+			else{
+				f1=1;
+				v6.value="0";
+				now.style.backgroundColor="white";
+				now.style.color='white';
+				break;
+			}
+	}
+}
 </script>
 <style>
 
@@ -97,15 +207,15 @@ $(document).ready(function() {
 }
 
 #Price_info .bluetext{
-	padding:5pt;
 	height:30px;
+	line-height:24px;
 	text-align:center;
 	font-size:16pt;
 	color:#333333;
 	font-weight:bold;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	color:#626262;
-}
+	}
 
 /*기본가격정보*/
 
@@ -121,13 +231,13 @@ $(document).ready(function() {
 }
 
 #Game_info .bluetext{
-	padding:5pt;
 	height:30px;
+	line-height:24px;
 	text-align:center;
 	font-size:16pt;
 	color:#333333;
 	font-weight:bold;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	color:#626262;
 }
 
@@ -148,7 +258,7 @@ $(document).ready(function() {
 	font-size:16pt;
 	color:#333333;
 	font-weight:bold;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	color:#626262;
 }
 .gamePrice{
@@ -180,7 +290,7 @@ $(document).ready(function() {
 	width:18px;
 	height:18px;
 	margin:5 0 0 3;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	border:0;
 	cursor:pointer;
 	color:#626262;
@@ -191,7 +301,7 @@ $(document).ready(function() {
 	height:18px;
 	margin:5 0 0 3;
 	margin-right:6%;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	color:#626262;
 	border:0;
 	cursor:pointer;
@@ -226,7 +336,7 @@ $(document).ready(function() {
 }
 
 .defBtn{
-	border:1px solid #66ccff;
+	border:1px solid #56dcfc;
 	color:#626262;
 	background:white;
 }
@@ -234,7 +344,7 @@ $(document).ready(function() {
 	width:22px;
 	height:22px;
 	margin-right:3%;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	color:#626262;
 	border:0;
 }
@@ -253,7 +363,7 @@ $(document).ready(function() {
 	margin:2 0 2 5;
 	font-size:14px;
 	text-align:center;
-	border:1px solid #66ccff;
+	border:1px solid #56dcfc;
 	color:#626262;
 	height:26px;
 }
@@ -276,19 +386,20 @@ $(document).ready(function() {
 	font-size:14px;
 	margin-top:1%;
 	text-align:center;
-	border:1px solid #66ccff;
+	border:1px solid #56dcfc;
 	color:#626262;
 	cursor:pointer;
 }
 .save{
 	width:15%;
 	height:30px;
+	line-height:30px;
 	margin-top:5%;
 	margin-bottom:5%;
 	font-size:16pt;
 	color:#626262;
 	font-weight:bold;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	border:0;
 	cursor:pointer;
 }
@@ -307,6 +418,7 @@ $(document).ready(function() {
 	border:0;
 	width:10%;
 	height:30px;
+	line-height:30px;
 	background:#ff6600;
 	color:white;
 	font-weight:bold;
@@ -342,6 +454,7 @@ $(document).ready(function() {
 .delBtn{
 	width:10%;
 	height:30px;
+	line-height:30px;
 	margin-top:1%;
 	font-size:16pt;
 	font-weight:bold;
@@ -352,18 +465,19 @@ $(document).ready(function() {
 }
 .defText{
 	height:26px;
-	border:1px solid #66ccff;
+	border:1px solid #56dcfc;
 	color:#626262;
 	background-color:white;
 }
 .saveBtn{
 	width:10%;
 	height:30px;
+	line-height:30px;
 	margin-top:1%;
 	margin-left:1%;
 	font-size:16pt;
 	font-weight:bold;
-	background-color:#66ccff;
+	background-color:#56dcfc;
 	border:0;
 	margin-bottom:1%;
 	color:#626262;
@@ -381,7 +495,7 @@ $(document).ready(function() {
 .exBtn{
 	width:25px;
 	height:25px;
-	border:1px solid #66ccff;
+	border:1px solid #56dcfc;
 	background-color:white;
 	margin-left:1%;
 	color:#626262;
@@ -537,6 +651,26 @@ $(function(){
 .bt_down1 img{
 	height:10px;
 }
+.bt_up2 img{
+	height:10px;
+}
+.bt_down2 img{
+	height:10px;
+}
+.tPrice{
+	width:96%;
+	height:7%;
+	margin-left:2%; 
+	padding-left:1%;
+	font-size:14px; 
+	margin-bottom:3%;
+	border:2px solid #bebebe;
+	border-radius:5px;
+}
+.td3{
+	color:#ff6600;
+	font-weight:bold;
+}
 </style>
 <!--
 <script> //할인 추가,삭제 js
@@ -594,30 +728,30 @@ $data=mysql_fetch_array($q);
 						<tr>
 							<td>
 								<input type="button" class="imposBtn" id="btn1" onclick="myFunction1()">
-								<p class="priceText">1명<input type="text1" class="textInner" disabled id="text1" style="background-color:#ccc" value="<?echo $basic['g_p1']?>" name="g_p1" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<p class="priceText">1명<input type="text1" class="textInner" disabled id="text1" style="background-color:#ccc" value="<?echo $basic['g_p1']?>" name="g_p1" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="posBtn" id="btn2" onclick="myFunction2()"><p class="priceText">2명<input type="text" class="textInner" id="text2"  value="<?echo $basic['g_p2']?>" name="g_p2" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn2" onclick="myFunction2()"><p class="priceText">2명<input type="text" class="textInner" id="text2"  value="<?echo $basic['g_p2']?>" name="g_p2" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="posBtn" id="btn3" onclick="myFunction3()"><p class="priceText">3명<input type="text" class="textInner" id="text3" value="<?echo $basic['g_p3']?>" name="g_p3" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn3" onclick="myFunction3()"><p class="priceText">3명<input type="text" class="textInner" id="text3" value="<?echo $basic['g_p3']?>" name="g_p3" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="posBtn" id="btn4" onclick="myFunction4()"><p class="priceText">4명<input type="text" class="textInner" id="text4" value="<?echo $basic['g_p4']?>" name="g_p4" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn4" onclick="myFunction4()"><p class="priceText">4명<input type="text" class="textInner" id="text4" value="<?echo $basic['g_p4']?>" name="g_p4" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="button" class="posBtn" id="btn5" onclick="myFunction5()"><p class="priceText">5명<input type="text" class="textInner" id="text5" value="<?echo $basic['g_p5']?>" name="g_p5" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn5" onclick="myFunction5()"><p class="priceText">5명<input type="text" class="textInner" id="text5" value="<?echo $basic['g_p5']?>" name="g_p5" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="posBtn" id="btn6" onclick="myFunction6()"><p class="priceText">6명<input type="text" class="textInner" id="text6" value="<?echo $basic['g_p6']?>" name="g_p6" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn6" onclick="myFunction6()"><p class="priceText">6명<input type="text" class="textInner" id="text6" value="<?echo $basic['g_p6']?>" name="g_p6" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="posBtn" id="btn7" onclick="myFunction7()"><p class="priceText">7명<input type="text" class="textInner" id="text7" value="<?echo $basic['g_p7']?>" name="g_p7" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="posBtn" id="btn7" onclick="myFunction7()"><p class="priceText">7명<input type="text" class="textInner" id="text7" value="<?echo $basic['g_p7']?>" name="g_p7" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 							<td>
-								<input type="button" class="imposBtn" id="btn8" onclick="myFunction8()"><p class="priceText" name="g_p8">8명<input type="text8" class="textInner" disabled id="text8" style="background-color:#ccc" value="<?echo $basic['g_p8']?>" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+								<input type="button" class="imposBtn" id="btn8" onclick="myFunction8()"><p class="priceText" name="g_p8">8명<input type="text8" class="textInner" disabled id="text8" style="background-color:#ccc" value="<?echo $basic['g_p8']?>" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 							</td>
 						</tr>
 						<tr>
@@ -632,14 +766,17 @@ $data=mysql_fetch_array($q);
 				</div>
 				<div>
 					<div class="discountInfo">할인정보</div>
-					<table style="margin-left:3%; font-size:14px; margin-bottom:3%;">
+					<table class="tPrice">
 						<tr>
 							<td style="width:150px;">*탈출러 판매가(1인가격)</td>
-							<td style="padding-left:30px; width:200px">
-								주중 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $basic['g_weekprice']?>" name="week">원
+							<td style="padding-left:30px; width:230px">
+								주중 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_weekprice']?>" name="week"> 원
 							</td>
 							<td style="padding-left:8%;">
-								주말 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $basic['g_holyprice']?>" name="holy">원
+								주말 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_holyprice']?>" name="holy"> 원 <font></font>
+							</td>
+							<td class="td3">
+								**할인하지 않으실 경우 정가로 기입해주세요.
 							</td>
 						</tr>
 					</table>
@@ -654,8 +791,8 @@ $data=mysql_fetch_array($q);
 						<option value="5">후기할인</option>
 						<option value="6">직접입력</option>
 					</select>
-					<input type="text" id="value1" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value1" value="<?echo $basic['g_disname1']?>">할인가격 - 
-					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis1" style="margin-top:5px; height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText"   value="<?echo $basic['g_disprice1']?>" name="dis1">원
+					<input type="text" id="value1" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value1" value="<?echo $basic['g_disname1']?>">할인가격 - 
+					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis1" style="margin-top:5px; height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText"   value="<?echo $basic['g_disprice1']?>" name="dis1"> 원
 				</div>
 
 				<div class="discountContent">할인종류
@@ -667,8 +804,8 @@ $data=mysql_fetch_array($q);
 						<option value="5">후기할인</option>
 						<option value="6">직접입력</option>
 					</select>
-					<input type="text" id="value2" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value2" value="<?echo $basic['g_disname2']?>">할인가격 - 
-					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis2" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice2']?>" name="dis2">원
+					<input type="text" id="value2" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value2" value="<?echo $basic['g_disname2']?>">할인가격 - 
+					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis2" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice2']?>" name="dis2"> 원
 				</div>
 				<div class="discountContent">할인종류
 					<select id="discount3" name="discount" class="discountContent_inner" onChange="getSelectValue3();">
@@ -679,8 +816,8 @@ $data=mysql_fetch_array($q);
 						<option value="5">후기할인</option>
 						<option value="6">직접입력</option>
 					</select>
-					<input type="text" id="value3" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value3" value="<?echo $basic['g_disname3']?>">할인가격 - 
-					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis3" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice3']?>" name="dis3">원
+					<input type="text" id="value3" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value3" value="<?echo $basic['g_disname3']?>">할인가격 - 
+					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis3" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice3']?>" name="dis3"> 원
 				</div>
 				<div class="discountContent">할인종류
 					<select id="discount4" name="discount" class="discountContent_inner" onChange="getSelectValue4();">
@@ -691,8 +828,8 @@ $data=mysql_fetch_array($q);
 						<option value="5">후기할인</option>
 						<option value="6">직접입력</option>
 					</select>
-					<input type="text" id="value4" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value4" value="<?echo $basic['g_disname4']?>">할인가격 - 
-					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis4" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice4']?>" name="dis4">원
+					<input type="text" id="value4" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value4" value="<?echo $basic['g_disname4']?>">할인가격 - 
+					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis4" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice4']?>" name="dis4"> 원
 				</div>
 				<div class="discountContent">할인종류
 					<select id="discount5" name="discount" class="discountContent_inner" onChange="getSelectValue5();">
@@ -703,8 +840,8 @@ $data=mysql_fetch_array($q);
 						<option value="5">후기할인</option>
 						<option value="6">직접입력</option>
 					</select>
-					<input type="text" id="value5" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value5" value="<?echo $basic['g_disname5']?>">할인가격 - 
-					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000"id="dis5" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice5']?>" name="dis5">원
+					<input type="text" id="value5" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value5" value="<?echo $basic['g_disname5']?>">할인가격 - 
+					<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000"id="dis5" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" value="<?echo $basic['g_disprice5']?>" name="dis5"> 원
 				</div> 
 				<div align="center";>
 					<input type="submit" value="저장" class="save">
@@ -777,7 +914,7 @@ $data=mysql_fetch_array($q);
 				<tr>
 <style>
 	input[type="file"]{ position: absolute;clip:rect(5,0,25,75);margin-left:-50px;}
-	#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13px;border:none;background-color:#66ccff;}
+	#submit{ position: absolute;margin-left:170px;padding:5px 6px 6px 5px;font-size:13px;border:none;background-color:#56dcfc;}
 </style>
 
 <?
@@ -797,7 +934,7 @@ $data=mysql_fetch_array($q);
 	$sql="select g_idx from game order by g_idx desc;";
 	$q=mysql_query($sql);
 	$new=mysql_fetch_array($q);
-	$new_gidx=$new[0]+1;
+	$new_gidx=$new[0]+'1';
 ?>
 
 				<!--사진 업로드-->
@@ -816,12 +953,18 @@ $data=mysql_fetch_array($q);
 						//게임이 없으면 g_idx를 desc로 받아 +1해서 넘겨주고
 						if($data['g_idx']==""){
 							$real_gidx=$new_gidx;
+							?>
+							<input type="hidden" name="g_idx1" value="<?echo $real_gidx?>" />
+							<?
 						}else{
 						//게임이 있으면 그 값을 주면되지
 							$real_gidx=$queue[$index];
+							?>
+							<input type="hidden" name="g_idx2" value="<?echo $real_gidx?>" />
+							<?
 						}
 						?>
-						<input type="hidden" name="g_idx" value="<?echo $real_gidx?>" />
+						
 					</td>
 <?
 	//사진변경
@@ -839,7 +982,7 @@ $data=mysql_fetch_array($q);
 					</td>
 				</tr>
 				<tr>
-					<td id="subtitle" colspan="10" style="width:70%; height:50px;"><input name="subtitle" placeholder="부제목" type="text" style="width:100%; height:100%; font-size:12px; background-color:#eeeeee; border:0;" onfocus="this.value=''" value="<?echo $data['g_subtitle']?>">
+					<td id="subtitle" colspan="10" style="width:70%; height:50px;"><input name="subtitle" placeholder="부제목" type="text" style="width:100%; height:100%; font-size:12px; background-color:#eeeeee; border:0;" value="<?echo $data['g_subtitle']?>">
 					</td>
 				</tr>
 				<tr>
@@ -853,7 +996,6 @@ $data=mysql_fetch_array($q);
 				$tsql="select * from game_time where g_idx='".$queue[$index]."'";
 				$tq=mysql_query($tsql);
 				$time=mysql_fetch_array($tq);
-				print_r($time);
 				?>
 					<td rowspan="2" colspan="4" style="vertical-align:top;overflow:hidden;background-color:#eeeeee;vertical-align:middle">
 						<font color="#6f6f6f" size="3px" style="margin-left:2%">예약시간을 입력해주세요.</font><br><br><input id="timebutton" type="text" value="<?echo $time['gt_1']?>" placeholder="00:00" style="margin:1% 1% 1% 2%" name="time1"/><input id="timebutton" type="text" value="<?echo $time['gt_2']?>" placeholder="00:00" style="margin:1% 1% 1% 0" name="time2"/><input id="timebutton" type="text" value="<?echo $time['gt_3']?>" placeholder="00:00" style="margin:1% 1% 1% 0" name="time3"/><input id="timebutton" type="text" value="<?echo $time['gt_4']?>" placeholder="00:00" style="margin:1% 1% 1% 0" name="time4"/><input id="timebutton" type="text" value="<?echo $time['gt_5']?>" placeholder="00:00" style="margin:0 1% 1% 2%" name="time5"/><input id="timebutton" type="text" value="<?echo $time['gt_6']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time6"/><input id="timebutton" type="text" value="<?echo $time['gt_7']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time7"/><input id="timebutton" type="text" value="<?echo $time['gt_8']?>" placeholder="00:00" style="margin:0 2% 1% 0" name="time8"/><input id="timebutton" type="text" value="<?echo $time['gt_9']?>" placeholder="00:00" style="margin:0 1% 1% 2%" name="time9"/><input id="timebutton" type="text" value="<?echo $time['gt_10']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time10"/><input id="timebutton" type="text" value="<?echo $time['gt_11']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time11"/><input id="timebutton" type="text" value="<?echo $time['gt_12']?>" placeholder="00:00" style="margin:0 2% 1% 0" name="time12"/><input id="timebutton" type="text" value="<?echo $time['gt_13']?>" placeholder="00:00" style="margin:0 1% 1% 2%" name="time13"/><input id="timebutton" type="text" value="<?echo $time['gt_14']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time14"/><input id="timebutton" type="text" value="<?echo $time['gt_15']?>" placeholder="00:00" style="margin:0 1% 1% 0" name="time15"/><input id="timebutton" type="text" value="<?echo $time['gt_16']?>" placeholder="00:00" style="margin:0 2% 1% 0" name="time16"/>
@@ -932,26 +1074,26 @@ $data=mysql_fetch_array($q);
 				</tr>
 				<tr>
 					<td>
-						<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1명<input type="text1" class="textInner" disabled id="text9" style="background-color:#ccc" value="<?echo $data['g_p1']?>" name="g_p9" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p></td>
+						<input type="button" class="imposBtn" id="btn9" onclick="myFunction9()"><p class="priceText">1명<input type="text1" class="textInner" disabled id="text9" style="background-color:#ccc" value="<?echo $data['g_p1']?>" name="g_p9" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p></td>
 					<td>
 						<input type="button" class="posBtn" id="btn10" onclick="myFunction10()">
-						<p class="priceText">2명<input type="text" class="textInner" id="text10" value="<?echo $data['g_p2']?>" name="g_p10" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+						<p class="priceText">2명<input type="text" class="textInner" id="text10" value="<?echo $data['g_p2']?>" name="g_p10" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 					</td>
 					<td>
-						<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3명<input type="text" class="textInner" id="text11" value="<?echo $data['g_p3']?>" name="g_p11" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p></td>
+						<input type="button" class="posBtn" id="btn11" onclick="myFunction11()"><p class="priceText">3명<input type="text" class="textInner" id="text11" value="<?echo $data['g_p3']?>" name="g_p11" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p></td>
 					<td>
-						<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4명<input type="text" class="textInner" id="text12" value="<?echo $data['g_p4']?>" name="g_p12" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+						<input type="button" class="posBtn" id="btn12" onclick="myFunction12()"><p class="priceText">4명<input type="text" class="textInner" id="text12" value="<?echo $data['g_p4']?>" name="g_p12" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5명<input type="text" class="textInner" id="text13" value="<?echo $data['g_p5']?>" name="g_p13" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p></td>
+						<input type="button" class="posBtn" id="btn13" onclick="myFunction13()"><p class="priceText">5명<input type="text" class="textInner" id="text13" value="<?echo $data['g_p5']?>" name="g_p13" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p></td>
 					<td>
-						<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6명<input type="text" class="textInner" id="text14" value="<?echo $data['g_p6']?>" name="g_p14" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p></td>
+						<input type="button" class="posBtn" id="btn14" onclick="myFunction14()"><p class="priceText">6명<input type="text" class="textInner" id="text14" value="<?echo $data['g_p6']?>" name="g_p14" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p></td>
 					<td>
-						<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7명<input type="text" class="textInner" id="text15" value="<?echo $data['g_p7']?>" name="g_p15" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p></td>
+						<input type="button" class="posBtn" id="btn15" onclick="myFunction15()"><p class="priceText">7명<input type="text" class="textInner" id="text15" value="<?echo $data['g_p7']?>" name="g_p15" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p></td>
 					<td>
-						<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8명<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc" value="<?echo $data['g_p8']?>" name="g_p16" onKeyPress="return numkeyCheck(event)" maxlength="6">원</p>
+						<input type="button" class="imposBtn" id="btn16" onclick="myFunction16()"><p class="priceText">8명<input type="text" class="textInner" disabled id="text16" style="background-color:#ccc" value="<?echo $data['g_p8']?>" name="g_p16" onKeyPress="return numkeyCheck(event)" maxlength="6"> 원</p>
 					</td>
 				</tr>
 				<tr>
@@ -966,14 +1108,17 @@ $data=mysql_fetch_array($q);
 		</div>
 		<div>
 			<div class="discountInfo">할인정보</div>
-				<table style="margin-left:3%; font-size:14px; margin-bottom:3%;">
+				<table class="tPrice">
 					<tr>
 						<td style="width:150px;">*탈출러 판매가(1인가격)</td>
-						<td style="padding-left:30px; width:200px">주중 
-							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" value="" id="week2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $basic['g_weekprice']?>" name="week">원
+						<td style="padding-left:30px; width:230px">주중 
+							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" value="<?echo $basic['g_weekprice']?>" name="week"> 원
 						</td>
 						<td style="padding-left:8%;">주말 
-							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" value="" id="holy2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''" value="<?echo $basic['g_holyprice']?>" name="holy">원
+							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" value="<?echo $basic['g_holyprice']?>" name="holy"> 원
+						</td>
+						<td class="td3">
+								**할인하지 않으실 경우 정가로 기입해주세요.
 						</td>
 					</tr>
 				</table>
@@ -987,8 +1132,8 @@ $data=mysql_fetch_array($q);
 					<option value="5">후기할인</option>
 					<option value="6">직접입력</option>
 				</select>
-				<input type="text" id="value6" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value6" value="<?echo $data['g_disname1']?>">할인가격 - 
-				<input  type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis6" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis6" value="<?echo $data['g_disprice1']?>">원
+				<input type="text" id="value6" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value6" value="<?echo $data['g_disname1']?>">할인가격 - 
+				<input  type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis6" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis6" value="<?echo $data['g_disprice1']?>"> 원
 			</div>
 			<div class="discountContent">할인종류
 				<select id="discount7" name="discount1" class="discountContent_inner" onChange="getSelectValue7();">
@@ -999,8 +1144,8 @@ $data=mysql_fetch_array($q);
 					<option value="5">후기할인</option>
 					<option value="6">직접입력</option>
 				</select>
-				<input type="text" id="value7" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value7" value="<?echo $data['g_disname2']?>">할인가격 - 
-				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis7" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis7" value="<?echo $data['g_disprice2']?>">원
+				<input type="text" id="value7" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value7" value="<?echo $data['g_disname2']?>">할인가격 - 
+				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis7" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis7" value="<?echo $data['g_disprice2']?>"> 원
 			</div>
 			<div class="discountContent">할인종류
 				<select id="discount8" name="discount1" class="discountContent_inner" onChange="getSelectValue8();">
@@ -1011,8 +1156,8 @@ $data=mysql_fetch_array($q);
 					<option value="5">후기할인</option>
 					<option value="6">직접입력</option>
 				</select>
-				<input type="text" id="value8" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value8" value="<?echo $data['g_disname3']?>">할인가격 - 
-				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis8" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis8" value="<?echo $data['g_disprice3']?>">원
+				<input type="text" id="value8" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value8" value="<?echo $data['g_disname3']?>">할인가격 - 
+				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis8" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis8" value="<?echo $data['g_disprice3']?>"> 원
 			</div>
 			<div class="discountContent">할인종류
 				<select id="discount9" name="discount1" class="discountContent_inner" onChange="getSelectValue9();">
@@ -1023,8 +1168,8 @@ $data=mysql_fetch_array($q);
 					<option value="5">후기할인</option>
 					<option value="6">직접입력</option>
 				</select>
-				<input type="text" id="value9" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value9" value="<?echo $data['g_disname4']?>">할인가격 - 
-				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis9" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis9" value="<?echo $data['g_disprice4']?>">원
+				<input type="text" id="value9" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value9" value="<?echo $data['g_disname4']?>">할인가격 - 
+				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis9" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis9" value="<?echo $data['g_disprice4']?>"> 원
 			</div>
 			<div class="discountContent">할인종류
 				<select id="discount10" name="discount1" class="discountContent_inner" onChange="getSelectValue10();">
@@ -1035,8 +1180,8 @@ $data=mysql_fetch_array($q);
 					<option value="5">후기할인</option>
 					<option value="6">직접입력</option>
 				</select>
-				<input type="text" id="value10" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #66ccff; text-align:center;" name="value10" value="<?echo $data['g_disname5']?>">할인가격 - 
-				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis10" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis10" value="<?echo $data['g_disprice5']?>">원
+				<input type="text" id="value10" style="margin-top:10px;height:30px;margin-right:5%; font-size:14px; width:12%; border:1px solid #56dcfc; text-align:center;" name="value10" value="<?echo $data['g_disname5']?>">할인가격 - 
+				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis10" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis10" value="<?echo $data['g_disprice5']?>"> 원
 			</div>
 			<div class="lastMent">
 				탈출러에서 검토 후 등록됩니다. 조금만기다려주세요!(최대3일 소요)승인결과는 메일로 안내해드리겠습니다.
@@ -1101,7 +1246,7 @@ function data_copy(){
 	var dis10= document.getElementById('dis10');
 
 	if(copy>0){
-		id.style.backgroundColor='#66ccff';
+		id.style.backgroundColor='#56dcfc';
 		copy=-1;
 		text9.value=text1.value;
 		text10.value=text2.value;
@@ -1245,7 +1390,7 @@ function myFunction1() {
 	document.getElementById("text1").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text1").disabled = false;
-	document.getElementById("btn1").style.backgroundColor='#66ccff';
+	document.getElementById("btn1").style.backgroundColor='#56dcfc';
 	document.getElementById("text1").style.backgroundColor='white';
 	}
 }
@@ -1255,9 +1400,11 @@ function myFunction2() {
     if(count2%2==1){
 	document.getElementById("text2").disabled = true;
 	document.getElementById("btn2").style.backgroundColor='#bfbfbf';
+	document.getElementById("text2").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text2").disabled = false;
-	document.getElementById("btn2").style.backgroundColor='#66ccff';
+	document.getElementById("btn2").style.backgroundColor='#56dcfc';
+	document.getElementById("text2").style.backgroundColor='white';
 	}
 }
 var count3=0;
@@ -1266,9 +1413,11 @@ function myFunction3() {
     if(count3%2==1){
 	document.getElementById("text3").disabled = true;
 	document.getElementById("btn3").style.backgroundColor='#bfbfbf';
+	document.getElementById("text3").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text3").disabled = false;
-	document.getElementById("btn3").style.backgroundColor='#66ccff';
+	document.getElementById("btn3").style.backgroundColor='#56dcfc';
+	document.getElementById("text3").style.backgroundColor='white';
 	}
 }
 var count4=0;
@@ -1277,9 +1426,11 @@ function myFunction4() {
     if(count4%2==1){
 	document.getElementById("text4").disabled = true;
 	document.getElementById("btn4").style.backgroundColor='#bfbfbf';
+	document.getElementById("text4").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text4").disabled = false;
-	document.getElementById("btn4").style.backgroundColor='#66ccff';
+	document.getElementById("btn4").style.backgroundColor='#56dcfc';
+	document.getElementById("text4").style.backgroundColor='white';
 	}
 }
 var count5=0;
@@ -1288,9 +1439,11 @@ function myFunction5() {
     if(count5%2==1){
 	document.getElementById("text5").disabled = true;
 	document.getElementById("btn5").style.backgroundColor='#bfbfbf';
+	document.getElementById("text5").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text5").disabled = false;
-	document.getElementById("btn5").style.backgroundColor='#66ccff';
+	document.getElementById("btn5").style.backgroundColor='#56dcfc';
+	document.getElementById("text5").style.backgroundColor='white';
 	}
 }
 var count6=0;
@@ -1299,9 +1452,11 @@ function myFunction6() {
     if(count6%2==1){
 	document.getElementById("text6").disabled = true;
 	document.getElementById("btn6").style.backgroundColor='#bfbfbf';
+	document.getElementById("text6").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text6").disabled = false;
-	document.getElementById("btn6").style.backgroundColor='#66ccff';
+	document.getElementById("btn6").style.backgroundColor='#56dcfc';
+	document.getElementById("text6").style.backgroundColor='white';
 	}
 }
 var count7=0;
@@ -1310,9 +1465,11 @@ function myFunction7() {
     if(count7%2==1){
 	document.getElementById("text7").disabled = true;
 	document.getElementById("btn7").style.backgroundColor='#bfbfbf';
+	document.getElementById("text7").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text7").disabled = false;
-	document.getElementById("btn7").style.backgroundColor='#66ccff';
+	document.getElementById("btn7").style.backgroundColor='#56dcfc';
+	document.getElementById("text7").style.backgroundColor='white';
 	}
 }
 var count8=0;
@@ -1324,7 +1481,7 @@ function myFunction8() {
 	document.getElementById("text8").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text8").disabled = false;
-	document.getElementById("btn8").style.backgroundColor='#66ccff';
+	document.getElementById("btn8").style.backgroundColor='#56dcfc';
 	document.getElementById("text8").style.backgroundColor='white';
 	}
 }
@@ -1337,7 +1494,7 @@ function myFunction9() {
 	document.getElementById("text9").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text9").disabled = false;
-	document.getElementById("btn9").style.backgroundColor='#66ccff';
+	document.getElementById("btn9").style.backgroundColor='#4edcf2';
 	document.getElementById("text9").style.backgroundColor='white';
 	}
 }
@@ -1347,9 +1504,11 @@ function myFunction10() {
     if(count10%2==1){
 	document.getElementById("text10").disabled = true;
 	document.getElementById("btn10").style.backgroundColor='#bfbfbf';
+	document.getElementById("text10").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text10").disabled = false;
-	document.getElementById("btn10").style.backgroundColor='#66ccff';
+	document.getElementById("btn10").style.backgroundColor='#4edcf2';
+	document.getElementById("text10").style.backgroundColor='white';
 	}
 }
 var count11=0;
@@ -1358,9 +1517,11 @@ function myFunction11() {
     if(count11%2==1){
 	document.getElementById("text11").disabled = true;
 	document.getElementById("btn11").style.backgroundColor='#bfbfbf';
+	document.getElementById("text11").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text11").disabled = false;
-	document.getElementById("btn11").style.backgroundColor='#66ccff';
+	document.getElementById("btn11").style.backgroundColor='#4edcf2';
+	document.getElementById("text11").style.backgroundColor='white';
 	}
 }
 var count12=0;
@@ -1369,9 +1530,11 @@ function myFunction12() {
     if(count12%2==1){
 	document.getElementById("text12").disabled = true;
 	document.getElementById("btn12").style.backgroundColor='#bfbfbf';
+	document.getElementById("text12").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text12").disabled = false;
-	document.getElementById("btn12").style.backgroundColor='#66ccff';
+	document.getElementById("btn12").style.backgroundColor='#4edcf2';
+	document.getElementById("text12").style.backgroundColor='white';
 	}
 }
 var count13=0;
@@ -1380,9 +1543,11 @@ function myFunction13() {
     if(count13%2==1){
 	document.getElementById("text13").disabled = true;
 	document.getElementById("btn13").style.backgroundColor='#bfbfbf';
+	document.getElementById("text13").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text13").disabled = false;
-	document.getElementById("btn13").style.backgroundColor='#66ccff';
+	document.getElementById("btn13").style.backgroundColor='#4edcf2';
+	document.getElementById("text13").style.backgroundColor='white';
 	}
 }
 var count14=0;
@@ -1391,9 +1556,11 @@ function myFunction14() {
     if(count14%2==1){
 	document.getElementById("text14").disabled = true;
 	document.getElementById("btn14").style.backgroundColor='#bfbfbf';
+	document.getElementById("text14").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text14").disabled = false;
-	document.getElementById("btn14").style.backgroundColor='#66ccff';
+	document.getElementById("btn14").style.backgroundColor='#4edcf2';
+	document.getElementById("text14").style.backgroundColor='white';
 	}
 }
 var count15=0;
@@ -1402,9 +1569,11 @@ function myFunction15() {
     if(count15%2==1){
 	document.getElementById("text15").disabled = true;
 	document.getElementById("btn15").style.backgroundColor='#bfbfbf';
+	document.getElementById("text15").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text15").disabled = false;
-	document.getElementById("btn15").style.backgroundColor='#66ccff';
+	document.getElementById("btn15").style.backgroundColor='#4edcf2';
+	document.getElementById("text15").style.backgroundColor='white';
 	}
 }
 var count16=0;
@@ -1416,7 +1585,7 @@ function myFunction16() {
 	document.getElementById("text16").style.backgroundColor='#ccc';
 	}else{
     document.getElementById("text16").disabled = false;
-	document.getElementById("btn16").style.backgroundColor='#66ccff';
+	document.getElementById("btn16").style.backgroundColor='#4edcf2';
 	document.getElementById("text16").style.backgroundColor='white';
 	}
 }
@@ -1485,7 +1654,7 @@ function button_onclick(value){
 			subtitle.style.backgroundColor="#eee";
 			content.style.backgroundColor="#eee";
 			summary.style.backgroundColor="#eee";
-			now.style.backgroundColor="#66ccff";
+			now.style.backgroundColor="#56dcfc";
 			second.style.backgroundColor="white";
 			third.style.backgroundColor="white";
 			fourth.style.backgroundColor="white";
@@ -1500,43 +1669,43 @@ function button_onclick(value){
 			ability5.value="<?echo ($data['g_skill5'])?>";
 			ability6.value="<?echo ($data['g_skill6'])?>";
 				if(ability1.value==1){
-					ability1.style.backgroundColor="#66ccff";
-					ability1.style.color="#66ccff";
+					ability1.style.backgroundColor="#56dcfc";
+					ability1.style.color="#56dcfc";
 				}else{
 					ability1.style.backgroundColor="white";
 					ability1.style.color="white";
 				}
 				if(ability2.value==1){
-					ability2.style.backgroundColor="#66ccff";
-					ability2.style.color="#66ccff";
+					ability2.style.backgroundColor="#56dcfc";
+					ability2.style.color="#56dcfc";
 				}else{
 					ability2.style.backgroundColor="white";
 					ability2.style.color="white";
 				}
 				if(ability3.value==1){
-					ability3.style.backgroundColor="#66ccff";
-					ability3.style.color="#66ccff";
+					ability3.style.backgroundColor="#56dcfc";
+					ability3.style.color="#56dcfc";
 				}else{
 					ability3.style.backgroundColor="white";
 					ability3.style.color="white";
 				}
 				if(ability4.value==1){
-					ability4.style.backgroundColor="#66ccff";
-					ability4.style.color="#66ccff";
+					ability4.style.backgroundColor="#56dcfc";
+					ability4.style.color="#56dcfc";
 				}else{
 					ability4.style.backgroundColor="white";
 					ability4.style.color="white";
 				}
 				if(ability5.value==1){
-					ability5.style.backgroundColor="#66ccff";
-					ability5.style.color="#66ccff";
+					ability5.style.backgroundColor="#56dcfc";
+					ability5.style.color="#56dcfc";
 				}else{
 					ability5.style.backgroundColor="white";
 					ability5.style.color="white";
 				}
 				if(ability6.value==1){
-					ability6.style.backgroundColor="#66ccff";
-					ability6.style.color="#66ccff";
+					ability6.style.backgroundColor="#56dcfc";
+					ability6.style.color="#56dcfc";
 				}else{
 					ability6.style.backgroundColor="white";
 					ability6.style.color="white";
@@ -1575,7 +1744,7 @@ function button_onclick(value){
 				subtitle.style.backgroundColor="#eee";
 				content.style.backgroundColor="#eee";
 				summary.style.backgroundColor="#eee";
-				now.style.backgroundColor="#66ccff";
+				now.style.backgroundColor="#56dcfc";
 				first.style.backgroundColor="white";
 				third.style.backgroundColor="white";
 				fourth.style.backgroundColor="white";
@@ -1590,43 +1759,43 @@ function button_onclick(value){
 				ability5.value="<?echo ($data['g_skill5'])?>";
 				ability6.value="<?echo ($data['g_skill6'])?>";
 				if(ability1.value==1){
-					ability1.style.backgroundColor="#66ccff";
-					ability1.style.color="#66ccff";
+					ability1.style.backgroundColor="#56dcfc";
+					ability1.style.color="#56dcfc";
 				}else{
 					ability1.style.backgroundColor="white";
 					ability1.style.color="white";
 				}
 				if(ability2.value==1){
-					ability2.style.backgroundColor="#66ccff";
-					ability2.style.color="#66ccff";
+					ability2.style.backgroundColor="#56dcfc";
+					ability2.style.color="#56dcfc";
 				}else{
 					ability2.style.backgroundColor="white";
 					ability2.style.color="white";
 				}
 				if(ability3.value==1){
-					ability3.style.backgroundColor="#66ccff";
-					ability3.style.color="#66ccff";
+					ability3.style.backgroundColor="#56dcfc";
+					ability3.style.color="#56dcfc";
 				}else{
 					ability3.style.backgroundColor="white";
 					ability3.style.color="white";
 				}
 				if(ability4.value==1){
-					ability4.style.backgroundColor="#66ccff";
-					ability4.style.color="#66ccff";
+					ability4.style.backgroundColor="#56dcfc";
+					ability4.style.color="#56dcfc";
 				}else{
 					ability4.style.backgroundColor="white";
 					ability4.style.color="white";
 				}
 				if(ability5.value==1){
-					ability5.style.backgroundColor="#66ccff";
-					ability5.style.color="#66ccff";
+					ability5.style.backgroundColor="#56dcfc";
+					ability5.style.color="#56dcfc";
 				}else{
 					ability5.style.backgroundColor="white";
 					ability5.style.color="white";
 				}
 				if(ability6.value==1){
-					ability6.style.backgroundColor="#66ccff";
-					ability6.style.color="#66ccff";
+					ability6.style.backgroundColor="#56dcfc";
+					ability6.style.color="#56dcfc";
 				}else{
 					ability6.style.backgroundColor="white";
 					ability6.style.color="white";
@@ -1665,7 +1834,7 @@ function button_onclick(value){
 				subtitle.style.backgroundColor="#eee";
 				content.style.backgroundColor="#eee";
 				summary.style.backgroundColor="#eee";
-				now.style.backgroundColor="#66ccff";
+				now.style.backgroundColor="#56dcfc";
 				first.style.backgroundColor="white";
 				second.style.backgroundColor="white";
 				fourth.style.backgroundColor="white";
@@ -1680,43 +1849,43 @@ function button_onclick(value){
 				ability5.value="<?echo ($data['g_skill5'])?>";
 				ability6.value="<?echo ($data['g_skill6'])?>";
 				if(ability1.value==1){
-					ability1.style.backgroundColor="#66ccff";
-					ability1.style.color="#66ccff";
+					ability1.style.backgroundColor="#56dcfc";
+					ability1.style.color="#56dcfc";
 				}else{
 					ability1.style.backgroundColor="white";
 					ability1.style.color="white";
 				}
 				if(ability2.value==1){
-					ability2.style.backgroundColor="#66ccff";
-					ability2.style.color="#66ccff";
+					ability2.style.backgroundColor="#56dcfc";
+					ability2.style.color="#56dcfc";
 				}else{
 					ability2.style.backgroundColor="white";
 					ability2.style.color="white";
 				}
 				if(ability3.value==1){
-					ability3.style.backgroundColor="#66ccff";
-					ability3.style.color="#66ccff";
+					ability3.style.backgroundColor="#56dcfc";
+					ability3.style.color="#56dcfc";
 				}else{
 					ability3.style.backgroundColor="white";
 					ability3.style.color="white";
 				}
 				if(ability4.value==1){
-					ability4.style.backgroundColor="#66ccff";
-					ability4.style.color="#66ccff";
+					ability4.style.backgroundColor="#56dcfc";
+					ability4.style.color="#56dcfc";
 				}else{
 					ability4.style.backgroundColor="white";
 					ability4.style.color="white";
 				}
 				if(ability5.value==1){
-					ability5.style.backgroundColor="#66ccff";
-					ability5.style.color="#66ccff";
+					ability5.style.backgroundColor="#56dcfc";
+					ability5.style.color="#56dcfc";
 				}else{
 					ability5.style.backgroundColor="white";
 					ability5.style.color="white";
 				}
 				if(ability6.value==1){
-					ability6.style.backgroundColor="#66ccff";
-					ability6.style.color="#66ccff";
+					ability6.style.backgroundColor="#56dcfc";
+					ability6.style.color="#56dcfc";
 				}else{
 					ability6.style.backgroundColor="white";
 					ability6.style.color="white";
@@ -1755,7 +1924,7 @@ function button_onclick(value){
 				subtitle.style.backgroundColor="#eee";
 				content.style.backgroundColor="#eee";
 				summary.style.backgroundColor="#eee";
-				now.style.backgroundColor="#66ccff";
+				now.style.backgroundColor="#56dcfc";
 				first.style.backgroundColor="white";
 				second.style.backgroundColor="white";
 				third.style.backgroundColor="white";
@@ -1770,43 +1939,43 @@ function button_onclick(value){
 				ability5.value="<?echo ($data['g_skill5'])?>";
 				ability6.value="<?echo ($data['g_skill6'])?>";
 				if(ability1.value==1){
-					ability1.style.backgroundColor="#66ccff";
-					ability1.style.color="#66ccff";
+					ability1.style.backgroundColor="#56dcfc";
+					ability1.style.color="#56dcfc";
 				}else{
 					ability1.style.backgroundColor="white";
 					ability1.style.color="white";
 				}
 				if(ability2.value==1){
-					ability2.style.backgroundColor="#66ccff";
-					ability2.style.color="#66ccff";
+					ability2.style.backgroundColor="#56dcfc";
+					ability2.style.color="#56dcfc";
 				}else{
 					ability2.style.backgroundColor="white";
 					ability2.style.color="white";
 				}
 				if(ability3.value==1){
-					ability3.style.backgroundColor="#66ccff";
-					ability3.style.color="#66ccff";
+					ability3.style.backgroundColor="#56dcfc";
+					ability3.style.color="#56dcfc";
 				}else{
 					ability3.style.backgroundColor="white";
 					ability3.style.color="white";
 				}
 				if(ability4.value==1){
-					ability4.style.backgroundColor="#66ccff";
-					ability4.style.color="#66ccff";
+					ability4.style.backgroundColor="#56dcfc";
+					ability4.style.color="#56dcfc";
 				}else{
 					ability4.style.backgroundColor="white";
 					ability4.style.color="white";
 				}
 				if(ability5.value==1){
-					ability5.style.backgroundColor="#66ccff";
-					ability5.style.color="#66ccff";
+					ability5.style.backgroundColor="#56dcfc";
+					ability5.style.color="#56dcfc";
 				}else{
 					ability5.style.backgroundColor="white";
 					ability5.style.color="white";
 				}
 				if(ability6.value==1){
-					ability6.style.backgroundColor="#66ccff";
-					ability6.style.color="#66ccff";
+					ability6.style.backgroundColor="#56dcfc";
+					ability6.style.color="#56dcfc";
 				}else{
 					ability6.style.backgroundColor="white";
 					ability6.style.color="white";
@@ -1845,7 +2014,7 @@ function button_onclick(value){
 				subtitle.style.backgroundColor="#eee";
 				content.style.backgroundColor="#eee";
 				summary.style.backgroundColor="#eee";
-				now.style.backgroundColor="#66ccff";
+				now.style.backgroundColor="#56dcfc";
 				first.style.backgroundColor="white";
 				second.style.backgroundColor="white";
 				third.style.backgroundColor="white";
@@ -1860,43 +2029,43 @@ function button_onclick(value){
 				ability5.value="<?echo ($data['g_skill5'])?>";
 				ability6.value="<?echo ($data['g_skill6'])?>";
 				if(ability1.value==1){
-					ability1.style.backgroundColor="#66ccff";
-					ability1.style.color="#66ccff";
+					ability1.style.backgroundColor="#56dcfc";
+					ability1.style.color="#56dcfc";
 				}else{
 					ability1.style.backgroundColor="white";
 					ability1.style.color="white";
 				}
 				if(ability2.value==1){
-					ability2.style.backgroundColor="#66ccff";
-					ability2.style.color="#66ccff";
+					ability2.style.backgroundColor="#56dcfc";
+					ability2.style.color="#56dcfc";
 				}else{
 					ability2.style.backgroundColor="white";
 					ability2.style.color="white";
 				}
 				if(ability3.value==1){
-					ability3.style.backgroundColor="#66ccff";
-					ability3.style.color="#66ccff";
+					ability3.style.backgroundColor="#56dcfc";
+					ability3.style.color="#56dcfc";
 				}else{
 					ability3.style.backgroundColor="white";
 					ability3.style.color="white";
 				}
 				if(ability4.value==1){
-					ability4.style.backgroundColor="#66ccff";
-					ability4.style.color="#66ccff";
+					ability4.style.backgroundColor="#56dcfc";
+					ability4.style.color="#56dcfc";
 				}else{
 					ability4.style.backgroundColor="white";
 					ability4.style.color="white";
 				}
 				if(ability5.value==1){
-					ability5.style.backgroundColor="#66ccff";
-					ability5.style.color="#66ccff";
+					ability5.style.backgroundColor="#56dcfc";
+					ability5.style.color="#56dcfc";
 				}else{
 					ability5.style.backgroundColor="white";
 					ability5.style.color="white";
 				}
 				if(ability6.value==1){
-					ability6.style.backgroundColor="#66ccff";
-					ability6.style.color="#66ccff";
+					ability6.style.backgroundColor="#56dcfc";
+					ability6.style.color="#56dcfc";
 				}else{
 					ability6.style.backgroundColor="white";
 					ability6.style.color="white";
@@ -1924,114 +2093,7 @@ function button_onclick(value){
 				break;			
 		}
 }
-a1=1;b1=1;c1=1;d1=1;e1=1;f1=1;
-function button_onskill(value){
-	var v1=document.getElementById('a1');
-	var v2=document.getElementById('a2');
-	var v3=document.getElementById('a3');
-	var v4=document.getElementById('a4');
-	var v5=document.getElementById('a5');
-	var v6=document.getElementById('a6');
 
-	switch(value){
-		case 1:
-			var now=document.getElementById("ability"+value);
-			if(a1==1){
-				a1=-1;
-				v1.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				a1=1;
-				v1.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';
-				break;
-				}
-		case 2:
-			var now=document.getElementById("ability"+value);
-			if(b1==1){
-				b1=-1;
-				v2.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				b1=1;
-				v2.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';
-				break;
-			}
-		case 3:
-			var now=document.getElementById("ability"+value);
-			if(c1==1){
-				c1=-1;
-				v3.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				c1=1;
-				v3.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';
-				break;
-			}
-		case 4:
-			var now=document.getElementById("ability"+value);
-			if(d1==1){
-				d1=-1;
-				v4.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				d1=1;
-				v4.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';
-				break;
-			}
-		case 5:
-			var now=document.getElementById("ability"+value);
-			if(e1==1){
-				e1=-1;
-				v5.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				e1=1;
-				v5.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';break;
-
-			}
-		case 6:
-			var now=document.getElementById("ability"+value);
-			if(f1==1){
-				f1=-1;
-				v6.value="1";
-				now.style.backgroundColor="#66ccff";
-				now.style.color='#66ccff';
-				break;
-			}
-			else{
-				f1=1;
-				v6.value="0";
-				now.style.backgroundColor="white";
-				now.style.color='white';
-				break;
-			}
-	}
-}
 </script>
 	<script> //초기 skill값에 따른 셋팅
 	var ability1=document.getElementById("ability1");
@@ -2042,43 +2104,43 @@ function button_onskill(value){
 	var ability6=document.getElementById("ability6");
 
 	if(ability1.value==1){
-		ability1.style.backgroundColor="#66ccff";
-		ability1.style.color="#66ccff";
+		ability1.style.backgroundColor="#56dcfc";
+		ability1.style.color="#56dcfc";
 	}else{
 		ability1.style.backgroundColor="white";
 		ability1.style.color="white";
 	}
 	if(ability2.value==1){
-		ability2.style.backgroundColor="#66ccff";
-		ability2.style.color="#66ccff";
+		ability2.style.backgroundColor="#56dcfc";
+		ability2.style.color="#56dcfc";
 	}else{
 		ability2.style.backgroundColor="white";
 		ability2.style.color="white";
 	}
 	if(ability3.value==1){
-		ability3.style.backgroundColor="#66ccff";
-		ability3.style.color="#66ccff";
+		ability3.style.backgroundColor="#56dcfc";
+		ability3.style.color="#56dcfc";
 	}else{
 		ability3.style.backgroundColor="white";
 		ability3.style.color="white";
 	}
 	if(ability4.value==1){
-		ability4.style.backgroundColor="#66ccff";
-		ability4.style.color="#66ccff";
+		ability4.style.backgroundColor="#56dcfc";
+		ability4.style.color="#56dcfc";
 	}else{
 		ability4.style.backgroundColor="white";
 		ability4.style.color="white";
 	}
 	if(ability5.value==1){
-		ability5.style.backgroundColor="#66ccff";
-		ability5.style.color="#66ccff";
+		ability5.style.backgroundColor="#56dcfc";
+		ability5.style.color="#56dcfc";
 	}else{
 		ability5.style.backgroundColor="white";
 		ability5.style.color="white";
 	}
 	if(ability6.value==1){
-		ability6.style.backgroundColor="#66ccff";
-		ability6.style.color="#66ccff";
+		ability6.style.backgroundColor="#56dcfc";
+		ability6.style.color="#56dcfc";
 	}else{
 		ability6.style.backgroundColor="white";
 		ability6.style.color="white";
