@@ -12,10 +12,11 @@ if($_FILES['userfile']['tmp_name']==""){
 }else{
 
 $uploaddir = './gameImageAsk/';
-$newuploadfile= $uploaddir. $_POST['p_id']."_".date("Ymdhis").".jpg";
-echo(move_uploaded_file($_FILES['userfile']['tmp_name'], $newuploadfile));
-
 $filename=$_POST['p_id']."_".date("Ymdhis");
+$newuploadfile= $uploaddir.$filename.".jpg";
+move_uploaded_file($_FILES['userfile']['tmp_name'], $newuploadfile);
+
+
 
 //중요한게, 사진이랑 게임데이터가 연동되어서 admin에 보여야하니까
 //참조값을 넣어줘야한다.
@@ -24,15 +25,16 @@ $filename=$_POST['p_id']."_".date("Ymdhis");
 $sql="select g_idx from game order by g_idx desc";
 $q=mysql_query($sql);
 $gidx=mysql_fetch_array($q);
-$g=$gidx[0]+'1';
+$g=$gidx['g_idx']+'1';
+
 //게임수정에서도 g_idx에서 +1해서 게임수정하는데, 여기서도 같은원리로 추가하게되면 같은 g_idx를 가져
 //gameAsk에서 g_idx를 불러온다
 $ssql="select g_idx from gameAsk";
 $qq=mysql_query($ssql);
 while($gumsa=mysql_fetch_array($qq)){//gameAsk에 같은 g_idx가없을때까지
-	if($gumsa[0]==$g){//만약 g_idx가 이미 있으면
+	if($gumsa['g_idx']==$g){//만약 g_idx가 이미 있으면
 	//g_idx에 계속 1씩더해준다
-	$g +='1';
+	$g = $g+'1';
 	}
 }
 //이제 최종g_idx를 gameAsk에 넣어주면된다.
@@ -48,7 +50,7 @@ $sql="insert into gameAsk (
 	time
 	) values (
 	'".$g."','".$_SESSION['id']."',
-	'".$_POST['title']."', '".$_POST['subtitle']."', '".$_POST['content']."', '".$_POST['summary']."',
+	'".addslashes($_POST['title'])."', '".addslashes($_POST['subtitle'])."', '".addslashes($_POST['content'])."', '".addslashes($_POST['summary'])."',
 	'".$_POST['level']."', '".$_POST['people']."', '".$_POST['people2']."', '".$_POST['horror']."',
 	'".$_POST['ability1']."', '".$_POST['ability2']."', '".$_POST['ability3']."', '".$_POST['ability4']."', '".$_POST['ability5']."', '".$_POST['ability6']."',
 	'".$_POST['week']."', '".$_POST['holy']."',

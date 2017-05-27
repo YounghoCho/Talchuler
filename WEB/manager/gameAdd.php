@@ -808,13 +808,13 @@ function button_onskill(value){
 							</td>
 						</tr>
 						<tr>
-							<td id="subtitle" colspan="10" style="width:70%; height:50px;"><input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" onfocus="this.value=''" placeholder="부제목"/>
+							<td id="subtitle" colspan="10" style="width:70%; height:50px;"><input name="subtitle" type="text" style="width:100%; height:100%; font-size:12pt; background-color:#eeeeee; border:0;" placeholder="부제목"/>
 							</td>
 						</tr>
 						<tr>
 							<td id="content" rowspan="5" colspan="6" style="background-color:#eeeeee;"><textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;" placeholder="게임설명을 입력해주세요."></textarea>
 							</td>
-							<td id="summary" colspan="4" style="background-color:#eeeeee; width:30%; height:30%;"><textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" onfocus="this.value='';"  placeholder="게임요약 설명을 입력해주세요. (미입력시 게임 설명 처음4줄등록)"></textarea></td>
+							<td id="summary" colspan="4" style="background-color:#eeeeee; width:30%; height:30%;"><textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" placeholder="게임요약 설명을 입력해주세요. (미입력시 게임 설명 처음4줄등록)"></textarea></td>
 						</tr>
 						<tr>
 							<td rowspan="2" colspan="4" style="vertical-align:top;overflow:hidden;background-color:#eeeeee;vertical-align:middle">
@@ -923,10 +923,10 @@ function button_onskill(value){
 					<tr>
 						<td style="width:150px;">*탈출러 판매가(1인가격)</td>
 						<td style="padding-left:30px; width:230px">
-							주중 <input type="textbox" id="week2" name="week" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''"> 원
+							주중 <input type="textbox" id="week2" name="week" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"> 원
 						</td>
 						<td style="padding-left:8%;">
-							주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" onfocus="this.value=''"> 원 <font></font>
+							주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"> 원 <font></font>
 						</td>
 						<td class="td3">
 							**할인하지 않으실 경우 정가로 기입해주세요.
@@ -1006,7 +1006,7 @@ function button_onskill(value){
 			</div>
 
 			<div class="lastMent">
-				탈출러에서 검토 후 등록됩니다. 조금만기다려주세요!(최대3일 소요)승인결과는 메일로 안내해드리겠습니다.
+				탈출러에서 검토 후 등록됩니다. 조금만 기다려주세요!(최대3일 소요)&nbsp;승인결과는 메일로 안내해드리겠습니다.
 			</div>
 
 			<div align="center";>

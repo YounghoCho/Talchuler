@@ -1,5 +1,26 @@
 <?
+include('./include.php');
 include('./HeadTab_Module.php');
+//캘린더로부터 오늘날짜를 받아온다.
+
+//오늘의 날짜를 구한다
+if($_GET['year']=='')
+	$date=substr(date("Y-m-d H:i:s"),0,10);
+else{
+	if($_GET['month']<10){
+		if($_GET['day']<10)
+			$date=$_GET['year'].'-0'.$_GET['month'].'-0'.$_GET['day'];
+		else
+			$date=$_GET['year'].'-0'.$_GET['month'].'-'.$_GET['day'];
+	}
+	else{
+		if($_GET['day']<10)
+			$date=$_GET['year'].'-'.$_GET['month'].'-0'.$_GET['day'];
+		else
+			$date=$_GET['year'].'-'.$_GET['month'].'-'.$_GET['day'];
+	}
+}
+
 ?>
 <!--<meta name="viewport" content="width=device-width">-->
 <!--content=width=device-width : 컨텐츠를 디바이스 가로 사이즈에 맞춰 표현
@@ -8,6 +29,16 @@ include('./HeadTab_Module.php');
 	maximum-scale : 최대 확대 배율
 	user-scalable : 확대/축소 설정 (yes/no)
 -->
+
+<!--달력 S-->
+<link href="./calendar/calendar.css" rel="stylesheet">
+<script src="./calendar/calendar.js"></script>
+	<script>
+		window.onload = function () {
+			kCalendar('kCalendar');
+		};
+	</script>
+<!--달력 E-->
 
 <style>
 
@@ -382,7 +413,7 @@ include('./HeadTab_Module.php');
 /*상세 입력란*/
 
 /*어둡기를 조절하는 마스크*/
-#mask {  
+#mask, #mask2 {  
 	  position:fixed;  
 	  z-index:9000;  
 	  background-color:#000;  
@@ -393,7 +424,7 @@ include('./HeadTab_Module.php');
 /*어둡기를 조절하는 마스크*/
 
 /*팝업 중 쉐이딩 되지 않은 영역 위치를 조정_1*/
-.window_1{
+.window_1, .window_2{
 	  display: none;
 	  position:fixed;  
 	  left:33%;
@@ -491,35 +522,11 @@ include('./HeadTab_Module.php');
 			<div class="title">예약관리</div>
 		</div>
 	</div>
+	<!--달력-->
 	<div id="Main_datechoice_area">
 		<div id="Main_datechoice">
-			<div class="now_show">
-				<span>이번달예약:33건</span>
-				<span>이번주예약:7건</span>
-			</div>
-			<div class="rightblue_bar">
-				<span>2017.03.20(월)</span>
-			</div>
-			
 			<div class="slideshow-containera">
-				<div class="mySlidesa">
-					<input type="button" class="date_num" onclick="changedate(0)" value="1"><input type="button" class="date_num" onclick="changedate(1)" value="2"><input type="button" class="date_num" onclick="changedate(2)" value="3"><input type="button" class="date_num" onclick="changedate(3)" value="4"><input type="button" onclick="changedate(4)" class="date_num" value="5"><input type="button" class="date_num" onclick="changedate(5)" value="6"><input type="button" class="date_num" onclick="changedate(6)" value="7"><input type="button" class="date_num" onclick="changedate(7)" value="8"><input type="button" class="date_num" onclick="changedate(8)" value="9"><input type="button" class="date_num" onclick="changedate(9)" value="10">
-				</div>
-
-				<div class="mySlidesa">
-					<input type="button" class="date_num" onclick="changedate(10)" value="11"><input type="button" class="date_num" onclick="changedate(11)" value="12"><input type="button" class="date_num" onclick="changedate(12)" value="13"><input type="button" class="date_num" onclick="changedate(13)" value="14"><input type="button" onclick="changedate(14)" class="date_num" value="15"><input type="button" class="date_num" onclick="changedate(15)" value="16"><input type="button" class="date_num" onclick="changedate(16)" value="17"><input type="button" class="date_num" onclick="changedate(17)" value="18"><input type="button" class="date_num" onclick="changedate(18)" value="19"><input type="button" class="date_num" onclick="changedate(19)" value="20">
-				</div>
-
-				<div class="mySlidesa">
-					<input type="button" class="date_num" onclick="changedate(20)" value="21"><input type="button" class="date_num" onclick="changedate(21)" value="22"><input type="button" class="date_num" onclick="changedate(22)" value="23"><input type="button" class="date_num" onclick="changedate(23)" value="24"><input type="button" onclick="changedate(24)" class="date_num" value="25"><input type="button" class="date_num" onclick="changedate(25)" value="26"><input type="button" class="date_num" onclick="changedate(26)" value="27"><input type="button" class="date_num" onclick="changedate(27)" value="28"><input type="button" class="date_num" onclick="changedate(28)" value="29"><input type="button" class="date_num" onclick="changedate(29)" value="30">
-				</div>
-
-				<div class="mySlidesa" style="text-align:left;">
-					<input type="button" class="date_num" onclick="changedate(30)" value="31" style="margin-left:40px;">
-				</div>
-
-				<a class="preva" onclick="plusSlidesa(-1)">&#10094;</a>
-				<a class="nexta" onclick="plusSlidesa(1)">&#10095;</a>
+				<div id="kCalendar"></div>
 			</div>
 		</div>
 	</div>
@@ -546,108 +553,170 @@ include('./HeadTab_Module.php');
 			</div>
 		</div>
 		<div id="Main_gameinfo">
-			<!--자세히보기-->
-			<script>
-				function dropdetail(callnum){
-					var detailpage = document.getElementsByClassName("detail_page");
-					var openbtn = document.getElementsByClassName("openbutton");
-					var closebtn = document.getElementsByClassName("closebutton");
-					for(var i = 0; i < detailpage.length; i++){
-						if(i==callnum){	
-								detailpage[i].style.display='inline';
-								openbtn[i].style.display='none';
-								closebtn[i].style.display='inline';
-						}
-				}
+			<?
+			//게임정보를 불러온다
+			$sql="select * from game where p_id='".$_SESSION['id']."'";
+			$q=mysql_query($sql);
+			while($data=mysql_fetch_array($q)){
+			?>
+			<!--회색박스 한 묶음-->
+			<div class="game_info">
+				<div class="game_name">
+					<div class="game_title"><?echo $data['g_title']?></div>
+					<div class="game_detail">
+				<!--		<input type="button" value="▼ 자세히보기" class="openbutton" onclick="dropdetail(0)" style="color:#666666;">
+						<input type="button" value="▲ 자세히보기" class="closebutton" onclick="closedetail(0)" style="color:#666666; display:none;">-->
+					</div>
+				</div>
+				<div class="game_time">
+					<?
+					//게임시간정보를 불러온다
+					$tsql="select * from game_time where g_idx='".$data['g_idx']."'";
+					$tq=mysql_query($tsql);
+					$time=mysql_fetch_array($tq);
+					
+					$rsql="select * from game_reserve where g_idx='".$data['g_idx']."'";
+					$rq=mysql_query($rsql);
+					$reserve=mysql_fetch_array($rq);
+					//만약에 해당time의 값이 1이면 style을 바꿔주고, onlick도 바꿔주면되지 222
+					?>		
+					<input type="button" value="<?echo $time['gt_1']?>" 
+					<?if($reserve['gr_1']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_1']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop1"/>
+					
+					<input type="button" value="<?echo $time['gt_2']?>" 
+					<?if($reserve['gr_2']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_2']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop2"/>
+					
+					<input type="button" value="<?echo $time['gt_3']?>" 
+					<?if($reserve['gr_3']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_3']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop3"/>
 
+					<input type="button" value="<?echo $time['gt_4']?>" 
+					<?if($reserve['gr_4']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_4']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop4"/>
+
+					<input type="button" value="<?echo $time['gt_5']?>" 
+					<?if($reserve['gr_5']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_5']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop5"/>
+
+					<input type="button" value="<?echo $time['gt_6']?>" 
+					<?if($reserve['gr_6']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_6']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop6"/>
+
+					<input type="button" value="<?echo $time['gt_7']?>" 
+					<?if($reserve['gr_7']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_7']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop7"/>
+
+					<input type="button" value="<?echo $time['gt_8']?>" 
+					<?if($reserve['gr_8']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_8']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop8"/>
+
+					<input type="button" value="<?echo $time['gt_9']?>" 
+					<?if($reserve['gr_9']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_9']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop9"/>
+
+					<input type="button" value="<?echo $time['gt_10']?>" 
+					<?if($reserve['gr_10']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_10']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop10"/>
+
+					<input type="button" value="<?echo $time['gt_11']?>" 
+					<?if($reserve['gr_11']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_11']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop11"/>
+
+					<input type="button" value="<?echo $time['gt_12']?>" 
+					<?if($reserve['gr_12']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_12']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop12"/>
+
+					<input type="button" value="<?echo $time['gt_13']?>" 
+					<?if($reserve['gr_13']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_13']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop13"/>
+
+					<input type="button" value="<?echo $time['gt_14']?>" 
+					<?if($reserve['gr_14']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_14']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop14"/>
+
+					<input type="button" value="<?echo $time['gt_15']?>" 
+					<?if($reserve['gr_15']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_15']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop15"/>
+
+					<input type="button" value="<?echo $time['gt_16']?>" 
+					<?if($reserve['gr_16']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_16']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop16"/>
+				</div>
+			</div>
+			<div class="detail_page" style='display:none;'>
+				<ul class="horizon" style='border-bottom:solid 1px #ccc'>
+					<li class="subject" style='width:100px;'>상태</li>
+					<li class="subject" style='width:60px;'>시간</li>
+					<li class="subject" style='width:60px;'>예약자</li>
+					<li class="subject" style='width:60px;'>인원</li>
+					<li class="subject" style='width:80px;'>예약금</li>
+					<li class="subject" style='width:80px;'>추가결제금</li>
+					<li class="subject" style='width:120px;'>등록정보</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1">탈출러 예약불가</li>
+					<li class="row2">14:00</li>
+					<li class="row3">김미선</li>
+					<li class="row4">6명</li>
+					<li class="row5">10000원</li>
+					<li class="row6">100000원</li>
+					<li class="row7">2017.02.14 14:28 직접입력</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1">탈출러 에약</li>
+					<li class="row2">19:00</li>
+					<li class="row3">코난도아리</li>
+					<li class="row4">2명</li>
+					<li class="row5">44000원</li>
+					<li class="row6">0원</li>
+					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1" class="col">탈출러 예약</li>
+					<li class="row2">21:00</li>
+					<li class="row3">지니민</li>
+					<li class="row4">4명</li>
+					<li class="row5">10000원</li>
+					<li class="row6">70000원</li>
+					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1">탈출러 예약불가</li>
+					<li class="row2">23:00</li>
+					<li class="row3"> - </li>
+					<li class="row4"> - </li>
+					<li class="row5"> - </li>
+					<li class="row6"> - </li>
+					<li class="row7">2017.03.20 22:19 탈출러에서 등록</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1">탈출러 에약</li>
+					<li class="row2">19:00</li>
+					<li class="row3">코난도아리</li>
+					<li class="row4">2명</li>
+					<li class="row5">44000원</li>
+					<li class="row6">0원</li>
+					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
+				</ul>
+				<ul class="horizon">
+					<li class="row1">탈출러 예약</li>
+					<li class="row2">21:00</li>
+					<li class="row3">지니민</li>
+					<li class="row4">4명</li>
+					<li class="row5">10000원</li>
+					<li class="row6">70000원</li>
+					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
+				</ul>
+			</div>
+			<!--회색박스 한 묶음-->
+			<?
 			}
-			</script>
-			<script>
-			function closedetail(callnum){
-					var detailpage_c = document.getElementsByClassName("detail_page");
-					var openbtn_c = document.getElementsByClassName("openbutton");
-					var closebtn_c = document.getElementsByClassName("closebutton");
-					for(var i = 0; i < detailpage_c.length; i++){
-						if(i==callnum){	
-								detailpage_c[i].style.display='none';
-								openbtn_c[i].style.display='inline';
-								closebtn_c[i].style.display='none';
-						}
-				}
-			}	
-			</script>
-			<!--자세히보기-->
+			?>
 
-			<!--시간 클릭 시 뜨는 팝업창-->
-			
-			<script language="JavaScript">
-				function colorchange(obj){
-					if(obj.style.background == "none"){
-						obj.style.background = '#56dcfc';
-					}
-					else{
-						obj.style.background = "none";
-					}
-				}
-
-				function wrapWindowByMask_1(){
-					//화면의 높이와 너비를 구한다.
-					var maskHeight_1 = $(window).height();  
-					var maskWidth_1 = $(document).width();  
-
-					//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-					$('#mask').css({'width':maskWidth_1,'height':maskHeight_1});  
-					// 플로팅 효과
-					$('#mask').fadeIn(500); //시간 딜레이 1000=1s    
-					$('#mask').fadeTo("slow",0.5); //띄우는 시간, 어둡기 투명도 조절
-
-					//윈도우 같은 거 띄운다.
-					$('.window_1').show();
-				}
-
-				$(document).ready(function(){
-					//검은 막 띄우기
-					$('.openMask_1').click(function(e){
-						e.preventDefault();
-						wrapWindowByMask_1();
-					});
-
-					//닫기 버튼을 눌렀을 때
-					$('.window_1 .close').click(function (e) {  
-						//링크 기본동작은 작동하지 않도록 한다.
-						e.preventDefault();  
-						$('#mask, .window_1').hide();  
-					});       
-			/*
-					//검은 막을 눌렀을 때
-					$('#mask').click(function () {  
-						$(this).hide();  
-						$('.window_1').hide();  
-					});     
-			*/
-				});
-
-					// 터치 스크린에서 실수로 레이어를 닫는 경우를 막으려면.
-
-			</script>
-
-			<!--시간 클릭 시 뜨는 팝업창-->
-
+			<!--시간 클릭 시 뜨는 팝업창 S-->
 			<div id="mask"></div>
-			<div class="window_1">
+			<div class="window_1" id="window_1">
 				<div id="note_1">
 					<div class="info_area">
 						<div class="text_box">
-							테마제목1111 10:00 예약불가로 전환하시겠습니까?
+							<div id="whattitle" style="float:left;display:inline;"></div>
+							<div style="float:left;display:inline;">의&nbsp;</div>
+							<div id="whattime" style="float:left;display:inline;"></div>을 예약불가로 전환하시겠습니까?
 						</div>
-						<div class="checkbox_text">
+					<!--	<div class="checkbox_text">
 								예약자 정보 등록
 						</div>
 						<div class="checkbox_subred">
 							예약자의 정보를 입력하시면 예약관리에 추가됩니다.
-						</div>
+						</div>-->
 					</div>
-					<div class="inputbox_area">
+				<!--	<div class="inputbox_area">
 						<form action="url" id="inputbox">
 							<div class="inputboxes">
 								<span class="major">성함</span>
@@ -673,408 +742,34 @@ include('./HeadTab_Module.php');
 								<span class="sub">원</span><br>
 							</div>
 						</form>
+					</div>-->
+					<div id="clickbox_area">
+						<input type="button" class="close" style='background:#e1e1e1; border:1px solid #a8a8a8; color:#666666; margin-right:3px;' value="취소" onclick="cancel()"/>
+						<input type="button" style='background:#66ccff; border:1px solid #06aeff; color:##000000; margin-left:3px;' value="확인" onclick="reserved('a')"/>
+					</div>
+				</div>
+			</div>
+			<!--시간 클릭 시 뜨는 팝업창 E-->
+			<!--시간 클릭 시 뜨는 팝업창 S-->
+			
+			<div id="mask2"></div>
+			<div class="window_2" id="window_2">
+				<div id="note_1">
+					<div class="info_area">
+						<div class="text_box">
+							해당 시간을 예약가능으로 전환하시겠습니까?
+						</div>
 					</div>
 					<div id="clickbox_area">
-						<input type="button" href="#" class="close" style='background:#e1e1e1; border:1px solid #a8a8a8; color:#666666; margin-right:3px;' value="취소"/>
-						<!--class=close는 닫기 기능, 확인에는 다른링크 걸어야함-->
-						<input type="button" href="" style='background:#66ccff; border:1px solid #06aeff; color:##000000; margin-left:3px;' value="확인"/>
+						<input type="button" class="close" style='background:#e1e1e1; border:1px solid #a8a8a8; color:#666666; margin-right:3px;' value="취소" onclick="cancel2()"/>
+						<input type="button" style='background:#66ccff; border:1px solid #06aeff; color:##000000; margin-left:3px;' value="확인" onclick="reserved('b')"/>
 					</div>
 				</div>
 			</div>
 
-
-			<!--시간 설정박스 컬러변경 비활성-->
-			<!--
-			<script language="JavaScript">
-				function colorchange(obj){
-					if(obj.style.background == "none"){
-						obj.style.background = '#56dcfc';
-					}
-					else{
-						obj.style.background = "none";
-					}
-				}
-			</script>
-			-->
-			<!--시간 설정박스 컬러변경 비활성-->
-
-
-
-			<!--회색박스 한 묶음-->
-			<div class="game_info">
-				<div class="game_name">
-					<div class="game_title">해리포터와 마법사의 돌</div>
-					<div class="game_detail">
-						<input type="button" value="▼ 자세히보기" class="openbutton" onclick="dropdetail(0)" style="color:#666666;">
-						<input type="button" value="▲ 자세히보기" class="closebutton" onclick="closedetail(0)" style="color:#666666; display:none;">
-					</div>
-				</div>
-				<div class="game_time">
-					<a href="#" class="openMask_1"><input type="button" value="10:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="11:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="12:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="13:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="14:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="15:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="16:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="17:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="18:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="19:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="20:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="21:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="22:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="23:00" style='background:none;'/></a>
-				</div>
-			</div>
-			<div class="detail_page" style='display:none;'>
-				<ul class="horizon" style='border-bottom:solid 1px #ccc'>
-					<li class="subject" style='width:100px;'>상태</li>
-					<li class="subject" style='width:60px;'>시간</li>
-					<li class="subject" style='width:60px;'>예약자</li>
-					<li class="subject" style='width:60px;'>인원</li>
-					<li class="subject" style='width:80px;'>예약금</li>
-					<li class="subject" style='width:80px;'>추가결제금</li>
-					<li class="subject" style='width:120px;'>등록정보</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">14:00</li>
-					<li class="row3">김미선</li>
-					<li class="row4">6명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">100000원</li>
-					<li class="row7">2017.02.14 14:28 직접입력</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1" class="col">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">23:00</li>
-					<li class="row3"> - </li>
-					<li class="row4"> - </li>
-					<li class="row5"> - </li>
-					<li class="row6"> - </li>
-					<li class="row7">2017.03.20 22:19 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-			</div>
-			<!--회색박스 한 묶음-->
-
-			<!--회색박스 한 묶음-->
-			<div class="game_info">
-				<div class="game_name">
-					<div class="game_title">쿵푸팬더</div>
-					<div class="game_detail">
-						<input type="button" value="▼ 자세히보기" class="openbutton" onclick="dropdetail(1)" style="color:#666666;">
-						<input type="button" value="▲ 자세히보기" class="closebutton" onclick="closedetail(1)" style="color:#666666; display:none;">
-					</div>
-
-				</div>
-				<div class="game_time">
-					<a href="#" class="openMask_1"><input type="button" value="10:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="11:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="12:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="13:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="14:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="15:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="16:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="17:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="18:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="19:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="20:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="21:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="22:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="23:00" style='background:none;'/></a>
-				</div>
-			</div>
-			<div class="detail_page" style='display:none;'>
-				<ul class="horizon" style='border-bottom:solid 1px #ccc'>
-					<li class="subject" style='width:100px;'>상태</li>
-					<li class="subject" style='width:60px;'>시간</li>
-					<li class="subject" style='width:60px;'>예약자</li>
-					<li class="subject" style='width:60px;'>인원</li>
-					<li class="subject" style='width:80px;'>예약금</li>
-					<li class="subject" style='width:80px;'>추가결제금</li>
-					<li class="subject" style='width:120px;'>등록정보</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">14:00</li>
-					<li class="row3">김미선</li>
-					<li class="row4">6명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">100000원</li>
-					<li class="row7">2017.02.14 14:28 직접입력</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1" class="col">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">23:00</li>
-					<li class="row3"> - </li>
-					<li class="row4"> - </li>
-					<li class="row5"> - </li>
-					<li class="row6"> - </li>
-					<li class="row7">2017.03.20 22:19 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-			</div>
-			<!--회색박스 한 묶음-->
-
-			<!--회색박스 한 묶음-->
-			<div class="game_info">
-				<div class="game_name">
-					<div class="game_title">자전거 돌돌이</div>
-					<div class="game_detail">
-						<input type="button" value="▼ 자세히보기" class="openbutton" onclick="dropdetail(2)" style="color:#666666;">
-						<input type="button" value="▲ 자세히보기" class="closebutton" onclick="closedetail(2)" style="color:#666666; display:none;">
-					</div>
-
-				</div>
-				<div class="game_time">
-					<a href="#" class="openMask_1"><input type="button" value="10:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="11:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="12:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="13:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="14:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="15:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="16:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="17:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="18:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="19:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="20:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="21:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="22:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="23:00" style='background:none;'/></a>
-				</div>
-			</div>
-			<div class="detail_page" style='display:none;'>
-				<ul class="horizon" style='border-bottom:solid 1px #ccc'>
-					<li class="subject" style='width:100px;'>상태</li>
-					<li class="subject" style='width:60px;'>시간</li>
-					<li class="subject" style='width:60px;'>예약자</li>
-					<li class="subject" style='width:60px;'>인원</li>
-					<li class="subject" style='width:80px;'>예약금</li>
-					<li class="subject" style='width:80px;'>추가결제금</li>
-					<li class="subject" style='width:120px;'>등록정보</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">14:00</li>
-					<li class="row3">김미선</li>
-					<li class="row4">6명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">100000원</li>
-					<li class="row7">2017.02.14 14:28 직접입력</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1" class="col">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">23:00</li>
-					<li class="row3"> - </li>
-					<li class="row4"> - </li>
-					<li class="row5"> - </li>
-					<li class="row6"> - </li>
-					<li class="row7">2017.03.20 22:19 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-			</div>
-			<!--회색박스 한 묶음-->
-
-			<!--회색박스 한 묶음-->
-			<div class="game_info">
-				<div class="game_name">
-					<div class="game_title">지금은 9:44</div>
-					<div class="game_detail">
-						<input type="button" value="▼ 자세히보기" class="openbutton" onclick="dropdetail(3)" style="color:#666666;">
-						<input type="button" value="▲ 자세히보기" class="closebutton" onclick="closedetail(3)" style="color:#666666; display:none;">
-					</div>
-
-				</div>
-				<div class="game_time">
-					<a href="#" class="openMask_1"><input type="button" value="10:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="11:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="12:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="13:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="14:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="15:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="16:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="17:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="18:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="19:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="20:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="21:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="22:00" style='background:none;'/></a>
-					<a href="#" class="openMask_1"><input type="button" value="23:00" style='background:none;'/></a>
-				</div>
-			</div>
-			<div class="detail_page" style='display:none;'>
-				<ul class="horizon" style='border-bottom:solid 1px #ccc'>
-					<li class="subject" style='width:100px;'>상태</li>
-					<li class="subject" style='width:60px;'>시간</li>
-					<li class="subject" style='width:60px;'>예약자</li>
-					<li class="subject" style='width:60px;'>인원</li>
-					<li class="subject" style='width:80px;'>예약금</li>
-					<li class="subject" style='width:80px;'>추가결제금</li>
-					<li class="subject" style='width:120px;'>등록정보</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">14:00</li>
-					<li class="row3">김미선</li>
-					<li class="row4">6명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">100000원</li>
-					<li class="row7">2017.02.14 14:28 직접입력</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1" class="col">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약불가</li>
-					<li class="row2">23:00</li>
-					<li class="row3"> - </li>
-					<li class="row4"> - </li>
-					<li class="row5"> - </li>
-					<li class="row6"> - </li>
-					<li class="row7">2017.03.20 22:19 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 에약</li>
-					<li class="row2">19:00</li>
-					<li class="row3">코난도아리</li>
-					<li class="row4">2명</li>
-					<li class="row5">44000원</li>
-					<li class="row6">0원</li>
-					<li class="row7">2017.03.14 02:28 탈출러에서 등록</li>
-				</ul>
-				<ul class="horizon">
-					<li class="row1">탈출러 예약</li>
-					<li class="row2">21:00</li>
-					<li class="row3">지니민</li>
-					<li class="row4">4명</li>
-					<li class="row5">10000원</li>
-					<li class="row6">70000원</li>
-					<li class="row7">2017.03.20 12:39 탈출러에서 등록</li>
-				</ul>
-			</div>
-			<!--회색박스 한 묶음-->
+			<!--시간 클릭 시 뜨는 팝업창 E-->
 		</div>
+
 	</div>
 </div>
 
@@ -1116,3 +811,103 @@ function showSlidesa(n) {
 			}
 		}
 </script>
+<!--자세히보기 S-->
+<script>
+	function dropdetail(callnum){
+		var detailpage = document.getElementsByClassName("detail_page");
+		var openbtn = document.getElementsByClassName("openbutton");
+		var closebtn = document.getElementsByClassName("closebutton");
+		for(var i = 0; i < detailpage.length; i++){
+			if(i==callnum){	
+					detailpage[i].style.display='inline';
+					openbtn[i].style.display='none';
+					closebtn[i].style.display='inline';
+			}
+	}
+
+}
+</script>
+<script>
+function closedetail(callnum){
+		var detailpage_c = document.getElementsByClassName("detail_page");
+		var openbtn_c = document.getElementsByClassName("openbutton");
+		var closebtn_c = document.getElementsByClassName("closebutton");
+		for(var i = 0; i < detailpage_c.length; i++){
+			if(i==callnum){	
+					detailpage_c[i].style.display='none';
+					openbtn_c[i].style.display='inline';
+					closebtn_c[i].style.display='none';
+			}
+	}
+}	
+</script>
+<!--자세히보기 E-->
+			<script>
+			var temp;
+			var temp2;
+			var temp3;
+			var temp4;
+			var temp5;
+			function popup(value, title, id, index, g_idx, gr_idx){
+				var mask=document.getElementById('mask');
+				var window_1=document.getElementById('window_1');
+				var whattime=document.getElementById('whattime'); //시간정보기입
+				var whattitle=document.getElementById('whattitle'); //게임명칭기입
+				mask.style.display="block";
+				window_1.style.display="block";
+				whattime.innerHTML=value;
+				whattitle.innerHTML=title;
+				//확인시 reserved함수에 넘겨줄 id값
+				temp=id;
+				temp2=value;
+				temp3=index;
+				temp4=g_idx;
+				temp5=gr_idx;
+			}
+			function popup2(value, title, id, index, g_idx, gr_idx){
+				var mask2=document.getElementById('mask2');
+				var window_2=document.getElementById('window_2');
+				mask2.style.position="absolute";
+				window_2.style.position="absolute";
+				mask2.style.display="block";
+				window_2.style.display="block";
+				//확인시 reserved함수에 넘겨줄 id값
+				temp=id;
+				temp2=value;
+				temp3=index;
+				temp4=g_idx;
+				temp5=gr_idx;
+			}
+			function cancel(){
+				var mask=document.getElementById('mask');
+				var window_1=document.getElementById('window_1');
+				mask.style.display="none";
+				window_1.style.display="none";
+			}
+			function reserved(value){
+				//예약불가
+				if(value=='a'){
+					var mask=document.getElementById('mask');
+					var window_1=document.getElementById('window_1');
+					mask.style.display="none";
+					window_1.style.display="none";
+					location.href='./reserve_insert.php?input=1&index='+temp3+'&g_idx='+temp4+'&gr_idx='+temp5+'&what=add&date=<?echo $date?>';
+					
+				}
+				//예약재개
+				else{
+					var mask=document.getElementById('mask2');
+					var window_1=document.getElementById('window_2');
+					mask.style.display="none";
+					window_1.style.display="none";
+					location.href='./reserve_insert.php?input=1&index='+temp3+'&g_idx='+temp4+'&gr_idx='+temp5+'&what=delete&date=<?echo $date?>';
+				}
+			}
+
+			function cancel2(){
+				var mask2=document.getElementById('mask2');
+				var window_2=document.getElementById('window_2');
+				mask2.style.display="none";
+				window_2.style.display="none";
+			}
+			</script>

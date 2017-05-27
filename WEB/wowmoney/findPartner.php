@@ -41,7 +41,7 @@ td{border: 1px solid #aaa;}
 
 	<table style="width:80%;">
 		<tr>
-			<td>등록일</td><td>아이디</td><td>업체명(지점명)</td><td>이메일</td><td>성명</td><td>연락처</td><td>상태</td>
+			<td>등록일</td><td>아이디</td><td>업체명(지점명)</td><td>이메일</td><td>성명</td><td>연락처</td><td>최저가</td>
 		</tr>
 		<?
 		if(!$_POST['id']=="")
@@ -54,9 +54,11 @@ td{border: 1px solid #aaa;}
 			$sql="select * from partner where p_phone like '%".$_POST['search']."%';";
 		elseif(!$_POST['date']=="")
 			$sql="select * from partner where p_joinDate like '%".$_POST['search']."%';";
-
+		elseif(!$_POST['agreement5']=="")
+			$sql="select * from partner where p_agreement5 like '%".$_POST['search']."%';";
+			
 		$q=mysql_query($sql);
-
+		$changeIndex=1;
 		while($data=mysql_fetch_array($q)){		
 		?>
 
@@ -67,9 +69,10 @@ td{border: 1px solid #aaa;}
 			<td><?echo $data['p_email']?></td>
 			<td><?echo $data['p_name']?></td>
 			<td><?echo $data['p_phone']?></td>
-			<td></td>
+			<td id="a<?echo $changeIndex?>" onclick="javascript:aaa(this.id, '<?echo $data['p_id']?>')"><a  style="color:red;"><?if($data['p_agreement5']==0) echo("신청"); else echo("확인");?></a></td>
 		</tr>
 		<?
+		$changeIndex++;
 		}
 		?>
 	</table>
@@ -79,7 +82,15 @@ td{border: 1px solid #aaa;}
 	border:0px;
 }
 </style>
-
+<script>
+function aaa(id, value){
+	if(confirm("확실합니까?")==true){
+		location.href="./data.php?p_id="+value+"";
+	}else{
+		return ;
+	}
+}
+</script>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
 </div> <!--body를 닫는 태그입니다.-->
 <?

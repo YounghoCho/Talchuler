@@ -1,7 +1,41 @@
 <?
 	include("include_head.php");
 ?>
+<!--달력 S-->
+<link href="./calendar/calendar.css" rel="stylesheet">
+	<script>
+		window.onload = function () {
+			kCalendar('kCalendar');
+		};
+	</script>
+<!--달력 E-->
+<!--달력 S-->
+<style>
+#today{width:20%;height:50px;font-weight:bold;font-size:24px;text-align:center;float:left;display:inline;}
+#showcal{float:left;display:inline;font-weight:bold;font-size:24px;cursor:pointer;}
+#maskarea{
+	  display:none;
+	  position:fixed; 
+	  width:100%;
+	  height:100%;
+	  background-color:RGBA(1,1,1,0.8);  
+	  left:0;
+	  top:0;
+	  border:1px solid;
+	  z-index:10;
+}
+#kCalendar{position:fixed;margin-left:42%;margin-top:10%;background-color:#fff;}
 
+@media all and (max-width:800px){
+	#today{width:40%;height:30px;font-size:16px;}
+	#showcal{font-size:16px;}
+	#kCalendar{position:fixed;margin-left:18%;margin-top:22%;background-color:#fff;}
+}
+</style>
+<div id="maskarea">
+	<div id="kCalendar"></div>
+</div>
+<!--달력 E-->	
 <body style='font-family:"NotoSansCJKkr-Regular.eot"; color:#666666;'>
 	<div id="main_container">
 		<div class="path">
@@ -31,7 +65,7 @@ $img=mysql_fetch_array($imgquery);
 			<script>
 				function popupWindowByMask_3(){
 					//화면의 높이와 너비를 구한다.
-					var maskHeight_3 = $(window).height();  
+					var maskHeight_3 = $(window).height();
 					var maskWidth_3 = $(document).width();  
 
 					//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
@@ -193,8 +227,10 @@ $img=mysql_fetch_array($imgquery);
 			
 
 					<style>
+					#pricedd{float:left; padding-left:0px;width:80%;}
+					#txt{font-size:14pt; font-weight:bold; color:black; padding-top:17px;}
 					#gameinfo_wrap{
-						width:550px; overflow:auto; float:left;
+						width:570px; overflow:auto; float:left;
 					}
 					
 					#game_location{
@@ -202,6 +238,19 @@ $img=mysql_fetch_array($imgquery);
 						font-size:15pt;
 						line-height:15pt;
 						color:black;
+						overflow:auto;
+					}
+
+					#game_location img{
+						float:left;
+						width:18px;
+						height:auto;
+						padding:1px 0;
+						margin-right:5px;
+					}
+
+					#game_location span{
+						float:left;
 					}
 
 					#game_title{
@@ -232,15 +281,15 @@ $img=mysql_fetch_array($imgquery);
 					}
 
 					#gameinfo_imagebox{
-						width:400px; overflow:auto; float:left; margin-right:60px;
+						width:390px; overflow:auto; float:left; margin-right:60px;
 					}
 
 					#gameinfo_imagebox .game_imagee{
-						position:relative; float:left; border:0px solid #aaa; width:390px; height:540px; text-align:center; display:table-cell; background:none;
+						position:relative; float:left; border:0px solid #aaa; width:390px; height:540px; text-align:center; display:table-cell; background:#c3c3c3;
 					}
 
-					#gameinfo_imagebox .game_imagee img{
-						position:absolute; width:auto; height:auto; max-height:540px; max-width:390px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:25px;
+					#gameinfo_imagebox .game_imagee img{ /*width:auto; max-width:390px; */
+						position:absolute; width:100%; height:auto; max-height:540px; max-width:390px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:25px;
 					}
 
 					#icon_wrap{
@@ -293,9 +342,9 @@ $img=mysql_fetch_array($imgquery);
 						height:47px;
 						overflow:visible;
 					}
-					.game_price_left{
-						width:50%;
+					.game_price_left{					
 						float:left;
+						margin-right:20px;
 					}
 					.game_price_left img{
 						float:left;
@@ -338,8 +387,9 @@ $img=mysql_fetch_array($imgquery);
 						padding-top:8px;
 					}
 
-					@media all and (max-width: 1024px){
-
+					@media all and (max-width: 800px){
+						#pricedd{width:100%;}
+						#txt{font-size:10pt; font-weight:bold; color:black; padding-top:10px;}
 						#gameinfo_wrap{
 							width:100%; overflow:auto; float:left;
 						}		
@@ -393,7 +443,22 @@ $img=mysql_fetch_array($imgquery);
 							font-size:15pt;
 							line-height:15pt;
 							color:black;
+							padding:0 25%;
+							overflow:hidden;
+							text-align:center;
+							vertical-align:middle;
 						}
+
+						#game_location img{
+							display:table-cell;
+							float:left;
+						}
+
+						#game_location div{
+							display:table-cell;
+							float:left;
+						}
+						
 
 						#game_title{
 							width:100%;
@@ -426,7 +491,7 @@ $img=mysql_fetch_array($imgquery);
 						.game_price_top{
 							text-align:left;
 							margin-bottom:0px;
-							padding-left:65px;
+							padding-left:55px;
 						}
 
 						.game_price_top span{
@@ -440,12 +505,14 @@ $img=mysql_fetch_array($imgquery);
 
 						.game_price_left{
 							width:55%;
+							margin-right:0px;
 						}
 
 						.game_price_left img{
 							width:30px;
 							height:auto;
 							margin-right:5px;
+							margin-top:0px;
 						}
 
 						.game_price_left_text{
@@ -582,15 +649,16 @@ $img=mysql_fetch_array($imgquery);
 	
 					}
 
-
-					
-
 					</style>
-
-					
-					<div class="gameinfo_widthbox" style=''>
-						<div id="game_location">
-							<?echo ($data['g_location'])?>
+					<?
+					$sql="select p_shopName, p_localName from partner where p_id='".$data['p_id']."'";
+					$q=mysql_query($sql);
+					$pppp=mysql_fetch_array($q);
+					?>
+					<div class="gameinfo_widthbox">
+						<div id="game_location" style="text-align:left">
+							<img src="../images/icon/shop.png" style='margin-right:1%'/>
+							<?echo ($pppp['p_shopName'])?>&nbsp;<?echo ($pppp['p_localName'])?>
 						</div>
 						<div id="game_title">
 							<?echo ($data['g_title'])?>
@@ -606,18 +674,18 @@ $img=mysql_fetch_array($imgquery);
 							</dt>
 						</div>
 
-						<div id="gameinfo_wrap" style=''>
-							<dd style='float:left; padding-left:0px;'>
+						<div id="gameinfo_wrap">
+							<dd id="pricedd">
 								<ul style='width:100%; margin-top:17px;'>
 								<div class="game_price">
-									<div class="game_price_top"><?echo $data['g_p2']/2?><span>원</span></div>
+									<div class="game_price_top"><?echo number_format($data['g_p2']/2)?><span>원</span></div>
 									<div class="game_price_bot">
 										<div class="game_price_left">
 											<img src="../images/icon/icon_detail_price.png" />
-											<div class="game_price_left_text"><?echo $data['g_weekprice']?><div>원</div></div>
+											<div class="game_price_left_text"><?echo number_format($data['g_weekprice'])?><div>원</div></div>
 										</div>
 										<div class="game_price_right" style=''>
-											<div class="small">(주말:&nbsp</div><div class="big"><?echo $data['g_holyprice']?></div><div class="small">&nbsp원)</div>
+											<div class="small">(주말:&nbsp</div><div class="big"><?echo number_format ($data['g_holyprice'])?></div><div class="small">&nbsp원)</div>
 										</div>
 									</div>
 								</div>
@@ -641,7 +709,7 @@ $img=mysql_fetch_array($imgquery);
 										</div>
 									</li>
 								</div>
-								<li class="txt" style='font-size:14pt; font-weight:bold; color:black; padding-top:17px;'>필요능력<span> 
+								<li class="txt" id="txt">필요능력<span> 
 								<?
 								//필요능력에 따른 이미지 삽입부
 									if($data['g_skill1']){
@@ -695,16 +763,11 @@ $img=mysql_fetch_array($imgquery);
 }
 .price_title{
 	width:100%;
-	height:30px;
-	background-color:#ccc;
-	font-weight:bold
-}
-.g_price{
-	padding:5px;
-	font-size:100%;
-	text-align:center;
-
-	margin-top:20px;
+	height:32px;
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;
+	line-height:20pt;
+	font-weight:bold;
 }
 .enter{
 	display:none;
@@ -743,7 +806,8 @@ $img=mysql_fetch_array($imgquery);
 .price_title{
 	width:100%;
 	height:25px;
-	background-color:#ccc;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
 	font-weight:bold
 }
 .g_price{	
@@ -828,6 +892,7 @@ $img=mysql_fetch_array($imgquery);
 }
 
 /*예약 시간 css*/
+
 .hiddenarea_timetable{ /*테이블 전체*/
 	margin-top:20px;
 	width:85%;
@@ -852,7 +917,7 @@ $img=mysql_fetch_array($imgquery);
 	display:table;
 	text-align:center;
 }
-
+#marginleft{margin-left:10px;}
 .hiddenarea_timecell_top input{
 	width:100%;
 	height:100%;
@@ -914,12 +979,25 @@ $img=mysql_fetch_array($imgquery);
 .albumsize{height:150px}
 
 /*map*/
-.hiddenarea{display:none;}
-#map{width:80%;height:400px;margin-left:10%;margin-top:3%;margin-bottom:3%;display:none;}
+.hiddenarea{display:none; margin:0 auto;}
+#map{width:90%;height:400px; margin:3% 5%; display:none;}
 .slideshow-container{display:none;}
 #dot{display:none;}
 
+.dv{
+	width:16.6%;
+	margin-top:10px;
+	float:left;
+	text-align:center;
+}
+.hiddenarea_date{
+	width:100%;
+	height:60px;
+	margin-top:20px;
+	padding-top:5px;
+}
 @media all and (max-width: 1024px) {
+#marginleft{margin-left:3px;}
  .prev, .next,.text {font-size: 11px}
  .hiddenarea_timetable{width:80%;}
  .hiddenarea_timearray{width:100%;}
@@ -929,6 +1007,7 @@ $img=mysql_fetch_array($imgquery);
  .openMask_3{float:left; width:20%;}
 .hiddenarea_reservation{width:100%;}
 .hiddenarea_reservation_inner{width:100%;}
+.hiddenarea{width:90%; margin:0 auto;}
  #topspace{margin-left:3px;}
  #botspace{margin-right:6px;}
  .albumsize{height:90px}
@@ -959,11 +1038,18 @@ $img=mysql_fetch_array($imgquery);
 }
 .next2 {right: 0;margin-right:10px;}
 .prev2 {left: 0;margin-left:10px;}
+
+.dv{
+	width:33.3%;
+	margin-top:0px;
+	float:left;
+	text-align:center;
+}
  }
  /*Date*/
 .hiddenarea_date{
 	width:100%;
-	height:60px;
+	height:30px;
 	margin-top:20px;
 	padding-top:5px;
 }
@@ -1016,6 +1102,8 @@ $img=mysql_fetch_array($imgquery);
 	margin-right:30px;
 	font-weight:bold;
 }
+
+
 </style>
 
 				<ul class="orderlist">
@@ -1060,21 +1148,21 @@ $img=mysql_fetch_array($imgquery);
 								$gdata=mysql_fetch_array($query);
 								
 								if($gdata['g_p1']>0){
-									?>1인:&nbsp;<?echo ($gdata['g_p1'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">1인:&nbsp;<?echo number_format($gdata['g_p1'])?>원</div><?
 								}if($gdata['g_p2']>0){
-									?>2인:&nbsp;<?echo ($gdata['g_p2'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">2인:&nbsp;<?echo number_format($gdata['g_p2'])?>원</div><?
 								}if($gdata['g_p3']){
-									?>3인:&nbsp;<?echo ($gdata['g_p3'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">3인:&nbsp;<?echo number_format($gdata['g_p3'])?>원</div><?
 								}if($gdata['g_p4']){
-									?>4인:&nbsp;<?echo ($gdata['g_p4'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">4인:&nbsp;<?echo number_format($gdata['g_p4'])?>원</div><?
 								}if($gdata['g_p5']){
-									?>5인:&nbsp;<?echo ($gdata['g_p5'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">5인:&nbsp;<?echo number_format($gdata['g_p5'])?>원</div><?
 								}if($gdata['g_p6']){
-									?>6인:&nbsp;<?echo ($gdata['g_p6'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">6인:&nbsp;<?echo number_format($gdata['g_p6'])?>원</div><?
 								}if($gdata['g_p7']){
-									?>7인:&nbsp;<?echo ($gdata['g_p7'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">7인:&nbsp;<?echo number_format($gdata['g_p7'])?>원</div><?
 								}if($gdata['g_p8']){
-									?>8인:&nbsp;<?echo ($gdata['g_p8'])?>원&nbsp;&nbsp;<?
+									?><div class="dv">8인:&nbsp;<?echo number_format($gdata['g_p8'])?>원</div><?
 								}
 								?>
 							</div>
@@ -1085,44 +1173,33 @@ $img=mysql_fetch_array($imgquery);
 		</div>
 	<!--예약페이지로 보내는 form-->
 	<form id="reserve_form" method="POST" action="./reserve_page.php">
-		<div class="tabarea">
+		<div class="tabarea" style="background:#ececec;">
 			<div class="container_inner pd44" style="background-color:#ececec; padding-bottom:10px;">
 				<div class="tab">
-					<a class="on" style="width:48%;" onclick="mapfunction('a')"><span>예약정보</span></a>
+					<a class="on" style="width: -webkit-calc(50% - 4px); width: -moz-calc(50% - 4px); width: calc(50% - 4px);" onclick="mapfunction('a')"><span>예약정보</span></a>
 				<!--	<a href="#self"><span>게임후기</span></a>-->
-					<a style="width:48%;margin-left:4%;" onclick="mapfunction('b')"><span>카페정보</span></a>
+					<a style="width: -webkit-calc(50% - 4px); width: -moz-calc(50% - 4px); width: calc(50% - 4px); margin-left:0px;" onclick="mapfunction('b')"><span>카페정보</span></a>
 				</div>
 				
 				<div class="hiddenarea on">
-<div class="hiddenarea_date">
-				
-				<div class="hiddenarea_year">
-				<span class="year">2017년 5월 19일</span>
-				</div>
-				
-				<div class="hiddenarea_day">
-					<div class="slideshow-containera">
-					<div class="mySlidesa">
-					<a class="date_num" href="#Redirect" onclick="changedate(0)">1</a><a class="date_num" href="#Redirect" onclick="changedate(1)">2</a><a class="date_num" href="#Redirect" onclick="changedate(2)">3</a><a class="date_num" href="#Redirect" onclick="changedate(3)">4</a><a class="date_num" href="#Redirect" onclick="changedate(4)">5</a><a class="date_num" href="#Redirect" onclick="changedate(5)">6</a><a class="date_num" href="#Redirect" onclick="changedate(6)">7</a><a class="date_num" href="#Redirect" onclick="changedate(7)">8</a><a class="date_num" href="#Redirect" onclick="changedate(8)">9</a><a class="date_num" href="#Redirect" onclick="changedate(9)">10</a>
-					</div>
-
-					<div class="mySlidesa">
-					<input type="button" class="date_num" onclick="changedate(10)" value="11"><input type="button" class="date_num" onclick="changedate(11)" value="12"><input type="button" class="date_num" onclick="changedate(12)" value="13"><input type="button" class="date_num" onclick="changedate(13)" value="14"><input type="button" onclick="changedate(14)" class="date_num" value="15"><input type="button" class="date_num" onclick="changedate(15)" value="16"><input type="button" class="date_num" onclick="changedate(16)" value="17"><input type="button" class="date_num" onclick="changedate(17)" value="18"><input type="button" class="date_num" onclick="changedate(18)" value="19"><input type="button" class="date_num" onclick="changedate(19)" value="20">
-					</div>
-
-					<div class="mySlidesa">
-					<input type="button" class="date_num" onclick="changedate(20)" value="21"><input type="button" class="date_num" onclick="changedate(21)" value="22"><input type="button" class="date_num" onclick="changedate(22)" value="23"><input type="button" class="date_num" onclick="changedate(23)" value="24"><input type="button" onclick="changedate(24)" class="date_num" value="25"><input type="button" class="date_num" onclick="changedate(25)" value="26"><input type="button" class="date_num" onclick="changedate(26)" value="27"><input type="button" class="date_num" onclick="changedate(27)" value="28"><input type="button" class="date_num" onclick="changedate(28)" value="29"><input type="button" class="date_num" onclick="changedate(29)" value="30">
-					</div>
-
-					<div class="mySlidesa" style="text-align:left;">
-					<input type="button" class="date_num" onclick="changedate(30)" value="31" style="margin-left:40px;">
-					</div>
-
-					<a class="preva" onclick="plusSlidesa(-1)">&#10094;</a>
-					<a class="nexta" onclick="plusSlidesa(1)">&#10095;</a>
-					</div>
-				</div>
-				
+					<div class="hiddenarea_date">
+					<!--달력 호출-->
+					<?
+					//날짜선택
+					if($_GET['year']=='')
+						$date=substr(date("Y-m-d H:i:s"),0,10);
+					else{
+						$date=$_GET['year'].'-'.$_GET['month'].'-'.$_GET['day'];
+					}
+					?>
+					<div id="today"><?echo $date?></div>
+					<div id="showcal" onclick="showCalendar()">></div>
+<script>
+function showCalendar(){
+	var c=document.getElementById('maskarea');
+	c.style.display="block";
+}
+</script>
 				</div>
 					<!--시간 설정박스 컬러변경 활성 /중복가능-->
 					<!--<script language="JavaScript">
@@ -1147,7 +1224,7 @@ $img=mysql_fetch_array($imgquery);
 						arr[i]='0';
 						
 						function changetime(time){ //색상비교 후 값 반환
-							var hour = document.getElementsByClassName("time_button");
+							/*var hour = document.getElementsByClassName("time_button");
 								
 								if(arr[time]=='0'){
 									hour[time].style.background = '#56DCFC';
@@ -1157,7 +1234,7 @@ $img=mysql_fetch_array($imgquery);
 									hour[time].style.background = '#fff';
 									hour[time].style.color = 'black';
 									arr[time]='0';
-								}
+								}*/
 						}
 					</script>
 					<!--시간 설정박스 한개만 on-->
@@ -1167,14 +1244,14 @@ $img=mysql_fetch_array($imgquery);
 					$q=mysql_query($sql);
 					$time=mysql_fetch_array($q);
 					//예약정보
-					$sql="select * from game_available where g_idx='".$_GET['g_idx']."'";
+					$sql="select * from game_reserve where g_idx='".$_GET['g_idx']."' and gr_date='".$date."'";
 					$q=mysql_query($sql);
 					$ava=mysql_fetch_array($q);
 					?>
 					<div class="hiddenarea_timetable">
 						<div class="hiddenarea_timearray">
 							<?if($time['gt_1']){
-								if(!$ava['ga_1']){?><script>setTimeout(function(){
+								if($ava['gr_1']){?><script>setTimeout(function(){
 									reserved(1);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top" id="topspace">
@@ -1182,7 +1259,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 							<?if($time['gt_2']){
-								if($ava['ga_2']){?><script>setTimeout(function(){
+								if($ava['gr_2']){?><script>setTimeout(function(){
 									reserved(2);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
@@ -1190,7 +1267,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 							<?if($time['gt_3']){
-								if($ava['ga_3']){?><script>setTimeout(function(){
+								if($ava['gr_3']){?><script>setTimeout(function(){
 									reserved(3);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
@@ -1198,7 +1275,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 							<?if($time['gt_4']){
-								if($ava['ga_4']){?><script>setTimeout(function(){
+								if($ava['gr_4']){?><script>setTimeout(function(){
 									reserved(4);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
@@ -1206,7 +1283,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 							<?if($time['gt_5']){
-								if($ava['ga_5']){?><script>setTimeout(function(){
+								if($ava['gr_5']){?><script>setTimeout(function(){
 									reserved(5);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
@@ -1214,7 +1291,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 							<?if($time['gt_6']){
-								if($ava['ga_6']){?><script>setTimeout(function(){
+								if($ava['gr_6']){?><script>setTimeout(function(){
 									reserved(6);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top">
@@ -1222,7 +1299,7 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 							<?}?>
 								<?if($time['gt_7']){
-								if($ava['ga_7']){?><script>setTimeout(function(){
+								if($ava['gr_7']){?><script>setTimeout(function(){
 									reserved(7);
 								},100)</script><?}?>
 							<div class="hiddenarea_timecell_top" id="botspace">
@@ -1231,81 +1308,85 @@ $img=mysql_fetch_array($imgquery);
 							<?}?>
 							<!--줄나눔-->
 							<?if($time['gt_8']){
-								if($ava['ga_8']){?><script>setTimeout(function(){
+								if($ava['gr_8']){?><script>setTimeout(function(){
 									reserved(8);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot" style="margin-left:0px;">
+							<div class="hiddenarea_timecell_top" id="marginleft">
 								<input type="button" id="re8" value="<?echo $time['gt_8']?>" class="time_button" onclick="changetime(7)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_9']){
-								if($ava['ga_9']){?><script>setTimeout(function(){
+								if($ava['gr_9']){?><script>setTimeout(function(){
 									reserved(9);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re9" value="<?echo $time['gt_9']?>" class="time_button" onclick="changetime(8)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_10']){
-								if($ava['ga_10']){?><script>setTimeout(function(){
+								if($ava['gr_10']){?><script>setTimeout(function(){
 									reserved(10);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re10" value="<?echo $time['gt_10']?>" class="time_button" onclick="changetime(9)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_11']){
-								if($ava['ga_11']){?><script>setTimeout(function(){
+								if($ava['gr_11']){?><script>setTimeout(function(){
 									reserved(11);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re11" value="<?echo $time['gt_11']?>" class="time_button" onclick="changetime(10)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_12']){
-								if($ava['ga_12']){?><script>setTimeout(function(){
+								if($ava['gr_12']){?><script>setTimeout(function(){
 									reserved(12);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re12" value="<?echo $time['gt_12']?>" class="time_button" onclick="changetime(11)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_13']){
-								if($ava['ga_13']){?><script>setTimeout(function(){
+								if($ava['gr_13']){?><script>setTimeout(function(){
 									reserved(13);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re13" value="<?echo $time['gt_13']?>" class="time_button" onclick="changetime(12)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_14']){
-								if($ava['ga_14']){?><script>setTimeout(function(){
+								if($ava['gr_14']){?><script>setTimeout(function(){
 									reserved(14);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot" style="margin-right:0px;">
+							<div class="hiddenarea_timecell_top" style="margin-right:0px;">
 								<input type="button" id="re14" value="<?echo $time['gt_14']?>" class="time_button" onclick="changetime(13)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_15']){
-								if($ava['ga_15']){?><script>setTimeout(function(){
+								if($ava['gr_15']){?><script>setTimeout(function(){
 									reserved(15);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot" style="margin-left:-1px">
+							<div class="hiddenarea_timecell_top" style="margin-left:-1px">
 								<input type="button" id="re15" value="<?echo $time['gt_15']?>" class="time_button" onclick="changetime(14)" style=''/>
 							</div>
 							<?}?>
 							<?if($time['gt_16']){
-								if($ava['ga_16']){?><script>setTimeout(function(){
+								if($ava['gr_16']){?><script>setTimeout(function(){
 									reserved(16);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_bot">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re16" value="<?echo $time['gt_16']?>" class="time_button" onclick="changetime(15)" style=''/>
 							</div>
 							<?}?>
 						</div>
 
 
-
+						<?
+						$zsql="select p_shopName, p_localName, p_tele from partner where p_id='".$data['p_id']."'";
+						$z=mysql_query($zsql);
+						$zekil=mysql_fetch_array($z);
+						?>
 						<div id="mask"></div>
 						<div class="window_3">
 							<div id="note_3">
@@ -1314,8 +1395,8 @@ $img=mysql_fetch_array($imgquery);
 									<font style='color:#f36a21;'>'탈출러 예약자'</font>라고 알려주시면 표시된 최저가로 이용이 가능합니다.</div>
 								</div>
 								<div class="input_box_3">
-									<div class="mid_content_left"><img src="../images/icon/shop.png"><div>ESC신림</div></div>
-									<div class="mid_content_right">000-000-0000</div>
+									<div class="mid_content_left"><img src="../images/icon/shop.png"><div><?echo $zekil['p_shopName']?>&nbsp;<?echo $zekil['p_localName']?></div></div>
+									<div class="mid_content_right"><a href="tel:<?echo $zekil['p_tele']?>"><?echo $zekil['p_tele']?></a></div>
 									</div>
 								</div>
 								<div class="popup_clickbox_area">
@@ -1324,20 +1405,17 @@ $img=mysql_fetch_array($imgquery);
 							</div>
 						</div>
 						<!--예약하기 팝업 E-->
-
-
-
 						<a href="#" class="openMask_3">
 						<div class="hiddenarea_reservation">
-								<div class="hiddenarea_reservation_inner">예약하기</div>
+						<div class="hiddenarea_reservation_inner">예약하기</div>
 						</div>
 						</a>
-					</div>
-
 					<ul class="ablebox">
 						<li class="disable">예약불가</li>
 						<li class="able">예약가능</li>
 					</ul>
+					</div>
+					
 				</div>
 			</form>
 <script>
@@ -1407,15 +1485,18 @@ function reserve_go(value){
 	color:#66ccff;
 }
 .contentjs{
-	width:100%;
+	width:91%;
+	margin-left:4.2%;
 	height:40px;
 	line-height:40px;
 	text-align:center;
 	background-color:#ccc;
+	cursor:pointer;
 }
 .hidejs{
 	display:none;
-	width:100%;
+	width:91%;
+	margin-left:4.2%;
 	height:50px;
 	margin-bottom:30px;
 	background-color:#ccc;
@@ -1571,11 +1652,13 @@ function reserve_go(value){
 $psql="select p_id, p_shopName, p_localName, benefit1, benefit2, benefit3, benefit4, p_tele, p_location1, rule from partner where p_id='".$data['p_id']."'";
 $q=mysql_query($psql);
 $partner=mysql_fetch_array($q);
+//map에 들어갈 변수
+$partnerMap=$partner['p_shopName'];
 ?>
-				<div class="hiddenarea" style="width:41%; margin-left:29.5%;" id="matter"><!--지도의 비밀은 여기에 있었다-->					
+				<div class="hiddenarea" id="matter"><!--지도의 비밀은 여기에 있었다-->					
 					<div class="cafeinfo">
 						<div class="f_a">
-							<div style="margin-bottom:30px;">
+							<div style="margin-bottom:13px;">
 						        <div class="menujs">
 									<div class="contentjs" onclick="dropdown()">예약취소 / 변경 / 환불규정<img id="upsidedown" src="../images/btn/down.png" style="width:30px;padding:17px 0 0 15px;"/></div>
 								
@@ -1592,7 +1675,75 @@ $partner=mysql_fetch_array($q);
 
 							</div>
 						</div>
-							<div class="tit"><font class="namefont"><b><?echo $partner['p_shopName']?> <?echo $partner['p_localName']?></b></font></div>
+<style>
+	#store_infomation_area{width:100%; overflow:hidden; padding-left:100px;}
+	#store_infomation_area .store_title_box{width:100%; overflow:hidden; float:left;}
+	#store_infomation_area .store_title{font-size:16pt; line-height:21pt; font-weight:bold;text-align:left; margin-bottom:20px;}
+	#store_infomation_area .store_image_text_box{width:100%; overflow:hidden; float:left;}
+	#store_infomation_area .store_image_box{position:relative; float:left; width:250px; height:120px; text-align:center; display:table-cell; background:#ececec;}
+	#store_infomation_area .store_image_box img{position:absolute; width:auto; height:auto; max-width:250px; max-height:120px;   margin:auto; top:0; bottom:0; left:0; right:0;}
+	#store_infomation_area .store_text_box{
+		padding-left:15px; float:left;
+		width: -webkit-calc(100% - 300px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 300px); /* for Firefox */
+		width:         calc(100% - 300px); /* for IE */
+	}
+	#store_infomation_area .container_box{width:100%; float:left; margin-bottom:3px;}
+	#store_infomation_area .icon_area{float:left; width:30px; text-align:center;}
+	#store_infomation_area .icon_area img{height:18px; margin:5px 0;}
+	#store_infomation_area .content_area{float:left; font-size:13pt; line-height:21pt; font-weight:bold;}
+	#store_infomation_area .info_and_benefit_content{width:100%; float:left; font-size:10pt; line-height:12pt; margin:3px;}
+@media all and (max-width:1041px){
+	#store_infomation_area{width:100%; overflow:hidden; padding-left:0px;}
+	#store_infomation_area .store_title_box{width:100%; overflow:hidden; float:left;}
+	#store_infomation_area .store_title{font-size:16pt; line-height:21pt; font-weight:bold;text-align:left; margin-bottom:20px;}
+	#store_infomation_area .store_image_text_box{width:100%; overflow:hidden; float:left;}
+	#store_infomation_area .store_image_box{position:relative; float:left; margin:auto; width:250px; height:120px; text-align:center; display:table-cell; background:#ececec;}
+	#store_infomation_area .store_image_box img{position:absolute; width:auto; height:auto; max-width:250px; max-height:120px;   margin:auto; top:0; bottom:0; left:0; right:0;}
+	#store_infomation_area .store_text_box{
+		padding-left:0px; float:left; margin-top:10px;
+		width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 0px); /* for Firefox */
+		width:         calc(100% - 0px); /* for IE */
+	}
+	#store_infomation_area .container_box{width:100%; float:left; margin-bottom:3px;}
+	#store_infomation_area .icon_area{float:left; width:30px; text-align:center;}
+	#store_infomation_area .icon_area img{height:18px; margin:5px 0;}
+	#store_infomation_area .content_area{float:left; font-size:13pt; line-height:21pt; font-weight:bold;}
+	#store_infomation_area .info_and_benefit_content{width:100%; float:left; font-size:10pt; line-height:12pt; margin:3px;}
+}
+
+</style>
+						<div id="store_infomation_area">
+							<div class="store_title_box">
+								<div class="store_title"><?echo $partner['p_shopName']?> <?echo $partner['p_localName']?></div>
+							</div>
+							<div class="store_image_text_box">
+								<div class="store_image_box">
+									<img class="partner_profile" src="../manager/partnerpic/<?echo $partner['p_id']?>.jpg" onerror="this.style.display='none';"/>
+								</div>
+								<div class="store_text_box">
+									<div class="container_box">
+										<div class="icon_area"><img src='../images/icon/icon_cafeinfo1.png'></div>
+										<div class="content_area">안내 및 혜택</div>
+									</div>
+									<div class="info_and_benefit_content"><?echo $partner['benefit1']?></div>
+									<div class="info_and_benefit_content"><?echo $partner['benefit2']?></div>
+									<div class="info_and_benefit_content"><?echo $partner['benefit3']?></div>
+									<div class="info_and_benefit_content"><?echo $partner['benefit4']?></div>
+									<div class="container_box">
+										<div class="icon_area"><img src='../images/icon/icon_cafeinfo2.png'></div>
+										<div class="content_area"><?echo $partner['p_tele']?></div>
+									</div>
+									<div class="container_box">
+										<div class="icon_area"><img src='../images/icon/icon_cafeinfo3.png'></div>
+										<div class="content_area"><?echo $partner['p_location1']?></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--
+						<div class="tit"><font class="namefont"><b><?echo $partner['p_shopName']?> <?echo $partner['p_localName']?></b></font></div>
 							<dl class="infobox">
 								<dt class="dtstyle"><img class="partner_profile" src="../manager/partnerpic/<?echo $partner['p_id']?>.jpg" onerror="this.style.display='none';" style="width:100px"/></dt>
 								<dd class="ddstyle"> 
@@ -1606,7 +1757,8 @@ $partner=mysql_fetch_array($q);
 									<p class="info3"><?echo $partner['p_location1']?></p>
 								</dd>
 							</dl>
-					</div>	
+						</div>
+						-->
 					<!--지도S-->
 					<div id="map"></div>
 					<script>
@@ -1730,8 +1882,9 @@ $partner=mysql_fetch_array($q);
 					?>
 					</div>
 				</div>
-			</div>			
-		<div class="container_inner pd44">
+			</div>		
+			</div>
+			<div class="container_inner pd44">
 			<div class="ohtertheme" style="overflow:hidden;">
 				<div class="maintit">이 카페의 다른테마</div>
 				<div class="slidearea">
@@ -1883,7 +2036,7 @@ function showSlidesa(n) {
 
 }
 </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=759d7a8b0f7209f4ab7d54ecb981c809"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=759d7a8b0f7209f4ab7d54ecb981c809&libraries=services"></script>
 	<script>
 		var container = document.getElementById('map');
 		var options = {
@@ -1893,6 +2046,33 @@ function showSlidesa(n) {
 		//지도깨짐 방지, DOM이 먼저 호출되서 출력이 안된다고한다. 
 		function mapload(){
 			var map = new daum.maps.Map(container, options);
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new daum.maps.services.Geocoder();
+
+			// 주소로 좌표를 검색합니다
+			geocoder.addr2coord("<?echo $partner['p_location1']?>", function(status, result) {
+
+				// 정상적으로 검색이 완료됐으면 
+				 if (status === daum.maps.services.Status.OK) {
+
+					var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+					// 결과값으로 받은 위치를 마커로 표시합니다
+					var marker = new daum.maps.Marker({
+						map: map,
+						position: coords
+					});
+
+					// 인포윈도우로 장소에 대한 설명을 표시합니다
+					var infowindow = new daum.maps.InfoWindow({
+						content: '<div style="width:150px;text-align:center;padding:6px 0;"><?echo $partnerMap?></div>'
+					});
+					infowindow.open(map, marker);
+
+					// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+					map.setCenter(coords);
+				} 
+			});
 		}
 </script>
 <script language="JavaScript">
@@ -1912,5 +2092,116 @@ function reserved(value){
 	k.style.backgroundColor="#ccc";
 	k.style.border="2px solid #fff";
 	k.onclick="";
+}
+</script>
+<script>
+function kCalendar(id, date) {
+
+	var kCalendar = document.getElementById(id);
+	
+	if( typeof( date ) !== 'undefined' ) {
+		date = date.split('-');
+		date[1] = date[1] - 1;
+		date = new Date(date[0], date[1], date[2]);
+	} else {
+		var date = new Date();
+	}
+	var currentYear = date.getFullYear();
+	//년도를 구함
+	
+	var currentMonth = date.getMonth() + 1;
+	//연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
+	
+	var currentDate = date.getDate();
+	//오늘 일자.
+	
+	date.setDate(1);
+	var currentDay = date.getDay();
+	//이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
+	
+	var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
+		lastDate[1] = 29;
+	//각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
+	
+	var currentLastDate = lastDate[currentMonth-1];
+	var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
+	//총 몇 주인지 구함.
+	
+	if(currentMonth != 1)
+		var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
+	else
+		var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
+	//만약 이번달이 1월이라면 1년 전 12월로 출력.
+	
+	if(currentMonth != 12) 
+		var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
+	else
+		var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
+	//만약 이번달이 12월이라면 1년 후 1월로 출력.
+
+	
+	if( currentMonth < 10 )
+		var currentMonth = '0' + currentMonth;
+	//10월 이하라면 앞에 0을 붙여준다.
+	
+	var calendar = '';
+	
+	calendar += '<div id="header">';
+	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
+	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+	calendar += '		</div>';
+	calendar += '		<table border="0" cellspacing="0" cellpadding="0">';
+	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+	calendar += '			<thead>';
+	calendar += '				<tr>';
+	calendar += '				  <th class="sun" scope="row">일</th>';
+	calendar += '				  <th class="mon" scope="row">월</th>';
+	calendar += '				  <th class="tue" scope="row">화</th>';
+	calendar += '				  <th class="wed" scope="row">수</th>';
+	calendar += '				  <th class="thu" scope="row">목</th>';
+	calendar += '				  <th class="fri" scope="row">금</th>';
+	calendar += '				  <th class="sat" scope="row">토</th>';
+	calendar += '				</tr>';
+	calendar += '			</thead>';
+	calendar += '			<tbody>';
+	
+	var dateNum = 1 - currentDay;
+	
+	for(var i = 0; i < week; i++) {
+		calendar += '			<tr>';
+		for(var j = 0; j < 7; j++, dateNum++) {
+			if( dateNum < 1 || dateNum > currentLastDate ) {
+				calendar += '				<td class="' + dateString[j] + '"> </td>';
+				continue;
+			}
+			calendar += '				<td class="' + dateString[j] + '" onclick="go('+currentYear+','+currentMonth+',this.innerHTML, <??>)" style="cursor:pointer">' + dateNum + '</td>'; //onclick으로 날짜값을 넘긴다.
+		}
+		calendar += '			</tr>';
+	}
+	
+	calendar += '			</tbody>';
+	calendar += '		</table>';
+	
+	kCalendar.innerHTML = calendar;
+}
+function go(year,month,day){//년월일을 받아와서 넘긴다.
+	var k=document.getElementById('today');
+	var maskarea=document.getElementById('maskarea');
+	maskarea.style.display="none";
+	if(month<10){
+		if(day<10)
+			location.href='./theme_view.php?year='+year+'&month=0'+month+'&day=0'+day+'&g_idx='+<?echo $_GET['g_idx']?>+'';
+		else
+			location.href='./theme_view.php?year='+year+'&month=0'+month+'&day='+day+'&g_idx='+<?echo $_GET['g_idx']?>+''
+	}
+	else{
+		if(day<10)
+			location.href='./theme_view.php?year='+year+'&month='+month+'&day=0'+day+'&g_idx='+<?echo $_GET['g_idx']?>+''
+		else
+			location.href='./theme_view.php?year='+year+'&month='+month+'&day='+day+'&g_idx='+<?echo $_GET['g_idx']?>+''
+	}
 }
 </script>

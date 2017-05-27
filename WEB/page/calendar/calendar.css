@@ -1,0 +1,22 @@
+/* Kurien / Kurien's Blog / http://blog.kurien.co.kr */
+/* 주석만 제거하지 않는다면, 어떤 용도로 사용하셔도 좋습니다. */
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+* {font-family: 'Nanum Gothic', serif;}
+
+#kCalendar {width: 250px; height: 250px; border: 1px solid #666;}
+
+#kCalendar #header {height: 50px; line-height: 50px; text-align: center; font-size: 18px; font-weight: bold}
+#kCalendar .button {color: #000; text-decoration: none;}
+
+#kCalendar table {width: 250px; height: 200px;}
+#kCalendar caption {display: none;}
+
+#kCalendar .sun {text-align: center; color: #ff6600;}
+#kCalendar .mon {text-align: center;}
+#kCalendar .tue {text-align: center;}
+#kCalendar .wed {text-align: center;}
+#kCalendar .thu {text-align: center;}
+#kCalendar .fri {text-align: center;}
+#kCalendar .sat {text-align: center; color: #56dcfc;}
+.dateString[j]{font-size:100pt;color:red;}

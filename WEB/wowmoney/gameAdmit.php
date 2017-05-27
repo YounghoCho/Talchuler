@@ -22,14 +22,23 @@ $sql="update game set
 		g_disname1='".$_POST['value6']."', g_disname2='".$_POST['value7']."', g_disname3='".$_POST['value8']."', g_disname4='".$_POST['value9']."', g_disname5='".$_POST['value10']."',
 		g_disprice1='".$_POST['dis6']."', g_disprice2='".$_POST['dis7']."', g_disprice3='".$_POST['dis8']."', g_disprice4='".$_POST['dis9']."', g_disprice5='".$_POST['dis10']."'
 		where g_idx='".$test[0]."'";
-mysql_query($sql);
-	//게임시간업데이트
-$sql="update game_time set gt_1='".$_POST['time1']."', gt_2='".$_POST['time2']."', gt_3='".$_POST['time3']."', gt_4='".$_POST['time4']."', gt_5='".$_POST['time5']."', gt_6='".$_POST['time6']."', gt_7='".$_POST['time7']."', gt_8='".$_POST['time8']."', gt_9='".$_POST['time9']."', gt_10='".$_POST['time10']."', gt_11='".$_POST['time11']."', gt_12='".$_POST['time12']."', gt_13='".$_POST['time13']."', gt_14='".$_POST['time14']."', gt_15='".$_POST['time15']."', gt_16='".$_POST['time16']."' where g_idx='".$test[0]."'";
 		mysql_query($sql);
-	//게임시간추가(게임은있는데, 시간이없는경우)
-		$sql="insert into game_time values('','".$_POST['g_idx']."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
-		mysql_query($sql);
-mysql_query($sql);
+		
+		$sql="select gt_idx from game_time where g_idx='".$test[0]."'";
+		$q=mysql_query($sql);
+		$ccc=mysql_fetch_array($q);
+		//이미 게임시간이 있으면
+		if($ccc[0]){
+			//게임시간업데이트
+			$sql="update game_time set gt_1='".$_POST['time1']."', gt_2='".$_POST['time2']."', gt_3='".$_POST['time3']."', gt_4='".$_POST['time4']."', gt_5='".$_POST['time5']."', gt_6='".$_POST['time6']."', gt_7='".$_POST['time7']."', gt_8='".$_POST['time8']."', gt_9='".$_POST['time9']."', gt_10='".$_POST['time10']."', gt_11='".$_POST['time11']."', gt_12='".$_POST['time12']."', gt_13='".$_POST['time13']."', gt_14='".$_POST['time14']."', gt_15='".$_POST['time15']."', gt_16='".$_POST['time16']."' where g_idx='".$test[0]."'";
+			mysql_query($sql);	
+		}
+		//게임시간이없으면 삽입
+		else{
+			//게임시간추가(게임은있는데, 시간이없는경우)
+			$sql="insert into game_time values('','".$_POST['g_idx']."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
+			mysql_query($sql);
+		}
 
 	//이미지추가
 	$sql="select filename, time, isnew from gameImageAsk where g_idx='".$test[0]."'";
@@ -47,10 +56,11 @@ mysql_query($sql);
 	mysql_query($sql);
 	
 	//만약 기존에 사진이 있는 게임이었으면, 기존사진을 지운다.
-	$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
-	$q=mysql_query($sql);
-	$data=mysql_fetch_array($q);
-	rename("../manager/gameImage/".$data[0].".jpg", "../manager/albumTrash/".$data[0].".jpg");
+//	$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
+//	$q=mysql_query($sql);
+//	$data=mysql_fetch_array($q);
+//	rename("../manager/gameImage/".$data[0].".jpg", "../manager/albumTrash/".$data[0].".jpg");
+//사진이름 형식에 시간이 붙기때문에, 캐시때문에 삭제해주는 과정은 필요없어졌다.
 }
 else{
 	//게임추가
@@ -72,7 +82,8 @@ else{
 		'".$_POST['g_p9']."', '".$_POST['g_p10']."', '".$_POST['g_p11']."', '".$_POST['g_p12']."', '".$_POST['g_p13']."', '".$_POST['g_p14']."', '".$_POST['g_p15']."', '".$_POST['g_p16']."',
 		'".$_POST['value6']."', '".$_POST['value7']."', '".$_POST['value8']."', '".$_POST['value9']."', '".$_POST['value10']."',
 		'".$_POST['dis6']."', '".$_POST['dis7']."', '".$_POST['dis8']."', '".$_POST['dis9']."', '".$_POST['dis10']."')";
-mysql_query($sql);
+		mysql_query($sql);
+
 	//게임시간추가
 		$sql="insert into game_time values('','".$_POST['g_idx']."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
 		mysql_query($sql);
@@ -80,7 +91,7 @@ mysql_query($sql);
 	$sql="insert into gameImage (gi_idx, g_idx, p_id, filename, time, isnew) select gi_idx, g_idx, p_id, filename, time, isnew 
        from gameImageAsk
 	   where g_idx='".$_POST['g_idx']."'";
-mysql_query($sql);
+	mysql_query($sql);
 }
 //gameAsk지워야함
 $sql="delete from gameAsk where g_idx='".$_POST['g_idx']."'";

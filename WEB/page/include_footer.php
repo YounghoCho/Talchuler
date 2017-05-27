@@ -7,7 +7,7 @@
 	<footer id="footer">
 		<div class="footer_inner">
 			<h1><a href="#"><img src="../images/common/logo_f.png" alt="logo" /></a></h1>
-			<div class="phonebox">1566-0280</div>
+			<div class="phonebox"><a href="tel:1566-0280">1566-0280</a></div>
 			<div class="f_top">
 				<div class="left">
 					<p class="b">이놀루션</p>
@@ -17,9 +17,9 @@
 				</div>
 				<div class="right">
 					<p class="b">고객센터</p>
-					<p>1566-0280 (평일 am10:00~pm6:00)</p>
+					<p><a href="tel:1566-0280">1566-0280</a> (평일 am10:00~pm6:00)</p>
 					<p>주옐로카카오: 탈출러</p>
-					<p>이메일: <a href="#">talchul_er@naver.com</a></p>
+					<p>이메일: <a href="mailto:talchul_er@naver.com">talchul_er@naver.com</a></p>
 				</div>
 			</div>
 			<div class="f_bottom">

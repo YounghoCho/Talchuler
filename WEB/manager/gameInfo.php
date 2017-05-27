@@ -123,7 +123,8 @@ function button_onskill(value){
 				e1=1;
 				v5.value="0";
 				now.style.backgroundColor="white";
-				now.style.color='white';break;
+				now.style.color='white';
+				break;
 
 			}
 		case 6:
@@ -165,7 +166,7 @@ function button_onskill(value){
     width :         calc(80% - 59px); /* for IE */
 	overflow:auto;
 	margin:50 0 0 33;
-	padding:0 0 30 26;
+	padding:0 0 10 26;
 }
 
 #Main_content_area{
@@ -174,7 +175,7 @@ function button_onskill(value){
 	width : -webkit-calc(80% - 59px); /* for Chrome, Safari */
     width :    -moz-calc(80% - 59px); /* for Firefox */
     width :         calc(80% - 59px); /* for IE */
-	margin:0 0 0 33;
+	margin:-5 0 0 33;
 	padding:15 0 30 26;
 }
 
@@ -368,12 +369,16 @@ function button_onskill(value){
 	height:26px;
 }
 .discountInfo{
+	width:100%;
+	height:30px;
 	margin-top:3%;
-	margin-bottom:1%;
-	margin-left:3.5%;
-	font-size:18px;
+	margin-bottom:3%;
+	font-size:16pt;
+	text-align:center;
 	font-weight:bold;
+	padding:4 0 0 0;
 	color:#626262;
+	background:#e6e6e6;
 }
 .discountContent{
 	margin-left:4%;
@@ -667,9 +672,35 @@ $(function(){
 	border:2px solid #bebebe;
 	border-radius:5px;
 }
-.td3{
+.price{
+	width:100%;
+	height:80px;
+	margin-top:-2%;
+	margin-left:3%;
+}
+.info{
+	width:100%;
+	height:50px;
+	margin-left:3%;
+}
+.pr1{
 	color:#ff6600;
 	font-weight:bold;
+}
+.sp1{
+	font-size:14pt;
+	font-weight:bold;
+}
+.sp2{
+	margin-left:10px;
+}
+.tp1{
+	margin-top:3%;
+	margin-left:0.5%;
+	color:#ff6600;
+	font-weight:bold;
+}
+.tp2{
 }
 </style>
 <!--
@@ -711,6 +742,8 @@ $data=mysql_fetch_array($q);
 		<div id="Main_titlebar">
 			<div class="title">게임정보관리</div>
 		</div>
+		<p class="tp1">최저가 인증?</p>
+		<p class="tp2">모든 판매사이트 중 최저가로 입력해주신 후 [계정정보수정]에서 최저가보장-동의 후 신청 체크해주시면 &lt;최저가인증&gt;라벨을 적용해드립니다.</p>
 	</div>
 
 	<!-- partner_priceAsk form S-->
@@ -768,18 +801,23 @@ $data=mysql_fetch_array($q);
 					<div class="discountInfo">할인정보</div>
 					<table class="tPrice">
 						<tr>
-							<td style="width:150px;">*탈출러 판매가(1인가격)</td>
+							<td style="width:180px; color:#1671B6; font-size:14pt; font-weight:bold;">탈출 프라이쓰(1인)</td>
 							<td style="padding-left:30px; width:230px">
 								주중 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_weekprice']?>" name="week"> 원
 							</td>
 							<td style="padding-left:8%;">
 								주말 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_holyprice']?>" name="holy"> 원 <font></font>
 							</td>
-							<td class="td3">
-								**할인하지 않으실 경우 정가로 기입해주세요.
-							</td>
 						</tr>
 					</table>
+				</div>
+				<div class="price">
+				<p class="pr1">*탈출 프라이쓰란?</p>
+				<p class="pr2">-1인당 가격으로 할인판매하는 방법입니다.(ex:탈출 프라이쓰가 15000원일 때 = 2명:30,000원/3명:45,000원/...6명:90,000원)</p>
+				<p class="pr3">-<u>필수가 아니므로</u> 이용하시지 않으시려면 입력하지 않으셔도 됩니다.</p>
+				</div>
+				<div class="info">
+				<span class="sp1">매장 할인정보</span><span class="sp2">매장에서 제공하는 할인서비스 정보를 입력해주세요.</span>
 				</div>
 				<div class="discountContent" style="margin-top:-2%;">
 					할인종류
@@ -881,7 +919,7 @@ $data=mysql_fetch_array($q);
 		if($count[0]==0){}
 		else{
 		?>
-		<script>alert("더정보가없지롱");history.back();</script>
+		<script>alert("게임이 더이상 없습니다.");history.back();</script>
 		<?
 		}
 	}
@@ -1110,18 +1148,23 @@ $data=mysql_fetch_array($q);
 			<div class="discountInfo">할인정보</div>
 				<table class="tPrice">
 					<tr>
-						<td style="width:150px;">*탈출러 판매가(1인가격)</td>
+						<td style="width:180px; color:#1671B6; font-size:14pt; font-weight:bold;">탈출 프라이쓰(1인)</td>
 						<td style="padding-left:30px; width:230px">주중 
 							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" value="<?echo $basic['g_weekprice']?>" name="week"> 원
 						</td>
 						<td style="padding-left:8%;">주말 
 							<input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy2" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText" value="<?echo $basic['g_holyprice']?>" name="holy"> 원
 						</td>
-						<td class="td3">
-								**할인하지 않으실 경우 정가로 기입해주세요.
-						</td>
 					</tr>
 				</table>
+			</div>
+			<div class="price">
+				<p class="pr1">*탈출 프라이쓰란?</p>
+				<p class="pr2">-1인당 가격으로 할인판매하는 방법입니다.(ex:탈출 프라이쓰가 15000원일 때 = 2명:30,000원/3명:45,000원/...6명:90,000원)</p>
+				<p class="pr3">-<u>필수가 아니므로</u> 이용하시지 않으시려면 입력하지 않으셔도 됩니다.</p>
+				</div>
+				<div class="info">
+				<span class="sp1">매장 할인정보</span><span class="sp2">매장에서 제공하는 할인서비스 정보를 입력해주세요.</span>
 			</div>
 			<div class="discountContent" style="margin-top:-2%">할인종류
 				<select id="discount6" name="discount1" class="discountContent_inner" onChange="getSelectValue6();">
@@ -1184,7 +1227,7 @@ $data=mysql_fetch_array($q);
 				<input type="text" onKeyPress="return numkeyCheck(event)" maxlength="6" placeholder="ex/2000" id="dis10" style="height:30px;width:20%; font-size:14px; width:125px; text-align:center;" class="defText" name="dis10" value="<?echo $data['g_disprice5']?>"> 원
 			</div>
 			<div class="lastMent">
-				탈출러에서 검토 후 등록됩니다. 조금만기다려주세요!(최대3일 소요)승인결과는 메일로 안내해드리겠습니다.
+				탈출러에서 검토 후 등록됩니다. 조금만 기다려주세요!(최대3일 소요)&nbsp;승인결과는 메일로 안내해드리겠습니다.
 			</div>
 			<div align="center";>
 				<input type="button" class="delBtn" value="삭제" onclick="deleteGame()">

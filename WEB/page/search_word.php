@@ -892,7 +892,7 @@ include('./include_head.php');
 			width :         calc(50% - 25px); /* for IE */
 			height:40px;
 			float:left;
-			padding:7px 0 7px 25px;
+			padding:7px 0 7px 15px;
 			overflow:hidden;
 		}
 
@@ -914,12 +914,12 @@ include('./include_head.php');
 			height:40px;
 			color:#0066cc;
 			float:left;
-			padding:7px 25px 7px 0;
+			padding:7px 15px 7px 0;
 			overflow:hidden;
 		}
 
 		#gameinfo_stack .info_title{
-			width:40%;
+			width:30%;
 			font-size:11pt;
 			line-height:20pt;
 			text-align:left;
@@ -928,7 +928,7 @@ include('./include_head.php');
 		}
 
 		#gameinfo_stack .info_price{
-			width:60%;
+			width:70%;
 			font-size:15pt;
 			line-height:18pt;
 			text-align:right;
@@ -1001,7 +1001,7 @@ while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
 		<div class="price_container"> <!--가격을 담는 공간-->
 			<div class="gray_price">
 				<div class="info_title">기본가</div>
-				<div class="info_price"><?if($data['g_p1'])echo $data['g_p1'];else echo ($data['g_p2']/2);?>원</div>
+				<div class="info_price"><?if($data['g_p1'])echo number_format($data['g_p1']);else echo number_format($data['g_p2']/2);?>원</div>
 			</div>
 			<div class="arrow_icon">
 				<img src="../images/icon/icon_right_triangle.png"/>
@@ -1009,7 +1009,7 @@ while($data=mysql_fetch_array($query)){	//회원수만큼 돌고
 			<div class="blue_price">
 			<?if($data['g_weekprice']!='0'){?>
 				<div class="info_title">판매가</div>
-				<div class="info_price"><?echo $data['g_weekprice']?>원</div>
+				<div class="info_price"><?echo number_format($data['g_weekprice'])?>원</div>
 			</div>
 			<?}?>
 		</div>
