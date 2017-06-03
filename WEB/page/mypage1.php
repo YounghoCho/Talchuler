@@ -15,7 +15,7 @@ $data=mysql_fetch_array($query);
 <?
 include('./include_mypage.php');
 ?>
-				<div class="c_info">
+			<!--	<div class="c_info">
 					<div class="my_tab">
 						<a href="mypage1.php" class="on">예약 내역</a>
 						<a href="mypage2.php">찜한 곳</a>
@@ -28,7 +28,7 @@ include('./include_mypage.php');
 					<!-- 예약이 없을 때 -->
 					<!--div class="no_myreslwrap">예약하신 방탈출게임이 없습니다.</div-->
 					<!-- 예약이 있을 때 -->
-					<div class="myreslwrap">
+				<!--	<div class="myreslwrap">
 						<div class="myreslist">
 							<div class="myres1"><span>예약 번호</span>(테마 번호   +날짜   +시간)</div>
 							<div class="myres2">
@@ -114,6 +114,7 @@ include('./include_mypage.php');
 					</span>
 					<a href="#" class="btn_page_last">다음&nbsp; &nbsp; &gt;</a>
 				</div>
+				-->
 			</div>
 		</div>
 	</div>

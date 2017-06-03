@@ -2,13 +2,6 @@
 include('./include_head.php');
 include('./include.php');
 ?>
-<html xml:lang="ko" lang="ko">
- 
-<head>
-<title>탈출러</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <style>
 .datebox {position:relative;margin-right:5px; display:inline-block; vertical-align:middle;}
@@ -16,16 +9,14 @@ include('./include.php');
 .datebox img {position:absolute; top:12px; right:5px; width:14px}
 .datebox img {width:11px; top:12px;}
 
-</style>
-</head>
-
-		<div class="choicearea">
-			<div class="inner">
-			<?include('./search_module.php');?>
-			</div>
-		</div>
-
-<style>
+.selbox .select_st1 {}
+select.select_st1.w80{width:80px;border-bottom:1px solid; background: url(../images/icon/icon_down_arrow_m.png) no-repeat 90% 49%; background-size:11px auto;}
+select.select_st1.w50{width:50px;border-bottom:1px solid;}
+select.select_st1.w100{width:100px;border-bottom:1px solid;}
+.pages{color:#999;margin-left:5px;margin-right:5px;}
+.paging{position:absolute;bottom:30px;left:50%;}
+.choicearea{padding-bottom:40px;}
+#hrhr{height:2px;width:100%;background-color:#56dcfc;margin:25px 0 10px 0;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -45,6 +36,9 @@ include('./include.php');
 .hidecontent{width:100%;height:84px;overflow:hidden;}
 
 @media all and (max-width:1041px){
+#detailPrice{font-size:10px;}
+#hrhr{display:none;}
+.paging{position:absolute;bottom:5px;left:33%;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -81,8 +75,10 @@ include('./include.php');
 		width :    -moz-calc(33.3% - 20px); /* for Firefox */
 		width :         calc(33.3% - 20px); /* for IE */ 
 		margin:10px;
+		margin-bottom:100px;
 		height:336px; float:left; overflow:hidden;
 		border-top:1px solid #cccccc;
+
 	}
 	/*이미지 공간*/
 	#gameinfo_stack .image_content{
@@ -137,6 +133,11 @@ include('./include.php');
 		width :         calc(100% - 15px); /* for IE */
 		float:left;
 		margin:5px 0 0 5px;
+		text-overflow:ellipsis;
+		-o-text-overflow:ellipsis;
+		overflow:hidden;
+		white-space:nowrap;
+		word-wrap:normal !important;
 	}
 
 	#gameinfo_stack .text_location img{
@@ -223,7 +224,7 @@ include('./include.php');
 			overflow:hidden;
 			font-weight:bold;
 			padding-top:2px;
-			padding-left:50px;
+			padding-left:35px;
 			border:1px solid #cccccc;
 		}
 
@@ -279,7 +280,7 @@ include('./include.php');
 			background-color:#eeeeee;
 			overflow:hidden;
 			font-weight:bold;
-			padding-left:50px;
+			padding-left:35px;
 			margin-top:0px;
 			border-bottom:1px solid #cccccc;
 			border-left:1px solid #cccccc;
@@ -294,7 +295,7 @@ include('./include.php');
 		}
 
 		#gameinfo_stack .talchul_price_text{
-			font-size:11pt;
+			font-size:14pt;
 			line-height:20pt;
 			text-align:left;
 			float:left;
@@ -308,7 +309,7 @@ include('./include.php');
 			height:30px;
 			float:left;
 			padding-top:3px;
-			padding-left:15px;
+			padding-left:13px;
 			overflow:hidden;
 		}
 
@@ -337,7 +338,7 @@ include('./include.php');
 			line-height:20pt;
 			text-align:left;
 			float:left;
-			margin-left:31px;
+			margin-left:20px;
 			color:#0099ff;
 		}
 
@@ -460,6 +461,12 @@ include('./include.php');
 			width :         calc(100% - 15px); /* for IE */
 			float:left;
 			margin:5px 0 0 5px;
+			max-height:20px;
+			text-overflow:ellipsis;
+			-o-text-overflow:ellipsis;
+			overflow:hidden;
+			white-space:nowrap;
+			word-wrap:normal !important;
 		}
 
 		#gameinfo_stack .text_location img{
@@ -546,19 +553,19 @@ include('./include.php');
 			font-weight:bold;
 			margin-top:10px;
 			padding-top:2px;
-			padding-left:50px;
+			padding-left:10px;
 			border:none;
 			border-top:1px solid #cccccc;
 		}
 
 		#gameinfo_stack .how_many_price_box { /*인원-가격 박스*/
-			padding-top:3px;
+			padding-top:7px;
 			float:left;
 			overflow:auto;
 		}
 
 		#gameinfo_stack .how_many_wave { /*중간 물결*/
-			padding-top:3px;
+			padding-top:7px;
 			float:left;
 			font-size:11pt;
 			margin:0 5px;
@@ -567,10 +574,11 @@ include('./include.php');
 		#gameinfo_stack .how_many_dropdown { /*드롭다운 영역*/
 			float:right;
 			text-align:center;
-			font-size:3pt;
-			line-height:10pt;
+			font-size:7pt;
+			line-height:8pt;
 			color:#666666;
 			overflow:auto;
+			padding-top:6px;
 		}
 
 		#gameinfo_stack .how_price { /*인원-가격 박스 중 가격*/
@@ -601,12 +609,12 @@ include('./include.php');
 		#gameinfo_stack .talchul_price{
 			height:30px;
 			float:left;
-			padding-top:3px;
+			padding-top:5px;
 			overflow:hidden;
 		}
 
 		#gameinfo_stack .talchul_price_text{
-			font-size:11pt;
+			font-size:14pt;
 			line-height:20pt;
 			text-align:left;
 			float:left;
@@ -651,6 +659,7 @@ include('./include.php');
 			float:left;
 			margin-left:31px;
 			color:#0099ff;
+			padding-top:3px;
 		}
 
 		#gameinfo_stack .info_price{
@@ -660,11 +669,12 @@ include('./include.php');
 			float:left;
 			margin-left:10px;
 			color:#0099ff;
+			padding-top:3px;
 		}
 
 		#gameinfo_stack .blue_price img{
 			float:left;
-			margin:6px 0 0 4px;
+			margin:5px 0 0 4px;
 		}
 
 
@@ -702,7 +712,11 @@ include('./include.php');
 	}
 
 </style>
-
+ 		<div class="choicearea">
+			<div class="inner">
+			<?include('./search_module.php');?>
+			</div>
+		</div>
 	<!--	<div class="timenow">
 			<div class="inner">
 			<!--<div class="tit"><strong><b>타임 핫딜!</b></strong><em>선착순, 지금바로 시작하는 게임!  30~80% 핫딜까지!</em>
@@ -915,13 +929,15 @@ include('./include.php');
 		</div>-->
 
 
-</div><!--여기까지가 wrap이라서 파란선이 남는다-->
+<!--</div><!--여기까지가 wrap이라서 파란선이 남는다, 근데 이걸 여기서 끊으면 전체 wrap이 끊겨서 페이징이 위에나와.. 아래로절대안내려감; 그래서 div을 넣어줬따-->
+<div id="hrhr"></div>
 
 <!--search_module.php S-->
 <?
 //먼저 지역데이터로 파트너를 검색한다.
 //홍대-마포구, 신촌-서대문구, 강남-강남구, 대학로-종로구, 신림-관악구, 건대-광진구, 목동-양천구
 //안양시, 화성시, 수원시
+
 $startPostNumber=0;
 $endPostNumber=0;
 $startLevel=$_GET['start_level'];
@@ -982,206 +998,270 @@ switch($_GET['rigion']){
 		$endPostNumber='18635';
 		break;
 }
-$postSql="select p_id, p_localName, p_shopName from partner where p_postNumber1 >= '".$startPostNumber."' and p_postNumber1 <= '".$endPostNumber."'";
-$postQuery=mysql_query($postSql);
-//while($post=mysql_fetch_array($postQuery)){	//회원수만큼 돌고
-	$p=3;//페이징되면 여기p랑 아래 p++랑 whiel문안에 p삭제하고, while문 안에 $post=mysql_~ 넣어야한다.
-	while($p>0){
-	$post=mysql_fetch_array($postQuery);
-	//난이도> <, 공포 여부에 따라 게임을 출력한다.
-	if($_GET['horror']=='공포포함'){
-		$sql="select * from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and p_id='".$post['p_id']."'";
-	}elseif($_GET['horror']=='공포만'){
-		$sql="select * from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror > 0 and p_id='".$post['p_id']."'";
-	}else{
-		$sql="select * from game where g_level >= '".$startLevel."' and g_level <= '".$endLevel."' and g_horror <= 0 and p_id='".$post['p_id']."'";
-	}
-	$q=mysql_query($sql);
-	while($data=mysql_fetch_array($q)){
-		//partner = $post
-		//game = $data
-		//gameImage = $image
-		$imagesql="select filename from gameImage where g_idx='".$data['g_idx']."'";
-		$imageq=mysql_query($imagesql);
-		$image=mysql_fetch_array($imageq);
-	//실제출력
-	?>
+//검색 결과 개수 S
+if($_GET['horror']=='공포포함'){
+		$sql="SELECT g_idx
+		FROM game a, partner b 
+		WHERE a.p_id=b.p_id 
+		AND (b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."')
+		AND (a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."') 
+		GROUP BY a.g_idx";
+}
+if($_GET['horror']=='공포만'){
+		$sql="SELECT g_idx
+		FROM game a, partner b 
+		WHERE a.p_id=b.p_id 
+		AND b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror > 0
+		GROUP BY a.g_idx";
+}
+if($_GET['horror']=='공포X'){
+		$sql="SELECT g_idx
+		FROM game a, partner b 
+		WHERE a.p_id=b.p_id 
+		AND b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror <= 0
+		GROUP BY a.g_idx";
+}
+if($_GET['input']!=''){
+		$sql="SELECT DISTINCT * 
+		FROM game a, partner c  
+		WHERE a.p_id=c.p_id 
+		AND (a.g_title like '%".$_GET['input']."%' or a.g_content like '%".$_GET['input']."%' or c.p_shopName like '%".$_GET['input']."%' or c.p_location1 like '%".$_GET['input']."%')
+		GROUP BY a.g_idx";
+	}//소괄호뺴면 큰일나;
 
+//검색 결과 개수 E
+//$sql="SELECT g_idx FROM game ORDER BY g_idx DESC";
+$k = mysql_query($sql);
+$num = mysql_num_rows($k);
 
-<div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
-	<div class="gameinfo_container"> <!--컨텐츠를 담는 공간-->
-		<div class="image_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--이미지를 담는 공간-->
-			<div class="image_area"> <!--이미지 담기-->
-				<img src="../manager/gameImage/<?echo $image['filename']?>.jpg">
-			</div>
-		</div>
-		<div class="text_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--텍스트를 담는 공간-->
-			<div class="text_title"> <!--제목-->
-				<?echo $data['g_title']?>
-			</div>
-			<div class="text_location"> <!--지역-->
-				<img src="../images/icon/shop.png"/>
-				<?echo $post['p_shopName']?>&nbsp;<?echo $post['p_localName']?>
-			</div>
-			<div class="text_double_container"> <!--텍스트 영역 공간 두개로-->
-				<div class="text_hard"> <!--난이도-->
-					<img src="../images/icon/icon_new1.png"/>
-					난이도 <?echo $data['g_level']?>
-				</div>
-				<div class="text_fear"> <!--공포감-->
-					<img src="../images/icon/icon_new2.png"/>
-					공포감 <?echo $data['g_horror']?>
-				</div>
-			</div>
-			<div class="text_detail"> <!--상세설명-->
-				<?
-					if($data['g_summary']==''){
-						$data['g_summary']=$data['g_content'];
-						echo $data['g_summary'];
-					}else{
-						echo $data['g_summary'];					
-					}
-					?>
-			</div>
-		</div>
-		<div class="price_container2">
-			<div class="how_many_price_box">
-				<?
-				//2인이 아니라 3인~4인부터 시작할 경우
-				$i=2; 
-				if($data['g_p2']=='0')
-					$i++;
-				if($data['g_p2']=='0' && $data['g_p3']=='0')
-					$i++;
-				if($data['g_p2']=='0' && $data['g_p3']=='0')
-					$i++;
-				$firstPriceIndex='g_p'.$i;
-				?>
-				<div class="how_many">(<?echo $i?>인)</div>
-				<div class="how_price"><?echo $data[$firstPriceIndex]?>원</div>
-			</div>
-			<div class="how_many_wave">&nbsp~&nbsp</div>
-			<div class="how_many_price_box">
-				<?
-				//8인이 아니라 4인~7인으로 끝날경우
-				$k=8; 
-				if($data['g_p8']=='0')
-					$k--;
-				if($data['g_p8']=='0' && $data['g_p7']=='0')
-					$k--;
-				if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0')
-					$k--;
-				if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0')
-					$k--;
-				if($k>$i && $data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0' && $data['g_p4']=='0')
-					$k--;
-				$lastPriceIndex='g_p'.$k;
-				?>
-				<div class="how_many">(<?echo $k?>인)</div>
-				<div class="how_price"><?echo $data[$lastPriceIndex]?>원</div>
-			</div>
-			<div class="how_many_dropdown" onclick="detail()">
-				가격<br>자세히▼
-			</div>
-			<script>
-			var pbpa=1;
-			function detail(){
-				var price_by_person_area= document.getElementById('price_by_person_area');
-				if(pbpa>0){
-				price_by_person_area.style.display="block";
-				pbpa=-1;
-				}else{
-				price_by_person_area.style.display="none";
-				pbpa=1;
-				}
+/*테스트할때
+print_r($_GET);
+echo($num);*/
+
+$page = ($_GET['page'])?$_GET['page']:1;
+$list = 18;
+$block = 5;
+
+$pageNum = ceil($num/$list); // 총 페이지
+$blockNum = ceil($pageNum/$block); // 총 블록
+$nowBlock = ceil($page/$block);
+
+$s_page = ($nowBlock * $block) - 4;
+if ($s_page <= 1) {
+    $s_page = 1;
+}
+$e_page = $nowBlock*$block;
+if ($pageNum <= $e_page) {
+    $e_page = $pageNum;
+}
+?>
+	<div class="paging">
+		<a href="<?=$PHP_SELP?>?page=<?=$s_page-1?>&day=<?=$_GET['day']?>&start_time=<?=$_GET['start_time']?>&end_time=<?=$_GET['end_time']?>&start_level=<?=$_GET['start_level']?>&end_level=<?=$_GET['end_level']?>&horror=<?=$_GET['horror']?>&rigion=<?=$_GET['rigion']?>&input=<?echo $_GET['input']?>"><img src="../images/btn/left.png" style="margin-top:4px;margin-right:3px;"/>&nbsp;</a>
+<?
+for ($p=$s_page; $p<=$e_page; $p++) {
+?>
+	<!--페이징-->
+		<a class="pages" id="<?echo $nowBlock?>" href="<?=$PHP_SELP?>?page=<?=$p?>&day=<?=$_GET['day']?>&start_time=<?=$_GET['start_time']?>&end_time=<?=$_GET['end_time']?>&start_level=<?=$_GET['start_level']?>&end_level=<?=$_GET['end_level']?>&horror=<?=$_GET['horror']?>&rigion=<?=$_GET['rigion']?>&input=<?echo $_GET['input']?>">
+			<?
+			if($page==$p){
+			?>
+			<font style="color:#56dcfc;font-weight:bold;"><?=$p?></font>
+			<?
 			}
-			</script>
-		</div>
-		<div class="price_container"> <!--가격을 담는 공간-->
-			<?if($data['g_weekprice']!='0'){?>
-			<div class="talchul_price">
-				<div class="talchul_price_text">탈출 프라이쓰</div>
-			</div>
+			else
+				echo $p
+				?>
+		</a>
 
-			<div class="blue_price">
-				
-				<div class="info_title">1인</div>
-				<div class="info_price"><?echo number_format($data['g_weekprice'])?>원</div>
-				<img src="../images/icon/strong.png"/>
-
-			</div>
-			<?}?>
-		</div>
-		<div class="price_by_person_area" id="price_by_person_area">
-			<?if($data['g_p2']!='0'){?>
-			<div class="price_by_person">2인:<?echo $data['g_p2']?></div><?}?>
-			<?if($data['g_p3']!='0'){?>			
-			<div class="price_by_person">3인:<?echo $data['g_p3']?></div><?}?>
-			<?if($data['g_p4']!='0'){?>	
-			<div class="price_by_person">4인:<?echo $data['g_p4']?></div><?}?>
-			<?if($data['g_p5']!='0'){?>	
-			<div class="price_by_person">5인:<?echo $data['g_p5']?></div><?}?>
-			<?if($data['g_p6']!='0'){?>	
-			<div class="price_by_person">6인:<?echo $data['g_p6']?></div><?}?>
-			<?if($data['g_p7']!='0'){?>	
-			<div class="price_by_person">7인:<?echo $data['g_p7']?></div><?}?>
-			<?if($data['g_p8']!='0'){?>	
-			<div class="price_by_person">8인:<?echo $data['g_p8']?></div><?}?>
-		</div>
+<?
+}
+?>
+	<!--인덱스-->
+		&nbsp;<a href="<?=$PHP_SELP?>?page=<?=$e_page+1?>&day=<?=$_GET['day']?>&start_time=<?=$_GET['start_time']?>&end_time=<?=$_GET['end_time']?>&start_level=<?=$_GET['start_level']?>&end_level=<?=$_GET['end_level']?>&horror=<?=$_GET['horror']?>&rigion=<?=$_GET['rigion']?>&input=<?echo $_GET['input']?>"><img src="../images/btn/right.png" style="margin-top:4px;margin-left:3px;"/></a>
 	</div>
-</div>
+<?
+$s_point = ($page-1) * $list;
 
-
-
-
-<!--
-	<table class="pieces" onclick='letsview(<?echo $data['g_idx']?>)'>
-	<tr>
-		<td>
-			<table style="table-layout: fixed;height:165px;">
-				<tr>
-				<td rowspan="3" width="165px" style="padding-top:10px; padding-bottom:10px;">
-					<div class="gImage_box">
-						<img class="gImage" src="../manager/gameImage/<?echo $image['filename']?>.jpg">
-					</div>
-				</td>
-				<td style="height:20px;padding-top:10px;">
-					<font size="4pt" style="font-weight:bold"><?echo $data['g_title']?></font></td>
-				</tr>
-				<tr>
-				<td style="vertical-align:top;height:40px;">
-					<img class="img1" src="../images/icon/shop.png"/><?echo $post['p_localName']?><br>
-					<img class="img2" src="../images/icon/icon_new1.png"/>난이도 : <?echo $data['g_level']?>&nbsp;&nbsp;
-					<img  class="img3" src="../images/icon/icon_new2.png"/>공포감 : <?echo $data['g_horror']?>
-				</td>
-				</tr>
-				<tr>
-				<td style="vertical-align:top;padding:0;overflow:hidden;">
-					<div class="hidecontent">
-					<?
-					if($data['g_summary']==''){
-						$data['g_summary']=$data['g_content'];
-						echo $data['g_summary'];
-					}else{
-						echo $data['g_summary'];					
-					}
-					?>
-					</div>
-				</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	</table>
--->
-	<?
- }
-	$p--;
+	//난이도> <, 공포 여부에 따라 게임을 출력한다.
+	//3중 조인하는 방법, 그리고 group by를 해주면 중복데이터가 사라진다, Limit를 해줘야 페이지 출력을 제한할수있다.
+if($_GET['horror']=='공포포함'){
+		$three="SELECT *
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' 
+		GROUP BY a.g_idx 
+		LIMIT $s_point, $list";
+}
+if($_GET['horror']=='공포만'){
+		$three="SELECT DISTINCT * 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror > 0 
+		GROUP BY a.g_idx 
+		LIMIT $s_point, $list";
+}
+if($_GET['horror']=='공포X'){
+		$three="SELECT DISTINCT * 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror <= 0 
+		GROUP BY a.g_idx 
+		LIMIT $s_point, $list";
+	}
+if($_GET['input']!=''){
+		$three="SELECT DISTINCT * 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND (a.g_title like '%".$_GET['input']."%' or a.g_content like '%".$_GET['input']."%' or c.p_shopName like '%".$_GET['input']."%' or c.p_location1 like '%".$_GET['input']."%')
+		GROUP BY a.g_idx 
+		LIMIT $s_point, $list";	
 }
 
+$real_data = mysql_query($three);
+
+for ($i=1; $i<=$num; $i++) {
+    $data = mysql_fetch_array($real_data);
+
+	if ($data == false) {
+        exit;
+    }
 ?>
+	<!--출력부-->
+    <div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
+		<div class="gameinfo_container" > <!--컨텐츠를 담는 공간-->
+
+			<div class="image_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--이미지를 담는 공간-->
+				<div class="image_area"> <!--이미지 담기-->
+					<img src="../manager/gameImage/<?echo $data['filename']?>.jpg">
+				</div>
+			</div>
+
+			<div class="text_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--텍스트를 담는 공간-->
+				<div class="text_title"> <!--제목-->
+					<?echo $data['g_title']?>
+				</div>
+				<div class="text_location"> <!--지역-->
+					<img src="../images/icon/shop.png"/>
+					<?echo $data['p_shopName']?>&nbsp;<?echo $data['p_localName']?>
+				</div>
+				<div class="text_double_container"> <!--텍스트 영역 공간 두개로-->
+					<div class="text_hard"> <!--난이도-->
+						<img src="../images/icon/icon_new1.png"/>
+						난이도 <?echo $data['g_level']?>
+					</div>
+					<div class="text_fear"> <!--공포감-->
+						<img src="../images/icon/icon_new2.png"/>
+						공포감 <?echo $data['g_horror']?>
+					</div>
+				</div>
+				<div class="text_detail"> <!--상세설명-->
+						<?echo $data['g_content']?>
+				</div>
+			</div>
+			
+			<div class="price_container2">
+				<div class="how_many_price_box">
+					<?
+					//2인이 아니라 3인~4인부터 시작할 경우
+					$i=2; 
+					if($data['g_p2']=='0')
+						$i++;
+					if($data['g_p2']=='0' && $data['g_p3']=='0')
+						$i++;
+					if($data['g_p2']=='0' && $data['g_p3']=='0')
+						$i++;
+					$firstPriceIndex='g_p'.$i;
+					?>
+					<div class="how_many">(<?echo $i?>인)</div>
+					<div class="how_price"><?echo number_format($data[$firstPriceIndex])?>원</div>
+				</div>
+				<div class="how_many_wave">&nbsp~&nbsp</div>
+				<div class="how_many_price_box">
+					<?
+					//8인이 아니라 4인~7인으로 끝날경우
+					$k=8; 
+					if($data['g_p8']=='0')
+						$k--;
+					if($data['g_p8']=='0' && $data['g_p7']=='0')
+						$k--;
+					if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0')
+						$k--;
+					if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0')
+						$k--;
+					if($k>$i && $data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0' && $data['g_p4']=='0')
+						$k--;
+					$lastPriceIndex='g_p'.$k;
+					?>
+					<div class="how_many">(<?echo $k?>인)</div>
+					<div class="how_price"><?echo number_format($data[$lastPriceIndex])?>원</div>
+				</div>
+				<div class="how_many_dropdown" id="a<?echo $data['g_idx']?>" onclick="detail(<?echo $data['g_idx']?>)">
+				<script>
+					var tank=[0];//0자리에 이미 0을 채워놨다.
+					function detail(id){
+						var price_by_person_area= document.getElementById('b'+id);
+						tank.push(id);//데이터를 누를때마다 넣으면
+
+						if(tank.indexOf(id)!=0){//1부터 나오게되므로 참이된다.
+							price_by_person_area.style.display="block";
+						}
+					}
+				</script>
+					<font id="detailPrice">가격<br>자세히▼</font>
+				</div>
+			</div>	
+
+			<div class="price_container"> <!--가격을 담는 공간-->
+				<?if($data['g_weekprice']!='0'){?>
+				<div class="talchul_price">
+					<div class="talchul_price_text">탈출 프라이쓰</div>
+				</div>
+
+				<div class="blue_price">
+					
+					<div class="info_title">1인</div>
+					<div class="info_price"><?echo number_format($data['g_weekprice'])?>원</div>
+					<img src="../images/icon/strong.png"/>
+
+				</div>
+				<?}?>
+			</div>
+			
+			<div class="price_by_person_area" id="b<?echo $data['g_idx']?>">
+				<?if($data['g_p2']!='0'){?>
+				<div class="price_by_person">2인:<?echo $data['g_p2']?></div><?}?>
+				<?if($data['g_p3']!='0'){?>			
+				<div class="price_by_person">3인:<?echo $data['g_p3']?></div><?}?>
+				<?if($data['g_p4']!='0'){?>	
+				<div class="price_by_person">4인:<?echo $data['g_p4']?></div><?}?>
+				<?if($data['g_p5']!='0'){?>	
+				<div class="price_by_person">5인:<?echo $data['g_p5']?></div><?}?>
+				<?if($data['g_p6']!='0'){?>	
+				<div class="price_by_person">6인:<?echo $data['g_p6']?></div><?}?>
+				<?if($data['g_p7']!='0'){?>	
+				<div class="price_by_person">7인:<?echo $data['g_p7']?></div><?}?>
+				<?if($data['g_p8']!='0'){?>	
+				<div class="price_by_person">8인:<?echo $data['g_p8']?></div><?}?>
+			</div>
+
+		</div>
+    </div>
+
+<?
+
+}
+?>
+
 <!--아래 스크립트가, 날짜 스케쥴 가져오는 js-->
 <script type="text/javascript" src="../js/common.js"></script>
-
 </html>
 

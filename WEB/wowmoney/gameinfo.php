@@ -683,10 +683,26 @@ $image=mysql_fetch_array($imageQ);
 			</div>
 		</div>
 	</div>
+<?
+//지울때 g_idx로 지우면, 같은 게임의 경우 중복 요청이 전부 삭제되므로. 일단 요청정보를 조회한다.
+$sql="select count(g_idx) from gameAsk where g_idx='".$data['g_idx']."' group by g_idx";
+$q=mysql_query($sql);
+$cou=mysql_fetch_array($q);
+?>
 <script>
 function popup1(){
 	var popup=document.getElementById('blackarea');
-	popup.style.display="block";
+	if('<?echo $cou[0]?>' > 1){
+		if(confirm("잠깐, 같은 게임정보가 뒤에 더있어요. 삭제했고, 같은게임의 모든 요청을 삭제하실건가요?")==true){
+					popup.style.display="block";			
+		}else{
+			//취소
+			return false;
+		}
+	}
+	else{
+		popup.style.display="block";
+	}
 }
 function popup2(){
 	var popup=document.getElementById('blackarea2');

@@ -32,7 +32,6 @@ else{
 
 <!--달력 S-->
 <link href="./calendar/calendar.css" rel="stylesheet">
-<script src="./calendar/calendar.js"></script>
 	<script>
 		window.onload = function () {
 			kCalendar('kCalendar');
@@ -41,7 +40,7 @@ else{
 <!--달력 E-->
 
 <style>
-
+#kCalendar{width:253px;}
 #Main{
 	/*Tab 크기 뺴줌*/
 	width : -webkit-calc(100% - 220px); /* for Chrome, Safari */
@@ -526,7 +525,7 @@ else{
 	<div id="Main_datechoice_area">
 		<div id="Main_datechoice">
 			<div class="slideshow-containera">
-				<div id="kCalendar"></div>
+				<div id="kCalendar" style="float:left"></div>
 			</div>
 		</div>
 	</div>
@@ -579,54 +578,55 @@ else{
 					$rq=mysql_query($rsql);
 					$reserve=mysql_fetch_array($rq);
 					//만약에 해당time의 값이 1이면 style을 바꿔주고, onlick도 바꿔주면되지 222
+					
 					?>		
 					<input type="button" value="<?echo $time['gt_1']?>" 
-					<?if($reserve['gr_1']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_1']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop1"/>
+					<?if($reserve['gr_1']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop1"/>
 					
 					<input type="button" value="<?echo $time['gt_2']?>" 
-					<?if($reserve['gr_2']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_2']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop2"/>
+					<?if($reserve['gr_2']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop2"/>
 					
 					<input type="button" value="<?echo $time['gt_3']?>" 
-					<?if($reserve['gr_3']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_3']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop3"/>
+					<?if($reserve['gr_3']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_3', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop3"/>
 
 					<input type="button" value="<?echo $time['gt_4']?>" 
-					<?if($reserve['gr_4']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_4']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop4"/>
+					<?if($reserve['gr_4']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_4', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop4"/>
 
 					<input type="button" value="<?echo $time['gt_5']?>" 
-					<?if($reserve['gr_5']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_5']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop5"/>
+					<?if($reserve['gr_5']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_5', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop5"/>
 
 					<input type="button" value="<?echo $time['gt_6']?>" 
-					<?if($reserve['gr_6']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_6']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop6"/>
+					<?if($reserve['gr_6']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_6', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop6"/>
 
 					<input type="button" value="<?echo $time['gt_7']?>" 
-					<?if($reserve['gr_7']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_7']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop7"/>
+					<?if($reserve['gr_7']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_7', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop7"/>
 
 					<input type="button" value="<?echo $time['gt_8']?>" 
-					<?if($reserve['gr_8']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_8']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop8"/>
+					<?if($reserve['gr_8']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_8', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop8"/>
 
 					<input type="button" value="<?echo $time['gt_9']?>" 
-					<?if($reserve['gr_9']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_9']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop9"/>
+					<?if($reserve['gr_9']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_9', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop9"/>
 
 					<input type="button" value="<?echo $time['gt_10']?>" 
-					<?if($reserve['gr_10']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_10']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop10"/>
+					<?if($reserve['gr_10']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_10', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop10"/>
 
 					<input type="button" value="<?echo $time['gt_11']?>" 
-					<?if($reserve['gr_11']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_11']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop11"/>
+					<?if($reserve['gr_11']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_11', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop11"/>
 
 					<input type="button" value="<?echo $time['gt_12']?>" 
-					<?if($reserve['gr_12']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_12']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop12"/>
+					<?if($reserve['gr_12']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_12', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop12"/>
 
 					<input type="button" value="<?echo $time['gt_13']?>" 
-					<?if($reserve['gr_13']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_13']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop13"/>
+					<?if($reserve['gr_13']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_13', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop13"/>
 
 					<input type="button" value="<?echo $time['gt_14']?>" 
-					<?if($reserve['gr_14']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_14']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop14"/>
+					<?if($reserve['gr_14']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_14', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop14"/>
 
 					<input type="button" value="<?echo $time['gt_15']?>" 
-					<?if($reserve['gr_15']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_15']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop15"/>
+					<?if($reserve['gr_15']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_15', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop15"/>
 
 					<input type="button" value="<?echo $time['gt_16']?>" 
-					<?if($reserve['gr_16']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else if($reserve['gr_16']=='0'){?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop16"/>
+					<?if($reserve['gr_16']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_16', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop16"/>
 				</div>
 			</div>
 			<div class="detail_page" style='display:none;'>
@@ -856,6 +856,7 @@ function closedetail(callnum){
 				mask.style.display="block";
 				window_1.style.display="block";
 				whattime.innerHTML=value;
+				alert(title);
 				whattitle.innerHTML=title;
 				//확인시 reserved함수에 넘겨줄 id값
 				temp=id;
@@ -911,3 +912,112 @@ function closedetail(callnum){
 				window_2.style.display="none";
 			}
 			</script>
+<script>
+function kCalendar(id, date) {
+	var kCalendar = document.getElementById(id);
+	
+	if( typeof( date ) !== 'undefined' ) {
+		date = date.split('-');
+		date[1] = date[1] - 1;
+		date = new Date(date[0], date[1], date[2]);
+	} else {
+		var date = new Date();
+	}
+	var currentYear = date.getFullYear();
+	//년도를 구함
+	
+	var currentMonth = date.getMonth() + 1;
+	//연을 구함. 월은 0부터 시작하므로 +1, 12월은 11을 출력
+	
+	var currentDate = date.getDate();
+	//오늘 일자.
+	
+	date.setDate(1);
+	var currentDay = date.getDay();
+	//이번달 1일의 요일은 출력. 0은 일요일 6은 토요일
+	
+	var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+	var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
+		lastDate[1] = 29;
+	//각 달의 마지막 일을 계산, 윤년의 경우 년도가 4의 배수이고 100의 배수가 아닐 때 혹은 400의 배수일 때 2월달이 29일 임.
+	
+	var currentLastDate = lastDate[currentMonth-1];
+	var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
+	//총 몇 주인지 구함.
+	
+	if(currentMonth != 1)
+		var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
+	else
+		var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
+	//만약 이번달이 1월이라면 1년 전 12월로 출력.
+	
+	if(currentMonth != 12) 
+		var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
+	else
+		var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
+	//만약 이번달이 12월이라면 1년 후 1월로 출력.
+
+	
+	if( currentMonth < 10 )
+		var currentMonth = '0' + currentMonth;
+	//10월 이하라면 앞에 0을 붙여준다.
+	
+	var calendar = '';
+	
+	calendar += '<div id="header">';
+	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
+	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+	calendar += '		</div>';
+	calendar += '		<table border="0" cellspacing="0" cellpadding="0">';
+	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+	calendar += '			<thead>';
+	calendar += '				<tr>';
+	calendar += '				  <th class="sun" scope="row">일</th>';
+	calendar += '				  <th class="mon" scope="row">월</th>';
+	calendar += '				  <th class="tue" scope="row">화</th>';
+	calendar += '				  <th class="wed" scope="row">수</th>';
+	calendar += '				  <th class="thu" scope="row">목</th>';
+	calendar += '				  <th class="fri" scope="row">금</th>';
+	calendar += '				  <th class="sat" scope="row">토</th>';
+	calendar += '				</tr>';
+	calendar += '			</thead>';
+	calendar += '			<tbody>';
+	
+	var dateNum = 1 - currentDay;
+	
+	var k=1;
+	for(var i = 0; i < week; i++) {
+		calendar += '			<tr>';
+		for(var j = 0; j < 7; j++, dateNum++) {
+			if( dateNum < 1 || dateNum > currentLastDate ) {
+				calendar += '				<td class="' + dateString[j] + '"> </td>';
+				continue;
+			}
+			calendar += '				<td id="'+k+'" onclick="getdb('+currentYear+','+currentMonth+',this.innerHTML)" style="cursor:pointer;text-align:center;color:#999;">' + dateNum + '</td>'; //onclick으로 날짜값을 넘긴다.
+
+			if(<?echo substr($date,8,2)?>==k){
+				let v=k;
+				setTimeout(function(){
+					var z=document.getElementById(v);//이상하네; 바로 k를 넣으면 안들어가..v를 써야해
+					z.style.backgroundColor="#56dcfc";
+					z.style.color="#000";
+					z.style.fontWeight="bold";
+				},100);
+			}
+			k++;
+		}
+		calendar += '			</tr>';
+	}
+	
+	calendar += '			</tbody>';
+	calendar += '		</table>';
+	
+	kCalendar.innerHTML = calendar;
+}
+
+function getdb(year,month,day){//년월일을 받아와서 넘긴다.
+	location.href='./order.php?year='+year+'&month='+month+'&day='+day+'';
+}
+</script>

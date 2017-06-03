@@ -81,7 +81,7 @@ if(!file_exists($filepath)){
 					<div class="f_r">
 						<table class="infolist">
 							<tbody>
-								<tr>
+							<!--	<tr>
 									<td class="il1">내 머니</td>
 									<td class="il2"><?
 									echo($data['money']." 원");
@@ -120,7 +120,7 @@ if(!file_exists($filepath)){
 										$data['']
 									?></td>
 									<td class="il3">&nbsp;</td>
-								</tr>
+								</tr>-->
 							</tbody>
 						</table>
 					</div>

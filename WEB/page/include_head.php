@@ -24,6 +24,7 @@ $data=mysql_fetch_array($query);
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
 <script type="text/javascript" src="../js/jquery.customSelect.min.js"></script>
 <script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="../js/respond.min.js"></script>
 	<script type="text/javascript" src="../js/html5shiv.js"></script>
@@ -49,16 +50,44 @@ include('include_follow.php');
 				</div>
 			</div>
 			<a href="#" class="btn_gnb" onclick="gnbView();"><img src="../images/btn/btn_gnb.png" alt="" /></a>
+			<script>
+			function gnbView(){
+			$('body').addClass('ovh')
+			$('body').bind('touchmove',function(e){e.preventDefault()});
+			$('.gnb_m li').removeAttr('style');
+			$('.gnbwrap').stop().animate({left : '0'}, 150).addClass('gnbOn');
+			$('.gnbbg').addClass('on');
+			function cssGnb(width) {
+				var windowW = $(window).width();
+				if (windowW > 1041){
+					$('.gnbbg').remove();
+					$('body').removeClass('ovh');
+					$('body').unbind();
+					$('.gnbwrap').removeClass('gnbOn').removeAttr('style');
+					$('.gnb_m li').removeClass('on');
+					$('.gnb_m').removeAttr('style');
+				}
+			}
+			$(function() {
+				$(window).resize(function() {
+					cssGnb($(this).width());
+				}).resize();
+			});
+			}
+			</script>
 <?
 if(!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 전 pc -->
 			<ul class="gnb clfix">
+			
 				<li><a href="./login.php">로그인</a></li>
 				<li><a href="./join.php">회원가입</a></li>
-			<!--	<li><a href="#">예약확인</a></li>
-				<li><a href="#">랭킹검색</a></li>-->
+				<!--
+				<li><a href="#">예약확인</a></li>
+				<li><a href="#">랭킹검색</a></li>
 				<li><a href="../search_user.php">탈출러검색</a></li>
+				-->
 			<!--	<li><a href="./notice.php">고객센터</a></li>-->
 			</ul>
 			<!-- e : 로그인 전 pc -->
@@ -67,9 +96,9 @@ if(!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 후 pc -->
 			<ul class="gnb clfix">
-				<li><a href="sch_lank.html">랭킹검색</a></li>
+			<!--	<li><a href="sch_lank.html">랭킹검색</a></li>-->
 				<li><a href="../search_user.php">탈출러검색</a></li>
-				<li><a href="notice.php">고객센터</a></li>
+			<!--	<li><a href="notice.php">고객센터</a></li>-->
 				<li class="login">
 					<a href="#">
 <?
@@ -78,12 +107,12 @@ $filepath = "../upload/profiles/".$_SESSION['user_email'];
 if(!file_exists($filepath)){
 	?>
 		<img src="../images/contents/img_login_d.png" width="50px;height:65px;"/>
-		<em class="num">예약수 0</em></a>
+		<!--<em class="num">예약수 0</em>--></a>
 	<?
 }else{
 	?>
 		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>.jpg" style="width:50px;height:65px;" alt="" />
-		<em class="num">예약수 0</em></a>
+		<!--<em class="num">예약수 0</em>--></a>
 	<?
 }
 ?>
@@ -109,17 +138,17 @@ if(!file_exists($filepath)){
 								<strong>
 								<?
 								if($data['title']=="")
-									echo("타이틀 없음");
+									echo("타이틀없음"." ".$data['nickname']);
 								else	
 									echo $data['title']
 								?></strong>
 								<strong>
 								<?
-								echo($data['rank']." 위");
-								?><em>in 대한민국</em></strong>
+								//echo($data['rank']." 위");
+								?><!--<em>in 대한민국</em>--></strong>
 							
 								<span><?
-									echo($data['win']."탈 ");
+									/*echo($data['win']."탈 ");
 									echo($data['lose']."패 ");
 									
 									if($data['win']==0 && $data['lose']==0)
@@ -131,15 +160,14 @@ if(!file_exists($filepath)){
 										$division=$data['win']/$plus;
 										$cal=$division*100;
 										echo(substr($cal,0,2)." %");
-									}
+									}*/
 									?></span>
-								<span>평균속도 0<?
-								?></span>
+								<span><!--평균속도 0--></span>
 							</div>
 						</div>
 						<div class="in_2">
-							<div class="tit">예약 2건 <a href="mypage1.php" class="btn_in_more">더보기</a></div>
-							<table class="reserlist">
+							<div class="tit"><!--예약 2건--> <a href="mypage1.php" class="btn_in_more"><!--더보기--></a></div>
+						<!--	<table class="reserlist">
 								<colgroup>
 									<col style="width:14%" />
 									<col style="width:14%" />
@@ -163,7 +191,7 @@ if(!file_exists($filepath)){
 										<td>살인자의방</td>
 									</tr>
 								</tbody>
-							</table>
+							</table>-->
 						</div>
 						<div class="in_3">
 							<a href="mypage1.php" class="btn_mypage">마이페이지로 이동</a>
@@ -192,10 +220,12 @@ if(!$_SESSION['user_email']){
 					</div>
 				</div>
 				<ul class="gnb_m">
+					<!--
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
 					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
-					<li class="gnb3"><a href="#">고객센터</a></li>
+					-->
+					<!--<li class="gnb3"><a href="#">고객센터</a></li>-->
 				</ul>
 				<!-- e : 로그인 전 mobile -->
 <?
@@ -259,7 +289,7 @@ if(!file_exists($filepath)){
 				<ul class="gnb_m">
 					<li class="gnb4"><a href="mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>
-					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
+					<!--<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>-->
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>
 				<div class="logoutbox"><a href="./logout.php" class="btn_logout">로그아웃</a></div>

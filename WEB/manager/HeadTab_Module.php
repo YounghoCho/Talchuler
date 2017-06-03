@@ -24,6 +24,19 @@ if($_COOKIE['id'])
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	
+<script>
+
+	$(function(){
+		$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
+		$(window).resize(function(){
+			$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
+		});
+	});
+
+
+
+</script>
+
 
 <style>
 body{
@@ -126,6 +139,38 @@ ul{
 			<img src="./images/banner/nothing.png" style="width:66%;margin-left:17%;margin-top:2%;margin-bottom:2%;padding-bottom:1%;"/>		
 	</div>
 </div>
+
+<!--tab과 main부분의 높이 다름 문제를 해결하기 위한 코드-->
+
+<script type="text/javascript">
+<!--
+/*------------------------------------------------------------------------------------------
+// 화면 로드 후 처리
+------------------------------------------------------------------------------------------*/
+window.onload = function()
+{
+ // div height 설정
+ setDivHeight('Tab','Main');
+}
+
+
+/*------------------------------------------------------------------------------------------
+// div height 설정
+// objSet : 변경할 div id
+// objTar : height값을 구할 대상 div id
+------------------------------------------------------------------------------------------*/
+function setDivHeight(objSet, objTarHeight)
+{ 
+  var objSet = document.getElementById('Tab'); 
+  var objTarHeight= document.getElementById('Main').offsetHeight;
+  objSet.style.height  = objTarHeight + "px";
+
+} 
+//-->
+</script>
+
+<!--tab과 main부분의 높이 다름 문제를 해결하기 위한 코드-->
+
 
 <body>
 	<div id="Head">
@@ -247,15 +292,16 @@ function server_time()
 				<a href=""><li class="tab_li">패키지광고</li></a>
 			</ul>
 			-->
-		<ul id="back1"><img src="../images/icon/b.png" width="20px" height="20px"> 고객센터</ul>
-		<!--
+	<!--	<ul id="back1"><img src="../images/icon/b.png" width="20px" height="20px"> 고객센터</ul>
+		
 				<a href=""><li class="tab_li">알림/실행</li></a>
 				<a href=""><li class="tab_li">공지사항</li></a>
 				<a href=""><li class="tab_li">1:1문의</li></a>
 				<a href=""><li class="tab_li">FAQ</li></a>
-		-->
+		
 				<a href=""><li class="tab_li" id="button_content5">약관 및 정책</li></a>
 		</ul>
+		-->
 		<?
 		}else{
 		?>
@@ -271,7 +317,9 @@ function server_time()
 		}
 		?>
 	</ul>
-	</div>
+</div>
+
+
 	<?
 if($_SESSION['id']){
 	?>

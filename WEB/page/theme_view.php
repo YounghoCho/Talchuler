@@ -1,5 +1,5 @@
 <?
-	include("include_head.php");
+	include("include_head_back.php");
 ?>
 <!--달력 S-->
 <link href="./calendar/calendar.css" rel="stylesheet">
@@ -11,8 +11,7 @@
 <!--달력 E-->
 <!--달력 S-->
 <style>
-#today{width:20%;height:50px;font-weight:bold;font-size:24px;text-align:center;float:left;display:inline;}
-#showcal{float:left;display:inline;font-weight:bold;font-size:24px;cursor:pointer;}
+#today{width:20%;height:50px;font-weight:bold;font-size:24px;text-align:center;float:left;display:inline;cursor:pointer;}
 #maskarea{
 	  display:none;
 	  position:fixed; 
@@ -25,15 +24,29 @@
 	  z-index:10;
 }
 #kCalendar{position:fixed;margin-left:42%;margin-top:10%;background-color:#fff;}
-
+#closeCalendar{position:absolute;right:40%;top:17%;width:30px;height:30px;background-color:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
 @media all and (max-width:800px){
 	#today{width:40%;height:30px;font-size:16px;}
-	#showcal{font-size:16px;}
 	#kCalendar{position:fixed;margin-left:18%;margin-top:22%;background-color:#fff;}
+	#closeCalendar{right:10%;top:7%;}
 }
 </style>
 <div id="maskarea">
+	
 	<div id="kCalendar"></div>
+	<div id="closeCalendar" onclick="closeCalendar()" onKeypress="closeESC()">x</div>
+	<script>
+	function closeCalendar(){
+		var maskarea=document.getElementById('maskarea');
+		maskarea.style.display="none";
+	}
+	$(document).keyup(function(e) {
+		 if (e.keyCode == 27) { // escape key maps to keycode `27`
+			// <DO YOUR WORK HERE>
+			maskarea.style.display="none";
+		}
+	});
+	</script>
 </div>
 <!--달력 E-->	
 <body style='font-family:"NotoSansCJKkr-Regular.eot"; color:#666666;'>
@@ -175,11 +188,12 @@ $img=mysql_fetch_array($imgquery);
 		width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
 		width:    -moz-calc(100% - 0px); /* for Firefox */
 		width:         calc(100% - 0px); /* for IE */
-		margin:30px 0 0 0;
+		margin:19px 0 0 0;
 		padding:0px;
 		font-size:12pt;
 		font-weight:bold;
-		overflow:auto;
+		overflow:hidden;
+		display:inline-table;
 	}
 
 	#note_3 .email_change_area{
@@ -191,33 +205,36 @@ $img=mysql_fetch_array($imgquery);
 	}
 
 	#note_3 .mid_content_left{
-		width:47%;
-		height:27px;
-		text-align:center;
-		float:left;
-		padding-left:50px;
-	}
-
-	#note_3 .mid_content_left img{
-		float:left;
-		margin-right:15px;
+		display:table-cell;
+		text-align:left;
+		vertical-align:middle;
+		padding-left:20px;
+		padding-right:20px;
+		padding-bottom:0px;
+		max-width:310px;
 	}
 
 	#note_3 .mid_content_left div{
-		float:left;
+		float:right;
 		font-size:13pt;
-		line-height:13pt;
+		line-height:14pt;
+		background:url('../images/icon/shop.png') no-repeat 0 0;
+		padding-left:26px;
+		min-height:20px;
+		background-size:18px;
+		background-position:0px 0px;
 	}
 
 	#note_3 .mid_content_right{
-		width:53%;
-		height:27px;
-		text-align:right;
+		display:table-cell;
+		text-align:left;
+		vertical-align:middle;
 		font-size:14pt;
 		line-height:14pt;
-		float:right;
-		padding-right:50px;
-		padding-top:1px;
+		padding-left:0px;
+		padding-right:20px;
+		max-width:310px;
+		min-height:20px;
 	}
 
 	/*예약하기 버튼 팝업 e*/
@@ -230,18 +247,22 @@ $img=mysql_fetch_array($imgquery);
 					#pricedd{float:left; padding-left:0px;width:80%;}
 					#txt{font-size:14pt; font-weight:bold; color:black; padding-top:17px;}
 					#gameinfo_wrap{
-						width:570px; overflow:auto; float:left;
+						width:510px; overflow:auto; float:left;
 					}
 					
 					#game_location{
 						width:100%;
-						font-size:15pt;
-						line-height:15pt;
-						color:black;
 						overflow:auto;
 					}
 
-					#game_location img{
+					#game_location .mid_box{
+						margin:0 auto;
+						overflow:hidden;
+						height:25px;
+						padding-top:5px;
+					}
+
+					#game_location .mid_box img{
 						float:left;
 						width:18px;
 						height:auto;
@@ -249,8 +270,17 @@ $img=mysql_fetch_array($imgquery);
 						margin-right:5px;
 					}
 
-					#game_location span{
+					#game_location .mid_box div{
 						float:left;
+						font-size:15pt;
+						line-height:15pt;
+						color:black;
+					}
+
+					#game_location .mid_box span{
+						background:url("../images/icon/shop.png") no-repeat 0 0; padding-left:30px; line-height:20pt;
+						font-size:15pt;
+						line-height:15pt;
 					}
 
 					#game_title{
@@ -320,72 +350,151 @@ $img=mysql_fetch_array($imgquery);
 					}
 					
 					.game_detail{
-						font-size:12pt; line-height:18pt; color:black; margin-top:17px;
+						font-size:12pt; color:black; margin-top:17px; 
+						letter-spacing:-1px; /*자간*/
+						word-spacing:3px; /*어간*/
+						line-height:26px; /*행간*/
 					}
+					
+		/*가격정보 공간2 S*/
+		.price_container2{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:35px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			margin-top:0px;
+			padding:2px 50px 0px 50px;
+			padding-left:70px;
+			border:none;
+			border:1px solid #cccccc;
+		}
 
-					.game_price{
-						width:100%;
-						overflow:auto;
-						margin:0;
-					}
-					.game_price_top{
-						width:100%;
-						line-height:16pt;
-						padding-left:48px;
-						margin-bottom:10px;
-						font-size:18pt;
-						text-decoration:line-through;
-						color:#a7a7a7;
-					}
-					.game_price_bot{
-						width:100%;
-						height:47px;
-						overflow:visible;
-					}
-					.game_price_left{					
-						float:left;
-						margin-right:20px;
-					}
-					.game_price_left img{
-						float:left;
-						margin-top:5px;
-						margin-right:10px;
-					}
-					.game_price_left_text{
-						font-weight:bold;
-						font-size:29pt;
-						line-height:29pt;
-						color:#d90000;
-						float:left;
-					}
+		 .how_many_price_box { /*인원-가격 박스*/
+			padding-top:6px;
+			float:left;
+		}
 
-					.game_price_left_text div{
-						font-size:18pt;
-						line-height:18pt;
-						float:right;
-						padding-top:9px;
-					}
+		 .how_many_wave { /*중간 물결*/
+			padding-top:6px;
+			margin:0 5px;
+			float:left;
+			font-size:11pt;
+			text-align:center;
+			font-weight:bold;
+		}
 
-					.game_price_right{
-						overflow:visible;
-						height:27px;
-						float:left;
-						color:#444444;
-						padding-top:10px;
-					}
+		.how_many { /*인원-가격 박스 중 인원*/
+			float:left;
+			font-size:10pt;
+			color:#999999;
+			margin-right:5px;
+		}
 
-					.game_price_right .big{
-						font-size:18pt;
-						line-height:18pt;
-						float:left;
-					}
+		 .how_price { /*인원-가격 박스 중 가격*/
+			float:left;
+			font-size:11pt;
+			color:#333333;
+			font-weight:bold;
+		}
 
-					.game_price_right .small{
-						font-size:11pt;
-						line-height:11pt;
-						float:left;
-						padding-top:8px;
-					}
+
+		/*가격정보 공간2 E*/
+
+		/*가격정보 공간 (탈출 프라이스)*/
+		 .price_container{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:35px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			padding:0px 0px 0px 70px;
+			border:none;
+			border-bottom:1px solid #cccccc;
+			border-left:1px solid #cccccc;
+			border-right:1px solid #cccccc;
+		}
+
+		 .talchul_price{
+			height:30px;
+			float:left;
+			padding-top:6px;
+			overflow:hidden;
+		}
+
+		 .talchul_price_text{
+			font-size:14pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+			color:#333333;
+		}
+
+		 .gray_price{
+			width : -webkit-calc(50% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 0px); /* for Firefox */
+			width :         calc(50% - 0px); /* for IE */
+			height:30px;
+			float:left;
+			padding-top:3px;
+			padding-left:15px;
+			overflow:hidden;
+		}
+
+		 .arrow_icon{
+			overflow:hidden;
+			float:left;
+			margin:0 11px;
+			padding-top:8px;
+		}
+
+		 .arrow_icon img{
+			
+		}
+
+		 .blue_price{
+			height:30px;
+			color:#0066cc;
+			float:left;
+			padding-top:3px;
+			padding-right:15px;
+			overflow:hidden;
+		}
+
+		 .info_title{
+			font-size:11pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+			margin-left:20px;
+			color:#0099ff;
+			padding-top:3px;
+		}
+
+		 .info_price{
+			font-size:15pt;
+			line-height:18pt;
+			text-align:right;
+			float:left;
+			margin-left:10px;
+			color:#0099ff;
+			padding-top:3px;
+		}
+
+		 .blue_price img{
+			float:left;
+			margin:5px 0 0 4px;
+		}
+
+
+		/*가격정보 공간 (탈출 프라이스)*/
+
 
 					@media all and (max-width: 800px){
 						#pricedd{width:100%;}
@@ -395,15 +504,15 @@ $img=mysql_fetch_array($imgquery);
 						}		
 						
 						#gameinfo_imagebox{
-							width:100%; overflow:auto; float:left; margin:0px;
+							width:100%; overflow:auto; float:left; margin:0px auto;
 						}
 
 						#gameinfo_imagebox .game_imagee{
-							position:relative; float:left; border:0px solid #aaa; width:100%; height:420px; text-align:center; display:table-cell; background:none; overflow:auto;
+							position:relative; float:left; border:0px solid #aaa; width:100%; height:420px; text-align:center; display:table-cell; background:#c3c3c3; overflow:auto; margin:0 auto;
 						}
 
 						#gameinfo_imagebox .game_imagee img{
-							position:absolute; width:auto; height:100%; max-height:400px; max-width:100%; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:0; margin:10px auto;
+							position:absolute; width:100%; height:auto; max-height:400px; max-width:310px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:0;
 						}
 						
 						#icon_wrap{
@@ -443,20 +552,43 @@ $img=mysql_fetch_array($imgquery);
 							font-size:15pt;
 							line-height:15pt;
 							color:black;
-							padding:0 25%;
+							padding:0;
 							overflow:hidden;
 							text-align:center;
-							vertical-align:middle;
 						}
 
-						#game_location img{
-							display:table-cell;
-							float:left;
+						#game_location .mid_box{
+							margin:0 auto;
+							overflow:hidden;
+							text-align:center;
+							margin-bottom:5px;
+							padding-top:3px;
 						}
 
-						#game_location div{
-							display:table-cell;
+						#game_location .mid_box img{
 							float:left;
+							width:18px;
+							height:auto;
+							padding:1px 0;
+							margin-right:5px;
+						}
+
+						#game_location .mid_box div{
+							text-align:center;
+							float:left;
+							font-size:15pt;
+							line-height:15pt;
+							color:black;
+						}
+
+						#game_location .mid_box span{
+							background:url("../images/icon/shop.png") no-repeat 0 0; padding-left:23px;
+							background-size:15px;
+							font-size:12pt;
+							line-height:15pt;
+							color:#a7a7a7;
+							background-position:0px 2px;
+							margin-top:-3px;
 						}
 						
 
@@ -598,11 +730,12 @@ $img=mysql_fetch_array($imgquery);
 							width: -webkit-calc(100% - 0px); /* for Chrome, Safari */
 							width:    -moz-calc(100% - 0px); /* for Firefox */
 							width:         calc(100% - 0px); /* for IE */
-							margin:24px 0 0 0;
+							margin:4px 0 0 0;
 							padding:0px;
 							font-size:10pt;
 							font-weight:bold;
-							overflow:auto;
+							overflow:hidden;
+							display:inline-table;
 						}
 
 						#note_3 .email_change_area{
@@ -614,38 +747,180 @@ $img=mysql_fetch_array($imgquery);
 						}
 
 						#note_3 .mid_content_left{
-							width:47%;
-							height:27px;
-							text-align:center;
-							float:left;
-							padding-left:30px;
+							display:table-cell;
+							text-align:left;
+							vertical-align:middle;
+							padding-left:15px;
+							padding-right:10px;
+							padding-bottom:0px;
 						}
 
-						#note_3 .mid_content_left img{
-							width:16px;
-							height:auto;
-							float:left;
-							margin-right:12px;
-						}
 
 						#note_3 .mid_content_left div{
-							float:left;
-							font-size:11pt;
-							line-height:11pt;
+							float:right;
+							font-size:10pt;
+							line-height:10pt;
+							vertical-align:middle;
+							background:url('../images/icon/shop.png') no-repeat 0 0;
+							padding-left:22px;
+							min-height:0px;
+							background-size:14px;
+							background-position:0px 0px;
 						}
 
 						#note_3 .mid_content_right{
-							width:53%;
-							height:27px;
-							text-align:right;
+							display:table-cell;
+							text-align:left;
+							vertical-align:middle;
+							padding-left:0px;
+							padding-right:15px;
+							min-height:0px;
 							font-size:11pt;
 							line-height:11pt;
-							float:right;
-							padding-right:30px;
-							padding-top:1px;
 						}
 
 						/*예약하기 버튼 팝업 e*/
+
+		/*가격정보 공간2 S*/
+		.price_container2{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:35px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			margin-top:0px;
+			padding:2px 50px 0px 50px;
+			padding-left:40px;
+			border:none;
+			border:1px solid #cccccc;
+		}
+
+		 .how_many_price_box { /*인원-가격 박스*/
+			padding-top:6px;
+			float:left;
+		}
+
+		 .how_many_wave { /*중간 물결*/
+			padding-top:6px;
+			margin:0 5px;
+			float:left;
+			font-size:11pt;
+			text-align:center;
+			font-weight:bold;
+		}
+
+		.how_many { /*인원-가격 박스 중 인원*/
+			float:left;
+			font-size:10pt;
+			color:#999999;
+			margin-right:5px;
+		}
+
+		 .how_price { /*인원-가격 박스 중 가격*/
+			float:left;
+			font-size:11pt;
+			color:#333333;
+			font-weight:bold;
+		}
+
+
+		/*가격정보 공간2 E*/
+
+		/*가격정보 공간 (탈출 프라이스)*/
+		 .price_container{
+			float:left;
+			width : -webkit-calc(100% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(100% - 0px); /* for Firefox */
+			width :         calc(100% - 0px); /* for IE */
+			height:35px;
+			background-color:#eeeeee;
+			overflow:hidden;
+			font-weight:bold;
+			padding:0px 0px 0px 40px;
+			border:none;
+			border-bottom:1px solid #cccccc;
+			border-left:1px solid #cccccc;
+			border-right:1px solid #cccccc;
+		}
+
+		 .talchul_price{
+			height:30px;
+			float:left;
+			padding-top:6px;
+			overflow:hidden;
+		}
+
+		 .talchul_price_text{
+			font-size:14pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+			color:#333333;
+		}
+
+		 .gray_price{
+			width : -webkit-calc(50% - 0px); /* for Chrome, Safari */
+			width :    -moz-calc(50% - 0px); /* for Firefox */
+			width :         calc(50% - 0px); /* for IE */
+			height:30px;
+			float:left;
+			padding-top:3px;
+			padding-left:15px;
+			overflow:hidden;
+		}
+
+		 .arrow_icon{
+			overflow:hidden;
+			float:left;
+			margin:0 11px;
+			padding-top:8px;
+		}
+
+		 .arrow_icon img{
+			
+		}
+
+		 .blue_price{
+			height:30px;
+			color:#0066cc;
+			float:left;
+			padding-top:3px;
+			padding-right:15px;
+			overflow:hidden;
+		}
+
+		 .info_title{
+			font-size:11pt;
+			line-height:20pt;
+			text-align:left;
+			float:left;
+			margin-left:20px;
+			color:#0099ff;
+			padding-top:3px;
+		}
+
+		 .info_price{
+			font-size:15pt;
+			line-height:18pt;
+			text-align:right;
+			float:left;
+			margin-left:10px;
+			color:#0099ff;
+			padding-top:3px;
+		}
+
+		 .blue_price img{
+			float:left;
+			margin:5px 0 0 4px;
+		}
+
+
+		/*가격정보 공간 (탈출 프라이스)*/
+
+					
 	
 					}
 
@@ -657,8 +932,10 @@ $img=mysql_fetch_array($imgquery);
 					?>
 					<div class="gameinfo_widthbox">
 						<div id="game_location" style="text-align:left">
-							<img src="../images/icon/shop.png" style='margin-right:1%'/>
-							<?echo ($pppp['p_shopName'])?>&nbsp;<?echo ($pppp['p_localName'])?>
+							<div class="mid_box">
+								<!--<img src="../images/icon/shop.png" style=''/>-->
+								<span style=''><?echo ($pppp['p_shopName'])?>&nbsp;<?echo ($pppp['p_localName'])?></span>
+							</div>
 						</div>
 						<div id="game_title">
 							<?echo ($data['g_title'])?>
@@ -676,19 +953,72 @@ $img=mysql_fetch_array($imgquery);
 
 						<div id="gameinfo_wrap">
 							<dd id="pricedd">
-								<ul style='width:100%; margin-top:17px;'>
-								<div class="game_price">
-									<div class="game_price_top"><?echo number_format($data['g_p2']/2)?><span>원</span></div>
-									<div class="game_price_bot">
-										<div class="game_price_left">
-											<img src="../images/icon/icon_detail_price.png" />
-											<div class="game_price_left_text"><?echo number_format($data['g_weekprice'])?><div>원</div></div>
-										</div>
-										<div class="game_price_right" style=''>
-											<div class="small">(주말:&nbsp</div><div class="big"><?echo number_format ($data['g_holyprice'])?></div><div class="small">&nbsp원)</div>
-										</div>
-									</div>
-								</div>
+								<ul style='width:100%; margin-top:0px;'>
+								<div class="price_container2">
+			<div class="how_many_price_box">
+				<?
+				//2인이 아니라 3인~4인부터 시작할 경우
+				$i=2; 
+				if($data['g_p2']=='0')
+					$i++;
+				if($data['g_p2']=='0' && $data['g_p3']=='0')
+					$i++;
+				if($data['g_p2']=='0' && $data['g_p3']=='0')
+					$i++;
+				$firstPriceIndex='g_p'.$i;
+				?>
+				<div class="how_many">(<?echo $i?>인)</div>
+				<div class="how_price"><?echo number_format($data[$firstPriceIndex])?>원</div>
+			</div>
+			<div class="how_many_wave">&nbsp~&nbsp</div>
+			<div class="how_many_price_box">
+				<?
+				//8인이 아니라 4인~7인으로 끝날경우
+				$k=8; 
+				if($data['g_p8']=='0')
+					$k--;
+				if($data['g_p8']=='0' && $data['g_p7']=='0')
+					$k--;
+				if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0')
+					$k--;
+				if($data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0')
+					$k--;
+				if($k>$i && $data['g_p8']=='0' && $data['g_p7']=='0' && $data['g_p6']=='0' && $data['g_p5']=='0' && $data['g_p4']=='0')
+					$k--;
+				$lastPriceIndex='g_p'.$k;
+				?>
+				<div class="how_many">(<?echo $k?>인)</div>
+				<div class="how_price"><?echo number_format($data[$lastPriceIndex])?>원</div>
+			</div>
+			<script>
+			var pbpa=1;
+			function detail(){
+				var price_by_person_area= document.getElementById('price_by_person_area');
+				if(pbpa>0){
+				price_by_person_area.style.display="block";
+				pbpa=-1;
+				}else{
+				price_by_person_area.style.display="none";
+				pbpa=1;
+				}
+			}
+			</script>
+		</div>
+		<div class="price_container"> <!--가격을 담는 공간-->
+			<?if($data['g_weekprice']!='0'){?>
+			<div class="talchul_price">
+				<div class="talchul_price_text">탈출 프라이쓰</div>
+			</div>
+
+			<div class="blue_price">
+				
+				<div class="info_title">1인</div>
+				<div class="info_price"><?echo number_format($data['g_weekprice'])?>원</div>
+				<img src="../images/icon/strong.png"/>
+
+			</div>
+			<?}?>
+		</div>
 								</ul>
 								<ul style='width:100%; margin-top:17px;'>
 								<!--초기 icon_new1,2,3 초기 css위치-->
@@ -709,6 +1039,7 @@ $img=mysql_fetch_array($imgquery);
 										</div>
 									</li>
 								</div>
+								<?if($data['g_skill1']!='0'||$data['g_skill2']!='0'||$data['g_skill3']!='0'||$data['g_skill4']!='0'||$data['g_skill5']!='0'||$data['g_skill6']!='0'){?>
 								<li class="txt" id="txt">필요능력<span> 
 								<?
 								//필요능력에 따른 이미지 삽입부
@@ -725,6 +1056,9 @@ $img=mysql_fetch_array($imgquery);
 									}if($data['g_skill6']){
 										?><img id="skill" src="../images/icon/skill6.png"/><?
 									}
+								?>
+								<?
+								}
 								?>
 								</span></li>
 								</ul>
@@ -817,6 +1151,7 @@ $img=mysql_fetch_array($imgquery);
 	text-align:center;
 	margin-top:5px;
 	margin-bottom:5px;
+	width:100%;
 }
 }
 </style>
@@ -909,9 +1244,9 @@ $img=mysql_fetch_array($imgquery);
 
 .hiddenarea_timecell_top{ /*시간박스 하나*/
 	float:left;
-	width : -webkit-calc(14.8% - 10px - 4px); /* for Chrome, Safari */
-    width :    -moz-calc(14.8% - 10px - 4px); /* for Firefox */
-    width :         calc(14.8% - 10px - 4px); /* for IE */
+	width : -webkit-calc(14.8% - 10px ); /* for Chrome, Safari */
+    width :    -moz-calc(14.8% - 10px ); /* for Firefox */
+    width :         calc(14.8% - 10px ); /* for IE */
 	margin:0 5px 5px 5px;
 	height:35px;
 	display:table;
@@ -976,7 +1311,10 @@ $img=mysql_fetch_array($imgquery);
 }
 #topspace{margin-left:0px;}
 #botspace{margin-right:0px;}
-.albumsize{height:150px}
+
+#albumsize_area{overflow:hidden;}
+.albumsize_box{position:relative; float:left; border:0px solid #aaa; width:281px; height:310px; text-align:center; display:table-cell; background:none;}
+.albumsize_box img{position:absolute; width:auto; height:100%; max-width:281px;  max-height:310px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0;}
 
 /*map*/
 .hiddenarea{display:none; margin:0 auto;}
@@ -1000,6 +1338,10 @@ $img=mysql_fetch_array($imgquery);
 #marginleft{margin-left:3px;}
  .prev, .next,.text {font-size: 11px}
  .hiddenarea_timetable{width:80%;}
+ .hiddenarea_timetable input{
+ 	-webkit-appearance: none;
+	-webkit-border-radius:0;
+	}
  .hiddenarea_timearray{width:100%;}
  .hiddenarea_timecell_top{margin:0 3px 3px 3px;font}
  .hiddenarea_timecell_bot{margin:0 3px 3px 3px;}
@@ -1010,7 +1352,11 @@ $img=mysql_fetch_array($imgquery);
 .hiddenarea{width:90%; margin:0 auto;}
  #topspace{margin-left:3px;}
  #botspace{margin-right:6px;}
- .albumsize{height:90px}
+.albumsize{height:90px}
+
+.albumsize_box{position:relative; float:left; border:0px solid #aaa; width:70%; height:400px; text-align:center; display:table-cell; background:none; margin:0 15%;}
+.albumsize_box img{position:absolute; width:100%; height:auto; max-height:400px; border:0px solid #aaa; background:#c3c3c3; top:0; bottom:0; left:0; right:0;}
+
  /*map*/
  #map{width:90%;margin-left:5%;height:150px;}
  .dot2 {
@@ -1026,7 +1372,7 @@ $img=mysql_fetch_array($imgquery);
  .prev2, .next2 {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 200px;
   width: auto;
   padding: 14px;
   margin-top: -30px;
@@ -1192,8 +1538,9 @@ $img=mysql_fetch_array($imgquery);
 						$date=$_GET['year'].'-'.$_GET['month'].'-'.$_GET['day'];
 					}
 					?>
-					<div id="today"><?echo $date?></div>
-					<div id="showcal" onclick="showCalendar()">></div>
+					<div id="today" onclick="showCalendar()">
+						<?echo $date?>&nbsp;>
+					</div>
 <script>
 function showCalendar(){
 	var c=document.getElementById('maskarea');
@@ -1302,7 +1649,7 @@ function showCalendar(){
 								if($ava['gr_7']){?><script>setTimeout(function(){
 									reserved(7);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_top" id="botspace">
+							<div class="hiddenarea_timecell_top" id="topspace">
 								<input type="button" id="re7" value="<?echo $time['gt_7']?>" class="time_button" onclick="changetime(6)" style=''/>
 							</div>
 							<?}?>
@@ -1311,7 +1658,7 @@ function showCalendar(){
 								if($ava['gr_8']){?><script>setTimeout(function(){
 									reserved(8);
 								},100)</script><?}?>
-							<div class="hiddenarea_timecell_top" id="marginleft">
+							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re8" value="<?echo $time['gt_8']?>" class="time_button" onclick="changetime(7)" style=''/>
 							</div>
 							<?}?>
@@ -1392,10 +1739,12 @@ function showCalendar(){
 							<div id="note_3">
 								<div class="title_box_3">
 									<div class="title_3">전화하셔서 
-									<font style='color:#f36a21;'>'탈출러 예약자'</font>라고 알려주시면 표시된 최저가로 이용이 가능합니다.</div>
+									<font style='color:#f36a21;'>'탈출러 예약자'</font>라고 알려주시면 표시된 가격으로 이용이 가능합니다.</div>
 								</div>
 								<div class="input_box_3">
-									<div class="mid_content_left"><img src="../images/icon/shop.png"><div><?echo $zekil['p_shopName']?>&nbsp;<?echo $zekil['p_localName']?></div></div>
+									<div class="mid_content_left">									
+										<div><?echo $zekil['p_shopName']?>&nbsp;<?echo $zekil['p_localName']?></div>
+									</div>
 									<div class="mid_content_right"><a href="tel:<?echo $zekil['p_tele']?>"><?echo $zekil['p_tele']?></a></div>
 									</div>
 								</div>
@@ -1691,7 +2040,11 @@ $partnerMap=$partner['p_shopName'];
 	#store_infomation_area .container_box{width:100%; float:left; margin-bottom:3px;}
 	#store_infomation_area .icon_area{float:left; width:30px; text-align:center;}
 	#store_infomation_area .icon_area img{height:18px; margin:5px 0;}
-	#store_infomation_area .content_area{float:left; font-size:13pt; line-height:21pt; font-weight:bold;}
+	#store_infomation_area .content_area{float:left; font-size:13pt; line-height:21pt; font-weight:bold; font-family:"NotoSansCJKkr-Regular.eot";
+		width: -webkit-calc(100% - 30px); /* for Chrome, Safari */
+		width:    -moz-calc(100% - 30px); /* for Firefox */
+		width:         calc(100% - 30px); /* for IE */
+	}
 	#store_infomation_area .info_and_benefit_content{width:100%; float:left; font-size:10pt; line-height:12pt; margin:3px;}
 @media all and (max-width:1041px){
 	#store_infomation_area{width:100%; overflow:hidden; padding-left:0px;}
@@ -1720,7 +2073,13 @@ $partnerMap=$partner['p_shopName'];
 							</div>
 							<div class="store_image_text_box">
 								<div class="store_image_box">
-									<img class="partner_profile" src="../manager/partnerpic/<?echo $partner['p_id']?>.jpg" onerror="this.style.display='none';"/>
+									<?
+									//이미지 경로
+									$sql="select filename from partnerImage where p_id='".$partner['p_id']."'";
+									$q=mysql_query($sql);
+									$img_path=mysql_fetch_array($q);
+									?>
+									<img class="partner_profile" src="../manager/partnerpic/<?echo $img_path['filename']?>.jpg" onerror="this.style.display='none';"/>
 								</div>
 								<div class="store_text_box">
 									<div class="container_box">
@@ -1818,13 +2177,13 @@ $partnerMap=$partner['p_shopName'];
 					$q=mysql_query($sql);
 					while($i>0){
 					?>
-						<div class="mySlides fade">
-						 <?$album=mysql_fetch_array($q);?>
-							<img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" style="width:30%;" onerror="this.style.display='none';">
+						<div class="mySlides fade" id="albumsize_area">
 						<?$album=mysql_fetch_array($q);?>
-							<img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" style="width:30%;" onerror="this.style.display='none';">
+							<div class="albumsize_box"><img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" onerror="this.style.display='none';"></div>
 						<?$album=mysql_fetch_array($q);?>
-							<img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" style="width:30%;" onerror="this.style.display='none';"> 
+							<div class="albumsize_box"><img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" onerror="this.style.display='none';"></div>
+						<?$album=mysql_fetch_array($q);?>
+							<div class="albumsize_box"><img class="albumsize" src="../manager/album/<?echo $album[0]?>.jpg" onerror="this.style.display='none';"></div>
 						</div>
 					<?
 					$i--;
@@ -1855,7 +2214,7 @@ $partnerMap=$partner['p_shopName'];
 						$malbum=mysql_fetch_array($mq);
 					?>
 						<div class="mySlide fade">
-							<img class="albumsize" src="../manager/album/<?echo $malbum[0]?>.jpg" style="width:90%;margin-left:5%;" onerror="this.style.display='none';"> 
+							<div class="albumsize_box"><img class="albumsize" src="../manager/album/<?echo $malbum[0]?>.jpg" onerror="this.style.display='none';"></div> 
 						</div>
 					<?
 					$mi--;
@@ -1891,13 +2250,14 @@ $partnerMap=$partner['p_shopName'];
 					<ul class="bxslider05"><!--5개까지만 자른다-->
 						<li>
 						<?
-						$sql="select g_idx, filename from gameImage where p_id='".$data['p_id']."'";
+						$sql="SELECT a.g_idx, a.g_title, b.filename  
+						FROM game a, gameImage b
+						WHERE a.g_idx = b.g_idx
+						AND b.p_id='".$data['p_id']."'
+						ORDER BY a.g_idx";
 						$q=mysql_query($sql);
+
 						while($imgloop=mysql_fetch_array($q)){
-							//게임이름
-							$gsql="select g_title from game where g_idx='".$imgloop['g_idx']."'";
-							$gq=mysql_query($gsql);
-							$gname=mysql_fetch_array($gq);
 						?>
 							<div class="themebox">
 								<a href="./theme_view.php?g_idx=<?echo $imgloop['g_idx']?>">
@@ -1905,7 +2265,7 @@ $partnerMap=$partner['p_shopName'];
 								<div class="rollingImage_box"> 
 									<img class="rollingImage" src="../manager/gameImage/<?echo $imgloop['filename']?>.jpg" />
 								</div>
-								<span style="margin-bottom:20px;"><?echo $gname[0]?></span>
+								<span style="margin-bottom:20px;"><?echo $imgloop['g_title']?></span>
 								</a>
 							</div>
 						<?
@@ -1919,7 +2279,10 @@ $partnerMap=$partner['p_shopName'];
 				<div class="slidearea_m" style="height:300px;">
 					<ul class="bxslider05_m" style='padding-top:20px;'>
 						<?
-						$sql="select g_idx, filename from gameImage where p_id='".$data['p_id']."'";
+						$sql="select * from gameImage a, game b
+						WHERE a.g_idx=b.g_idx
+						AND a.p_id='".$data['p_id']."'
+						ORDER BY a.g_idx";
 						$q=mysql_query($sql);
 						while($imgloop=mysql_fetch_array($q)){
 						?>
@@ -1928,9 +2291,9 @@ $partnerMap=$partner['p_shopName'];
 								<a href="./theme_view.php?g_idx=<?echo $imgloop['g_idx']?>">
 									<!--하단 롤링부분 max-width:1041px-->
 									<div class="rollingImage_box_mobile">
-										<img src="../manager/gameImage/<?echo $imgloop[1]?>.jpg" style="width:100%"/>
+										<img src="../manager/gameImage/<?echo $imgloop['filename']?>.jpg" style="width:100%"/>
 									</div>
-									<span><?echo $gname[0]?></span>
+									<span><?echo $imgloop['g_title']?></span>
 									<!--하단 롤링부분 max-width:1041px-->
 								</a>
 							</div>
@@ -2149,9 +2512,9 @@ function kCalendar(id, date) {
 	var calendar = '';
 	
 	calendar += '<div id="header">';
-	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+	calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')" style="color:#fff"><&nbsp;</a></span>';
 	calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
-	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+	calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')" style="color:#fff">&nbsp;></a></span>';
 	calendar += '		</div>';
 	calendar += '		<table border="0" cellspacing="0" cellpadding="0">';
 	calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
@@ -2177,7 +2540,8 @@ function kCalendar(id, date) {
 				calendar += '				<td class="' + dateString[j] + '"> </td>';
 				continue;
 			}
-			calendar += '				<td class="' + dateString[j] + '" onclick="go('+currentYear+','+currentMonth+',this.innerHTML, <??>)" style="cursor:pointer">' + dateNum + '</td>'; //onclick으로 날짜값을 넘긴다.
+			calendar += '				<td class="' + dateString[j] + '" onclick="go('+currentYear+','+currentMonth+',this.innerHTML)" style="cursor:pointer">' + dateNum + '</td>'; //onclick으로 날짜값을 넘긴다.
+
 		}
 		calendar += '			</tr>';
 	}

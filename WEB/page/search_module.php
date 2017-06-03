@@ -110,7 +110,7 @@
 				<li><a onclick="search_game('all')" style="cursor:pointer;">전체</a></li>
 				<li>
 					<a href="#">서울</a> 
-					<ul class="loca_2dep">
+					<ul class="loca_2dep" id="s1">
 						<li><a  onclick="search_game('seoul')">전체</a></li>
 						<li><a  onclick="search_game('mapo')">홍대</a></li>
 						<li><a  onclick="search_game('seodaemoon')">신촌</a></li>
@@ -122,14 +122,14 @@
 					</ul>
 				</li>
 				<li><a href="#">경기</a>
-					<ul class="loca_2dep">
+					<ul class="loca_2dep" id="s2">
 						<li><a  onclick="search_game('gyeonggi')">전체</a></li>
 						<li><a  onclick="search_game('suwon')">수원</a></li>
 						<li><a  onclick="search_game('anyang')">안양</a></li>
 						<li><a  onclick="search_game('hwasung')">화성</a></li>
 					</ul>
 				</li>
-
+			
 			<!--<li><a onclick="search_game('incheon')">인천</a></li>
 				<li><a onclick="search_game('daejeon')">대전</a></li>
 				<li><a onclick="search_game('busan')">부산</a></li>-->
@@ -138,7 +138,7 @@
 		</dd>
 	</dl>
 </form>
-<form action='./search_word.php' method='get' id='search_word_form'>
+<form action='./search_game.php' method='get' id='search_word_form'>
 	<div class="schbox">
 		<input name="input" id="searcharea" type="text" class="txt" placeholder="&nbsp&nbsp&nbsp카페, 테마 직접검색 가능합니다." />
 		<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>

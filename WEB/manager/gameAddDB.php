@@ -66,7 +66,15 @@ mysql_query($sql);
 //game_time을 추가한다
 $sql="insert into game_timeAsk values('', '".$g."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
 mysql_query($sql);
+
+
+//혹시 전체 삭제될지 모르니 dump를 남기자.
+$sql="INSERT into gameAskDump
+SELECT * from gameAsk
+WHERE g_idx='".$g."'";
+mysql_query($sql);
 ?>
+
 
 <script>
 alert("게임추가 요청이 완료되었습니다");

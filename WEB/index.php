@@ -219,7 +219,9 @@ if(@!$_SESSION['user_email']){
 				<li><a href="./page/join.php">회원가입</a></li>
 			<!--	<li><a href="#">예약확인</a></li>
 				<li><a href="#">랭킹검색</a></li>-->
+			<!--
 				<li><a href="./search_user.php">탈출러검색</a></li>
+			-->
 			<!--	<li><a href="./page/notice.php">고객센터</a></li>-->
 			</ul>
 			<!-- e : 로그인 전 pc -->
@@ -228,8 +230,11 @@ if(@!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 후 pc -->
 			<ul class="gnb clfix">
-				<li><a href="./page/sch_lank.html">랭킹검색</a></li>								<li><a href="./search_user.php">탈출러검색</a></li>
+				<!--
+				<li><a href="./page/sch_lank.html">랭킹검색</a></li>								
+				<li><a href="./search_user.php">탈출러검색</a></li>
 				<li><a href="./page/notice.php">고객센터</a></li>
+				-->
 				<li class="login">
 					<a href="#">
 <?
@@ -269,20 +274,20 @@ if(!file_exists($filepath)){
 								<strong>
 								<?
 								if($data['title']=="")
-									echo("타이틀 없음");
+									echo("타이틀없음 ".$data['nickname']);
 								else	
 									echo $data['title']
 								?></strong>
 								<strong>
 								<?
-								echo($data['rank']." 위");
-								?><em>in 대한민국</em></strong>
+								//echo($data['rank']." 위");
+								?>in 대한민국</strong>
 							
 								<span><?
-									echo($data['win']."탈 ");
-									echo($data['lose']."패 ");
+								//	echo($data['win']."탈 ");
+								//	echo($data['lose']."패 ");
 									
-									if($data['win']==0 && $data['lose']==0)
+									/*if($data['win']==0 && $data['lose']==0)
 										echo("0 %");
 									else if($data['win']!=0 && $data['lose']==0)
 										echo("100 %");
@@ -291,14 +296,13 @@ if(!file_exists($filepath)){
 										$division=$data['win']/$plus;
 										$cal=$division*100;
 										echo(substr($cal,0,2)." %");
-									}
+									}*/
 									?></span>
-								<span>평균속도 0<?
-								?></span>
+								<span><!--평균속도 0--></span>
 							</div>
 						</div>
 						<div class="in_2">
-							<div class="tit">예약 2건 <a href="mypage1.php" class="btn_in_more">더보기</a></div>
+							<div class="tit"><!--예약 2건 <a href="mypage1.php" class="btn_in_more">더보기</a>--></div>
 							<table class="reserlist">
 								<colgroup>
 									<col style="width:14%" />
@@ -308,7 +312,7 @@ if(!file_exists($filepath)){
 									<col style="width:*" />
 								</colgroup>
 								<tbody>
-									<tr>
+								<!--	<tr>
 										<td>11/15</td>
 										<td>14:30</td>
 										<td class="gray">대학로</td>
@@ -321,7 +325,7 @@ if(!file_exists($filepath)){
 										<td class="gray">홍대</td>
 										<td class="gray">ESC </td>
 										<td>살인자의방</td>
-									</tr>
+									</tr>-->
 								</tbody>
 							</table>
 						</div>
@@ -352,9 +356,11 @@ if(@!$_SESSION['user_email']){
 					</div>
 				</div>
 				<ul class="gnb_m">
+					<!--
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
 					<li><a href="./search_user.php">탈출러검색</a></li>
+					-->
 			<!--		<li class="gnb3"><a href="./page/notice.php">고객센터</a></li>-->
 				</ul>
 				<!-- e : 로그인 전 mobile -->
@@ -419,7 +425,7 @@ if(!file_exists($filepath)){
 				<ul class="gnb_m">
 					<li class="gnb4"><a href="./page/mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="./page/sch_lank.html">랭킹검색</a></li>
-					<li class="gnb2"><a href="./search_user.php">탈출러검색</a></li>
+					<!--<li class="gnb2"><a href="./search_user.php">탈출러검색</a></li>-->
 					<li class="gnb3"><a href="#">고객센터</a></li>
 				</ul>
 				<div class="logoutbox"><a href="./page/logout.php" class="btn_logout">로그아웃</a></div>
@@ -604,9 +610,9 @@ if(!file_exists($filepath)){
 					</dd>
 				</dl>
 			</form>
-			<form action='./page/search_word.php' method='get' id='search_word_form'>
+			<form action='./page/search_game.php' method='get' id='search_word_form'>
 				<div class="schbox">
-					<input name="input" id="searcharea" type="text" class="txt" placeholder="&nbsp&nbsp&nbsp카페, 테마 직접검색 가능합니다." />
+					<input name="input" id="searcharea" type="text" class="txt" placeholder="카페, 지역, 테마 직접검색 가능합니다." style='text-align:center;' />
 					<a onclick="search_word()" class="btn_sch" style="cursor:pointer;">검색</a>
 				</div>
 			</form>

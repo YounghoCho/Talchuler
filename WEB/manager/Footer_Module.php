@@ -21,7 +21,7 @@
 						<li><a href="http://www.talchuler.com/page/company_info.php">회사소개</a></li>
 						<li><a href="./policy1.php">이용약관</a></li>
 						<li><a href="./policy2.php">개인정보처리방침</a></li>
-						<li><a href="./policy3.php">위치정보이용약관</a></li>
+						<li><a href="./policy3.php">광고이용정책동의</a></li>
 					</ul>
 					<div class="copyright">COPYRIGHT INOLUTION CORP.ALL RIGHT RESERVED</div>
 					<div class="snsbox">

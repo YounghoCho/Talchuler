@@ -1,7 +1,7 @@
 <style>
 #footer{float:left}
 @media all and (max-width:1024px){
-	#footer{height:100%;}
+
 }
 </style>
 	<footer id="footer">

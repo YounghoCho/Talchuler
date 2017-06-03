@@ -14,7 +14,7 @@ if($test[0]){
 	//게임업데이트
 $sql="update game set
 		g_idx='".$_POST['g_idx']."', p_id='".$_POST['p_id']."',
-		g_title='".$_POST['title']."', g_subtitle='".$_POST['subtitle']."', g_content='".$_POST['content']."', g_summary='".$_POST['summary']."',
+		g_title='".addslashes($_POST['title'])."', g_subtitle='".addslashes($_POST['subtitle'])."', g_content='".addslashes($_POST['content'])."', g_summary='".addslashes($_POST['summary'])."',
 		g_level='".$_POST['level']."', g_people='".$_POST['people']."', g_people2='".$_POST['people2']."', g_horror='".$_POST['horror']."',
 		g_skill1='".$_POST['ability1']."', g_skill2='".$_POST['ability2']."', g_skill3='".$_POST['ability3']."', g_skill4='".$_POST['ability4']."', g_skill5='".$_POST['ability5']."', g_skill6='".$_POST['ability6']."', 
 		g_weekprice='".$_POST['week']."', g_holyprice='".$_POST['holy']."', 
@@ -40,20 +40,27 @@ $sql="update game set
 			mysql_query($sql);
 		}
 
-	//이미지추가
+	//이미지 추가를 위한 정보
 	$sql="select filename, time, isnew from gameImageAsk where g_idx='".$test[0]."'";
 	$q=mysql_query($sql);
 	$move=mysql_fetch_array($q);
-	
-	//혹시 이미지가 없으면 삽입
-	$sql="insert into gameImage (gi_idx, g_idx, p_id, filename, time, isnew) select gi_idx, g_idx, p_id, filename, time, isnew 
-   from gameImageAsk
-   where g_idx='".$_POST['g_idx']."'";
-	mysql_query($sql);
 
-	//이미 이미지가 있으면 업데이트
-	$sql="update gameImage set filename='".$move['filename']."', time='".$move['time']."', isnew='".$move['isnew']."' where g_idx='".$test[0]."'";
-	mysql_query($sql);
+	//게임은 있는데, 이미지가 없는경우?
+	$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
+	$q=mysql_query($sql);
+	$checkimg=mysql_fetch_array($q);
+		//이미지가 있는경우	
+		if($checkimg!=''){
+			$sql="update gameImage set filename='".$move['filename']."', time='".$move['time']."', isnew='".$move['isnew']."' where g_idx='".$test[0]."'";
+			mysql_query($sql);
+		}
+		//이미지가 없는경우
+		else{
+		$sql="insert into gameImage (gi_idx, g_idx, p_id, filename, time, isnew) select gi_idx, g_idx, p_id, filename, time, isnew 
+			 from gameImageAsk
+			 where g_idx='".$_POST['g_idx']."'";
+			mysql_query($sql);
+		}
 	
 	//만약 기존에 사진이 있는 게임이었으면, 기존사진을 지운다.
 //	$sql="select filename from gameImage where g_idx='".$_POST['g_idx']."'";
@@ -75,7 +82,7 @@ else{
 		g_disprice1, g_disprice2, g_disprice3, g_disprice4, g_disprice5
 		) values (
 		'".$_POST['g_idx']."', '".$_POST['p_id']."',
-		'".$_POST['title']."', '".$_POST['subtitle']."', '".$_POST['content']."', '".$_POST['summary']."',
+		'".addslashes($_POST['title'])."', '".addslashes($_POST['subtitle'])."', '".addslashes($_POST['content'])."', '".addslashes($_POST['summary'])."',
 		'".$_POST['level']."', '".$_POST['people']."', '".$_POST['people2']."', '".$_POST['horror']."',
 		'".$_POST['ability1']."', '".$_POST['ability2']."', '".$_POST['ability3']."', '".$_POST['ability4']."', '".$_POST['ability5']."', '".$_POST['ability6']."',
 		'".$_POST['week']."', '".$_POST['holy']."',

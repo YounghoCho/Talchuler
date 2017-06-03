@@ -1,6 +1,8 @@
 <?
 include('./include.php');
 
+//지울때 g_idx로 지우면, 같은 게임의 경우 중복 요청이 전부 삭제되므로. 일단 요청정보를 조회한다.gameinfo에서 popup1()함수에서 실행함
+
 //요청디비지우고
 $sql="delete from gameAsk where g_idx='".$_GET['g_idx']."'";
 mysql_query($sql);

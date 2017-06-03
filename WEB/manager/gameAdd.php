@@ -36,7 +36,7 @@ $("document").ready(function(){
     width :         calc(80% - 59px); /* for IE */
 	overflow:auto;
 	margin:50 0 0 33;
-	padding:0 0 30 26;
+	padding:0 0 10 26;
 }
 
 #Main_content_area{
@@ -45,7 +45,7 @@ $("document").ready(function(){
 	width : -webkit-calc(80% - 59px); /* for Chrome, Safari */
     width :    -moz-calc(80% - 59px); /* for Firefox */
     width :         calc(80% - 59px); /* for IE */
-	margin:0 0 0 33;
+	margin:-5 0 0 33;
 	padding:15 0 30 26;
 }
 
@@ -521,9 +521,35 @@ $(function(){
 	border:2px solid #bebebe;
 	border-radius:5px;
 }
-.td3{
+.price{
+	width:100%;
+	height:80px;
+	margin-top:-2%;
+	margin-left:3%;
+}
+.info{
+	width:100%;
+	height:50px;
+	margin-left:3%;
+}
+.pr1{
 	color:#ff6600;
 	font-weight:bold;
+}
+.sp1{
+	font-size:14pt;
+	font-weight:bold;
+}
+.sp2{
+	margin-left:10px;
+}
+.tp1{
+	margin-top:3%;
+	margin-left:0.5%;
+	color:#ff6600;
+	font-weight:bold;
+}
+.tp2{
 }
 </style>
 
@@ -766,6 +792,8 @@ function button_onskill(value){
 		<div id="Main_titlebar">
 			<div class="title">게임추가하기</div>
 		</div>
+		<p class="tp1">최저가 인증?</p>
+		<p class="tp2">모든 판매사이트 중 최저가로 입력해주신 후 [계정정보수정]에서 최저가보장-동의 후 신청 체크해주시면 &lt;최저가인증&gt;라벨을 적용해드립니다.</p>
 	</div>
 	<div id="Main_content_area">
 		<div id="Game_info">
@@ -921,21 +949,23 @@ function button_onskill(value){
 				<div class="discountInfo">할인정보</div>
 				<table class="tPrice">
 					<tr>
-						<td style="width:150px;">*탈출러 판매가(1인가격)</td>
+						<td style="width:180px; color:#1671B6; font-size:14pt; font-weight:bold;">탈출 프라이쓰(1인)</td>
 						<td style="padding-left:30px; width:230px">
-							주중 <input type="textbox" id="week2" name="week" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"> 원
+							주중 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="week1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_weekprice']?>" name="week"> 원
 						</td>
 						<td style="padding-left:8%;">
-							주말 <input type="textbox" id="holy2" name="holy" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"> 원 <font></font>
-						</td>
-						<td class="td3">
-							**할인하지 않으실 경우 정가로 기입해주세요.
+							주말 <input type="textbox" onKeyPress="return numkeyCheck(event)" maxlength="6" id="holy1" style="height:30px;width:125px; font-size:14px; text-align:center;" class="defText"  value="<?echo $basic['g_holyprice']?>" name="holy"> 원 <font></font>
 						</td>
 					</tr>
 				</table>
 			</div>
+			<div class="price">
+				<p class="pr1">*탈출 프라이쓰란?</p>
+				<p class="pr2">-1인당 가격으로 할인판매하는 방법입니다.(ex:탈출 프라이쓰가 15000원일 때 = 2명:30,000원/3명:45,000원/...6명:90,000원)</p>
+				<p class="pr3">-<u>필수가 아니므로</u> 이용하시지 않으시려면 입력하지 않으셔도 됩니다.</p>
+			</div>
 
-			<div class="discountContent" style="margin-top:-2%;">
+			<div class="discountContent" style="">
 			할인종류
 				<select id="discount6" name="discount1" class="discountContent_inner" onChange="getSelectValue6();">
 					<option value="1">선택하세요</option>

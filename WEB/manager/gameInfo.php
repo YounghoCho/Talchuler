@@ -1026,7 +1026,7 @@ $data=mysql_fetch_array($q);
 				<tr>
 					<td id="content" rowspan="5" colspan="6" style="background-color:#eeeeee;"><textarea name="content" placeholder="게임설명을 입력해주세요." style="font-size:12px; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;"><?echo $data['g_content']?></textarea>
 					</td>
-					<td id="summary" colspan="4" style="background-color:#eeeeee; height:30%;"><textarea name="summary" placeholder="게임요약 설명을 입력해주세요. (미입력시 게임 설명 처음4줄등록)" style="text-align:center;font-size:12px; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;"><?echo $data['g_summary']?></textarea></td>
+					<td id="summary" colspan="4" style="background-color:#eeeeee; height:30%;"><textarea name="summary" placeholder="게임요약 설명을 입력해주세요.&#10;&#13;(미입력시 게임설명 상위부분 노출)" style="text-align:center;font-size:12px; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;"><?echo $data['g_summary']?></textarea></td>
 				</tr>
 				<tr>
 				<?

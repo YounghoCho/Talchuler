@@ -5,6 +5,16 @@ include('./HeadTab_Module.php');
 <style>
 
 input{padding:3px;}
+#Main{
+	/*Tab 크기 뺴줌*/
+	width : -webkit-calc(100% - 220px); /* for Chrome, Safari */
+    width :    -moz-calc(100% - 220px); /* for Firefox */
+    width :         calc(100% - 220px); /* for IE */
+	height:auto; /*Main의 높이를 90%로 조절합니다.*/
+	font-family:'NotoSansCJKkr-Regular.eot';
+	overflow:hidden;
+}
+
 
 /*대분류 영역*/
 #Main_titlebar{
@@ -318,7 +328,7 @@ input{padding:3px;}
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 
 
-<div style="height:850px;overflow:hidden;">
+<div id="Main">
 	<div id="Main_titlebar">
 		<div class="title">카페정보관리</div>
 		<div class="subtitle">-&nbsp카페기본설정</div>

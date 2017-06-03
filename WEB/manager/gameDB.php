@@ -79,7 +79,7 @@ function foo($filename, $realidx){
 			time
 			) values (
 			'".$realidx."','".$_SESSION['id']."',
-			'".$_POST['title']."', '".$_POST['subtitle']."', '".$_POST['content']."', '".$_POST['summary']."',
+			'".addslashes($_POST['title'])."', '".addslashes($_POST['subtitle'])."', '".addslashes($_POST['content'])."', '".addslashes($_POST['summary'])."',
 			'".$_POST['level']."', '".$_POST['people']."', '".$_POST['people2']."', '".$_POST['horror']."',
 			'".$_POST['ability1']."', '".$_POST['ability2']."', '".$_POST['ability3']."', '".$_POST['ability4']."', '".$_POST['ability5']."', '".$_POST['ability6']."',
 			'".$_POST['week']."', '".$_POST['holy']."',
@@ -94,6 +94,12 @@ function foo($filename, $realidx){
 
 		//game_time을 추가한다
 		$sql="insert into game_timeAsk values('', '".$realidx."', '".$_POST['time1']."', '".$_POST['time2']."', '".$_POST['time3']."', '".$_POST['time4']."', '".$_POST['time5']."', '".$_POST['time6']."', '".$_POST['time7']."', '".$_POST['time8']."', '".$_POST['time9']."', '".$_POST['time10']."', '".$_POST['time11']."', '".$_POST['time12']."', '".$_POST['time13']."', '".$_POST['time14']."', '".$_POST['time15']."', '".$_POST['time16']."')";
+		mysql_query($sql);
+
+		//혹시 전체 삭제될지 모르니 dump를 남기자.
+		$sql="INSERT into gameAskDump
+		SELECT * from gameAsk
+		WHERE g_idx='".$realidx."'";
 		mysql_query($sql);
 		?>
 		<script>
