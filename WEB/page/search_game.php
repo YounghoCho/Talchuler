@@ -4,6 +4,7 @@ include('./include.php');
 ?>
 
 <style>
+#libon{position:relative; float:left;text-align:center; z-index:3;padding:0;background-color:none;}
 .datebox {position:relative;margin-right:5px; display:inline-block; vertical-align:middle;}
 .datebox input.txt {width:130px; height:30px; cursor:pointer; }
 .datebox img {position:absolute; top:12px; right:5px; width:14px}
@@ -36,6 +37,7 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 .hidecontent{width:100%;height:84px;overflow:hidden;}
 
 @media all and (max-width:1041px){
+#libon{position:relative; float:left;text-align:center; z-index:3;padding:0;background-color:none;}
 #detailPrice{font-size:10px;}
 #hrhr{display:none;}
 .paging{position:absolute;bottom:5px;left:33%;}
@@ -1137,10 +1139,15 @@ for ($i=1; $i<=$num; $i++) {
 ?>
 	<!--출력부-->
     <div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
-		<div class="gameinfo_container" > <!--컨텐츠를 담는 공간-->
+		<div class="gameinfo_container"> <!--컨텐츠를 담는 공간-->
 
 			<div class="image_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--이미지를 담는 공간-->
 				<div class="image_area"> <!--이미지 담기-->
+				<?
+				if($data['p_agreement5']==2){
+				?>
+					<img id="libon" src="../images/banner/libon.png" style="width:60%;position:relative;float:left;"/>
+				<?}?>
 					<img src="../manager/gameImage/<?echo $data['filename']?>.jpg">
 				</div>
 			</div>

@@ -258,8 +258,8 @@ $img=mysql_fetch_array($imgquery);
 					#game_location .mid_box{
 						margin:0 auto;
 						overflow:hidden;
-						height:25px;
-						padding-top:5px;
+						height:30px;
+						line-height:30px
 					}
 
 					#game_location .mid_box img{
@@ -315,11 +315,11 @@ $img=mysql_fetch_array($imgquery);
 					}
 
 					#gameinfo_imagebox .game_imagee{
-						position:relative; float:left; border:0px solid #aaa; width:390px; height:540px; text-align:center; display:table-cell; background:#c3c3c3;
+						position:relative; float:left; border:0px solid #aaa; width:390px; height:540px; text-align:center; display:table-cell; background:#c3c3c3;z-index:1;
 					}
-
+					#gameinfo_imagebox .game_imagee #libon{position:relative; float:left; width:140px; height:140px; text-align:center; z-index:3;padding:0;background-color:none;}
 					#gameinfo_imagebox .game_imagee img{ /*width:auto; max-width:390px; */
-						position:absolute; width:100%; height:auto; max-height:540px; max-width:390px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:25px;
+						position:absolute; width:100%; height:auto; max-height:540px; max-width:390px; border:0px solid #aaa; margin:auto; top:0; bottom:0; left:0; right:0; padding:25px;
 					}
 
 					#icon_wrap{
@@ -510,9 +510,9 @@ $img=mysql_fetch_array($imgquery);
 						#gameinfo_imagebox .game_imagee{
 							position:relative; float:left; border:0px solid #aaa; width:100%; height:420px; text-align:center; display:table-cell; background:#c3c3c3; overflow:auto; margin:0 auto;
 						}
-
+						#gameinfo_imagebox .game_imagee #libon{position:relative; float:left; width:110px; height:110px; text-align:center; z-index:3;padding:0;background-color:none;}
 						#gameinfo_imagebox .game_imagee img{
-							position:absolute; width:100%; height:auto; max-height:400px; max-width:310px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0; padding:0;
+							position:absolute; width:100%; height:auto; max-height:400px; max-width:310px; border:0px solid #aaa; background:none; margin:auto; top:0; bottom:0; left:0; right:0; padding:0;
 						}
 						
 						#icon_wrap{
@@ -588,7 +588,7 @@ $img=mysql_fetch_array($imgquery);
 							line-height:15pt;
 							color:#a7a7a7;
 							background-position:0px 2px;
-							margin-top:-3px;
+							margin-top:6px;
 						}
 						
 
@@ -926,14 +926,14 @@ $img=mysql_fetch_array($imgquery);
 
 					</style>
 					<?
-					$sql="select p_shopName, p_localName from partner where p_id='".$data['p_id']."'";
+					$sql="select p_shopName, p_localName, p_agreement5 from partner where p_id='".$data['p_id']."'";
 					$q=mysql_query($sql);
 					$pppp=mysql_fetch_array($q);
 					?>
 					<div class="gameinfo_widthbox">
 						<div id="game_location" style="text-align:left">
 							<div class="mid_box">
-								<!--<img src="../images/icon/shop.png" style=''/>-->
+								<!--<img src="../images/icon/shop.png" style=''/>이 이미지는 아래 span에 background로 걸려있음.-->
 								<span style=''><?echo ($pppp['p_shopName'])?>&nbsp;<?echo ($pppp['p_localName'])?></span>
 							</div>
 						</div>
@@ -946,8 +946,15 @@ $img=mysql_fetch_array($imgquery);
 					</div>
 					<div class="gameinfo_widthbox" style=''>
 						<div id="gameinfo_imagebox" style=''>
+
 							<dt class="game_imagee"style=''>
-								<img src="../manager/gameImage/<?echo ($img['filename'])?>.jpg" style=''/>
+							<?
+							if($pppp['p_agreement5']==2){
+							?>
+								<img id="libon" src="../images/banner/libon.png"/>
+								<?}?>
+								<img src="../manager/gameImage/<?echo ($img['filename'])?>.jpg" style='z-index:2'/>
+
 							</dt>
 						</div>
 

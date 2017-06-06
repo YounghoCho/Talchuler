@@ -61,7 +61,7 @@ $message='<table style="width:100%;text-align:center">
 $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/html; charset=utf-8';
 $headers[] = 'From: 탈출러 <talchul_er@naver.com>';
-//mail($to, $subject, $message, implode("\r\n", $headers));
+mail($to, $subject, $message, implode("\r\n", $headers));
 //메일보내기 S
 ?>
 <meta charset="utf-8"/>

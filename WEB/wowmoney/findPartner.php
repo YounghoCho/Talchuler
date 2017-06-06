@@ -69,7 +69,26 @@ td{border: 1px solid #aaa;}
 			<td><?echo $data['p_email']?></td>
 			<td><?echo $data['p_name']?></td>
 			<td><?echo $data['p_phone']?></td>
-			<td id="a<?echo $changeIndex?>" onclick="javascript:aaa(this.id, '<?echo $data['p_id']?>')"><a  style="color:red;"><?if($data['p_agreement5']==0) echo("신청"); else echo("확인");?></a></td>
+			<td id="a<?echo $changeIndex?>" onclick="javascript:aaa(this.id, '<?echo $data['p_id']?>')" style="cursor:pointer">
+			<?
+			//최저가 신청 승인
+			$value=$data['p_agreement5'];
+			switch($value){
+				case 0:
+					echo("");
+					?><script>var kk=document.getElementById("a<?echo $changeIndex?>");kk.style.cursor="default";</script><?
+					break;
+				case 1:
+					echo("신청");
+					?><script>var kk=document.getElementById("a<?echo $changeIndex?>");kk.style.color="red";</script><?
+					break;
+				case 2:
+					echo("확인");
+					?><script>var kk=document.getElementById("a<?echo $changeIndex?>");kk.style.color="green";</script><?
+					break;					
+			}
+			 ?>
+			 </td>
 		</tr>
 		<?
 		$changeIndex++;
@@ -84,7 +103,7 @@ td{border: 1px solid #aaa;}
 </style>
 <script>
 function aaa(id, value){
-	if(confirm("확실합니까?")==true){
+	if(confirm("신청 내역을 확인하셨고, 최저가 신청을 승인하시겠습니까?")==true){
 		location.href="./data.php?p_id="+value+"";
 	}else{
 		return ;
