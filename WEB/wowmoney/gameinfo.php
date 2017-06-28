@@ -411,7 +411,7 @@ if($index+1>$count[0]){
 
 ?>
 <div class="ment">
-게임정보승인
+게임정보승인&nbsp&nbsp&nbsp&nbsp&nbsp요청시간:<?echo $data['time']?>
 </div>
 
 <form action="./gameAdmit.php" method="POST" id="form">
@@ -459,10 +459,10 @@ $image=mysql_fetch_array($imageQ);
 		</tr>
 		<tr>
 			<td id="content" rowspan="4" colspan="2" style="background-color:#eeeeee; width:30%;">
-			<textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0; overflow:hidden;"  ><?echo $data['g_content']?></textarea>
+			<textarea name="content" style="text-align:center;font-size:12pt; width:100%; height:100%;background-color:#F2F2F2; border:0;"  ><?echo $data['g_content']?></textarea>
 			</td>
 			<td id="summary"rowspan="1" style="background-color:#eeeeee; width:30%; height:30%;">
-			<textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0; overflow:hidden;" ><?echo $data['g_summary']?></textarea></td>
+			<textarea name="summary" style="text-align:center;font-size:12pt; width:100%; height:100%; background-color:#F2F2F2; border:0;" ><?echo $data['g_summary']?></textarea></td>
 		</tr>
 		<tr>
 		<?

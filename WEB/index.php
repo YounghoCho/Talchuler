@@ -26,7 +26,7 @@ $data=mysql_fetch_array($query);
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="./css/style1.css" />
 <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
 <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="./js/jquery.easing.1.3.min.js"></script>
@@ -414,6 +414,7 @@ if(!file_exists($filepath)){
 								?></span>
 							</div>
 				</div>
+				<!--
 				<div class="rebox">
 					<a href="./page/mypage1.php"><em>예약 3건</em></a>
 					<ul>
@@ -421,13 +422,13 @@ if(!file_exists($filepath)){
 						<li>11/17  게이샤의 편지</li>
 						<li>11/15  살인자의 방</li>
 					</ul>
-				</div>
-				<ul class="gnb_m">
+				</div>-->
+				<!--<ul class="gnb_m">
 					<li class="gnb4"><a href="./page/mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="./page/sch_lank.html">랭킹검색</a></li>
-					<!--<li class="gnb2"><a href="./search_user.php">탈출러검색</a></li>-->
+					<li class="gnb2"><a href="./search_user.php">탈출러검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
-				</ul>
+				</ul>--> 
 				<div class="logoutbox"><a href="./page/logout.php" class="btn_logout">로그아웃</a></div>
 				<!-- e : 로그인 후 mobile -->
 <?
@@ -637,7 +638,7 @@ if(!file_exists($filepath)){
 	 font-size:19px; 
 	 padding-top:5px;
 }
-.mySlidesContainer{background-color:#eee;width:100%;padding:30px; background:url('./images/banner/background3.jpg') no-repeat; background-position: center;}
+.mySlidesContainer{background-color:#eee;width:100%;padding:30px; background:url('./images/banner/banner_background.png') no-repeat; background-position: center;}
 /*부모 div영역이 자식의 크기만큼 감싸게하는 방법*/
     
 .mySlidesContainer:after { content:""; clear:both; display:block; *zoom:1;}
@@ -694,25 +695,25 @@ if(!file_exists($filepath)){
 <!--	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 	<a class="next" onclick="plusSlides(1)">&#10095;</a>-->	
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 </div>
 <div class="mySlidesContainerMobile">
 	<!--buttons-->
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides2 fade">
-	  <img src="./images/banner/user_highest.jpg" style="width:100%">
+	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 </div>
 
@@ -722,12 +723,12 @@ if(!file_exists($filepath)){
 	</div>
 	<div class="firstbanner">
 		<a href="http://www.talchuler.com/page/facebook_beginner_banner1.html" target="_blank">
-			<img src="./images/banner/cardnews1.jpg" style="width:100%"/>
+			<img src="./images/banner/banner_beginer.png" style="width:100%"/>
 		</a>
 	</div>
 	<div class="secondbanner">
 		<a href="http://www.talchuler.com/page/facebook_couple_banner1.html" target="_blank">
-			<img src="./images/banner/couple1.jpg" style="width:100%"/>
+			<img src="./images/banner/banner_couple.png" style="width:100%"/>
 		</a>
 	</div>
 	

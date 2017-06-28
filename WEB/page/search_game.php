@@ -15,9 +15,8 @@ select.select_st1.w80{width:80px;border-bottom:1px solid; background: url(../ima
 select.select_st1.w50{width:50px;border-bottom:1px solid;}
 select.select_st1.w100{width:100px;border-bottom:1px solid;}
 .pages{color:#999;margin-left:5px;margin-right:5px;}
-.paging{position:absolute;bottom:30px;left:50%;}
+.paging{position:absolute;bottom:30px;left:0;width:100%;text-align:center;}
 .choicearea{padding-bottom:40px;}
-#hrhr{height:2px;width:100%;background-color:#56dcfc;margin:25px 0 10px 0;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -37,10 +36,10 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 .hidecontent{width:100%;height:84px;overflow:hidden;}
 
 @media all and (max-width:1041px){
+.choicearea{margin:0;padding:0}
 #libon{position:relative; float:left;text-align:center; z-index:3;padding:0;background-color:none;}
 #detailPrice{font-size:10px;}
-#hrhr{display:none;}
-.paging{position:absolute;bottom:5px;left:33%;}
+.paging{position:absolute;bottom:12px;left:0;font-size:18px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -77,7 +76,7 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 		width :    -moz-calc(33.3% - 20px); /* for Firefox */
 		width :         calc(33.3% - 20px); /* for IE */ 
 		margin:10px;
-		margin-bottom:100px;
+		margin-bottom:12px;
 		height:336px; float:left; overflow:hidden;
 		border-top:1px solid #cccccc;
 
@@ -402,10 +401,10 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 
 		/*반복되는 영역*/
 		#gameinfo_stack .gameinfo_container{
-			width : -webkit-calc(100% - 10px); /* for Chrome, Safari */
-			width :    -moz-calc(100% - 10px); /* for Firefox */
-			width :         calc(100% - 10px); /* for IE */ 
-			margin:10px 5px 5px; 5px;
+			width : -webkit-calc(100%); /* for Chrome, Safari */
+			width :    -moz-calc(100%); /* for Firefox */
+			width :         calc(100%); /* for IE */ 
+			margin:10px 0px 5px; 0px;
 			height:auto; float:left; overflow:hidden;
 			border:1px solid #cccccc;
 			padding-top:10px;
@@ -931,8 +930,7 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 		</div>-->
 
 
-<!--</div><!--여기까지가 wrap이라서 파란선이 남는다, 근데 이걸 여기서 끊으면 전체 wrap이 끊겨서 페이징이 위에나와.. 아래로절대안내려감; 그래서 div을 넣어줬따-->
-<div id="hrhr"></div>
+<!--</div><!--여기까지가 wrap이라서 파란선이 남는다, 근데 이걸 여기서 끊으면 전체 wrap이 끊겨서 페이징이 위에나와.. 아래로절대안내려감;-->
 
 <!--search_module.php S-->
 <?
@@ -1043,7 +1041,7 @@ print_r($_GET);
 echo($num);*/
 
 $page = ($_GET['page'])?$_GET['page']:1;
-$list = 18;
+$list = 15;
 $block = 5;
 
 $pageNum = ceil($num/$list); // 총 페이지
@@ -1129,7 +1127,9 @@ if($_GET['input']!=''){
 }
 
 $real_data = mysql_query($three);
-
+?>
+<div id="gameinfo_stack"> <!--자체를 감싸는 영역-->
+<?
 for ($i=1; $i<=$num; $i++) {
     $data = mysql_fetch_array($real_data);
 
@@ -1138,7 +1138,7 @@ for ($i=1; $i<=$num; $i++) {
     }
 ?>
 	<!--출력부-->
-    <div id="gameinfo_stack"> <!--잔체를 감싸는 영역-->
+
 		<div class="gameinfo_container"> <!--컨텐츠를 담는 공간-->
 
 			<div class="image_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--이미지를 담는 공간-->
@@ -1213,17 +1213,28 @@ for ($i=1; $i<=$num; $i++) {
 				</div>
 				<div class="how_many_dropdown" id="a<?echo $data['g_idx']?>" onclick="detail(<?echo $data['g_idx']?>)">
 				<script>
+				//드롭다운
 					var tank=[0];//0자리에 이미 0을 채워놨다.
-					function detail(id){
+					function detail(id){//g_idx가 id로 들어온다.
 						var price_by_person_area= document.getElementById('b'+id);
-						tank.push(id);//데이터를 누를때마다 넣으면
-
-						if(tank.indexOf(id)!=0){//1부터 나오게되므로 참이된다.
+						//만약 배열에 g_idx가 없으면
+						if(tank.indexOf(id)=='-1'){
+							tank.push(id);//클릭할때마다 데이터를 넣는다.
 							price_by_person_area.style.display="block";
+						}
+						//만약 배열에 이미 있다면
+						else{
+							//데이터 인덱스를 구한다음
+							var where=tank.indexOf(id);
+							//데이터를 삭제
+							tank[where]=null;
+							price_by_person_area.style.display="none";
 						}
 					}
 				</script>
-					<font id="detailPrice">가격<br>자세히▼</font>
+					<div style="cursor:pointer">
+						<font id="detailPrice">가격<br>자세히</font>
+					</div>
 				</div>
 			</div>	
 
@@ -1245,28 +1256,25 @@ for ($i=1; $i<=$num; $i++) {
 			
 			<div class="price_by_person_area" id="b<?echo $data['g_idx']?>">
 				<?if($data['g_p2']!='0'){?>
-				<div class="price_by_person">2인:<?echo $data['g_p2']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">2인:<?echo $data['g_p2']?></div><?}?>
 				<?if($data['g_p3']!='0'){?>			
-				<div class="price_by_person">3인:<?echo $data['g_p3']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">3인:<?echo $data['g_p3']?></div><?}?>
 				<?if($data['g_p4']!='0'){?>	
-				<div class="price_by_person">4인:<?echo $data['g_p4']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">4인:<?echo $data['g_p4']?></div><?}?>
 				<?if($data['g_p5']!='0'){?>	
-				<div class="price_by_person">5인:<?echo $data['g_p5']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">5인:<?echo $data['g_p5']?></div><?}?>
 				<?if($data['g_p6']!='0'){?>	
-				<div class="price_by_person">6인:<?echo $data['g_p6']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">6인:<?echo $data['g_p6']?></div><?}?>
 				<?if($data['g_p7']!='0'){?>	
-				<div class="price_by_person">7인:<?echo $data['g_p7']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">7인:<?echo $data['g_p7']?></div><?}?>
 				<?if($data['g_p8']!='0'){?>	
-				<div class="price_by_person">8인:<?echo $data['g_p8']?></div><?}?>
+				<div class="price_by_person" style="margin-top:6px;">8인:<?echo $data['g_p8']?></div><?}?>
 			</div>
-
 		</div>
-    </div>
-
 <?
-
 }
 ?>
+ </div>
 
 <!--아래 스크립트가, 날짜 스케쥴 가져오는 js-->
 <script type="text/javascript" src="../js/common.js"></script>

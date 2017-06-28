@@ -7,7 +7,6 @@ $sql="select * from user where email='".$_SESSION['user_email']."';";
 $query=mysql_query($sql);
 $data=mysql_fetch_array($query);
 ?>
-
 <!DOCTYPE html>
 <html xml:lang="ko" lang="ko">
 <head>
@@ -278,20 +277,20 @@ if(!file_exists($filepath)){
 								?></span>
 							</div>
 				</div>
-				<div class="rebox">
+				<!--<div class="rebox">
 					<a href="mypage1.php"><em>예약 3건</em></a>
 					<ul>
 						<li>11/15  데드 넘버</li>
 						<li>11/17  게이샤의 편지</li>
 						<li>11/15  살인자의 방</li>
 					</ul>
-				</div>
-				<ul class="gnb_m">
+				</div>-->
+				<!--<ul class="gnb_m">
 					<li class="gnb4"><a href="mypage1.php">마이페이지</a></li>
 					<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>
-					<!--<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>-->
+					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
 					<li class="gnb3"><a href="#">고객센터</a></li>
-				</ul>
+				</ul>-->
 				<div class="logoutbox"><a href="./logout.php" class="btn_logout">로그아웃</a></div>
 				<!-- e : 로그인 후 mobile -->
 <?

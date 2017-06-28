@@ -1911,7 +1911,7 @@ function reserve_go(value){
 		color:#66ccff;
 	}
 	.contentjs{
-		width:60%;
+		width:50%;
 		height:40px;
 		line-height:40px;
 		text-align:center;
@@ -1924,7 +1924,7 @@ function reserve_go(value){
 	.menujs .contentjs{cursor:pointer;}
 	.menujs .hidejs{display:none;}
 	.hidejs{
-		width:60%;
+		width:50%;
 		height:50px;
 		margin-bottom:30px;
 		background-color:#ccc;
@@ -2099,7 +2099,7 @@ $partnerMap=$partner['p_shopName'];
 									<div class="info_and_benefit_content"><?echo $partner['benefit4']?></div>
 									<div class="container_box">
 										<div class="icon_area"><img src='../images/icon/icon_cafeinfo2.png'></div>
-										<div class="content_area"><?echo $partner['p_tele']?></div>
+										<div class="content_area"><a href="tel:<?echo $partner['p_tele']?>"/><?echo $partner['p_tele']?></div>
 									</div>
 									<div class="container_box">
 										<div class="icon_area"><img src='../images/icon/icon_cafeinfo3.png'></div>
