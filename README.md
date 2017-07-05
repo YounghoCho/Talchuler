@@ -22,7 +22,9 @@
 # links
 - Site
  http://www.talchuler.com
+
 -Android
  preparing
+
 -IOS 
  preparing
