@@ -17,9 +17,7 @@
 - You'll be able to know if you join our site.
 
 # Screen Shot
-![1](./images/serach.png)
-![2](./images/detail.png)
-![3](./images/info.png)
+![1](./images/1.png) [2](./images/2.png) [3](./images/3.png)
 
 # links
 - Site
