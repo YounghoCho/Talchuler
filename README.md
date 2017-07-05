@@ -17,9 +17,9 @@
 - You'll be able to know if you join our site.
 
 # Screen Shot
-![1](./images/1.png) 
-![2](./images/2.png) 
-![3](./images/3.png)
+![1](./images/1.png width="30%") 
+![2](./images/2.png width="30%") 
+![3](./images/3.png width="30%")
 
 # links
 - Site
