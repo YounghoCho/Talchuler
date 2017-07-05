@@ -1,10 +1,32 @@
-#Talchuler
+## Talchuler
 
-Talchuler is an O2O platform. we make connections between Offline Escaping cafes and players(customers).
-(*Escaping cafe: this is a game escaping from a secret room with friends. customers look for hints and they use them to escape from the room)
-We have promotions of cafes and social commerce system and so on.
-Also, we're developing an Responsive Web, Embeded Software, Hybrid Application(IOS, Android)
+# Introduction
+> Talchuler is an O2O platform. 
+- We give connections between Offline Escaping cafes and game players(customers) at cafes. 
+- We help cafe owners thereby promoting thier cafes and making reservation.
 
-#Our Responsive Web link
+# What is Escaping cafe?
+> It's like a game in a room.
+- You can go inside a room with your friends.
+- You must find hints to escape the room in time. 
+- It has a lot of themes such as horror, friendship, intelligence and so on.
 
-http://www.talchuler.com
+# How to use?
+> Are you player? or owner?
+- We give different service to players and owners.
+- You'll be able to know if you join our site.
+
+# Screen Shot
+![1](./images/serach.png)
+![2](./images/detail.png)
+![3](./images/info.png)
+
+# links
+- Site
+ http://www.talchuler.com
+
+-Android
+ preparing
+ 
+-IOS 
+ preparing
