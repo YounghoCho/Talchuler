@@ -17,16 +17,14 @@
 - You'll be able to know if you join our site.
 
 # Screen Shot
-![1]<img src="./images/1.png" width="30%" /> 
-![2](./images/2.png width="30%") 
-![3](./images/3.png width="30%")
+<img src="./images/1.png" width="30%" /> 
+<img src="./images/2.png" width="30%" /> 
+<img src="./images/3.png" width="30%" /> 
 
 # links
 - Site
  http://www.talchuler.com
-
 -Android
  preparing
- 
 -IOS 
  preparing
