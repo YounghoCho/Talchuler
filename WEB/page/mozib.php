@@ -272,7 +272,7 @@ input {padding-left:5px;}
 	</div>
 	<div id="Middle_image_area">
 		<div id="middle_iamge">
-			<a href="../manager/register1.php">
+			<a href="#" onClick="window.open('../manager/register1.php')">
 				<img src="../images/banner/middle.jpg" />
 			</a>
 		</div>

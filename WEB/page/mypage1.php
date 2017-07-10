@@ -15,7 +15,7 @@ $data=mysql_fetch_array($query);
 <?
 include('./include_mypage.php');
 ?>
-			<!--	<div class="c_info">
+				<div class="c_info">
 					<div class="my_tab">
 						<a href="mypage1.php" class="on">예약 내역</a>
 						<a href="mypage2.php">찜한 곳</a>
@@ -118,14 +118,15 @@ include('./include_mypage.php');
 			</div>
 		</div>
 	</div>
+</div><!-- end : id : wrap -->
+</body>
+</html>
+
 <?
 include("./include_footer.php");
 ?>
 
-</div><!-- end : id : wrap -->
 <script type="text/javascript" src="../js/common.js"></script>
-</body>
-</html>
 
 <script>
 var modal = document.getElementById('id01');

@@ -7,6 +7,7 @@ if($_COOKIE['id'])
 ?>
 <html>
 <head>
+<title>탈출러 매니저</title>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta name="naver-site-verification" content="6b21cafa992f802dd95e784ac4accb85395c0980"/>
 <meta name="title" content="탈출러">
@@ -25,16 +26,12 @@ if($_COOKIE['id'])
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	
 <script>
-
 	$(function(){
 		$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
 		$(window).resize(function(){
 			$('#Tab').css({'min-height':($(window).height() - 123 )+'px'});
 		});
 	});
-
-
-
 </script>
 
 
@@ -120,16 +117,29 @@ body{
 }
 ul{
 	font-size:11pt;
-    list-style:none;
 }
 .tbmenu li{cursor:pointer;}
-.tbmenu .hide{display:none;}
-.tab_li{display:none; padding: 10px 0px 10px 50px; background-color:white;}
+.tab_li{padding: 10px 0px 10px 50px; background-color:white;}
 #back{
+	background-color:white;
+	border-bottom:solid 1px #cccccc;
 	padding:20 0 10 20;
 }
 #back1{
 	padding:20 0 10 20;
+}
+#Tab{
+	float:left;
+	width:220px;
+	height:90%; /*Main을 따라 Tab의 높이도 90%로 조절합니다.*/
+	background-color:#cccccc;
+	font-family:'NotoSansCJKkr-Regular.eot';
+	}
+#back img{margin-right:4px;}
+#back1 img{margin-right:4px;}
+.im{
+	padding:5 0;
+	margin-right:3;
 }
 </style>
 </head>
@@ -248,20 +258,6 @@ function server_time()
 	</div>
 	
 	<div id="Tab">
-	<?
-	if($_SESSION['id']){
-	?>
-	<style>
-	#Tab{
-	float:left;
-	width:220px;
-	height:90%; /*Main을 따라 Tab의 높이도 90%로 조절합니다.*/
-	background-color:#cccccc;
-	font-family:'NotoSansCJKkr-Regular.eot';
-	}
-	#back img{margin-right:4px;}
-	#back1 img{margin-right:4px;}
-	</style>
 		<ul id="back"><img src="../images/icon/a.png" width="20px" height="20px"> 내 카페관리</ul>
 			<!-- 여기 바꿀때, register4.php의 수동으로 만든 탭도 바꿔야합니다.
 
@@ -269,11 +265,10 @@ function server_time()
 				<a href=""><li class="tab_li">예약 관리</li></a>
 				<a href=""><li class="tab_li">후기 관리</li></a>
 			-->
-				<a href="./cafeinfo.php"><li class="tab_li" id="button_content1">카페정보관리</li></a>
-				<a href="./album.php"><li class="tab_li" id="button_content2">앨범</li></a>
-				<a href="./gameinfo.php"><li class="tab_li" id="button_content3">게임정보관리</li></a>
-				<a href="./order.php"><li class="tab_li" id="button_content4">예약관리</li></a>
-		
+				<a href="./cafeinfo.php?index1=1"><li class="tab_li" id="button_content1"><img src="./images/icon/select1.png" id="im1" class="im">카페정보관리</li></a>
+				<a href="./album.php?index1=2"><li class="tab_li" id="button_content2"><img src="./images/icon/select1.png" id="im2" class="im">앨범</li></a>
+				<a href="./gameInfo.php?index1=3"><li class="tab_li" id="button_content3"><img src="./images/icon/select1.png" id="im3" class="im">게임정보관리</li></a>
+				<a href="./order.php?index1=4"><li class="tab_li" id="button_content4"><img src="./images/icon/select1.png" id="im4" class="im">예약관리</li></a>
 		<!--
 		<li>서비스이용</li>
 			<ul class="hide">
@@ -302,25 +297,10 @@ function server_time()
 				<a href=""><li class="tab_li" id="button_content5">약관 및 정책</li></a>
 		</ul>
 		-->
-		<?
-		}else{
-		?>
-		<style>
-		#Tab{
-			float:left;
-			width:220px;
-			height:90%; /*Main을 따라 Tab의 높이도 90%로 조절합니다.*/
-			
-		}
-		</style>
-		<?
-		}
-		?>
-	</ul>
-</div>
+	</div>
 
-
-	<?
+<!--
+<?
 if($_SESSION['id']){
 	?>
 	<script type="text/javascript">
@@ -347,6 +327,7 @@ if($_SESSION['id']){
 	<?
 }
 ?>
+
 <?
 if($_SESSION['id']){
 	?>
@@ -368,4 +349,44 @@ if($_SESSION['id']){
 	<?
 }
 ?>
+-->
 	<!--Content가 들어갈 중간 영역입니다-->
+<?
+	if($_GET['index1']==1){
+		?>
+		<script>
+			var c1=document.getElementById('button_content1');
+			var i1=document.getElementById('im1');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==2){
+		?>
+		<script>
+			var c1=document.getElementById('button_content2');
+			var i1=document.getElementById('im2');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==3){
+		?>
+		<script>
+			var c1=document.getElementById('button_content3');
+			var i1=document.getElementById('im3');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==4){
+		?>
+		<script>
+			var c1=document.getElementById('button_content4');
+			var i1=document.getElementById('im4');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}
+?>

@@ -31,7 +31,7 @@ else{
 -->
 
 <!--달력 S-->
-<link href="./calendar/calendar.css" rel="stylesheet">
+<link href="./calendar/calendar1.css" rel="stylesheet">
 	<script>
 		window.onload = function () {
 			kCalendar('kCalendar');
@@ -573,15 +573,18 @@ else{
 					$tsql="select * from game_time where g_idx='".$data['g_idx']."'";
 					$tq=mysql_query($tsql);
 					$time=mysql_fetch_array($tq);
-					
-					$rsql="select * from game_reserve where g_idx='".$data['g_idx']."'";
+
+					$rsql="select * from game_reserve where g_idx='".$data['g_idx']."' and gr_date='".$date."'";
 					$rq=mysql_query($rsql);
 					$reserve=mysql_fetch_array($rq);
 					//만약에 해당time의 값이 1이면 style을 바꿔주고, onlick도 바꿔주면되지 222
-					
 					?>		
 					<input type="button" value="<?echo $time['gt_1']?>" 
-					<?if($reserve['gr_1']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop1"/>
+					<?if($reserve['gr_1']=='1'){?>
+						style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?
+					 }else{?>
+					    style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_1', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?
+					 }?>  id="pop1"/>
 					
 					<input type="button" value="<?echo $time['gt_2']?>" 
 					<?if($reserve['gr_2']=='1'){?>style='background-color:#999;color:white;' onclick="popup2(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}else{?>style='background-color:#fff;'onclick="popup(this.value, '<?echo $data['g_title']?>', this.id, 'gr_2', '<?echo $data['g_idx']?>', '<?echo $reserve['gr_idx']?>')"<?}?>  id="pop2"/>
@@ -779,24 +782,7 @@ else{
 <?
 include('./Footer_Module.php');
 ?>
-<script>
-var slideIndexa = 1;
-showSlidesa(slideIndexa);
 
-function plusSlidesa(n) {
-  showSlidesa(slideIndexa += n);
-}
-
-function showSlidesa(n) {
-  var j;
-  var slidesa = document.getElementsByClassName("mySlidesa");
-  if (n > slidesa.length) {slideIndexa = 1}    
-  if (n < 1) {slideIndexa = slidesa.length}
-  for (j = 0; j < slidesa.length; j++) {
-      slidesa[j].style.display = "none";  
-  }
-  slidesa[slideIndexa-1].style.display = "block";  
-}
 </script>
 <script language="JavaScript">
 		function changedate(datenum){ //색상비교 후 값 반환
@@ -856,7 +842,6 @@ function closedetail(callnum){
 				mask.style.display="block";
 				window_1.style.display="block";
 				whattime.innerHTML=value;
-				alert(title);
 				whattitle.innerHTML=title;
 				//확인시 reserved함수에 넘겨줄 id값
 				temp=id;

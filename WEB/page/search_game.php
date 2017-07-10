@@ -15,7 +15,7 @@ select.select_st1.w80{width:80px;border-bottom:1px solid; background: url(../ima
 select.select_st1.w50{width:50px;border-bottom:1px solid;}
 select.select_st1.w100{width:100px;border-bottom:1px solid;}
 .pages{color:#999;margin-left:5px;margin-right:5px;}
-.paging{position:absolute;bottom:30px;left:0;width:100%;text-align:center;}
+.paging{position:absolute;bottom:0;width:100%;text-align:center;}
 .choicearea{padding-bottom:40px;}
 .lowest{
 	 float:right;
@@ -34,12 +34,13 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 	 padding-top:5px;
 }
 .hidecontent{width:100%;height:84px;overflow:hidden;}
+#paging_text{border:1px solid;position:absolute;bottom:0;}
 
 @media all and (max-width:1041px){
 .choicearea{margin:0;padding:0}
 #libon{position:relative; float:left;text-align:center; z-index:3;padding:0;background-color:none;}
 #detailPrice{font-size:10px;}
-.paging{position:absolute;bottom:12px;left:0;font-size:18px;}
+.paging{position:absolute;bottom:0;font-size:18px;}
 .lowest{
 	 float:right;
 	 margin-right:20px;
@@ -76,7 +77,7 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 		width :    -moz-calc(33.3% - 20px); /* for Firefox */
 		width :         calc(33.3% - 20px); /* for IE */ 
 		margin:10px;
-		margin-bottom:12px;
+		margin-bottom:30px;
 		height:336px; float:left; overflow:hidden;
 		border-top:1px solid #cccccc;
 
@@ -930,7 +931,7 @@ select.select_st1.w100{width:100px;border-bottom:1px solid;}
 		</div>-->
 
 
-<!--</div><!--여기까지가 wrap이라서 파란선이 남는다, 근데 이걸 여기서 끊으면 전체 wrap이 끊겨서 페이징이 위에나와.. 아래로절대안내려감;-->
+</div><!--여기까지가 wrap이라서 파란선이 남는다, 근데 이걸 여기서 끊으면 전체 wrap이 끊겨서 페이징이 위에나와.. 아래로절대안내려감;-->
 
 <!--search_module.php S-->
 <?
@@ -1057,7 +1058,7 @@ if ($pageNum <= $e_page) {
     $e_page = $pageNum;
 }
 ?>
-	<div class="paging">
+	<div class="paging" id="paging">
 		<a href="<?=$PHP_SELP?>?page=<?=$s_page-1?>&day=<?=$_GET['day']?>&start_time=<?=$_GET['start_time']?>&end_time=<?=$_GET['end_time']?>&start_level=<?=$_GET['start_level']?>&end_level=<?=$_GET['end_level']?>&horror=<?=$_GET['horror']?>&rigion=<?=$_GET['rigion']?>&input=<?echo $_GET['input']?>"><img src="../images/btn/left.png" style="margin-top:4px;margin-right:3px;"/>&nbsp;</a>
 <?
 for ($p=$s_page; $p<=$e_page; $p++) {
@@ -1130,15 +1131,78 @@ $real_data = mysql_query($three);
 ?>
 <div id="gameinfo_stack"> <!--자체를 감싸는 영역-->
 <?
+	if($pageNum==0){
+		?><img src='../images/banner/no_result.png' style="width:100%;"><?
+	}	
+
+//페이징을 출력되는 수에 따라 위치를 바꾼다.
+$temp=$num;
+if($temp>15){
+	$minus= $temp-15;
+	$temp = $temp-$minus; //15
+	?>
+	<script>
+		var c= document.getElementById('paging');
+		c.style.bottom="-1596px";
+		c.style.marginBottom="20px";
+	</script>
+	<?
+}
+else if($temp<=15){
+	if($temp<4){
+		?>
+			<script>
+			var c= document.getElementById('paging');
+			c.style.bottom="-76px";
+			</script>
+		<?
+	}
+	else if($temp<7){
+		?>
+			<script>
+			var c= document.getElementById('paging');
+			c.style.bottom="-456px";
+			c.style.marginBottom="20px";
+			</script>
+		<?
+	}
+	else if($temp<10){
+		?>
+			<script>
+			var c= document.getElementById('paging');
+			c.style.bottom="-836px";
+			c.style.marginBottom="20px";
+			</script>
+		<?
+	}
+	else if($temp<13){
+		?>
+			<script>
+			var c= document.getElementById('paging');
+			c.style.bottom="-216px";
+			c.style.marginBottom="20px";
+			</script>
+		<?
+	}
+	else if($temp<16){
+		?>
+			<script>
+			var c= document.getElementById('paging');
+			c.style.bottom="-1596px";
+			c.style.marginBottom="20px";
+			</script>
+		<?
+	}
+}
+
 for ($i=1; $i<=$num; $i++) {
     $data = mysql_fetch_array($real_data);
-
 	if ($data == false) {
         exit;
     }
 ?>
 	<!--출력부-->
-
+		<!--만약 총페이지가 0이면 출력결과가 없다, 전체 감싸는 부분에 선언-->
 		<div class="gameinfo_container"> <!--컨텐츠를 담는 공간-->
 
 			<div class="image_content" onclick='letsview(<?echo $data['g_idx']?>)'> <!--이미지를 담는 공간-->
@@ -1273,6 +1337,7 @@ for ($i=1; $i<=$num; $i++) {
 		</div>
 <?
 }
+
 ?>
  </div>
 

@@ -15,7 +15,7 @@ $data=mysql_fetch_array($query);
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css?ver=1" />
 <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.1.3.min.js"></script>
@@ -245,7 +245,7 @@ if(!file_exists($filepath)){
 }
 ?>					
 				
-					<div class="namebox st02">
+					<!--<div class="namebox st02">
 								<strong>
 								<?
 								if($data['title']=="")
@@ -275,7 +275,7 @@ if(!file_exists($filepath)){
 									?></span>
 								<span>평균속도 0<?
 								?></span>
-							</div>
+							</div>-->
 				</div>
 				<!--<div class="rebox">
 					<a href="mypage1.php"><em>예약 3건</em></a>

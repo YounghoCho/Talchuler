@@ -22,11 +22,20 @@ move_uploaded_file($_FILES['userfile']['tmp_name'], $newuploadfile);
 //참조값을 넣어줘야한다.
 
 //일단 gameAsk에 g_idx값을 넣어준다.
+//game에서 마지막 g_idx를 불러오고
 $sql="select g_idx from game order by g_idx desc";
 $q=mysql_query($sql);
 $gidx=mysql_fetch_array($q);
 $g=$gidx['g_idx']+'1';
-
+echo("first g:".$g." ");
+	//gameAsk의 마지막 g_idx도 불러와서 비교한다
+	$sql="select g_idx from gameAsk order by g_idx desc";
+	$q=mysql_query($sql);
+	$gAskIdx=mysql_fetch_array($q);
+	while($g<=$gAskIdx[0]){
+			$g++;
+	}
+echo("q:".$g." gAskIdx:".$gAskIdx[0]);
 //게임수정에서도 g_idx에서 +1해서 게임수정하는데, 여기서도 같은원리로 추가하게되면 같은 g_idx를 가져
 //gameAsk에서 g_idx를 불러온다
 $ssql="select g_idx from gameAsk";
@@ -37,6 +46,7 @@ while($gumsa=mysql_fetch_array($qq)){//gameAsk에 같은 g_idx가없을때까지
 	$g = $g+'1';
 	}
 }
+
 //이제 최종g_idx를 gameAsk에 넣어주면된다.
 $sql="insert into gameAsk (
 	g_idx, p_id,
@@ -78,7 +88,7 @@ mysql_query($sql);
 
 <script>
 alert("게임추가 요청이 완료되었습니다");
-location.href="./gameinfo.php";
+location.href="./gameInfo.php";
 </script>
 <?
 //else꺼

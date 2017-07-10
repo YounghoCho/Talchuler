@@ -1,6 +1,7 @@
 <?
 include("./include_head.php");
 ?>
+
 	<div id="main_container">
 		<div class="path"><div class="container_inner pd44"><span>홈 > </span><strong>1:1 문의</strong></div></div>
 		<div class="container_inner">

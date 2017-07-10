@@ -18,6 +18,5 @@ rename("../partner/gameImage/".$data[0].".jpg", "../partner/albumTrash/".$data[0
 ?>
 
 <script>
-alert("삭제가 완료되었습니다.");
-location.href="./gameinfo.php??refresh=1";
+location.href="./gameInfo.php??refresh=1";
 </script>

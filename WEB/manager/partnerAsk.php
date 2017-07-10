@@ -30,8 +30,8 @@ else{
 	if($_FILES['userfile']['tmp_name']==""){
 	?>
 		<script>
-	//	alert("이미지를 먼저 선택해주세요");
-	//	history.back();
+		alert("이미지를 먼저 선택해주세요");
+		history.back();
 		</script>
 	<?
 	}else{

@@ -4,6 +4,7 @@ include('./include.php');
 ?>
 <meta charset="utf-8"/>
 <?
+print_r($_POST);
 $sql="insert into gameAsk (
 	g_idx, p_id,
 	g_title, g_subtitle, g_content, g_summary,
@@ -24,9 +25,9 @@ $sql="insert into gameAsk (
 	'".$_POST['value6']."', '".$_POST['value7']."', '".$_POST['value8']."', '".$_POST['value9']."', '".$_POST['value10']."',
 	'".$_POST['dis6']."', '".$_POST['dis7']."', '".$_POST['dis8']."', '".$_POST['dis9']."', '".$_POST['dis10']."',
 	now())";
-	mysql_query($sql);
+//	mysql_query($sql);
 ?>
 <script>
-alert("게임추가 요청이 완료되었습니다");
-history.back();
+//alert("게임추가 요청이 완료되었습니다");
+//history.back();
 </script>

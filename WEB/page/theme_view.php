@@ -1320,8 +1320,8 @@ $img=mysql_fetch_array($imgquery);
 #botspace{margin-right:0px;}
 
 #albumsize_area{overflow:hidden;}
-.albumsize_box{position:relative; float:left; border:0px solid #aaa; width:281px; height:310px; text-align:center; display:table-cell; background:none;}
-.albumsize_box img{position:absolute; width:auto; height:100%; max-width:281px;  max-height:310px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0;}
+.albumsize_box{position:relative; float:left; border:0px solid #aaa; width:281px; height:281px; text-align:center; display:table-cell; background:none;}
+.albumsize_box img{position:absolute; width:auto; height:100%; max-width:281px;  max-height:281px; border:0px solid #aaa; background:#c3c3c3; margin:auto; top:0; bottom:0; left:0; right:0;}
 
 /*map*/
 .hiddenarea{display:none; margin:0 auto;}
@@ -1598,6 +1598,8 @@ function showCalendar(){
 					$q=mysql_query($sql);
 					$time=mysql_fetch_array($q);
 					//예약정보
+					
+					//오늘
 					$sql="select * from game_reserve where g_idx='".$_GET['g_idx']."' and gr_date='".$date."'";
 					$q=mysql_query($sql);
 					$ava=mysql_fetch_array($q);
@@ -1605,9 +1607,11 @@ function showCalendar(){
 					<div class="hiddenarea_timetable">
 						<div class="hiddenarea_timearray">
 							<?if($time['gt_1']){
-								if($ava['gr_1']){?><script>setTimeout(function(){
-									reserved(1);
-								},100)</script><?}?>
+								if($ava['gr_1']){?>
+									<script>setTimeout(function(){
+												reserved(1);
+											},900)
+									</script><?}?>
 							<div class="hiddenarea_timecell_top" id="topspace">
 								<input type="button" id="re1" value="<?echo $time['gt_1']?>" class="time_button" onclick="changetime(0)" style=''/>
 							</div>
@@ -1615,7 +1619,7 @@ function showCalendar(){
 							<?if($time['gt_2']){
 								if($ava['gr_2']){?><script>setTimeout(function(){
 									reserved(2);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re2" value="<?echo $time['gt_2']?>" class="time_button" onclick="changetime(1)" style=''/>
 							</div>
@@ -1623,7 +1627,7 @@ function showCalendar(){
 							<?if($time['gt_3']){
 								if($ava['gr_3']){?><script>setTimeout(function(){
 									reserved(3);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re3" value="<?echo $time['gt_3']?>" class="time_button" onclick="changetime(2)" style=''/>
 							</div>
@@ -1631,7 +1635,7 @@ function showCalendar(){
 							<?if($time['gt_4']){
 								if($ava['gr_4']){?><script>setTimeout(function(){
 									reserved(4);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re4" value="<?echo $time['gt_4']?>" class="time_button" onclick="changetime(3)" style=''/>
 							</div>
@@ -1639,7 +1643,7 @@ function showCalendar(){
 							<?if($time['gt_5']){
 								if($ava['gr_5']){?><script>setTimeout(function(){
 									reserved(5);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re5" value="<?echo $time['gt_5']?>" class="time_button" onclick="changetime(4)" style=''/>
 							</div>
@@ -1647,7 +1651,7 @@ function showCalendar(){
 							<?if($time['gt_6']){
 								if($ava['gr_6']){?><script>setTimeout(function(){
 									reserved(6);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re6" value="<?echo $time['gt_6']?>" class="time_button" onclick="changetime(5)" style=''/>
 							</div>
@@ -1655,7 +1659,7 @@ function showCalendar(){
 								<?if($time['gt_7']){
 								if($ava['gr_7']){?><script>setTimeout(function(){
 									reserved(7);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top" id="topspace">
 								<input type="button" id="re7" value="<?echo $time['gt_7']?>" class="time_button" onclick="changetime(6)" style=''/>
 							</div>
@@ -1664,7 +1668,7 @@ function showCalendar(){
 							<?if($time['gt_8']){
 								if($ava['gr_8']){?><script>setTimeout(function(){
 									reserved(8);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re8" value="<?echo $time['gt_8']?>" class="time_button" onclick="changetime(7)" style=''/>
 							</div>
@@ -1672,7 +1676,7 @@ function showCalendar(){
 							<?if($time['gt_9']){
 								if($ava['gr_9']){?><script>setTimeout(function(){
 									reserved(9);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re9" value="<?echo $time['gt_9']?>" class="time_button" onclick="changetime(8)" style=''/>
 							</div>
@@ -1680,7 +1684,7 @@ function showCalendar(){
 							<?if($time['gt_10']){
 								if($ava['gr_10']){?><script>setTimeout(function(){
 									reserved(10);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re10" value="<?echo $time['gt_10']?>" class="time_button" onclick="changetime(9)" style=''/>
 							</div>
@@ -1688,7 +1692,7 @@ function showCalendar(){
 							<?if($time['gt_11']){
 								if($ava['gr_11']){?><script>setTimeout(function(){
 									reserved(11);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re11" value="<?echo $time['gt_11']?>" class="time_button" onclick="changetime(10)" style=''/>
 							</div>
@@ -1696,7 +1700,7 @@ function showCalendar(){
 							<?if($time['gt_12']){
 								if($ava['gr_12']){?><script>setTimeout(function(){
 									reserved(12);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re12" value="<?echo $time['gt_12']?>" class="time_button" onclick="changetime(11)" style=''/>
 							</div>
@@ -1704,7 +1708,7 @@ function showCalendar(){
 							<?if($time['gt_13']){
 								if($ava['gr_13']){?><script>setTimeout(function(){
 									reserved(13);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re13" value="<?echo $time['gt_13']?>" class="time_button" onclick="changetime(12)" style=''/>
 							</div>
@@ -1712,7 +1716,7 @@ function showCalendar(){
 							<?if($time['gt_14']){
 								if($ava['gr_14']){?><script>setTimeout(function(){
 									reserved(14);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top" style="margin-right:0px;">
 								<input type="button" id="re14" value="<?echo $time['gt_14']?>" class="time_button" onclick="changetime(13)" style=''/>
 							</div>
@@ -1720,7 +1724,7 @@ function showCalendar(){
 							<?if($time['gt_15']){
 								if($ava['gr_15']){?><script>setTimeout(function(){
 									reserved(15);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top" style="margin-left:-1px">
 								<input type="button" id="re15" value="<?echo $time['gt_15']?>" class="time_button" onclick="changetime(14)" style=''/>
 							</div>
@@ -1728,7 +1732,7 @@ function showCalendar(){
 							<?if($time['gt_16']){
 								if($ava['gr_16']){?><script>setTimeout(function(){
 									reserved(16);
-								},100)</script><?}?>
+								},800)</script><?}?>
 							<div class="hiddenarea_timecell_top">
 								<input type="button" id="re16" value="<?echo $time['gt_16']?>" class="time_button" onclick="changetime(15)" style=''/>
 							</div>

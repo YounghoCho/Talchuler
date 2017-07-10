@@ -189,20 +189,27 @@ input[type="file"]{ position: absolute; width: 1px; height: 1px; padding: 0; mar
 		//앨범불러오기
 		$sql="select path, ap_idx from album_path where p_id='".$_SESSION['id']."'";
 		$q=mysql_query($sql);
+
+		//앨범이 빈 경우 메인도 비워준다
+		$count_album=mysql_num_rows($q);
 		?>
 		<div id="image_group">
 			<div class="image_stack">
-					<!-- $i가 0인경우 메인사진-->
-					<div style="width:405px;height:278px;">
+					<!-- $i가 0인경우 메인사진, $count_album==0이면 메인사진도 사라진다.-->
+					<?
+					if($count_album!=0){?>
+					<div style="width:405px;height:278px;" onclick="popupalbum(value='<?echo ($main['path'])?>', ap_idx='<?echo ($main['ap_idx'])?>', main=1)">
 						<img src="./album/<?echo ($main[0])?>.jpg" class="main_img" onerror="this.src='./images/button/plus.png';this.style.width='40%';this.style.marginLeft='30%';this.style.marginTop='13%';" style="width:100%;z-index:0"/>
-						<p style="z-index:1;margin-top:-160px;margin-left:10px;color:#56dcfc;">메인사진</p>
+						<p style="z-index:1;margin-left:10px;color:#56dcfc;font-weight:bold;border:1px solid;position:absolute;top:220px;">메인사진</p>
 					</div>
+					<?}?>
 			</div>
 		<?
+
 		//$i가 1이상인 경우 사진
 		while($path=mysql_fetch_array($q)){
 		?>
-			<div class="image_stack" style="margin:3px;cursor:pointer;" onclick="popupalbum(value='<?echo ($path['path'])?>', ap_idx='<?echo ($path['ap_idx'])?>')">
+			<div class="image_stack" style="margin:3px;cursor:pointer;" onclick="popupalbum(value='<?echo ($path['path'])?>', ap_idx='<?echo ($path['ap_idx'])?>', main=2)">
 					<img src="./album/<?echo ($path['path'])?>.jpg" class="product_img" />
 			</div>
 		<?
@@ -261,14 +268,30 @@ function admitColorChange(){
 <script>
 var ap;
 var filename;
+var main_check;
+function popupalbum(value, ap_idx, main){
+	//메인사진이 들어온경우 메인등록 버튼 감춤
+	if(main=='1'){
+		var makemain= document.getElementById('makemain');
+		makemain.style.display="none";
+		
+		var deletepic= document.getElementById('deletepic');
+		deletepic.style.marginLeft="10px";
+	}else{
+		var makemain= document.getElementById('makemain');
+		makemain.style.display="block";
+		
+		var deletepic= document.getElementById('deletepic');
+		deletepic.style.marginLeft="0px";
+	}
 
-function popupalbum(value, ap_idx){
 	var popup= document.getElementById('popupzone');
 	popup.style.display="block";
 	var imagepath= document.getElementById('imagepath');
 	imagepath.src='./album/'+value+'.jpg';
 	ap=ap_idx;//전역변수에 앨범의 고유번호를 넣어준다.
 	filename=value;
+	main_check=main;
 }
 function closer(){
 	var popup= document.getElementById('popupzone');
@@ -276,7 +299,7 @@ function closer(){
 }
 function deletepicture(){
 	if(confirm("사진을 지우시겠습니까?")==true){
-		location.href="./album_delete.php?ap_idx="+ap+"&filename="+filename+"";
+		location.href="./album_delete.php?ap_idx="+ap+"&filename="+filename+"&main="+main_check+"";
 	}
 	else return;
 }

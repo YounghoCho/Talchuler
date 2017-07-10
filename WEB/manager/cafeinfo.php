@@ -3,7 +3,6 @@ include('./HeadTab_Module.php');
 ?>
 
 <style>
-
 input{padding:3px;}
 #Main{
 	/*Tab 크기 뺴줌*/
@@ -327,7 +326,6 @@ input{padding:3px;}
 
 <!--여기서부터 메인페이지를 자유롭게 작성하면 됩니다.-->
 
-
 <div id="Main">
 	<div id="Main_titlebar">
 		<div class="title">카페정보관리</div>
@@ -342,10 +340,10 @@ $data=mysql_fetch_array($q);
 ?>
 		<form action="./partnerAsk.php" id="inputbox" method="POST" name="form" enctype="multipart/form-data">
 			<div class="container">
-				<div class="icon"><img src="images\icon\icon6.png" class="icon_sample"/></div><div class="major">＊카페명</div><input type="text" name="shopName" value="<?echo $data['p_shopName']?>"> <br>
+				<div class="icon"><img src="images\icon\icon6.png" class="icon_sample"/></div><div class="major">＊카페명</div><input type="text" id="shopName" name="shopName" value="<?echo $data['p_shopName']?>"> <br>
 			</div>
 			<div class="container">
-				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" name="localName" value="<?echo $data['p_localName']?>" placeholder="ex) 홍대점, 강남점"> <br>
+				<div class="icon"><img src="images\icon\icon5.png" class="icon_sample"/></div><div class="major">＊지점명</div><input type="text" id="localName" name="localName" value="<?echo $data['p_localName']?>" placeholder="ex) 홍대점, 강남점"> <br>
 			</div>
 
 				<!--이미지전송-->
@@ -403,15 +401,15 @@ $data=mysql_fetch_array($q);
 				<input type="text" name="benefit4" value="<?echo $data['benefit4']?>">
 				<br>
 			</div>
-	<div id="promise">
+		<div id="promise">
 		<div class="major">＊예약취소 / 변경 / 환불규정</div>
 		<textarea rows="5" cols="60" name="rule"><?echo $data['rule']?></textarea>
-	</div>
-	</form>
+		</div>
+		</form>
 
-	<div id="endmessage">
+		<div id="endmessage">
 		<span>탈출러에서 검토한 후에 등록됩니다. 조금만 기다려주세요! (최대 3일 소요)</span><br>
-		<div class="click_box2" onclick="submit()"><div class="link_area">등록/수정</div></div>
+		<div class="click_box2" onclick="valuecheck()"><div class="link_area">등록/수정</div></div>
 	</div>
 </div>
 <!--여기까지만 수정하시면 됩니다. 바깥은 건들지 말아주세요-->
@@ -419,12 +417,7 @@ $data=mysql_fetch_array($q);
 <?
 include('./Footer_Module.php');
 ?>
-<script>
-function submit(){
-   var f=document.form;
-   f.submit();
-}
-</script>
+
 <!--주소검색-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -469,4 +462,49 @@ function submit(){
             }
         }).open();
     }
+</script>
+<script>
+function valuecheck(){
+	var f = document.form;
+	var shopName= document.getElementsByName("shopName")[0];
+	if(shopName.value==""){
+		alert("카페명을 입력해주세요");
+		return false;
+	}
+	var localName= document.getElementsByName("localName")[0];
+	if(shopName.value==""){
+		alert("지점명을 입력해주세요");
+		return false;
+	}
+	var p_tele=document.getElementsByName('p_tele')[0];
+	if(p_tele.value.indexOf('-')!='-1'){
+		alert("' - '문자를 제외하고 매장 번호를 입력해주세요");
+		return false;
+	}
+	if(p_tele.value==""){
+		alert("매장 번호를 입력해주세요");
+		return false;
+	}
+	var postNumber1= document.getElementsByName("postNumber1")[0];
+	if(postNumber1.value==""){
+		alert("우편번호를 입력해주세요");
+		return false;
+	}
+	var location1= document.getElementsByName("location1")[0];
+	if(location1.value==""){
+		alert("주소를 입력해주세요");
+		return false;
+	}
+	var location2= document.getElementsByName("location2")[0];
+	if(shopName.value==""){
+		alert("상세주소를 입력해주세요");
+		return false;
+	}
+	var rule= document.getElementsByName("rule")[0];
+	if(rule.value==""){
+		alert("예약취소/변경/환불규정을 입력해주세요");
+		return false;
+	}
+	f.submit();
+}
 </script>
