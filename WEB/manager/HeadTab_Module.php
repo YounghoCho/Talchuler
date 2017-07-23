@@ -126,6 +126,8 @@ ul{
 	padding:20 0 10 20;
 }
 #back1{
+	background-color:white;
+	border-bottom:solid 1px #cccccc;
 	padding:20 0 10 20;
 }
 #Tab{
@@ -269,7 +271,16 @@ function server_time()
 				<a href="./album.php?index1=2"><li class="tab_li" id="button_content2"><img src="./images/icon/select1.png" id="im2" class="im">앨범</li></a>
 				<a href="./gameInfo.php?index1=3"><li class="tab_li" id="button_content3"><img src="./images/icon/select1.png" id="im3" class="im">게임정보관리</li></a>
 				<a href="./order.php?index1=4"><li class="tab_li" id="button_content4"><img src="./images/icon/select1.png" id="im4" class="im">예약관리</li></a>
+
 		<!--
+		<ul id="back1"><img src="../images/icon/b.png" width="20px" height="20px"> 고객센터</ul>
+				<a href="../page/notice.php?index1=5"><li class="tab_li" id="button_content5"><img src="./images/icon/select1.png" id="im5" class="im">공지사항</li></a>
+				<a href="../page/faq.php?index1=6"><li class="tab_li" id="button_content6"><img src="./images/icon/select1.png" id="im6" class="im">1:1문의</li></a>
+				<a href="../page/inquiry.php?index1=7"><li class="tab_li" id="button_content7"><img src="./images/icon/select1.png" id="im7" class="im">FAQ</li></a>
+				<a href=""><li class="tab_li" id="button_content8"><img src="./images/icon/select1.png" id="im8" class="im">약관 및 정책</li></a>
+		</ul>
+		-->
+				<!--
 		<li>서비스이용</li>
 			<ul class="hide">
 				<a href=""><li class="tab_li">타임핫딜</li></a>
@@ -287,16 +298,6 @@ function server_time()
 				<a href=""><li class="tab_li">패키지광고</li></a>
 			</ul>
 			-->
-	<!--	<ul id="back1"><img src="../images/icon/b.png" width="20px" height="20px"> 고객센터</ul>
-		
-				<a href=""><li class="tab_li">알림/실행</li></a>
-				<a href=""><li class="tab_li">공지사항</li></a>
-				<a href=""><li class="tab_li">1:1문의</li></a>
-				<a href=""><li class="tab_li">FAQ</li></a>
-		
-				<a href=""><li class="tab_li" id="button_content5">약관 및 정책</li></a>
-		</ul>
-		-->
 	</div>
 
 <!--
@@ -384,6 +385,42 @@ if($_SESSION['id']){
 		<script>
 			var c1=document.getElementById('button_content4');
 			var i1=document.getElementById('im4');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==5){
+		?>
+		<script>
+			var c1=document.getElementById('button_content5');
+			var i1=document.getElementById('im5');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==6){
+		?>
+		<script>
+			var c1=document.getElementById('button_content6');
+			var i1=document.getElementById('im6');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==7){
+		?>
+		<script>
+			var c1=document.getElementById('button_content7');
+			var i1=document.getElementById('im7');
+			c1.style.fontWeight="bold";
+			i1.src="./images/icon/select.png";
+		</script>
+		<?
+	}else if($_GET['index1']==8){
+		?>
+		<script>
+			var c1=document.getElementById('button_content8');
+			var i1=document.getElementById('im8');
 			c1.style.fontWeight="bold";
 			i1.src="./images/icon/select.png";
 		</script>

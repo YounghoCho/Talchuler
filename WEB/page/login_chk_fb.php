@@ -1,5 +1,6 @@
 <?
 session_start();
+header("Content-Type: text/html; charset=UTF-8");
 include('./include.php');
 //회원정보가없으면
 $sql="select idx from user where email ='".$_GET['id']."'";
@@ -8,7 +9,7 @@ $data=mysql_num_rows($q);
 if($data==0){
 	//회원가입시킨다
 	$sql="insert into user (email, password, nickname) values ('".$_GET['id']."','talchulertoken','".$_GET['name']."')";
-	echo(mysql_query($sql));
+	mysql_query($sql);
 }
 //회원정보가있으면
 else{
@@ -17,6 +18,7 @@ else{
 	$_SESSION['user_nickname']=$_GET['name'];
 }
 ?>
+<meta charset="UTF-8">
 <script>
 location.href='../index.php';
 </script>

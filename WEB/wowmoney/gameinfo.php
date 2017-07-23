@@ -706,7 +706,17 @@ function popup1(){
 }
 function popup2(){
 	var popup=document.getElementById('blackarea2');
-	popup.style.display="block";
+	if('<?echo $cou[0]?>' > 1){
+		if(confirm("잠깐, 같은 게임정보가 뒤에 더있어요. 현재것을 승인하면 다른정보들도 사라져요~ 한번더 확인해주세요!")==true){
+					popup.style.display="block";			
+		}else{
+			//취소
+			return false;
+		}
+	}
+	else{
+		popup.style.display="block";
+	}
 }
 function closepopup(){
 	var popup=document.getElementById('blackarea');

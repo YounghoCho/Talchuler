@@ -15,15 +15,15 @@ $data=mysql_fetch_array($query);
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<link rel="stylesheet" type="text/css" href="../css/style.css?ver=1" />
-<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.1.3.min.js"></script>
-<script type="text/javascript" src="../js/placeholders.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.js"></script>
-<script type="text/javascript" src="../js/jquery.customSelect.min.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css?ver=1" />
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js?ver=1"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.min.js?ver=1"></script>
+<script type="text/javascript" src="../js/placeholders.min.js?ver=1"></script>
+<script type="text/javascript" src="../js/jquery-ui.js?ver=1"></script>
+<script type="text/javascript" src="../js/jquery.customSelect.min.js?ver=1"></script>
+<script type="text/javascript" src="../js/jquery.bxslider.min.js?ver=1"></script>
+<script type="text/javascript" src="../js/common.js?ver=1"></script>
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="../js/respond.min.js"></script>
 	<script type="text/javascript" src="../js/html5shiv.js"></script>
@@ -86,8 +86,8 @@ if(!$_SESSION['user_email']){
 				<li><a href="#">예약확인</a></li>
 				<li><a href="#">랭킹검색</a></li>
 				<li><a href="../search_user.php">탈출러검색</a></li>
-				-->
-			<!--	<li><a href="./notice.php">고객센터</a></li>-->
+				
+				<li><a href="./notice.php">고객센터</a></li>-->
 			</ul>
 			<!-- e : 로그인 전 pc -->
 <?
@@ -95,9 +95,9 @@ if(!$_SESSION['user_email']){
 ?>
 			<!-- s : 로그인 후 pc -->
 			<ul class="gnb clfix">
-			<!--	<li><a href="sch_lank.html">랭킹검색</a></li>-->
-				<li><a href="../search_user.php">탈출러검색</a></li>
-			<!--	<li><a href="notice.php">고객센터</a></li>-->
+				<li><a href="sch_lank.html">랭킹검색</a></li>
+				<!--<li><a href="../search_user.php">탈출러검색</a></li>
+				<li><a href="./notice.php">고객센터</a></li>-->
 				<li class="login">
 					<a href="#">
 <?
@@ -110,11 +110,26 @@ if(!file_exists($filepath)){
 	<?
 }else{
 	?>
-		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>.jpg" style="width:50px;height:65px;" alt="" />
+		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:50px;height:65px;" alt="" />
 		<!--<em class="num">예약수 0</em>--></a>
 	<?
 }
 ?>
+<script>
+//아니 갑자기 버튼이 안먹어; 그래서 common.js에서 이부분만 따옴
+//login
+$('.gnb .login a').on('click', function(){
+	if($(this).parent().hasClass('on')){
+		$(this).parent().removeClass('on');
+		$(this).parent().find('.info').css({'display':'none'});
+	}else{
+		$(this).parent().addClass('on');
+		$(this).parent().find('.info').css({'display':'block'});
+	}
+	e.stopPropagation();
+});
+</script>
+
 					
 					<div class="info">
 						<div class="in_1">
@@ -126,7 +141,7 @@ if(!file_exists($filepath)){
 	<?
 }else{
 	?>
-		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>.jpg" style="width:80px;height:100px;" alt="" /></div>	
+		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:80px;height:100px;" alt="" /></div>	
 <?
 }
 ?>
@@ -139,7 +154,7 @@ if(!file_exists($filepath)){
 								if($data['title']=="")
 									echo("타이틀없음"." ".$data['nickname']);
 								else	
-									echo $data['title']
+									//echo $data['title']
 								?></strong>
 								<strong>
 								<?
@@ -223,8 +238,8 @@ if(!$_SESSION['user_email']){
 					<li class="gnb1"><a href="#">예약확인</a></li>
 					<li class="gnb2"><a href="#">랭킹검색</a></li>
 					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
-					-->
-					<!--<li class="gnb3"><a href="#">고객센터</a></li>-->
+					
+					<li class="gnb3"><a href="./notice.php">고객센터</a></li>-->
 				</ul>
 				<!-- e : 로그인 전 mobile -->
 <?
@@ -241,7 +256,7 @@ if(!file_exists($filepath)){
 }else{
 	?>
 		<img src="../upload/profiles/<?echo $_SESSION['user_email']?>" style="width:80px;height:100px;"  alt="" /></div>	
-<?
+<?	
 }
 ?>					
 				
@@ -285,12 +300,12 @@ if(!file_exists($filepath)){
 						<li>11/15  살인자의 방</li>
 					</ul>
 				</div>-->
-				<!--<ul class="gnb_m">
+				<ul class="gnb_m">
 					<li class="gnb4"><a href="mypage1.php">마이페이지</a></li>
-					<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>
-					<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
-					<li class="gnb3"><a href="#">고객센터</a></li>
-				</ul>-->
+					<!--<li class="gnb2"><a href="sch_lank.html">랭킹검색</a></li>-->
+					<!--<li class="gnb2"><a href="../search_user.php">탈출러검색</a></li>
+					<li class="gnb3"><a href="./notice.php">고객센터</a></li>-->
+				</ul>
 				<div class="logoutbox"><a href="./logout.php" class="btn_logout">로그아웃</a></div>
 				<!-- e : 로그인 후 mobile -->
 <?

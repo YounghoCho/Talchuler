@@ -25,19 +25,20 @@ $data=mysql_fetch_array($query);
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" />
-<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="./js/jquery.easing.1.3.min.js"></script>
-<script type="text/javascript" src="./js/placeholders.min.js"></script>
-<script type="text/javascript" src="./js/jquery-ui.js"></script>
-<script type="text/javascript" src="./js/jquery.customSelect.min.js"></script>
-<script type="text/javascript" src="./js/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/style.css?ver=1" /><!--css-->
+<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css" /><!--달력-->
+<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script><!--날자박스-->
+<!--<script type="text/javascript" src="./js/jquery.easing.1.3.min.js"></script> 그냥효과주는앤데 뭔지모르겠-->
+<!--<script type="text/javascript" src="./js/placeholders.min.js"></script> 전혀모르겠-->
+<script type="text/javascript" src="./js/jquery-ui.js"></script><!--달력-->
+<script type="text/javascript" src="./js/jquery.customSelect.min.js"></script><!--날자박스-->
+<script type="text/javascript" src="./js/jquery.bxslider.min.js"></script><!--날자박스-->
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="./js/respond.min.js"></script>
 	<script type="text/javascript" src="./js/html5shiv.js"></script>
 <![endif]-->
 <style>
+#footer{float:left}
 #id01{
 	display:none;
 	position: fixed; /* Stay in place */
@@ -130,6 +131,8 @@ $data=mysql_fetch_array($query);
 </head>
 <body class="main">
 
+<!--평가팝업-->
+<!--
 <span id="id01">
 	<center>
 	<div id="pad">
@@ -186,6 +189,7 @@ $data=mysql_fetch_array($query);
 	</div>
 	</center>
 </span>
+
 <script>
 	//게임종료 신호 받으면(if문수정)
 	if(0){
@@ -193,7 +197,7 @@ $data=mysql_fetch_array($query);
 		t.style.display='block';
 	}
 </script>
-
+-->
 
 <div id="wrap">
 	<header id="header">
@@ -233,7 +237,7 @@ if(@!$_SESSION['user_email']){
 				<li><a href="./page/sch_lank.html">랭킹검색</a></li>								
 				<li><a href="./search_user.php">탈출러검색</a></li>
 				-->
-				<li><a href="./page/notice.php">고객센터</a></li>
+				<!--<li><a href="./page/notice.php">고객센터</a></li>-->
 				<li class="login">
 					<a href="#">
 <?
@@ -648,6 +652,7 @@ if(!file_exists($filepath)){
 .secondbanner{width:22%;float:left;display:inline-block;margin:0px 25% 30px 10px;}
 .thirdbanner{width:45%;float:left;display:inline-block;margin:10px 25% 2% 26%;cursor:pointer;}
 @media all and (max-width:1041px){
+#footer{height:100%;}
 .schbox{width:100%;}
 #searcharea{width:90%;float:left;font-size:12px;display:inline;}
 .btn_sch{float:left;display:inline;}
@@ -696,24 +701,26 @@ if(!file_exists($filepath)){
 	<div class="mySlides fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
+<!--지금은 배너 1개	
 	<div class="mySlides fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
-	</div>
+	</div>-->
 </div>
 <div class="mySlidesContainerMobile">
 	<!--buttons-->
 	<div class="mySlides2 fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
+<!--지금은 배너 1개
 	<div class="mySlides2 fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
 	</div>
 	<div class="mySlides2 fade">
 	  <img src="./images/banner/banner_lowest.png" style="width:100%">
-	</div>
+	</div>-->
 </div>
 
 <div style="width:100%;">
@@ -1114,12 +1121,7 @@ if(!file_exists($filepath)){
 include('./page/include_follow.php');
 ?>
 <!--footer S-->
-<style>
-#footer{float:left}
-@media all and (max-width:1024px){
-	#footer{height:100%;}
-}
-</style>
+
 	<footer id="footer">
 		<div class="footer_inner">
 			<h1><a href="#"><img src="./images/common/logo_f.png" alt="logo" /></a></h1>
@@ -1167,12 +1169,11 @@ window.onclick = function(event) {
 }
 </script>
 <script>
-eval_i1=1;
+/*eval_i1=1;
 eval_i2=1;
 eval_i3=1;
 eval_i4=1;
 eval_i5=1;
-
 function eval_change1(){
 	var eval1=document.getElementById('eval1');
 	var eval_img1=document.getElementById('eval_img1');
@@ -1252,12 +1253,11 @@ function eval_change5(){
 	eval_img5.style.display="none";
 	eval_i5*=-1;
 	}
-}
+}*/
 function search_game(y){
 	var f=document.getElementById('search_game_form');
 	var x=document.getElementById('rigion');
 	x.value=y;
-
 	f.submit();
 }
 function search_word(){
@@ -1270,15 +1270,12 @@ function search_word(){
 //banner change
 //var slideIndex = 0;
 //showSlides();
-
 //button S
 var slideIndex = 1;
 showSlides(slideIndex);
-
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
-
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
@@ -1286,7 +1283,6 @@ function currentSlide(n) {
 function showSlides(n/*버튼은n변수필요*/) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
-
     for (i = 0; i < slides.length; i++) {
        slides[i].style.display = "none";  
     }
@@ -1300,8 +1296,6 @@ function showSlides(n/*버튼은n변수필요*/) {
 	//버튼E
     slides[slideIndex-1].style.display = "block";  
   //  setTimeout(showSlides, 2000); // Change image every 2 seconds
-
-
 }
 </script>
 <script>
@@ -1311,16 +1305,12 @@ showSlides();
 function showSlides() {
     var i;
     var slides = document.getElementsByClassName("mySlides2");
-
     for (i = 0; i < slides.length; i++) {
        slides[i].style.display = "none";  
     }
     slideIndex++;
     if (slideIndex> slides.length) {slideIndex = 1}    
-
     slides[slideIndex-1].style.display = "block";  
 	setTimeout(showSlides, 2000); // Change image every 2 seconds
-
-
 }
 </script>

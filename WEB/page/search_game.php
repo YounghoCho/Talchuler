@@ -1001,35 +1001,39 @@ switch($_GET['rigion']){
 }
 //검색 결과 개수 S
 if($_GET['horror']=='공포포함'){
-		$sql="SELECT g_idx
-		FROM game a, partner b 
-		WHERE a.p_id=b.p_id 
-		AND (b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."')
-		AND (a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."') 
-		GROUP BY a.g_idx";
+		$sql="SELECT *
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' 
+		GROUP BY a.g_idx ";
 }
 if($_GET['horror']=='공포만'){
-		$sql="SELECT g_idx
-		FROM game a, partner b 
-		WHERE a.p_id=b.p_id 
-		AND b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."' 
-		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror > 0
+		$sql="SELECT DISTINCT * 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror > 0 
 		GROUP BY a.g_idx";
 }
 if($_GET['horror']=='공포X'){
-		$sql="SELECT g_idx
-		FROM game a, partner b 
-		WHERE a.p_id=b.p_id 
-		AND b.p_postNumber1 >= '".$startPostNumber."' and b.p_postNumber1 <= '".$endPostNumber."' 
-		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror <= 0
+		$sql="SELECT DISTINCT * 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
+		AND c.p_postNumber1 >= '".$startPostNumber."' and c.p_postNumber1 <= '".$endPostNumber."' 
+		AND a.g_level >= '".$startLevel."' and a.g_level <= '".$endLevel."' and a.g_horror <= 0 
 		GROUP BY a.g_idx";
 }
 if($_GET['input']!=''){
 		$sql="SELECT DISTINCT * 
-		FROM game a, partner c  
-		WHERE a.p_id=c.p_id 
+		FROM game a, gameImage b, partner c  
+		WHERE a.g_idx=b.g_idx 
+		AND b.p_id=c.p_id 
 		AND (a.g_title like '%".$_GET['input']."%' or a.g_content like '%".$_GET['input']."%' or c.p_shopName like '%".$_GET['input']."%' or c.p_location1 like '%".$_GET['input']."%')
-		GROUP BY a.g_idx";
+		GROUP BY a.g_idx";	
 	}//소괄호뺴면 큰일나;
 
 //검색 결과 개수 E
@@ -1128,6 +1132,8 @@ if($_GET['input']!=''){
 }
 
 $real_data = mysql_query($three);
+//페이지 수 구하기
+$howManyPages= mysql_num_rows($real_data);
 ?>
 <div id="gameinfo_stack"> <!--자체를 감싸는 영역-->
 <?
@@ -1136,15 +1142,15 @@ $real_data = mysql_query($three);
 	}	
 
 //페이징을 출력되는 수에 따라 위치를 바꾼다.
-$temp=$num;
+$temp=$howManyPages;
 if($temp>15){
 	$minus= $temp-15;
 	$temp = $temp-$minus; //15
 	?>
 	<script>
 		var c= document.getElementById('paging');
-		c.style.bottom="-1596px";
-		c.style.marginBottom="20px";
+		c.style.bottom="-1496px";
+		c.style.marginBottom="30px";
 	</script>
 	<?
 }
@@ -1153,7 +1159,8 @@ else if($temp<=15){
 		?>
 			<script>
 			var c= document.getElementById('paging');
-			c.style.bottom="-76px";
+			c.style.bottom="0px";
+			c.style.marginBottom="30px";
 			</script>
 		<?
 	}
@@ -1161,8 +1168,8 @@ else if($temp<=15){
 		?>
 			<script>
 			var c= document.getElementById('paging');
-			c.style.bottom="-456px";
-			c.style.marginBottom="20px";
+			c.style.bottom="-356px";
+			c.style.marginBottom="30px";
 			</script>
 		<?
 	}
@@ -1170,8 +1177,8 @@ else if($temp<=15){
 		?>
 			<script>
 			var c= document.getElementById('paging');
-			c.style.bottom="-836px";
-			c.style.marginBottom="20px";
+			c.style.bottom="-736px";
+			c.style.marginBottom="30px";
 			</script>
 		<?
 	}
@@ -1179,8 +1186,8 @@ else if($temp<=15){
 		?>
 			<script>
 			var c= document.getElementById('paging');
-			c.style.bottom="-216px";
-			c.style.marginBottom="20px";
+			c.style.bottom="-1116px";
+			c.style.marginBottom="30px";
 			</script>
 		<?
 	}
@@ -1188,8 +1195,8 @@ else if($temp<=15){
 		?>
 			<script>
 			var c= document.getElementById('paging');
-			c.style.bottom="-1596px";
-			c.style.marginBottom="20px";
+			c.style.bottom="-1496px";
+			c.style.marginBottom="30px";
 			</script>
 		<?
 	}

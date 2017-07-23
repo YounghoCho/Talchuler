@@ -31,13 +31,14 @@
 						<div class="in_1">
 							<div class="imgbox">
 <?
+
 if(!file_exists($filepath)){
 	?>
 		<img src="../images/contents/img_login_d.png" width="100px;height:150px;"/>
 	<?
 }else{
 	?>
-		<img src="../upload/profiles/<?echo ($_SESSION['user_email'])?>.jpg" style="width:100px;height:150px;"  alt="" />	
+		<img src="../upload/profiles/<?echo ($_SESSION['user_email'])?>" style="width:100px;height:150px;"  alt="" />	
 <?
 }
 ?>
